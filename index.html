@@ -99,7 +99,33 @@
             color: #666;
             font-size: 1rem;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 16px auto;
+        }
+
+        /* BOTTONE GEOLOCALIZZAZIONE */
+        .geolocate-btn {
+            background-color: var(--success);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: transform 0.2s, background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .geolocate-btn:hover {
+            background-color: #2e7d32;
+            transform: translateY(-2px);
+        }
+
+        .geolocate-btn:active {
+            transform: translateY(0);
         }
 
         /* LAYOUT MAIN */
@@ -129,7 +155,7 @@
         .map-iframe-container {
             position: relative;
             width: 100%;
-            height: 550px;
+            height: 580px;
             background-color: #e0e0e0;
             border-radius: 6px;
             overflow: hidden;
@@ -260,19 +286,21 @@
     <div class="container">
         <header>
             <h1>Mappa dei Servizi Antiviolenza & Pronto Intervento</h1>
-            <p>Seleziona i livelli sulla mappa per visualizzare i Centri Antiviolenza accreditati della Lombardia, i Pronto Soccorso con Codice Rosa, gli Ospedali con Bollino Rosa e le Forze dell'Ordine più vicine a te.</p>
+            <p>Visualizza sulla mappa i Centri Antiviolenza, i Pronto Soccorso con Codice Rosa e le Forze dell'Ordine in Lombardia.</p>
+            <button class="geolocate-btn" id="geolocate-btn" onclick="geolocalizeUser()">
+                📍 Trova Servizi Vicini a Me
+            </button>
         </header>
 
         <div class="main-layout">
             <!-- MAPPA INTERATTIVA -->
             <div class="map-wrapper">
                 <div class="map-iframe-container">
-                    <!-- Placeholder per la mappa uMap. Verrà sostituito dal link di produzione uMap -->
-                    <iframe src="about:blank" id="umap-iframe" title="Mappa uMap Lombardia"></iframe>
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #555; font-family: var(--font-family); padding: 20px;" id="map-placeholder">
+                    <!-- Iframe uMap della Lombardia con controlli filtri aperti all'avvio -->
+                    <iframe src="https://umap.openstreetmap.fr/it/map/lombardia-antiviolenza_1461436?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=datalayers&captionBar=false&captionMenus=true" id="umap-iframe" title="Mappa uMap Lombardia"></iframe>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #555; font-family: var(--font-family); padding: 20px; display: none;" id="map-placeholder">
                         <h3 style="margin-bottom: 10px; color: var(--primary);">Inizializzazione Mappa</h3>
                         <p style="font-size: 0.9rem; max-width: 400px; margin: 0 auto 15px auto;">La mappa interattiva uMap Lombardia è in fase di sincronizzazione con la repository GitHub.</p>
-                        <p style="font-size: 0.8rem; color: #888;">Utilizza il pulsante di geolocalizzazione nativo per trovare le strutture vicino a te.</p>
                     </div>
                 </div>
             </div>
@@ -316,7 +344,7 @@
         </div>
 
         <footer>
-            <p>Progetto Open-Source e Collaborativo. <a href="https://github.com" target="_blank" rel="noopener noreferrer">Partecipa su GitHub</a> per segnalare variazioni, proporre studi legali pro-bono o supporti psicologici territoriali.</p>
+            <p>Progetto Open-Source e Collaborativo. <a href="https://github.com/glaucogaribaldi/mappa-antiviolenza-lombardia" target="_blank" rel="noopener noreferrer">Partecipa su GitHub</a> per segnalare variazioni, proporre studi legali pro-bono o supporti psicologici territoriali.</p>
             <p style="margin-top: 10px; font-size: 0.75rem; color: #aaa;">Le Case Rifugio ad indirizzo segreto non sono geo-localizzate in modo esatto per motivi di sicurezza legale ed etica. Contatta il 1522 o un CAV per l'accesso protetto.</p>
         </footer>
     </div>
@@ -336,19 +364,51 @@
             }
         });
 
-        // Configurazione successiva dell'Iframe (verrà impostata quando l'URL uMap sarà disponibile)
-        window.addEventListener('DOMContentLoaded', () => {
-            const iframe = document.getElementById('umap-iframe');
-            const placeholder = document.getElementById('map-placeholder');
+        // GEOLOCALIZZAZIONE UTENTE DINAMICA SULL'IFRAME UMAP
+        function geolocalizeUser() {
+            const btn = document.getElementById('geolocate-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "⏳ Localizzazione in corso...";
+            btn.disabled = true;
             
-            // Quando l'URL uMap reale sarà generato, basterà assegnarlo qui:
-            const realUMapUrl = "https://umap.openstreetmap.fr/it/map/lombardia-antiviolenza_1461436"; 
-            
-            if (realUMapUrl) {
-                iframe.src = realUMapUrl;
-                placeholder.style.display = 'none';
+            if (!navigator.geolocation) {
+                alert("La geolocalizzazione non è supportata dal tuo browser.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
             }
-        });
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const iframe = document.getElementById('umap-iframe');
+                    const baseUrl = "https://umap.openstreetmap.fr/it/map/lombardia-antiviolenza_1461436";
+                    
+                    // Crea l'URL incorporando i filtri (datalayersControl) aperti all'avvio (onLoadPanel=datalayers)
+                    // e posiziona la mappa sulla posizione GPS esatta (#zoom/lat/lon)
+                    const embedUrl = `${baseUrl}?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=datalayers&captionBar=false&captionMenus=true#15/${lat}/${lon}`;
+                    
+                    iframe.src = embedUrl;
+                    
+                    btn.innerHTML = "📍 Centrato sui servizi vicini a te!";
+                    btn.style.backgroundColor = "var(--primary)";
+                    btn.disabled = false;
+                    
+                    // Ripristina il bottone dopo 5 secondi
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.backgroundColor = "var(--success)";
+                    }, 5000);
+                },
+                (error) => {
+                    alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS nel tuo browser.");
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                },
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        }
     </script>
 </body>
 </html>
