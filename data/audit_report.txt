@@ -1,0 +1,36 @@
+
+==================================================
+🕵️ AUDIT REPORT: Centri Antiviolenza (CAV) (/Users/zava/.openclaw/workspace/mappa-antiviolenza-lombardia/data/cav.geojson)
+==================================================
+Total Records found: 96
+
+📊 Key Performance & Quality Metrics:
+- Coordinates coverage: 100.00% (96/96)
+- Phone coverage: 100.00% (96/96)
+- Email coverage: 96.88% (93/96)
+- Website coverage: 53.12% (51/96)
+==================================================
+
+==================================================
+🕵️ AUDIT REPORT: Pronto Soccorso (Codice Rosa) (/Users/zava/.openclaw/workspace/mappa-antiviolenza-lombardia/data/pronto_soccorso.geojson)
+==================================================
+Total Records found: 77
+
+📊 Key Performance & Quality Metrics:
+- Coordinates coverage: 100.00% (77/77)
+- Phone coverage: 37.66% (29/77)
+- Email coverage: 9.09% (7/77)
+- Website coverage: 42.86% (33/77)
+==================================================
+
+==================================================
+🕵️ AUDIT REPORT: Forze dell'Ordine (/Users/zava/.openclaw/workspace/mappa-antiviolenza-lombardia/data/forze_ordine.geojson)
+==================================================
+Total Records found: 852
+
+📊 Key Performance & Quality Metrics:
+- Coordinates coverage: 100.00% (852/852)
+- Phone coverage: 100.00% (852/852)
+- Email coverage: 0.00% (0/852)
+- Website coverage: 6.46% (55/852)
+==================================================

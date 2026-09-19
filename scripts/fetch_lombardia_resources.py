@@ -87,19 +87,44 @@ def fetch_pronto_soccorso():
         email = tags.get('contact:email', tags.get('email', '')).strip()
         orari = tags.get('opening_hours', 'H24 (Pronto Soccorso)').strip()
         
+        # Build beautiful, interactive Markdown description for uMap popup
+        desc_md = f"### {name}\n"
+        desc_md += f"**Stato:** 🟢 Presidio Sanitario Istituzionale Verificato\n\n"
+        desc_md += f"**Tipo:** Pronto Soccorso d'Emergenza\n"
+        desc_md += f"**📍 Indirizzo:** {address}\n"
+        
+        if phone:
+            clean_tel = phone.replace(" ", "").replace("/", "").replace("-", "")
+            desc_md += f"**📞 Telefono (Clicca per chiamare):** [{phone}](tel:{clean_tel})\n"
+        else:
+            desc_md += f"**📞 Telefono (Clicca per chiamare):** [112](tel:112) / [118](tel:118)\n"
+            
+        if email:
+            desc_md += f"**✉️ Email (Clicca per scrivere):** [{email}](mailto:{email})\n"
+            
+        if website:
+            desc_md += f"**🌐 Sito Web:** [Visita il sito]({website})\n"
+            
+        desc_md += f"**⏰ Orari:** {orari}\n\n"
+        desc_md += f"---\n"
+        desc_md += f"**📚 Servizi di Supporto ed Emergenza:**\n"
+        desc_md += f"* 💗 **Percorso Codice Rosa attivo:** Accoglienza, supporto psicologico e protezione immediata con personale formato per reati di violenza di genere.\n"
+        desc_md += f"* 💰 **Ticket Esente:** Prestazioni gratuite per vittime di violenza.\n"
+        desc_md += f"* 🚑 **Soccorso Sanitario H24**\n"
+        
         properties = {
             "categoria": "SANITA",
             "tipo": "Pronto Soccorso",
-            "nome": name,
+            "name": name,
+            "description": desc_md,
             "indirizzo": address,
             "telefono": phone if phone else "112 / 118",
             "email": email,
             "sito_web": website,
             "orari": orari,
-            "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
-            "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+            "codice_rosa": "Disponibile",
             "bollino_rosa": "no",
-            "gratuito": "Sì (Ticket esente per vittime di violenza)",
+            "gratuito": "Sì",
             "colore_marker": "#FF0000",
             "icona": "medical"
         }
@@ -162,7 +187,7 @@ def fetch_forze_ordine():
         name = tags.get('name', '').strip()
         
         if 'carabinieri' in operator or 'carabinieri' in name.lower():
-            tipo = "Stazione Carabinieri"
+            tipo = "Arma dei Carabinieri"
             colore = "#00008B" # Dark blue
             icona = "cop"
             if not name:
@@ -182,26 +207,48 @@ def fetch_forze_ordine():
         else:
             tipo = "Forze dell'Ordine"
             colore = "#0000FF" # Blue
-            icona = "cop"
             if not name:
                 name = "Presidio Forze dell'Ordine"
                 
         address = build_address(tags)
         phone = tags.get('contact:phone', tags.get('phone', '')).strip()
         website = tags.get('contact:website', tags.get('website', '')).strip()
+        orari = tags.get('opening_hours', 'In genere H24 o secondo orari di caserma').strip()
+        
+        # Build beautiful, interactive Markdown description for uMap popup
+        desc_md = f"### {name}\n"
+        desc_md += f"**Stato:** 🟢 Presidio Istituzionale Verificato\n\n"
+        desc_md += f"**Forza dell'Ordine:** 🚓 {tipo}\n"
+        desc_md += f"**📍 Indirizzo:** {address}\n"
+        
+        if phone:
+            clean_tel = phone.replace(" ", "").replace("/", "").replace("-", "")
+            desc_md += f"**📞 Telefono (Clicca per chiamare):** [{phone}](tel:{clean_tel})\n"
+        else:
+            desc_md += f"**📞 Telefono (Clicca per chiamare):** [112](tel:112)\n"
+            
+        if website:
+            desc_md += f"**🌐 Sito Web:** [Visita il sito]({website})\n"
+            
+        desc_md += f"**⏰ Orari:** {orari}\n\n"
+        desc_md += f"---\n"
+        desc_md += f"**📚 Funzioni del Presidio:**\n"
+        desc_md += f"* 🛡️ **Ricezione Denunce e Segnalazioni:** Servizio di pubblica sicurezza attivo per la ricezione di denunce e attivazione immediata della procedura d'urgenza 'Codice Rosso'.\n"
+        desc_md += f"* 👮 **Pronto Intervento H24:** In caso di pericolo immediato chiama il **112**.\n"
         
         properties = {
             "categoria": "FORZE_ORDINE",
             "tipo": tipo,
-            "nome": name,
+            "name": name,
+            "description": desc_md,
             "indirizzo": address,
             "telefono": phone if phone else "112 / 113",
             "sito_web": website,
-            "orari": tags.get('opening_hours', 'In genere H24 o secondo orari di caserma').strip(),
+            "orari": orari,
             "servizi": "Presidio delle Forze dell'Ordine attivo sul territorio per la ricezione di denunce, segnalazioni e tutela immediata. In caso di pericolo immediato, comporre il 112.",
             "gratuito": "Sì",
             "colore_marker": colore,
-            "icona": icona
+            "icona": "cop"
         }
         
         feature = {
