@@ -2,496 +2,499 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Mappa Antiviolenza Lombardia - Servizi di Supporto e Pronto Intervento</title>
     <style>
         :root {
             --primary: #c2185b;
-            --primary-light: #f48fb1;
+            --primary-dark: #880e4f;
             --secondary: #1976d2;
             --danger: #d32f2f;
             --success: #388e3c;
             --dark: #212121;
             --light: #f5f5f5;
             --white: #ffffff;
+            --border-radius: 12px;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        body {
+        body, html {
             font-family: var(--font-family);
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
 
-        /* BARRA DI EMERGENZA FISSA SUPERIORE */
-        .emergency-header {
-            background-color: var(--danger);
-            color: var(--white);
-            padding: 12px 16px;
-            text-align: center;
-            font-weight: bold;
-            position: sticky;
+        /* MAPPA FULL SCREEN (Background di tutto il sito) */
+        #map {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            left: 0;
+            z-index: 1;
+        }
+
+        /* FLOAT HEADER (Barra di sicurezza superiore fluttuante) */
+        .floating-header {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 8px 10px 8px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 10;
         }
 
-        .emergency-text {
-            font-size: 0.95rem;
-            flex-grow: 1;
+        .header-info {
+            display: flex;
+            flex-direction: column;
             text-align: left;
         }
 
-        /* PULSANTE USCITA RAPIDA */
-        .quick-exit-btn {
-            background-color: var(--white);
-            color: var(--danger);
-            border: 2px solid var(--white);
-            padding: 8px 16px;
-            font-size: 0.9rem;
+        .header-title {
+            font-size: 0.85rem;
             font-weight: 800;
-            border-radius: 4px;
-            cursor: pointer;
+            color: var(--primary);
             text-transform: uppercase;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            white-space: nowrap;
+            letter-spacing: 0.5px;
         }
 
-        .quick-exit-btn:hover, .quick-exit-btn:active {
+        .header-subtitle {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .quick-exit-btn {
             background-color: var(--danger);
             color: var(--white);
-            border-color: var(--white);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 16px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 24px;
-            background: var(--white);
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        header h1 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-
-        header p {
-            color: #666;
-            font-size: 1rem;
-            max-width: 800px;
-            margin: 0 auto 16px auto;
-        }
-
-        /* BOTTONE GEOLOCALIZZAZIONE */
-        .geolocate-btn {
-            background-color: var(--success);
-            color: var(--white);
             border: none;
-            padding: 12px 24px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-            transition: transform 0.2s, background-color 0.2s;
-            display: inline-flex;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
+            transition: transform 0.1s;
+        }
+
+        .quick-exit-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* CONTROLLI FILTRI RAPIDI (Pillole orizzontali fluttuanti) */
+        .filter-container {
+            position: fixed;
+            top: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 600px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 4px;
+            z-index: 10;
+            scrollbar-width: none; /* Rimuove scrollbar su Firefox */
+        }
+
+        .filter-container::-webkit-scrollbar {
+            display: none; /* Rimuove scrollbar su Chrome/Safari */
+        }
+
+        .filter-pill {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1.5px solid #eee;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #555;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .filter-pill.active.cav {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .filter-pill.active.ps {
+            background-color: var(--danger);
+            color: var(--white);
+            border-color: var(--danger);
+        }
+
+        .filter-pill.active.police {
+            background-color: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (FAB) */
+        .geolocate-fab {
+            position: fixed;
+            bottom: 180px;
+            right: 20px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: transform 0.1s;
+        }
+
+        .geolocate-fab:active {
+            transform: scale(0.92);
+        }
+
+        .geolocate-fab svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--success);
+        }
+
+        /* BOTTOM SHEET RESPONSIVA (Drawer di dettagli e contatti) */
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%); /* Nascosta per default */
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--white);
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.18);
+            z-index: 20;
+            padding: 20px 20px calc(20px + var(--safe-bottom)) 20px;
+            transition: transform 0.3s cubic-bezier(0.1, 0.76, 0.55, 0.94);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .bottom-sheet.open {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Maniglia del Bottom Sheet (Mobile feel) */
+        .sheet-handle {
+            width: 40px;
+            height: 5px;
+            background-color: #ddd;
+            border-radius: 3px;
+            margin: -10px auto 15px auto;
+        }
+
+        .sheet-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* DETTAGLI POPUP ALL'INTERNO DEL BOTTOM SHEET */
+        .detail-badge {
+            background-color: var(--success);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .detail-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.3;
+            margin-bottom: 6px;
+            padding-right: 25px; /* Evita sovrapposizione con tasto chiudi */
+        }
+
+        .detail-meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-divider {
+            border-top: 1.5px solid var(--light);
+            margin: 15px 0;
+        }
+
+        /* GRUPPO PULSANTI D'AZIONE DEL DRAWER (GIGANTI PER MOBILE) */
+        .action-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: opacity 0.2s;
+        }
+
+        .action-btn:active {
+            opacity: 0.85;
+        }
+
+        .action-btn-call {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .action-btn-email {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .action-btn-web {
+            background-color: var(--white);
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .services-card {
+            background-color: var(--light);
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .services-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .services-list {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .services-list li {
+            font-size: 0.85rem;
+            color: #555;
+            display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .geolocate-btn:hover {
-            background-color: #2e7d32;
-            transform: translateY(-2px);
-        }
-
-        /* LAYOUT MAIN */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media (min-width: 900px) {
-            .main-layout {
-                grid-template-columns: 3fr 1fr;
-            }
-        }
-
-        /* AREA DELLA MAPPA */
-        .map-wrapper {
-            background: var(--white);
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            min-height: 550px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        #map {
-            width: 100%;
-            height: 580px;
-            border-radius: 6px;
-            background-color: #e5e5e5;
-        }
-
-        /* FILTRI MAPPA SOVRAPPOSTI (UI MODERNA) */
-        .filter-panel {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        /* BOTTOM BANNER (Pannello informativo iniziale se non si clicca nulla) */
+        .intro-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 600px;
             background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
             z-index: 10;
-            width: 240px;
-            backdrop-filter: blur(4px);
+            text-align: center;
         }
 
-        .filter-panel h3 {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 4px;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .filter-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .intro-banner p {
             font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .filter-item input {
-            cursor: pointer;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--primary);
-        }
-
-        .color-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .dot-cav { background-color: #FF1493; }
-        .dot-ps { background-color: #FF0000; }
-        .dot-police { background-color: #0000FF; }
-
-        /* SIDEBAR / NUMERI RAPIDI */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .card h2 {
-            font-size: 1.2rem;
+            color: #555;
             margin-bottom: 12px;
-            color: var(--primary);
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 6px;
+            line-height: 1.4;
         }
 
-        .emergency-numbers {
+        .intro-numbers {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
-        .number-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: opacity 0.2s;
-        }
-
-        .number-btn:hover {
-            opacity: 0.9;
-        }
-
-        .number-btn.num-1522 {
-            background-color: var(--primary);
-        }
-
-        .number-btn.num-112 {
-            background-color: var(--secondary);
-        }
-
-        .number-subtitle {
-            font-size: 0.8rem;
-            font-weight: normal;
-            display: block;
-            opacity: 0.9;
-        }
-
-        /* ISTRUZIONI DI SICUREZZA */
-        .safety-rules {
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .safety-rules ul {
-            list-style-type: none;
-            margin-top: 8px;
-        }
-
-        .safety-rules li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 8px;
-        }
-
-        .safety-rules li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 0.85rem;
-            border-top: 1px solid #ddd;
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        /* POPUP STYLE (INFO WINDOW) */
-        .gm-style-iw {
-            border-radius: 8px !important;
-            padding: 0 !important;
-        }
-        
-        .popup-card {
-            font-family: var(--font-family);
-            padding: 8px;
-            max-width: 290px;
-            color: #333;
-        }
-        
-        .popup-title {
-            color: var(--primary);
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 4px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 4px;
-        }
-        
-        .popup-badge {
-            background-color: var(--success);
-            color: white;
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        
-        .popup-detail {
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-        }
-        
-        .popup-btn {
-            display: block;
-            text-align: center;
+        .intro-num-btn {
+            flex: 1;
             padding: 10px;
-            border-radius: 4px;
+            border-radius: 10px;
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.95rem;
-            margin-top: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
-        .popup-btn-call {
-            background-color: var(--primary);
-            color: white !important;
-        }
-        
-        .popup-btn-email {
-            background-color: white;
-            color: var(--primary) !important;
-            border: 1px solid var(--primary);
-        }
-        
-        .popup-divider {
-            border-top: 1px solid #eee;
-            margin: 10px 0;
-        }
-        
-        .popup-services-title {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 4px;
-        }
-        
-        .popup-services-list {
-            font-size: 0.8rem;
-            color: #666;
-            padding-left: 14px;
+
+        /* STILI DESKTOP (In cui il bottom sheet diventa una sidebar galleggiante) */
+        @media (min-width: 900px) {
+            .bottom-sheet {
+                left: 20px;
+                bottom: 20px;
+                transform: translateX(-150%); /* Si nasconde a sinistra */
+                width: 360px;
+                border-radius: 20px;
+                max-height: calc(100vh - 40px);
+            }
+
+            .bottom-sheet.open {
+                transform: translateX(0);
+            }
+
+            .intro-banner {
+                left: 20px;
+                bottom: 20px;
+                transform: translateX(0);
+                width: 360px;
+            }
+
+            .geolocate-fab {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-header {
+                left: 20px;
+                transform: translateX(0);
+                width: 360px;
+                top: 20px;
+            }
+
+            .filter-container {
+                left: 20px;
+                transform: translateX(0);
+                width: 360px;
+                top: 85px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA DI EMERGENZA FISSA CON TASTO USCITA RAPIDA -->
-    <div class="emergency-header">
-        <div class="emergency-text">
-            ⚠️ <strong>Sei in pericolo?</strong> Chiama subito il <strong>112</strong> o il <strong>1522</strong>.
+    <!-- MAPPA FULL VIEWPORT -->
+    <div id="map"></div>
+
+    <!-- FLOAT HEADER (SICUREZZA E USCITA VELOCE) -->
+    <div class="floating-header">
+        <div class="header-info">
+            <span class="header-title">Mappa Supporto Donna</span>
+            <span class="header-subtitle">Lombardia • Verificata 2026</span>
         </div>
-        <button class="quick-exit-btn" id="quick-exit-header" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
+        <button class="quick-exit-btn" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
     </div>
 
-    <div class="container">
-        <header>
-            <h1>Mappa dei Servizi Antiviolenza & Pronto Intervento</h1>
-            <p>Seleziona i filtri per individuare i Centri Antiviolenza della Lombardia, i Pronto Soccorso con Codice Rosa e le Forze dell'Ordine più vicine a te.</p>
-            <button class="geolocate-btn" id="geolocate-btn" onclick="geolocalizeUser()">
-                📍 Trova Servizi Vicini a Me
-            </button>
-        </header>
-
-        <div class="main-layout">
-            <!-- MAPPA GOOGLE MAPS -->
-            <div class="map-wrapper">
-                <!-- Pannello Filtri Sovrapposto alla Mappa -->
-                <div class="filter-panel">
-                    <h3>Filtra Servizi</h3>
-                    <div class="filter-group">
-                        <label class="filter-item">
-                            <input type="checkbox" id="filter-cav" checked onchange="toggleLayer('CAV')">
-                            <span class="color-dot dot-cav"></span> Centri Antiviolenza (CAV)
-                        </label>
-                        <label class="filter-item">
-                            <input type="checkbox" id="filter-ps" checked onchange="toggleLayer('SANITA')">
-                            <span class="color-dot dot-ps"></span> Pronto Soccorso (Codice Rosa)
-                        </label>
-                        <label class="filter-item">
-                            <input type="checkbox" id="filter-police" checked onchange="toggleLayer('FORZE_ORDINE')">
-                            <span class="color-dot dot-police"></span> Forze dell'Ordine
-                        </label>
-                    </div>
-                </div>
-                
-                <div id="map"></div>
-            </div>
-
-            <!-- SIDEBAR -->
-            <div class="sidebar">
-                <!-- NUMERI UTILI -->
-                <div class="card">
-                    <h2>Contatti di Emergenza</h2>
-                    <div class="emergency-numbers">
-                        <a href="tel:1522" class="number-btn num-1522">
-                            <div>
-                                📞 Chiama il 1522
-                                <span class="number-subtitle">Antiviolenza e Stalking (H24, gratis, anonimo)</span>
-                            </div>
-                            <span>&gt;</span>
-                        </a>
-                        <a href="tel:112" class="number-btn num-112">
-                            <div>
-                                🚓 Chiama il 112
-                                <span class="number-subtitle">Numero Unico di Emergenza (Forze dell'Ordine/Sanità)</span>
-                            </div>
-                            <span>&gt;</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- SICUREZZA DIGITALE -->
-                <div class="card">
-                    <h2>Sicurezza Digitale</h2>
-                    <div class="safety-rules">
-                        <p>Naviga in sicurezza per evitare che altri possano monitorare la tua attività online:</p>
-                        <ul>
-                            <li>Usa la <strong>navigazione in incognito</strong> del tuo browser.</li>
-                            <li>Usa il tasto rosso <strong>Uscita Rapida</strong> in alto o premi il tasto <strong>Esc</strong> sulla tastiera per chiudere istantaneamente questa mappa.</li>
-                            <li>Ricorda di cancellare la cronologia del browser e le ricerche se non puoi usare la modalità in incognito.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <!-- CONTROLLI FILTRI RAPIDI (PILLOLE) -->
+    <div class="filter-container">
+        <div class="filter-pill active cav" id="pill-cav" onclick="toggleLayerPill('CAV')">
+            <span class="color-dot dot-cav"></span> 💗 Centri Antiviolenza
         </div>
+        <div class="filter-pill active ps" id="pill-ps" onclick="toggleLayerPill('SANITA')">
+            <span class="color-dot dot-ps"></span> 🚑 Pronto Soccorso
+        </div>
+        <div class="filter-pill active police" id="pill-police" onclick="toggleLayerPill('FORZE_ORDINE')">
+            <span class="color-dot dot-police"></span> 🚓 Forze dell'Ordine
+        </div>
+    </div>
 
-        <footer>
-            <p>Progetto Open-Source e Collaborativo. <a href="https://github.com/glaucogaribaldi/mappa-antiviolenza-lombardia" target="_blank" rel="noopener noreferrer">Partecipa su GitHub</a> per segnalare variazioni, proporre studi legali pro-bono o supporti psicologici territoriali.</p>
-            <p style="margin-top: 10px; font-size: 0.75rem; color: #aaa;">Le Case Rifugio ad indirizzo segreto non sono geo-localizzate in modo esatto per motivi di sicurezza legale ed etica. Contatta il 1522 o un CAV per l'accesso protetto.</p>
-        </footer>
+    <!-- FLOAT ACTION BUTTON GEOLOCATE (FAB) -->
+    <button class="geolocate-fab" id="geolocate-btn" onclick="geolocalizeUser()" title="Trova la mia posizione">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+        </svg>
+    </button>
+
+    <!-- INTRO BANNER (Mostrato all'avvio) -->
+    <div class="intro-banner" id="intro-banner">
+        <p>Seleziona un punto sulla mappa per visualizzare i dettagli completi, oppure clicca sul tasto GPS verde in basso a destra per trovare i presidi più vicini a te.</p>
+        <div class="intro-numbers">
+            <a href="tel:1522" class="intro-num-btn" style="background-color: var(--primary);">📞 1522 CAV</a>
+            <a href="tel:112" class="intro-num-btn" style="background-color: var(--secondary);">🚓 112 Emergenza</a>
+        </div>
+    </div>
+
+    <!-- BOTTOM SHEET (DRAWER DETTAGLI) -->
+    <div class="bottom-sheet" id="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <button class="sheet-close-btn" onclick="closeBottomSheet()">✕</button>
+        
+        <div id="sheet-content">
+            <!-- Popolato dinamicamente da JavaScript cliccando su un marker -->
+        </div>
     </div>
 
     <!-- CARICAMENTO DELLE API DI GOOGLE MAPS -->
-    <!-- Sostituisci "INSERISCI_QUI_LA_TUA_CHIAVE" con la tua API Key reale di Google Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap" async defer></script>
 
     <script>
         // CONFIGURAZIONE GLOBALE MAPPA
         let map;
         let markers = [];
-        let infoWindow;
+        let infoWindow; // Non usata graficamente su mobile, ma tenuta per retrocompatibilità o debug
         
         // Categorie caricate
         const layers = {
@@ -511,24 +514,26 @@
             }
         });
 
-        // INIZIALIZZAZIONE DELLA MAPPA
+        // INIZIALIZZAZIONE DELLA MAPPA (STILE SILVER MINIMALIST SENZA DISTRAZIONI)
         function initMap() {
-            const lombardiaCenter = { lat: 45.67, lng: 9.60 }; // Centrato sulla Lombardia
+            const lombardiaCenter = { lat: 45.67, lng: 9.60 };
             
+            // Stile per nascondere attività commerciali e rendere la mappa elegante
+            const customMapStyle = [
+                { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] },
+                { "featureType": "transit.station", "elementType": "all", "stylers": [{ "visibility": "off" }] },
+                { "featureType": "road", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] },
+                { "featureType": "all", "elementType": "geometry", "stylers": [{ "saturation": -20 }, { "lightness": 10 }] }
+            ];
+
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 8.5,
                 center: lombardiaCenter,
-                mapId: "DEMO_MAP_ID", // Richiesto per marker avanzati
+                styles: customMapStyle,
                 mapTypeControl: false,
                 streetViewControl: false,
-                fullscreenControl: false
-            });
-
-            infoWindow = new google.maps.InfoWindow();
-
-            // Chiudi InfoWindow se si clicca sulla mappa
-            map.addListener("click", () => {
-                infoWindow.close();
+                fullscreenControl: false,
+                zoomControl: false // Rimosso zoom bar per layout pulito su mobile
             });
 
             // Carica tutti i dati GeoJSON
@@ -548,20 +553,19 @@
             }
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA
+        // RENDERING DELLE FEATURES SULLA MAPPA (PIN DI ALTA QUALITÀ)
         function renderFeatures(geojson, category) {
             geojson.features.forEach(feature => {
                 const coords = feature.geometry.coordinates;
                 const latLng = new google.maps.LatLng(coords[1], coords[0]);
                 const props = feature.properties;
 
-                // Colori ed icone dinamiche
                 let pinColor = layers[category].color;
                 if (props.colore_marker) {
                     pinColor = props.colore_marker;
                 }
 
-                // Crea il marker personalizzato
+                // Genera marker personalizzato Google Maps (Symbol ad alta risoluzione)
                 const marker = new google.maps.Marker({
                     position: latLng,
                     map: map,
@@ -569,112 +573,165 @@
                     icon: {
                         path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
                         fillColor: pinColor,
-                        fillOpacity: 0.9,
+                        fillOpacity: 1.0,
                         strokeColor: "#FFFFFF",
-                        strokeWeight: 1.5,
-                        scale: 6
+                        strokeWeight: 2,
+                        scale: 6.5
                     }
                 });
 
-                // Associa metadati extra al marker per la gestione dei filtri
                 marker.category = category;
 
-                // Gestione click sul marker -> Apre l'InfoWindow HTML personalizzata
+                // CLICK SUL PIN -> APRE IL BOTTOM SHEET MOBILE (DRAWER)
                 marker.addListener("click", () => {
-                    const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
-                    
-                    // Creazione del contenuto HTML ricco e interattivo per il popup
-                    let popupHtml = `
-                        <div class="popup-card">
-                            <h3 class="popup-title">${props.name}</h3>
-                    `;
-                    
-                    if (category === "CAV") {
-                        popupHtml += `<span class="popup-badge">🟢 Servizio Accreditato e Verificato</span>`;
-                        popupHtml += `<div class="popup-detail"><strong>Tipo:</strong> ${props.tipo}</div>`;
-                    } else if (category === "SANITA") {
-                        popupHtml += `<span class="popup-badge" style="background-color: var(--danger);">🚑 Presidio d'Emergenza</span>`;
-                        popupHtml += `<div class="popup-detail"><strong>Codice Rosa:</strong> Attivo H24</div>`;
-                    } else if (category === "FORZE_ORDINE") {
-                        popupHtml += `<span class="popup-badge" style="background-color: var(--secondary);">👮 Presidio Istituzionale</span>`;
-                        popupHtml += `<div class="popup-detail"><strong>Corpo:</strong> ${props.tipo}</div>`;
-                    }
-
-                    popupHtml += `<div class="popup-detail"><strong>📍 Indirizzo:</strong> ${props.indirizzo}</div>`;
-                    
-                    if (props.orari) {
-                        popupHtml += `<div class="popup-detail"><strong>⏰ Orari:</strong> ${props.orari}</div>`;
-                    }
-
-                    if (props.telefono && props.telefono !== "112 / 118") {
-                        popupHtml += `
-                            <a href="tel:${cleanPhone}" class="popup-btn popup-btn-call">
-                                📞 Chiama Ora (${props.telefono})
-                            </a>
-                        `;
-                    } else {
-                        const emergencyNumber = (category === "CAV") ? "1522" : "112";
-                        popupHtml += `
-                            <a href="tel:${emergencyNumber}" class="popup-btn popup-btn-call">
-                                📞 Chiama Emergenza (${emergencyNumber})
-                            </a>
-                        `;
-                    }
-
-                    if (props.email) {
-                        popupHtml += `
-                            <a href="mailto:${props.email}" class="popup-btn popup-btn-email">
-                                ✉️ Invia un'E-mail
-                            </a>
-                        `;
-                    }
-
-                    if (props.sito_web) {
-                        popupHtml += `
-                            <div class="popup-divider"></div>
-                            <a href="${props.sito_web}" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; font-size: 0.8rem; color: var(--secondary); text-decoration: underline; font-weight: bold;">
-                                🌐 Visita il Sito Web Ufficiale
-                            </a>
-                        `;
-                    }
-
-                    popupHtml += `</div>`;
-
-                    infoWindow.setContent(popupHtml);
-                    infoWindow.open(map, marker);
+                    displayFeatureDetails(props, category);
                 });
 
                 markers.push(marker);
             });
         }
 
-        // FILTRO DEI LIVELLI (MOSTRA/NASCONDI)
-        function toggleLayer(category) {
-            const isChecked = document.getElementById(`filter-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`).checked;
-            layers[category].active = isChecked;
+        // MOSTRA I DETTAGLI NEL BOTTOM SHEET (DRAWER MOBILE-FIRST)
+        function displayFeatureDetails(props, category) {
+            const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
+            const sheetContent = document.getElementById("sheet-content");
+            
+            // Nasconde il banner introduttivo per fare spazio
+            document.getElementById("intro-banner").style.display = "none";
+            
+            let badgeText = "🟢 Servizio Verificato";
+            let badgeBg = "var(--success)";
+            
+            if (category === "SANITA") {
+                badgeText = "🚑 Soccorso Sanitario d'Emergenza";
+                badgeBg = "var(--danger)";
+            } else if (category === "FORZE_ORDINE") {
+                badgeText = "🚓 Forza dell'Ordine Istituzionale";
+                badgeBg = "var(--secondary)";
+            }
 
-            // Chiudi InfoWindow aperta se appartiene al layer che si sta nascondendo
-            infoWindow.close();
+            // Generazione del contenuto dinamico
+            let html = `
+                <span class="detail-badge" style="background-color: ${badgeBg};">${badgeText}</span>
+                <h3 class="detail-title">${props.name}</h3>
+                
+                <div class="detail-meta">📍 <strong>Indirizzo:</strong> ${props.indirizzo}</div>
+            `;
 
-            // Aggiorna la visibilità dei marker associati sulla mappa
+            if (props.orari) {
+                html += `<div class="detail-meta">⏰ <strong>Orari:</strong> ${props.orari}</div>`;
+            }
+
+            // Pulsanti di chiamata ed e-mail giganti, facili da premere su cellulare
+            html += `<div class="action-group">`;
+            
+            if (props.telefono && props.telefono !== "112 / 118") {
+                html += `
+                    <a href="tel:${cleanPhone}" class="action-btn action-btn-call">
+                        📞 CHIAMA SUBITO (${props.telefono})
+                    </a>
+                `;
+            } else {
+                const numEmergency = (category === "CAV") ? "1522" : "112";
+                html += `
+                    <a href="tel:${numEmergency}" class="action-btn action-btn-call">
+                        📞 CHIAMA EMERGENZA (${numEmergency})
+                    </a>
+                `;
+            }
+
+            if (props.email) {
+                html += `
+                    <a href="mailto:${props.email}" class="action-btn action-btn-email">
+                        ✉️ INVIA UN'E-MAIL
+                    </a>
+                `;
+            }
+
+            if (props.sito_web) {
+                html += `
+                    <a href="${props.sito_web}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-web">
+                        🌐 VISITA IL SITO WEB
+                    </a>
+                `;
+            }
+            
+            html += `</div>`;
+
+            // Estrazione dei servizi o dettagli speciali come parole chiave strutturate
+            html += `
+                <div class="services-card">
+                    <div class="services-title">Servizi & Note di Sicurezza:</div>
+                    <ul class="services-list">
+            `;
+
+            if (category === "CAV") {
+                html += `
+                    <li>🧠 Supporto Psicologico e Psicoterapeutico</li>
+                    <li>⚖️ Assistenza Legale e Gratuito Patrocinio</li>
+                    <li>🏠 Raccordo e inserimento protetto in Case Rifugio</li>
+                    <li>💼 Orientamento lavorativo e autonomia</li>
+                    <li>🛡️ Riservatezza assoluta e Anonimato garantito</li>
+                `;
+            } else if (category === "SANITA") {
+                html += `
+                    <li>🌸 Percorso assistenziale protetto "Codice Rosa"</li>
+                    <li>🩺 Assistenza medica specialistica e repertazione</li>
+                    <li>💰 Esente da ticket sanitario per vittime di violenza</li>
+                `;
+            } else if (category === "FORZE_ORDINE") {
+                html += `
+                    <li>🛡️ Ricezione denunce e querele per reati di violenza</li>
+                    <li>🚨 Attivazione immediata del protocollo "Codice Rosso"</li>
+                    <li>🚓 Pronto intervento sul posto in caso di flagranza</li>
+                `;
+            }
+
+            html += `
+                    </ul>
+                </div>
+            `;
+
+            sheetContent.innerHTML = html;
+            
+            // Apre il bottom sheet facendolo slittare verso l'alto
+            document.getElementById("bottom-sheet").classList.add("open");
+        }
+
+        // CHIUDI IL BOTTOM SHEET
+        function closeBottomSheet() {
+            document.getElementById("bottom-sheet").classList.remove("open");
+            // Mostra di nuovo il banner introduttivo sul desktop
+            if (window.innerWidth >= 900) {
+                document.getElementById("intro-banner").style.display = "block";
+            } else {
+                document.getElementById("intro-banner").style.display = "block";
+            }
+        }
+
+        // GESTIONE DEI FILTRI (PILLOLE ON/OFF)
+        function toggleLayerPill(category) {
+            const pillId = `pill-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
+            const pill = document.getElementById(pillId);
+            const isActive = pill.classList.toggle("active");
+
+            // Chiudi il bottom sheet se si nasconde il layer attivo
+            closeBottomSheet();
+
+            // Aggiorna visibilità marker
             markers.forEach(marker => {
                 if (marker.category === category) {
-                    marker.setMap(isChecked ? map : null);
+                    marker.setMap(isActive ? map : null);
                 }
             });
         }
 
-        // GEOLOCALIZZAZIONE UTENTE DINAMICA
+        // GEOLOCALIZZAZIONE UTENTE DINAMICA CON PUNTO VERDE E ANIMAZIONE
         function geolocalizeUser() {
             const btn = document.getElementById('geolocate-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "⏳ Localizzazione in corso...";
-            btn.disabled = true;
-
+            
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
                 return;
             }
 
@@ -684,7 +741,7 @@
                     const lon = position.coords.longitude;
                     const userLatLng = { lat: lat, lng: lon };
 
-                    // Crea o sposta il marker della posizione utente
+                    // Crea o sposta l'indicatore verde della posizione utente
                     if (window.userMarker) {
                         window.userMarker.setPosition(userLatLng);
                     } else {
@@ -695,31 +752,20 @@
                             icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
                                 fillColor: "#4CAF50",
-                                fillOpacity: 0.9,
-                                scale: 8,
+                                fillOpacity: 1.0,
+                                scale: 9,
                                 strokeColor: "#FFFFFF",
-                                strokeWeight: 2
+                                strokeWeight: 2.5
                             }
                         });
                     }
 
-                    // Centra la mappa e applica lo zoom con animazione fluida
+                    // Centra la mappa e zooma con animazione fluida ed elegante
                     map.panTo(userLatLng);
                     map.setZoom(14.5);
-
-                    btn.innerHTML = "📍 Centrato sui servizi vicini a te!";
-                    btn.style.backgroundColor = "var(--primary)";
-                    btn.disabled = false;
-
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.style.backgroundColor = "var(--success)";
-                    }, 5000);
                 },
                 (error) => {
                     alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS al tuo browser.");
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
                 },
                 { enableHighAccuracy: true, timeout: 10000 }
             );
