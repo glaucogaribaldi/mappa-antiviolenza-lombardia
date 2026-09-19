@@ -14,7 +14,7 @@
             --dark: #212121;
             --light: #f5f5f5;
             --white: #ffffff;
-            --border-radius: 12px;
+            --border-radius: 16px;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
@@ -58,7 +58,7 @@
             -webkit-backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 8px 10px 8px 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -94,7 +94,7 @@
             border-radius: 20px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.35);
             transition: transform 0.1s;
         }
 
@@ -102,58 +102,50 @@
             transform: scale(0.95);
         }
 
-        /* CONTROLLI FILTRI RAPIDI (Pillole orizzontali fluttuanti) */
-        .filter-container {
+        /* FILTRI MAPPA VERTICALI A LATO (UI Moderna e visibile) */
+        .filter-panel-side {
             position: fixed;
             top: 85px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 30px);
-            max-width: 600px;
+            left: 15px;
             display: flex;
+            flex-direction: column;
             gap: 8px;
-            overflow-x: auto;
-            padding: 4px;
             z-index: 10;
-            scrollbar-width: none; /* Rimuove scrollbar su Firefox */
+            width: auto;
         }
 
-        .filter-container::-webkit-scrollbar {
-            display: none; /* Rimuove scrollbar su Chrome/Safari */
-        }
-
-        .filter-pill {
+        .filter-pill-vertical {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border: 1.5px solid #eee;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 10px 16px;
+            border-radius: 25px;
             font-size: 0.8rem;
             font-weight: bold;
-            color: #555;
+            color: #444;
             cursor: pointer;
             white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.2s;
+            gap: 8px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .filter-pill.active.cav {
+        .filter-pill-vertical.active.cav {
             background-color: var(--primary);
             color: var(--white);
             border-color: var(--primary);
         }
 
-        .filter-pill.active.ps {
+        .filter-pill-vertical.active.ps {
             background-color: var(--danger);
             color: var(--white);
             border-color: var(--danger);
         }
 
-        .filter-pill.active.police {
+        .filter-pill-vertical.active.police {
             background-color: var(--secondary);
             color: var(--white);
             border-color: var(--secondary);
@@ -163,13 +155,13 @@
         .geolocate-fab {
             position: fixed;
             bottom: 180px;
-            right: 20px;
-            width: 54px;
-            height: 54px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: var(--white);
             border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -183,8 +175,8 @@
         }
 
         .geolocate-fab svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             fill: var(--success);
         }
 
@@ -199,10 +191,10 @@
             background-color: var(--white);
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
-            box-shadow: 0 -5px 30px rgba(0,0,0,0.18);
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
             z-index: 20;
             padding: 20px 20px calc(20px + var(--safe-bottom)) 20px;
-            transition: transform 0.3s cubic-bezier(0.1, 0.76, 0.55, 0.94);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             max-height: 80vh;
             overflow-y: auto;
         }
@@ -251,7 +243,7 @@
         }
 
         .detail-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--primary);
             line-height: 1.3;
@@ -260,7 +252,7 @@
         }
 
         .detail-meta {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #555;
             margin-bottom: 8px;
             display: flex;
@@ -287,13 +279,13 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 15px;
-            border-radius: 14px;
+            padding: 14px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.05rem;
+            font-size: 1rem;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
             transition: opacity 0.2s;
         }
 
@@ -326,7 +318,7 @@
         }
 
         .services-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
             color: #444;
             margin-bottom: 8px;
@@ -343,7 +335,7 @@
         }
 
         .services-list li {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #555;
             display: flex;
             align-items: center;
@@ -363,7 +355,7 @@
             -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
             z-index: 10;
             text-align: center;
         }
@@ -387,8 +379,8 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         /* STILI DESKTOP (In cui il bottom sheet diventa una sidebar galleggiante) */
@@ -425,11 +417,16 @@
                 top: 20px;
             }
 
-            .filter-container {
+            .filter-panel-side {
                 left: 20px;
-                transform: translateX(0);
-                width: 360px;
                 top: 85px;
+                width: 360px;
+            }
+            
+            .filter-pill-vertical {
+                width: 100%;
+                justify-content: flex-start;
+                border-radius: 14px;
             }
         }
     </style>
@@ -448,15 +445,15 @@
         <button class="quick-exit-btn" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
     </div>
 
-    <!-- CONTROLLI FILTRI RAPIDI (PILLOLE) -->
-    <div class="filter-container">
-        <div class="filter-pill active cav" id="pill-cav" onclick="toggleLayerPill('CAV')">
+    <!-- FILTRI MAPPA VERTICALI SUL LATO SINISTRO -->
+    <div class="filter-panel-side">
+        <div class="filter-pill-vertical active cav" id="pill-cav" onclick="toggleLayerPill('CAV')">
             <span class="color-dot dot-cav"></span> 💗 Centri Antiviolenza
         </div>
-        <div class="filter-pill active ps" id="pill-ps" onclick="toggleLayerPill('SANITA')">
+        <div class="filter-pill-vertical active ps" id="pill-ps" onclick="toggleLayerPill('SANITA')">
             <span class="color-dot dot-ps"></span> 🚑 Pronto Soccorso
         </div>
-        <div class="filter-pill active police" id="pill-police" onclick="toggleLayerPill('FORZE_ORDINE')">
+        <div class="filter-pill-vertical active police" id="pill-police" onclick="toggleLayerPill('FORZE_ORDINE')">
             <span class="color-dot dot-police"></span> 🚓 Forze dell'Ordine
         </div>
     </div>
@@ -470,7 +467,7 @@
 
     <!-- INTRO BANNER (Mostrato all'avvio) -->
     <div class="intro-banner" id="intro-banner">
-        <p>Seleziona un punto sulla mappa per visualizzare i dettagli completi, oppure clicca sul tasto GPS verde in basso a destra per trovare i presidi più vicini a te.</p>
+        <p>Seleziona un punto sulla mappa per visualizzare i dettagli completi, o clicca sul tasto GPS verde a destra per trovare le strutture vicine a te.</p>
         <div class="intro-numbers">
             <a href="tel:1522" class="intro-num-btn" style="background-color: var(--primary);">📞 1522 CAV</a>
             <a href="tel:112" class="intro-num-btn" style="background-color: var(--secondary);">🚓 112 Emergenza</a>
@@ -487,14 +484,16 @@
         </div>
     </div>
 
-    <!-- CARICAMENTO DELLE API DI GOOGLE MAPS -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap" async defer></script>
+    <!-- CARICAMENTO DELLE API DI GOOGLE MAPS E DELLA LIBRERIA MARKER CLUSTERER (PER MASSIME PRESTAZIONI MOBILE H24) -->
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=***&callback=initMap" async defer></script>
 
     <script>
         // CONFIGURAZIONE GLOBALE MAPPA
         let map;
         let markers = [];
-        let infoWindow; // Non usata graficamente su mobile, ma tenuta per retrocompatibilità o debug
+        let infoWindow;
+        let clusterers = {};
         
         // Categorie caricate
         const layers = {
@@ -503,27 +502,41 @@
             'FORZE_ORDINE': { file: 'data/forze_ordine.geojson', active: true, color: '#0000FF' }
         };
 
-        // FUNZIONE USCITA RAPIDA
-        function triggerQuickExit() {
-            window.location.replace("https://www.google.it");
-        }
+        // DEFINIZIONE DEGLI SPLENDIDI PIN SVG VETTORIALI PERSONALIZZATI (DIFFERENZIATI PER COLORE E PER ICONA INTERNA)
+        // 1. Centri Antiviolenza: Pin Rosa con icona Casetta (Home)
+        const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+                <path d="M12 5.5l-5 4.5v6.5h3.5v-4h3v4h3.5V10z" fill="#FFFFFF"/>
+            </svg>
+        `);
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' || e.keyCode === 27) {
-                triggerQuickExit();
-            }
-        });
+        // 2. Pronto Soccorso: Pin Rosso con icona Croce Medica
+        const svgProntoSoccorso = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+                <path d="M10.5 6.5h3v4H17.5v3H13.5v4h-3v-4H6.5v-3h4z" fill="#FFFFFF"/>
+            </svg>
+        `);
+
+        // 3. Forze dell'Ordine: Pin Blu Scuro con icona Scudo di Polizia (Shield)
+        const svgForzeOrdine = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+                <path d="M12 5.5l5 2v4.5c0 3.11-2.14 6.01-5 6.75-2.86-.74-5-3.64-5-6.75V7.5z" fill="#FFFFFF"/>
+            </svg>
+        `);
 
         // INIZIALIZZAZIONE DELLA MAPPA (STILE SILVER MINIMALIST SENZA DISTRAZIONI)
         function initMap() {
             const lombardiaCenter = { lat: 45.67, lng: 9.60 };
             
-            // Stile per nascondere attività commerciali e rendere la mappa elegante
+            // Stile per nascondere attività commerciali e rendere la mappa estremamente pulita ed usabile
             const customMapStyle = [
                 { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] },
                 { "featureType": "transit.station", "elementType": "all", "stylers": [{ "visibility": "off" }] },
                 { "featureType": "road", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] },
-                { "featureType": "all", "elementType": "geometry", "stylers": [{ "saturation": -20 }, { "lightness": 10 }] }
+                { "featureType": "all", "elementType": "geometry", "stylers": [{ "saturation": -15 }, { "lightness": 10 }] }
             ];
 
             map = new google.maps.Map(document.getElementById("map"), {
@@ -533,8 +546,17 @@
                 mapTypeControl: false,
                 streetViewControl: false,
                 fullscreenControl: false,
-                zoomControl: false // Rimosso zoom bar per layout pulito su mobile
+                zoomControl: false
             });
+
+            infoWindow = new google.maps.InfoWindow();
+
+            // Inizializza i clusterers per ciascun livello per garantire performance fulminee a 60 FPS
+            clusterers = {
+                'CAV': new markerClusterer.MarkerClusterer({ map, markers: [] }),
+                'SANITA': new markerClusterer.MarkerClusterer({ map, markers: [] }),
+                'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [] })
+            };
 
             // Carica tutti i dati GeoJSON
             loadAllLayers();
@@ -553,8 +575,10 @@
             }
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA (PIN DI ALTA QUALITÀ)
+        // RENDERING DELLE FEATURES SULLA MAPPA (SEGNAPOSTI DIFFERENZIATI PER COLORE ED ICONA INTERNA)
         function renderFeatures(geojson, category) {
+            const tempMarkers = [];
+            
             geojson.features.forEach(feature => {
                 const coords = feature.geometry.coordinates;
                 const latLng = new google.maps.LatLng(coords[1], coords[0]);
@@ -565,30 +589,40 @@
                     pinColor = props.colore_marker;
                 }
 
-                // Genera marker personalizzato Google Maps (Symbol ad alta risoluzione)
+                // Scegli l'icona SVG vettoriale differenziata in base alla categoria
+                let customIconUrl = "";
+                if (category === "CAV") {
+                    customIconUrl = svgCAV(pinColor);
+                } else if (category === "SANITA") {
+                    customIconUrl = svgProntoSoccorso(pinColor);
+                } else if (category === "FORZE_ORDINE") {
+                    customIconUrl = svgForzeOrdine(pinColor);
+                }
+
+                // Genera il marker personalizzato ad alta definizione
                 const marker = new google.maps.Marker({
                     position: latLng,
-                    map: map,
                     title: props.name,
                     icon: {
-                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                        fillColor: pinColor,
-                        fillOpacity: 1.0,
-                        strokeColor: "#FFFFFF",
-                        strokeWeight: 2,
-                        scale: 6.5
+                        url: customIconUrl,
+                        scaledSize: new google.maps.Size(34, 42),
+                        anchor: new google.maps.Point(17, 42)
                     }
                 });
 
                 marker.category = category;
 
-                // CLICK SUL PIN -> APRE IL BOTTOM SHEET MOBILE (DRAWER)
+                // CLICK SUL PIN -> APRE IL DRAWER MOBILE (BOTTOM SHEET)
                 marker.addListener("click", () => {
                     displayFeatureDetails(props, category);
                 });
 
                 markers.push(marker);
+                tempMarkers.push(marker);
             });
+
+            // Aggiunge i marker appena generati al rispettivo clusterer di livello (prestazioni fulminee)
+            clusterers[category].addMarkers(tempMarkers);
         }
 
         // MOSTRA I DETTAGLI NEL BOTTOM SHEET (DRAWER MOBILE-FIRST)
@@ -596,7 +630,7 @@
             const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
             const sheetContent = document.getElementById("sheet-content");
             
-            // Nasconde il banner introduttivo per fare spazio
+            // Nasconde il banner introduttivo per massimizzare lo spazio utile
             document.getElementById("intro-banner").style.display = "none";
             
             let badgeText = "🟢 Servizio Verificato";
@@ -610,11 +644,10 @@
                 badgeBg = "var(--secondary)";
             }
 
-            // Generazione del contenuto dinamico
+            // Generazione dell'HTML del drawer
             let html = `
                 <span class="detail-badge" style="background-color: ${badgeBg};">${badgeText}</span>
                 <h3 class="detail-title">${props.name}</h3>
-                
                 <div class="detail-meta">📍 <strong>Indirizzo:</strong> ${props.indirizzo}</div>
             `;
 
@@ -622,7 +655,7 @@
                 html += `<div class="detail-meta">⏰ <strong>Orari:</strong> ${props.orari}</div>`;
             }
 
-            // Pulsanti di chiamata ed e-mail giganti, facili da premere su cellulare
+            // Pulsanti di contatto giganti e facilissimi da premere per l'utente mobile
             html += `<div class="action-group">`;
             
             if (props.telefono && props.telefono !== "112 / 118") {
@@ -658,7 +691,7 @@
             
             html += `</div>`;
 
-            // Estrazione dei servizi o dettagli speciali come parole chiave strutturate
+            // Parole chiave dei servizi strutturate per livello
             html += `
                 <div class="services-card">
                     <div class="services-title">Servizi & Note di Sicurezza:</div>
@@ -676,7 +709,7 @@
             } else if (category === "SANITA") {
                 html += `
                     <li>🌸 Percorso assistenziale protetto "Codice Rosa"</li>
-                    <li>🩺 Assistenza medica specialistica e repertazione</li>
+                    <li>🩺 Assistenza medica specialistica e reperimento</li>
                     <li>💰 Esente da ticket sanitario per vittime di violenza</li>
                 `;
             } else if (category === "FORZE_ORDINE") {
@@ -694,22 +727,17 @@
 
             sheetContent.innerHTML = html;
             
-            // Apre il bottom sheet facendolo slittare verso l'alto
+            // Slitta il bottom sheet verso l'alto
             document.getElementById("bottom-sheet").classList.add("open");
         }
 
         // CHIUDI IL BOTTOM SHEET
         function closeBottomSheet() {
             document.getElementById("bottom-sheet").classList.remove("open");
-            // Mostra di nuovo il banner introduttivo sul desktop
-            if (window.innerWidth >= 900) {
-                document.getElementById("intro-banner").style.display = "block";
-            } else {
-                document.getElementById("intro-banner").style.display = "block";
-            }
+            document.getElementById("intro-banner").style.display = "block";
         }
 
-        // GESTIONE DEI FILTRI (PILLOLE ON/OFF)
+        // GESTIONE DEI FILTRI (A LATO - PILLOLE ON/OFF INTEGRATE SUI CLUSTERERS)
         function toggleLayerPill(category) {
             const pillId = `pill-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
             const pill = document.getElementById(pillId);
@@ -718,18 +746,29 @@
             // Chiudi il bottom sheet se si nasconde il layer attivo
             closeBottomSheet();
 
-            // Aggiorna visibilità marker
-            markers.forEach(marker => {
-                if (marker.category === category) {
-                    marker.setMap(isActive ? map : null);
-                }
-            });
+            if (isActive) {
+                // Riattiva i marker e aggiungili di nuovo al rispettivo clusterer
+                const tempMarkers = [];
+                markers.forEach(marker => {
+                    if (marker.category === category) {
+                        marker.setMap(map);
+                        tempMarkers.push(marker);
+                    }
+                });
+                clusterers[category].addMarkers(tempMarkers);
+            } else {
+                // Nascondi i marker e rimuovili completamente dal clusterer (libera la memoria RAM)
+                markers.forEach(marker => {
+                    if (marker.category === category) {
+                        marker.setMap(null);
+                    }
+                });
+                clusterers[category].clearMarkers();
+            }
         }
 
-        // GEOLOCALIZZAZIONE UTENTE DINAMICA CON PUNTO VERDE E ANIMAZIONE
+        // GEOLOCALIZZAZIONE UTENTE CON ANIMAZIONE FLUIDA E PUNTO GPS VERDE
         function geolocalizeUser() {
-            const btn = document.getElementById('geolocate-btn');
-            
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
                 return;
@@ -741,7 +780,7 @@
                     const lon = position.coords.longitude;
                     const userLatLng = { lat: lat, lng: lon };
 
-                    // Crea o sposta l'indicatore verde della posizione utente
+                    // Crea o muovi il marker GPS verde dell'utente
                     if (window.userMarker) {
                         window.userMarker.setPosition(userLatLng);
                     } else {
@@ -760,7 +799,7 @@
                         });
                     }
 
-                    // Centra la mappa e zooma con animazione fluida ed elegante
+                    // Centra la mappa con un panning perfetto e applica lo zoom di prossimità
                     map.panTo(userLatLng);
                     map.setZoom(14.5);
                 },
