@@ -1,0 +1,2007 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4087873,
+          45.4104244
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Spedali Civili Brescia Montichiari",
+        "indirizzo": "Via Ciotti 154, 25123, Montichiari",
+        "telefono": "+39 030 39951",
+        "email": "protocollo.spedalicivilibrescia@legalmail.it",
+        "sito_web": "https://asst-spedalicivili.it/strutture/ospedale-montichiari",
+        "orari": "Mo-Sa 13:00-14:00, 18:45-20:00; Su 14:30-16:30",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2994208,
+          46.1420975
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Ospedale Moriggia Pelascini",
+        "indirizzo": "Via Moriggia Pelascini, 22015, Gravedona",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1676563,
+          45.4861586
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Presidio Ospedaliero Buzzi",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1961176,
+          45.4592388
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso",
+        "indirizzo": "Via San Barnaba, 20122, Milano",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "https://www.policlinico.mi.it/reparti/58/pronto-soccorso-1",
+        "orari": "24/7",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1611166,
+          45.4335515
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Ospedale San Paolo",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8648978,
+          45.3199258
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Ospedale Civile Vigevano",
+        "indirizzo": "27029, Vigevano",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5736467,
+          46.1337274
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Ospedale  Morbegno",
+        "indirizzo": "23017, Morbegno",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.3992887,
+          46.3217151
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto soccorso ospedale di Chiavenna",
+        "indirizzo": "23022, Chiavenna",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2274266,
+          45.5539996
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.187671,
+          45.5115592
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Ostetrico",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1941394,
+          45.4541872
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Istituto Gaetano Pini",
+        "indirizzo": "Via Quadronno 25, 20122, Milano",
+        "telefono": "+39 02 5829 6564",
+        "email": "",
+        "sito_web": "",
+        "orari": "24/7",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1915073,
+          45.4795613
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Oculistico",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1905419,
+          45.478834
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Medico Chirurgico e Pediatrico",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1140871,
+          45.4694247
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Ospedale San Carlo Borromeo",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2606454,
+          45.4438394
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Centro Cardiologico Monzino",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8400256,
+          45.8089209
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Circolo - Fondazione Macchi",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "http://www.ospedalivarese.net/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1862442,
+          45.5098828
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "ASST Grande Ospedale Metropolitano Niguarda",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "+39 02 64441",
+        "email": "",
+        "sito_web": "https://www.ospedaleniguarda.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.114177,
+          45.4681075
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale San Carlo Borromeo",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "https://www.asst-santipaolocarlo.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8723269,
+          45.6004222
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale MultiMedica Castellanza",
+        "indirizzo": "Viale Piemonte 70, 21053",
+        "telefono": "+3902 8687 8889;+390299961999",
+        "email": "",
+        "sito_web": "https://multimedica.it/strutture/ospedale-multimedica-castellanza/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2305874,
+          45.5585504
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1420265,
+          45.7393431
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Sant'Antonio Abate",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7726659,
+          45.1455753
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Istituti Ospedalieri Carlo Poma",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.7919891,
+          45.6566506
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Azienda Ospedaliera Sant'Antonio Abate",
+        "indirizzo": "Via Eusebio Pastori 4, 21013, Gallarate",
+        "telefono": "+39 033 175 1111",
+        "email": "",
+        "sito_web": "https://www.asst-valleolona.it/",
+        "orari": "24/7",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2264991,
+          45.8165571
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Sacra Famiglia Fatebenefratelli",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.72573,
+          45.7315767
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Pesenti Fenaroli",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.1244373,
+          46.5176969
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Casa della Sanità",
+        "indirizzo": "Via Freita 1521, 23030, Livigno",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7127782,
+          45.1589802
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Civico di Codogno",
+        "indirizzo": "Viale Guglielmo Marconi 1, Codogno",
+        "telefono": "+39 0377 4651",
+        "email": "",
+        "sito_web": "https://www.asst-lodi.it/dove-siamo-ospedale-di-codogno",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.4273927,
+          45.6980994
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale San Leopoldo Mandic",
+        "indirizzo": "Largo Beato Leopoldo Mandic 1, 23807, Merate",
+        "telefono": "+39 039 5916431",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2155297,
+          45.5464656
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Bassini",
+        "indirizzo": "Via Gorki 50, 20092, Cinisello Balsamo",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.3563764,
+          45.6082562
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "ASST Brianza - Ospedale di Vimercate",
+        "indirizzo": "Via Santi Cosma e Damiano 10, 20871, Vimercate",
+        "telefono": "+39 039 66541",
+        "email": "",
+        "sito_web": "https://www.asst-brianza.it",
+        "orari": "24/7",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0159591,
+          44.9949661
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Civile di Voghera",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0397535,
+          45.6301062
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Saronno",
+        "indirizzo": "Piazza don Giuseppe Borella 1, 21047, Saronno",
+        "telefono": "+39 02 96131",
+        "email": "",
+        "sito_web": "https://www.asst-valleolona.it/ospedali/ospedale-di-saronno/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8660127,
+          45.3203891
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Civile di Vigevano",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.9066919,
+          45.609131
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Humanitas Mater Domini",
+        "indirizzo": "Via Gerenzano 2, 21053, Castellanza",
+        "telefono": "+39 0331 476111",
+        "email": "",
+        "sito_web": "https://www.materdomini.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.5206793,
+          45.4714893
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Azienda Ospedaliera di Desenzano del Garda",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1165146,
+          45.5402824
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Bollate",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.1838194,
+          45.6764284
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Gardone Val Trompia",
+        "indirizzo": "Via Papa Giovanni Ventitreesimo 4, 25063, Gardone Val Trompia",
+        "telefono": "+39 030 8933273",
+        "email": "sitr.gardone@asst-spedalicivili.it",
+        "sito_web": "https://gardone.asst-spedalicivili.it/servizi/notizie/notizie_homepage.aspx",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.6115303,
+          45.5100233
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Azienda Ospedaliera Treviglio Caravaggio",
+        "indirizzo": "Piazzale Ospedale 1, 24047, Treviglio",
+        "telefono": "+39 0363 4241",
+        "email": "",
+        "sito_web": "http://www.ospedale.treviglio.bg.it",
+        "orari": "24/7",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2654334,
+          45.5061844
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Istituto di Ricovero e Cura a Carattere Scientifico San Raffaele",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "+39 02 26431",
+        "email": "info@hsr.it",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.845622,
+          45.6225255
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Azienda Ospedaliera Ospedale di Circolo di Busto Arsizio",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "+39 0331 699111",
+        "email": "",
+        "sito_web": "https://www.asst-valleolona.it/presidi/?nP=ospedale-di-busto-arsizio",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1960779,
+          45.6263347
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "ASST Brianza - Ospedale Pio XI",
+        "indirizzo": "Via Mazzini 1, 20832, Desio",
+        "telefono": "+39 0362 3851",
+        "email": "",
+        "sito_web": "https://www.asst-brianza.it",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2601687,
+          45.602285
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale San Gerardo",
+        "indirizzo": "Via Giovanni Battista Pergolesi 33, 20900, Monza",
+        "telefono": "+39 039 2331",
+        "email": "",
+        "sito_web": "https://www.asst-monza.it/ospedale-san-gerardo",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8344288,
+          45.8155782
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Filippo Del Ponte",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8879341,
+          45.5803294
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale nuovo di Legnano",
+        "indirizzo": "Via Papa Giovanni Paolo Secondo 3, 20025, Legnano",
+        "telefono": "+39 0331 449111",
+        "email": "",
+        "sito_web": "https://www.asst-ovestmi.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0347442,
+          45.5345193
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Circolo - Rho",
+        "indirizzo": "Corso Europa 250, 20017, Rho",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "http://www.aogarbagnate.lombardia.it/salviniweb/hrho.html",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0881862,
+          45.8104854
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Valduce",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.045615,
+          45.7932135
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Sant'Anna di Como",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.3228785,
+          45.9181046
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Soccorso degli Alpini",
+        "indirizzo": "Via degli Alpini 3, 23826, Mandello del Lario",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "https://www.soccorsodeglialpini.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.399787,
+          46.3217759
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Chiavenna",
+        "indirizzo": "Via della Cereria 4, 23022, Chiavenna",
+        "telefono": "+39034367111",
+        "email": "direzionemedica.ch@asst-val.it",
+        "sito_web": "https://www.asst-val.it/chiavenna",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.415021,
+          45.852056
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Alessandro Manzoni",
+        "indirizzo": "Via dell'Eremo 9;11, 23900, Lecco",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.9344506,
+          45.5380785
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "A.S.S.T. - Franciacorta",
+        "indirizzo": "Viale Giuseppe Mazzini 4, 25032, Chiari",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7976798,
+          45.6203072
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Calcinate \"F.M. Passi\"",
+        "indirizzo": "Piazza Ospedale 3, 24050, Calcinate",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2463629,
+          45.6706491
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "ASST Brianza - Ospedale di Carate Brianza",
+        "indirizzo": "Viale Mosè Bianchi 9, 20841, Carate Brianza",
+        "telefono": "+39 0362 9841",
+        "email": "",
+        "sito_web": "https://www.asst-brianza.it",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.912882,
+          45.3941714
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Costantino Cantù",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5909715,
+          45.6042366
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Policlinico San Marco",
+        "indirizzo": "Corso Europa 7",
+        "telefono": "+39 035 886111",
+        "email": "info.psm@grupposandonato.it",
+        "sito_web": "https://www.grupposandonato.it/strutture/policlinico-san-marco",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7503993,
+          45.5195862
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Santissima Trinità",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "+39 0363 9901",
+        "email": "info@ospedale.treviglio.bg.it",
+        "sito_web": "http://www.ospedale.treviglio.bg.it/85.asp",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4111058,
+          45.2234991
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Asola",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5789299,
+          45.7756028
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Carlo Ondoli",
+        "indirizzo": "Via Bordini 9, 21021, Angera",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.3410013,
+          45.3584424
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Presidio Ospedaliero di Vizzolo Predabissi",
+        "indirizzo": "Via Pandina 1, 20070, Vizzolo Predabissi",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1719085,
+          45.4635012
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale San Giuseppe",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "+39 02 85991",
+        "email": "",
+        "sito_web": "https://www.multimedica.it/it/hospital/ospedale-san-giuseppe/030367",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1937126,
+          45.4548738
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Presidio Ospedaliero Gaetano Pini - ASST Pini-CTO",
+        "indirizzo": "Piazza Cardinale Andrea Ferrari 1, 20122, Milano",
+        "telefono": "+39 02 582961",
+        "email": "",
+        "sito_web": "https://www.asst-pini-cto.it",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2190851,
+          45.4663415
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Macedonio Melloni",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8936127,
+          45.4709187
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Giuseppe Fornaroli",
+        "indirizzo": "Via al donatore di sangue 50, 20013, Magenta",
+        "telefono": "+39 02 979631",
+        "email": "",
+        "sito_web": "https://www.asst-ovestmi.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2308212,
+          45.555981
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Pronto Soccorso Pediatrico Cavaliere del Lavoro Francesco Folonari",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7546543,
+          44.9871019
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Suzzara",
+        "indirizzo": "Via Generale Cantore 14b, 46029, Suzzara",
+        "telefono": "+39 03 76 51 74 17",
+        "email": "urp@ospedaledisuzzara.it",
+        "sito_web": "https://ospedaledisuzzara.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5753796,
+          45.6989952
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Policlinico San Pietro",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.6546571,
+          45.871144
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Civile di San Giovanni Bianco",
+        "indirizzo": "Via Castelli 5, 24015, San Giovanni Bianco",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "http://www.asst-pg23.it/2017/02/_ospedale_s_g_bianco/#",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2771243,
+          45.4104114
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "I.R.C.C.S. Policlinico San Donato",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "https://www.grupposandonato.it/strutture/policlinico-san-donato",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0946521,
+          45.5831611
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Guido Salvini",
+        "indirizzo": "Viale Carlo Forlanini 95, 20024, Garbagnate Milanese",
+        "telefono": "+3902994301",
+        "email": "",
+        "sito_web": "https://www.asst-rhodense.it/inew/nuovo-sito/home/ospedali/garbagnate-milanese.html",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2280077,
+          46.0185516
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "ASST Lariana",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0963815,
+          45.5223366
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale Galeazzi Sant'Ambrogio",
+        "indirizzo": "Via Cristina Belgioioso 173, 20157, Milano",
+        "telefono": "+39 02 8350 0010",
+        "email": "",
+        "sito_web": "https://www.grupposandonato.it/strutture/ospedale-galeazzi-sant-ambrogio",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.3595803,
+          46.4615201
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Struttura Sanitaria di Bormio",
+        "indirizzo": "Via Agoi 8, 23032, Bormio",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.8591064,
+          45.9105553
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale di Cuasso al Monte",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1598838,
+          45.4343037
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Ospedale San Paolo",
+        "indirizzo": "Via Antonio di Rudinì 8",
+        "telefono": "+39 02 81 841",
+        "email": "",
+        "sito_web": "https://www.asst-santipaolocarlo.it",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2617366,
+          45.4438508
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Centro Cardiologico Monzino",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "+39 02 580021",
+        "email": "",
+        "sito_web": "http://www.cardiologicomonzino.it/",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2250623,
+          45.4852492
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Istituto Clinico Città Studi",
+        "indirizzo": "Indirizzo non disponibile",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1451981,
+          45.4721197
+        ]
+      },
+      "properties": {
+        "categoria": "SANITA",
+        "tipo": "Pronto Soccorso",
+        "nome": "Istituto Scientifico Ospedale San Luca",
+        "indirizzo": "Piazzale Brescia 20, 20149, Milano",
+        "telefono": "112 / 118",
+        "email": "",
+        "sito_web": "",
+        "orari": "H24 (Pronto Soccorso)",
+        "servizi": "Servizio di Pronto Soccorso e presidio sanitario d'emergenza. Attivo percorso speciale 'Codice Rosa' per la presa in carico e protezione delle vittime di violenza di genere.",
+        "codice_rosa": "Disponibile (Attivo di default in tutti i Pronto Soccorso lombardi)",
+        "bollino_rosa": "no",
+        "gratuito": "Sì (Ticket esente per vittime di violenza)",
+        "colore_marker": "#FF0000",
+        "icona": "medical"
+      }
+    }
+  ]
+}

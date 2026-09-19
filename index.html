@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mappa Antiviolenza Lombardia - Servizi di Supporto e Pronto Intervento</title>
+    <style>
+        :root {
+            --primary: #c2185b;
+            --primary-light: #f48fb1;
+            --secondary: #1976d2;
+            --danger: #d32f2f;
+            --success: #388e3c;
+            --dark: #212121;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* BARRA DI EMERGENZA FISSA SUPERIORE */
+        .emergency-header {
+            background-color: var(--danger);
+            color: var(--white);
+            padding: 12px 16px;
+            text-align: center;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emergency-text {
+            font-size: 0.95rem;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* PULSANTE USCITA RAPIDA */
+        .quick-exit-btn {
+            background-color: var(--white);
+            color: var(--danger);
+            border: 2px solid var(--white);
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        .quick-exit-btn:hover, .quick-exit-btn:active {
+            background-color: var(--danger);
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            background: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* LAYOUT MAIN */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 900px) {
+            .main-layout {
+                grid-template-columns: 3fr 1fr;
+            }
+        }
+
+        /* AREA DELLA MAPPA */
+        .map-wrapper {
+            background: var(--white);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            background-color: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .map-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* SIDEBAR / NUMERI RAPIDI */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 6px;
+        }
+
+        .emergency-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .number-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: opacity 0.2s;
+        }
+
+        .number-btn:hover {
+            opacity: 0.9;
+        }
+
+        .number-btn.num-1522 {
+            background-color: var(--primary);
+        }
+
+        .number-btn.num-112 {
+            background-color: var(--secondary);
+        }
+
+        .number-subtitle {
+            font-size: 0.8rem;
+            font-weight: normal;
+            display: block;
+            opacity: 0.9;
+        }
+
+        /* ISTRUZIONI DI SICUREZZA */
+        .safety-rules {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .safety-rules ul {
+            list-style-type: none;
+            margin-top: 8px;
+        }
+
+        .safety-rules li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .safety-rules li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.85rem;
+            border-top: 1px solid #ddd;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DI EMERGENZA FISSA CON TASTO USCITA RAPIDA -->
+    <div class="emergency-header">
+        <div class="emergency-text">
+            ⚠️ <strong>Sei in pericolo?</strong> Chiama subito il <strong>112</strong> o il <strong>1522</strong>.
+        </div>
+        <button class="quick-exit-btn" id="quick-exit-header" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Mappa dei Servizi Antiviolenza & Pronto Intervento</h1>
+            <p>Seleziona i livelli sulla mappa per visualizzare i Centri Antiviolenza accreditati della Lombardia, i Pronto Soccorso con Codice Rosa, gli Ospedali con Bollino Rosa e le Forze dell'Ordine più vicine a te.</p>
+        </header>
+
+        <div class="main-layout">
+            <!-- MAPPA INTERATTIVA -->
+            <div class="map-wrapper">
+                <div class="map-iframe-container">
+                    <!-- Placeholder per la mappa uMap. Verrà sostituito dal link di produzione uMap -->
+                    <iframe src="about:blank" id="umap-iframe" title="Mappa uMap Lombardia"></iframe>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #555; font-family: var(--font-family); padding: 20px;" id="map-placeholder">
+                        <h3 style="margin-bottom: 10px; color: var(--primary);">Inizializzazione Mappa</h3>
+                        <p style="font-size: 0.9rem; max-width: 400px; margin: 0 auto 15px auto;">La mappa interattiva uMap Lombardia è in fase di sincronizzazione con la repository GitHub.</p>
+                        <p style="font-size: 0.8rem; color: #888;">Utilizza il pulsante di geolocalizzazione nativo per trovare le strutture vicino a te.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <!-- NUMERI UTILI -->
+                <div class="card">
+                    <h2>Contatti di Emergenza</h2>
+                    <div class="emergency-numbers">
+                        <a href="tel:1522" class="number-btn num-1522">
+                            <div>
+                                📞 Chiama il 1522
+                                <span class="number-subtitle">Antiviolenza e Stalking (H24, gratis, anonimo)</span>
+                            </div>
+                            <span>&gt;</span>
+                        </a>
+                        <a href="tel:112" class="number-btn num-112">
+                            <div>
+                                🚓 Chiama il 112
+                                <span class="number-subtitle">Numero Unico di Emergenza (Forze dell'Ordine/Sanità)</span>
+                            </div>
+                            <span>&gt;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SICUREZZA DIGITALE -->
+                <div class="card">
+                    <h2>Sicurezza Digitale</h2>
+                    <div class="safety-rules">
+                        <p>Naviga in sicurezza per evitare che altri possano monitorare la tua attività online:</p>
+                        <ul>
+                            <li>Usa la <strong>navigazione in incognito</strong> del tuo browser.</li>
+                            <li>Usa il tasto rosso <strong>Uscita Rapida</strong> in alto o premi il tasto <strong>Esc</strong> sulla tastiera per chiudere istantaneamente questa mappa.</li>
+                            <li>Ricorda di cancellare la cronologia del browser e le ricerche se non puoi usare la modalità in incognito.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Progetto Open-Source e Collaborativo. <a href="https://github.com" target="_blank" rel="noopener noreferrer">Partecipa su GitHub</a> per segnalare variazioni, proporre studi legali pro-bono o supporti psicologici territoriali.</p>
+            <p style="margin-top: 10px; font-size: 0.75rem; color: #aaa;">Le Case Rifugio ad indirizzo segreto non sono geo-localizzate in modo esatto per motivi di sicurezza legale ed etica. Contatta il 1522 o un CAV per l'accesso protetto.</p>
+        </footer>
+    </div>
+
+    <script>
+        // FUNZIONE DI USCITA RAPIDA (QUICK EXIT)
+        function triggerQuickExit() {
+            // Sostituisce il tab corrente nella cronologia del browser con una pagina neutra (Google)
+            // Impedisce al partner maltrattante di usare il pulsante "Indietro" per vedere questa pagina
+            window.location.replace("https://www.google.it");
+        }
+
+        // ASCOLTO DEL TASTO ESCAPE (ESC) PER USCITA RAPIDA DA TASTIERA
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                triggerQuickExit();
+            }
+        });
+
+        // Configurazione successiva dell'Iframe (verrà impostata quando l'URL uMap sarà disponibile)
+        window.addEventListener('DOMContentLoaded', () => {
+            const iframe = document.getElementById('umap-iframe');
+            const placeholder = document.getElementById('map-placeholder');
+            
+            // Quando l'URL uMap reale sarà generato, basterà assegnarlo qui:
+            const realUMapUrl = ""; 
+            
+            if (realUMapUrl) {
+                iframe.src = realUMapUrl;
+                placeholder.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

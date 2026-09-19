@@ -1,0 +1,2405 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.53243,
+          45.60732
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA CHIARE ACQUE",
+        "indirizzo": "Via Fantoni 86, SALO`, (BS)",
+        "telefono": "3349713199",
+        "email": "info@centroantiviolenzachiareacque.it",
+        "sito_web": "https://www.centroantiviolenzachiareacque.it",
+        "orari": "Lunedì e mercoledì dalle 9:00 alle 12:00; martedì, giovedì e venerdì dalle 14:30 alle 17:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti servizi ascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.430351,
+          45.365014
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CARPENEDOLO",
+        "indirizzo": "Piazza Matteotti, 3 (presso Punto di Comunità), CARPENEDOLO, (BS)",
+        "telefono": "3392182840 (numero attivo in orari di apertura)",
+        "email": "sportellocav.carpenedolo@gmail.com",
+        "sito_web": "",
+        "orari": ": martedì dalle 14.00 alle 17.00, venerdì dalle 9.00 12.00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.184234681681223,
+          45.67935407818287
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI GARDONE VAL TROMPIA",
+        "indirizzo": "Via San Francesco D'Assisi, 21013, GARDONE VALTROMPIA, (BS)",
+        "telefono": "335 7240973",
+        "email": "antiviolenzavalletrompia@gmail.com",
+        "sito_web": "",
+        "orari": ": martedì, venerdì e sabato dalle 9:30 alle 12:30; mercoledì e giovedì dalle 15:00 alle 18:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.27722,
+          45.401902
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI GHEDI",
+        "indirizzo": "Largo della Pace, GHEDI, (BS)",
+        "telefono": "3392182840 (numero attivo in orari di apertura)",
+        "email": "sportelloghedi@centroantiviolenzachiareacque.it",
+        "sito_web": "",
+        "orari": ": mercoledì e venerdì dalle 14.00 alle 17.00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.418219,
+          45.657303
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI SABBIO CHIESE",
+        "indirizzo": "Via Caduti, 1 (presso Municipio), SABBIO CHIESE, (BS)",
+        "telefono": "3392182840 (numero attivo in orari di apertura)",
+        "email": "sportellosabbiochiese@centroantiviolenzachiareacque.it",
+        "sito_web": "",
+        "orari": ": lunedì dalle 14.30 alle 17.30, mercoledì dalle 9.00 alle 12.00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.824109,
+          45.818828
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "EOS - CENTRO ASCOLTO DONNA",
+        "indirizzo": "Via C. Robbioni, 14, 21100, VARESE, (VA)",
+        "telefono": "0332/231271",
+        "email": "info@eosvarese.it",
+        "sito_web": "http://www.eosvarese.org",
+        "orari": "Dal lunedì al venerdì 9:00-12:00 - lunedì e giovedì anche 15:30-18:00. Il servizio di reperibilità telefonica è garantito 24 ore su 24 al numero 370 3264428",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.196992,
+          45.45882
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "SVS DONNA AIUTA DONNA",
+        "indirizzo": "Via Oglio 21, 20122, MILANO, (MI)",
+        "telefono": "3336532651 - 02/39628739",
+        "email": "coordinamento@svsdad.it",
+        "sito_web": "http://www.svsdad.it",
+        "orari": "lunedì, martedì e venerdì dalle 10:00 alle 16:30; mercoledì dalle 9:00 alle 16:30 e giovedì dalle 12:00 alle 17:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.920798568186672,
+          45.70403340945835
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI TRADATE",
+        "indirizzo": "Piazza Unità d'Italia, 1, TRADATE, (VA)",
+        "telefono": "0331618959",
+        "email": "ass.icore@gmail.com",
+        "sito_web": "",
+        "orari": ": Martedì dalle 9:00 alle 12:00 e venerdì dalle 14:00 alle 17:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.89943301051391,
+          45.628602723427015
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA ICORE",
+        "indirizzo": "Via Italia, 151, 20017, MARNATE, (VA)",
+        "telefono": "0331/618959",
+        "email": "ass.icore@gmail.com",
+        "sito_web": "https://www.centroantiviolenzaicore.com/",
+        "orari": "Lunedì, mercoledì e venerdì 9:00-12:00; martedì e giovedì 15:00-18:00. In caso di emergenza345 6062090",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.26544312659088,
+          45.41688077910394
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO DONNA SAN DONATO",
+        "indirizzo": "Via Cesare Battisti 2, 20097, 20097, SAN DONATO MILANESE, (MI)",
+        "telefono": "02 36527138",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "http://urly.it/312gjb",
+        "orari": "Lunedì 14-17; martedì 13-16; mercoledì 9-12; giovedì 14-17; venerdì 13-16",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.311332255426647,
+          45.43182349527481
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI PESCHIERA BORROMEO",
+        "indirizzo": "Via 2 Giugno, 6, PESCHIERA BORROMEO, (MI)",
+        "telefono": "02 36527138",
+        "email": "cavsandonato@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": Mercoledì 13.00-16.00; venerdì 9.00-12.00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.253392,
+          45.501318
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA MAI DA SOLE",
+        "indirizzo": "Viale Marotta, 8, 20134, MILANO, (MI)",
+        "telefono": "02/21786390",
+        "email": "maidasole@ceasmarotta.it",
+        "sito_web": "https://centroambrosianodisolidarieta.org/mai-da-sole-2/",
+        "orari": "da lunedì a venerdì dalle 10:00 alle 17:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.719409,
+          45.685877
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA R.I.T.A.",
+        "indirizzo": "Via Chiesa San Grisogono, 18, 24068, SERIATE, (BG)",
+        "telefono": "035 303266",
+        "email": "centrorita@aiutodonna.it",
+        "sito_web": "https://www.aiutodonna.it/seriate-centro-r-i-t-a/",
+        "orari": "dalle 9:00 alle 12:00 e dalle 14:00 alle 17:00. Segreteria telefonica attiva 24 ore su 24",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.662094,
+          45.692532
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "AIUTO DONNA",
+        "indirizzo": "Via XXIV Maggio, 30, 24122, BERGAMO, (BG)",
+        "telefono": "3896177714",
+        "email": "info@aiutodonna.it",
+        "sito_web": "http://www.aiutodonna.it",
+        "orari": "dalle 9:00 alle 12:00 e dalle 14:00 alle 17:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.369426,
+          45.61329
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "TELEFONO DONNA - VIMERCATE",
+        "indirizzo": "Largo Pontida, 16, 20871, VIMERCATE, (MB)",
+        "telefono": "039/5989614",
+        "email": "td.vimercate@gmail.com",
+        "sito_web": "http://www.telefonodonna.it",
+        "orari": "lunedì, mercoledì e venerdì dalle 9:30 alle 12:30; martedì e giovedì dalle 14:30 alle 17:30. Reperibilità telefonica, 24 ore su 24, al 342 7526407.",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.680793,
+          45.362738
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "ASSOCIAZIONE DONNE CONTRO LA VIOLENZA ONLUS",
+        "indirizzo": "Via Mercato, 27, 26013, CREMA, (CR)",
+        "telefono": "037380999 - 3393506466",
+        "email": "associazionecontroviolenza@gmail.com",
+        "sito_web": "http://www.controlaviolenza.com",
+        "orari": "Dal lunedì al sabato dalle 9:00 alle 12:00; il martedì anche dalle 15:00 alle 18:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.680803283511603,
+          45.36263214517138
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CREMA",
+        "indirizzo": "Via Mercato, 27, CREMA, (CR)",
+        "telefono": "037380999 / 3393506466",
+        "email": "",
+        "sito_web": "",
+        "orari": "",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.206395,
+          45.615609
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA WHITE MATHILDA - DESIO",
+        "indirizzo": "Via Garibaldi, 46, 20832, DESIO, (MB)",
+        "telefono": "0362/621494 - 366/4150907",
+        "email": "info@whitemathilda.org",
+        "sito_web": "https://whitemathilda.altervista.org/centro-antiviolenza/",
+        "orari": "dal lunedì al venerdì dalle 14:30 alle 18:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.180319,
+          45.87528
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA DONNE E DIRITTI",
+        "indirizzo": "Via Barbolini, 4, 25047, DARFO BOARIO TERME, (BS)",
+        "telefono": "0364/536632 - 3383706588",
+        "email": "centroantiviolenza@terreunite.it",
+        "sito_web": "http://www.reteantiviolenzavallecamonica.it",
+        "orari": "Dal lunedì al venerdì 9:00-12:00 - mercoledì anche 14:30-17:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.674041,
+          45.80306
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "DONNA SI-CURA",
+        "indirizzo": "Via Mazzini, 149, 21028, TRAVEDONA - MONATE, (VA)",
+        "telefono": "0332/977735",
+        "email": "donnasicura.tm@gmail.com",
+        "sito_web": "http://www.donnasicura.org",
+        "orari": "Lunedì, giovedì e venerdì 9:30-12:30; martedì e mercoledì 15:30-18:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.710961,
+          45.159738
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CODOGNO - PRESSO IL PRESIDIO OSPEDALIERO ASST DI LODI",
+        "indirizzo": "Viale Guglielmo Marconi, 1, 26845, CODOGNO, (LO)",
+        "telefono": "3313495221",
+        "email": "orsaminoreonlus@gmail.com",
+        "sito_web": "",
+        "orari": ": Apertura previo appuntamento",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5074,
+          45.311521
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA LA METÀ DI NIENTE",
+        "indirizzo": "Via Paolo Gorini, 21, 26900, LODI, (LO)",
+        "telefono": "3313495221",
+        "email": "orsaminoreonlus@gmail.com",
+        "sito_web": "https://centroantiviolenzalodi.it/",
+        "orari": "dal lunedì al venerdì 09:00-12:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.047039,
+          45.619152
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "RETE ROSA ONLUS",
+        "indirizzo": "Via Petrarca, 1 (angolo via Piave), 21047, SARONNO, (VA)",
+        "telefono": "0221065826",
+        "email": "segreteria@reterosa.eu",
+        "sito_web": "http://www.reterosa.eu",
+        "orari": "lunedì e venerdì 14:30-17:30 - martedì, mercoledì e giovedì 9:30-12:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.401056738160092,
+          46.320096728317544
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CHIAVENNA",
+        "indirizzo": "Via Lena Perpenti, 8/10, CHIAVENNA, (SO)",
+        "telefono": "3881841121",
+        "email": "sportellofridachiavenna@gmail.com",
+        "sito_web": "",
+        "orari": ": Martedì dalle 14:00 alle 17:00; venerdì dalle 9:30 alle 12:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.870013,
+          46.174027
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "IL CORAGGIO DI FRIDA",
+        "indirizzo": "Via Fracaiolo, 3, 23100, SONDRIO, (SO)",
+        "telefono": "335346178 - 03421900726",
+        "email": "coraggiodifrida@gmail.com",
+        "sito_web": "https://www.ilcoraggiodifrida.it/",
+        "orari": "Lunedì e Giovedì 9:00-12:00 - Martedì 14:00-17:00 - Mercoledì 10:00-13:00 - Venerdì 11:00-14:00. Troverai attiva una segreteria telefonica su cui puoi lasciare un messaggio e sarai ricontattata nell’arco delle 24 ore successive.",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.416061468186403,
+          45.698121626888536
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI MERATE",
+        "indirizzo": "Vicolo Carbonini, 10, MERATE, (LC)",
+        "telefono": "3407218672",
+        "email": "",
+        "sito_web": "",
+        "orari": "",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.42006,
+          45.697979
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "L'ALTRA METÀ DEL CIELO - TELEFONO DONNA DI MERATE",
+        "indirizzo": "Via Sant'Ambrogio, 17, 23807, MERATE, (LC)",
+        "telefono": "3407218672",
+        "email": "presidente@altrametadelcielo.org",
+        "sito_web": "http://www.altrametadelcielo.org",
+        "orari": "Lunedì 16:00-18:00 - Mercoledì 10:30-12:30 - Venerdì 15:00-17:00 - Sabato dalle 9.00 alle 12.00 (sportello Antistalking)",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.42219,
+          44.98361
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "ASSOCIAZIONE ONLUS M.I.A. MOVIMENTO INCONTRO ASCOLTO",
+        "indirizzo": "Via A. Grandi, 28, 26041, CASALMAGGIORE, (CR)",
+        "telefono": "3779489384",
+        "email": "gruppomia@gmail.com",
+        "sito_web": "",
+        "orari": "Dal lunedì al venerdì dalle 14:30 alle 18:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.176625539351592,
+          45.69688184366856
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA MARIANO COMENSE DI ASSOCIAZIONE PENTA",
+        "indirizzo": "Via Santo Stefano, 40, 20134, MARIANO COMENSE, (CO)",
+        "telefono": "3389439340",
+        "email": "info@pentamariano.org",
+        "sito_web": "http://www.pentamariano.org",
+        "orari": "Martedì, mercoledì, giovedì e sabato dalle 10:00 alle 13:00; lunedì e venerdì dalle 15 alle 18:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.881263,
+          45.596431
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI PALAZZOLO SULL'OGLIO",
+        "indirizzo": "via Zanardelli, 73, PALAZZOLO SULL`OGLIO, (BS)",
+        "telefono": "3401938237",
+        "email": "associazione@retedidaphne.it",
+        "sito_web": "",
+        "orari": ": Martedì dalle 14:00 alle 17:00; giovedì dalle 9.30 alle 12.30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.05014,
+          45.661458
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "RETE DI DAPHNE",
+        "indirizzo": "Vicolo della Manica, 9, 23807, ISEO, (BS)",
+        "telefono": "333/3308263",
+        "email": "associazione@retedidaphne.it",
+        "sito_web": "https://www.retedidaphne.vibra.re/",
+        "orari": "Lunedì 10:00-11:30 - Mercoledì 10:00-11:30 - Giovedì 15:00-17:00. È sempre ativa una linea telefonica al 3392226941 per una preliminare verifica della situazione, delle condizioni psico-fisiche della chiamante e della situazione di rischio",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.932316010504424,
+          45.401725365449295
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ORZINUOVI",
+        "indirizzo": "via Pavoni, 35, 25080, ORZINUOVI, (BS)",
+        "telefono": "3420607197",
+        "email": "associazione@retedidaphne.it",
+        "sito_web": "",
+        "orari": ": Martedì dalle 14:00 alle 17:00; giovedì dalle 14:00 alle 17:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.931524,
+          45.537275
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CHIARI",
+        "indirizzo": "via Valmadrera,10, CHIARI, (BS)",
+        "telefono": "3499530729",
+        "email": "associazione@retedidaphne.it",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 9:00 alle 11:00; martedì dalle 16:00 alle 18:00; venerdì dalle 14:00 alle 16:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.05031623980622,
+          45.660760694817604
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ISEO",
+        "indirizzo": "Vicolo Sombrico, 1, ISEO, (BS)",
+        "telefono": "3470777530",
+        "email": "associazione@retedidaphne.it",
+        "sito_web": "",
+        "orari": ": Lunedì, mercoledì, giovedì e venerdì dalle 9:00 alle 12:00; martedì dalle 15:00 alle 18:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.277539266335518,
+          45.52385025084485
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI COLOGNO MONZESE",
+        "indirizzo": "via Turati, 1, 26845, COLOGNO MONZESE, (MI)",
+        "telefono": "0280298484",
+        "email": "centrovenus.info@gmail.com",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 15:00 alle 18:00; martedì e giovedì dalle 9:00 alle 12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.215505,
+          45.546573
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA VE.NU.S",
+        "indirizzo": "Via Gorki, 50, 20092, CINISELLO BALSAMO, (MI)",
+        "telefono": "02/66023560",
+        "email": "mario.conti@comune.cinisello-balsamo.mi.it",
+        "sito_web": "http://www.losportellodonna.it",
+        "orari": "Lunedì, martedì e giovedì dalle 16:00 alle 19:00; mercoledì e venerdì dalle 9:00 alle 12:00; sabato su appuntamento",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.230901354684098,
+          45.53643694820437
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI SESTO SAN GIOVANNI",
+        "indirizzo": "Piazza Oldrini, 150, SESTO SAN GIOVANNI, (MI)",
+        "telefono": "022496825",
+        "email": "",
+        "sito_web": "",
+        "orari": "",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.18334,
+          45.68263
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA VIVADONNA",
+        "indirizzo": "Via San Francesco d'Assisi, GARDONE VALTROMPIA, (BS)",
+        "telefono": "3357240973",
+        "email": "antiviolenzavalletrompia@gmail.com",
+        "sito_web": "https://www.vivadonna.it",
+        "orari": "Martedì dalle 09:30 alle 12:30, mercoledì e giovedì dalle 15:00 alle 18:00, venerdì e sabato dalle 09:30 alle 12:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.25696364119065,
+          45.58842514999722
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI NAVE",
+        "indirizzo": "via Zanardelli, 57, NAVE, (BS)",
+        "telefono": "3311276110",
+        "email": "antiviolenzavalletrompia@gmail.com",
+        "sito_web": "",
+        "orari": ": Martedì dalle 15:00 alle ore 18:00.",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.261916410968272,
+          45.65035989236594
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI LUMEZZANE",
+        "indirizzo": "via Monsuello, 154, LUMEZZANE, (BS)",
+        "telefono": "3311276117",
+        "email": "antiviolenzavalletrompia@gmail.com",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 15:00 alle 18:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.23467956818309,
+          45.61845186161424
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA MITTATRON - RETE ARTEMIDE",
+        "indirizzo": "Via Como, 57, 20134, LISSONE, (MB)",
+        "telefono": "362621494",
+        "email": "sportelloantiviolenza@ambitocaratebrianza.it",
+        "sito_web": "https://www.mittatron.it/",
+        "orari": "Lunedì, martedì e giovedì dalle 14:30 alle 17:30; mercoledì e venerdì dalle 9:30 alle 12:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.307930739345428,
+          45.550230375608635
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI BRUGHERIO",
+        "indirizzo": "Via Oberdan, 83, 24053, BRUGHERIO, (MB)",
+        "telefono": "3338399968",
+        "email": "sportelloanativiolenzabrugherio@gmail.com",
+        "sito_web": "",
+        "orari": ": Martedì dalle 9:30 alle 12:30; venerdì dalle 14:30 alle 17:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.199078,
+          45.349417
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "DONNE INSIEME CONTRO LA VIOLENZA ONLUS",
+        "indirizzo": "Via dei Pini, 8, 20090, PIEVE EMANUELE, (MI)",
+        "telefono": "02/90420110",
+        "email": "info@donneinsieme.org",
+        "sito_web": "https://www.donneinsieme.org/",
+        "orari": "Lunedì e martedì dalle 10:00 alle 13:00; martedì anche su appuntamento dalle 17:00 alle 19.30; mercoledì dalle 15:00 alle 18:00; giovedì dalle 17:00 alle 20:00 e su appuntamento dalle 9:30 alle 11.30; venerdì dalle 15:00 alle 18:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.150319623999101,
+          45.38001224580392
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ROZZANO",
+        "indirizzo": "Viale Liguria, 3, 24058, ROZZANO, (MI)",
+        "telefono": "0257514156",
+        "email": "rozzano@donneinsieme.org",
+        "sito_web": "",
+        "orari": ": Mercoledì dalle 14:00 alle 17:00; venerdì dalle 9:30 alle 12:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.282013,
+          45.577999
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "C.A.DO.M. CENTRO AIUTO DONNE MALTRATTATE",
+        "indirizzo": "Via Mentana, 43, 20900, MONZA, (MB)",
+        "telefono": "0392840006",
+        "email": "info@cadom.it",
+        "sito_web": "http://www.cadom.it",
+        "orari": "Martedì, mercoledì, giovedì e sabato dalle 9:00 alle 12:00; lunedì, martedì, mercoledì, giovedì e venerdì dalle 14:30 alle 17:30; giovedì dalle 20:00 alle 22:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.019942,
+          45.139101
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "A.I.D.A. ONLUS",
+        "indirizzo": "Via Palestro, 28, 26100, CREMONA, (CR)",
+        "telefono": "0372/801427",
+        "email": "info@aidacremona.it",
+        "sito_web": "https://www.aidacremona.it/",
+        "orari": "Dal lunedì al venerdì 9:00-12:30, martedì, mercoledì e giovedì anche dalle 13.30 alle 17.30. Attivo il numero 338 960 4533 dalle 8:00 alle 20:00 tutti i giorni, festivi compresi. La segreteria telefonica è attiva 24 ore su 24",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.792053,
+          45.162111
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "TELEFONO ROSA MANTOVA",
+        "indirizzo": "Via Indipendenza, 2, MANTOVA, (MA)",
+        "telefono": "0376225656",
+        "email": "telefonorosamantova@gmail.com",
+        "sito_web": "http://www.telefonorosamantova.it",
+        "orari": "lunedì, martedì, giovedì e venerdì 18:00-20:00 - mercoledì 9:00-11:00. Reperibilità telefonica, 24 ore su 24, al numero 3489910043.",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.576320168187989,
+          45.73658752514525
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ALMENNO SAN BARTOLOMEO",
+        "indirizzo": "Via Montale, 24, 20122, ALMENNO SAN BARTOLOMEO, (BG)",
+        "telefono": "035851782 (int.3)",
+        "email": "centroantiviolenzapenelope@centrosirio.it",
+        "sito_web": "",
+        "orari": ": Giovedì dalle 9:00 alle 12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.663863524018234,
+          45.838225611980555
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA PENELOPE",
+        "indirizzo": "Via San Carlo, 32, 20134, SAN PELLEGRINO TERME, (BG)",
+        "telefono": "3341046230",
+        "email": "centroantiviolenzapenelope@centrosirio.it",
+        "sito_web": "https://siriocsf.it/servizi-per-le-donne/centro-antiviolenza-valle/",
+        "orari": "Lunedì dalle 9:30 alle 12:30; martedì, mercoledì, giovedì dalle 15.00 alle 18.00; venerdì dalle 9.30 alle 12.30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.576320168187989,
+          45.813060231616426
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI SANT'OMOBONO TERME",
+        "indirizzo": "Via Vanoncini, 20, SANT`OMOBONO TERME, (BG)",
+        "telefono": "035851782 (int.3)",
+        "email": "centroantiviolenzapenelope@centrosirio.it",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 13.30 alle 16.30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.590289,
+          45.512496
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA SPORTELLO DONNA",
+        "indirizzo": "Via Roggia Vignola, 18, 24047, TREVIGLIO, (BG)",
+        "telefono": "0363301773",
+        "email": "info@centrosirio.it",
+        "sito_web": "http://www.siriocsf.it",
+        "orari": "Dal lunedì al giovedì 8:30-12:30 e 13:30-17:30; venerdì 8:30-12:30 e 13:30-15:30; sabato 9:00-12:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.50859,
+          45.472409
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI RIVOLTA D’ADDA",
+        "indirizzo": "Via Giacomo Renzi, 5, 26027, RIVOLTA D`ADDA, (CR)",
+        "telefono": "0363301773",
+        "email": "info@centrosirio.it",
+        "sito_web": "",
+        "orari": ": Giovedì 17:00-19:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.623552,
+          45.555314
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CASTEL ROZZONE",
+        "indirizzo": "Piazza Castello, 2, 24040, CASTEL ROZZONE, (BG)",
+        "telefono": "0363301773",
+        "email": "info@centrosirio.it",
+        "sito_web": "",
+        "orari": ": Il 2° e il 4° Giovedì del mese 10:00-13:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.751406,
+          45.519366
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ROMANO DI LOMBARDIA",
+        "indirizzo": "Via S. Francesco d'Assisi, 12, 24058, ROMANO DI LOMBARDIA, (BG)",
+        "telefono": "0363990254",
+        "email": "info@centrosirio.it",
+        "sito_web": "",
+        "orari": ": Lunedì 14:00-17:00 - Giovedì 9:00-12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.648847,
+          45.54583
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI BRIGNANO GERA D’ADDA",
+        "indirizzo": "Via Vittorio Emanuele II°, 36/a, 24053, BRIGNANO GERA D`ADDA, (BG)",
+        "telefono": "0363301773",
+        "email": "info@centrosirio.it",
+        "sito_web": "",
+        "orari": ": Il 1° e il 3° Lunedì del mese 10:00-13:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.203756,
+          45.449819
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CERCHI D'ACQUA",
+        "indirizzo": "Via Verona, 9, 20135, MILANO, (MI)",
+        "telefono": "3317485056",
+        "email": "amministrazione@cerchidacqua.org",
+        "sito_web": "http://www.cerchidacqua.org",
+        "orari": "Dal lunedì al venerdì dalle 10:00 alle 18:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.22823112584698,
+          45.48183996336212
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA ERSILIA BRONZINI",
+        "indirizzo": "Via Giovanni Pacini, 20, MILANO, (MI)",
+        "telefono": "3316405349",
+        "email": "centroantiviolenza@asilomariuccia.com",
+        "sito_web": "https://www.asilomariuccia.com/",
+        "orari": "Martedì, mercoledì e giovedì dalle 9:00 alle 14:00; lunedì e venerdì dalle 14:00 alle 19:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.797959,
+          45.11632
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO DONNE MANTOVA",
+        "indirizzo": "Via Giovanni Falcone, 1, 46034, BORGO VIRGILIO, (MA)",
+        "telefono": "3899151596",
+        "email": "info@centrodonnemantova.it",
+        "sito_web": "https://centrodonnemantova.com/",
+        "orari": "Lunedì, mercoledì, giovedì e venerdì dalle 15:00 alle 18:00; martedì dalle 10:00 alle 13:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.130269168174262,
+          45.40806637992429
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ASSAGO",
+        "indirizzo": "Via Duccio da Buoninsegna, 9, 20122, ASSAGO, (MI)",
+        "telefono": "3291219666",
+        "email": "cavcorsico@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": martedì dalle 9:00 alle 12:00; giovedì dalle 14:00 alle 17:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.095869,
+          45.440126
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA LA STANZA DELLO SCIROCCO",
+        "indirizzo": "Via Marzabotto, 12, 20094, CORSICO, (MI)",
+        "telefono": "800049722",
+        "email": "cavcorsico@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": "Lunedì, giovedì e venerdì dalle 10:00 alle 13:00; martedì e mercoledì dalle 14:00 alle 17:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.834793875541193,
+          45.81516592022103
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CAV FELICITA MORANDI",
+        "indirizzo": "via F. Del Ponte angolo p.zza Biroldi, VARESE, (VA)",
+        "telefono": "0332/299501",
+        "email": "cav@etsfondazione.com",
+        "sito_web": "https://www.felicitamorandi.it/",
+        "orari": "Dal lunedì al venerdì dalle 14:30 alle 17:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.869613,
+          45.306969
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI VIGEVANO - CLINICA ISTITUTO BEATO MATTEO",
+        "indirizzo": "Corso Pavia, 84, 27029, VIGEVANO, (PV)",
+        "telefono": "3519521151",
+        "email": "cooperativa@korecooperativa.it",
+        "sito_web": "",
+        "orari": ": giovedi 9:00-12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.846989,
+          45.311243
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "COOPERATIVA SOCIALE KORE ONLUS",
+        "indirizzo": "C.so Torino, 36/B, 27029, VIGEVANO, (PV)",
+        "telefono": "3519521151",
+        "email": "cooperativa@korecooperativa.it",
+        "sito_web": "https://www.korecooperativa.it/",
+        "orari": "Dal lunedì al venerdì 9:00-12:00. Il servizio di reperibilità telefonica è garantito 24 ore su 24 al numero349 2827999",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.865537,
+          45.321269
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI VIGEVANO - OSPEDALE CIVILE",
+        "indirizzo": "Corso Milano, 19, 27029, VIGEVANO, (PV)",
+        "telefono": "3519521151",
+        "email": "cooperativa@korecooperativa.it",
+        "sito_web": "",
+        "orari": ": Martedì e mercoledì dalle 9:00 alle 12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.196992,
+          45.45882
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "SOCCORSO VIOLENZA SESSUALE E DOMESTICA",
+        "indirizzo": "Via della Commenda, 12, 20122, MILANO, (MI)",
+        "telefono": "02/55038585",
+        "email": "svsed@policlinico.mi.it",
+        "sito_web": "https://is.gd/Hbd86I",
+        "orari": "dal lunedì al venerdì 9:00-18:00 e sabato 9:00-14:00. Reperibilità telefonica garantita, 24 ore su 24, allo 02 55038585 per violenza domestica e allo 02 55032489 per violenza sessuale.",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.921984725843705,
+          45.40315139434264
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI ABBIATEGRASSO",
+        "indirizzo": "Via Pontida, 22, 20122, ABBIATEGRASSO, (MI)",
+        "telefono": "3802831465",
+        "email": "",
+        "sito_web": "",
+        "orari": "",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.186062,
+          45.509958
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA TELEFONO DONNA",
+        "indirizzo": "Piazza Ospedale Maggiore, 3, 20162, MILANO, (MI)",
+        "telefono": "02/64444008",
+        "email": "telefonodonnaonline@libero.it",
+        "sito_web": "http://www.telefonodonna.it",
+        "orari": "Dal lunedì al venerdì 9:30-17:30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.791079,
+          45.150035
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO DI AIUTO ALLA VITA MANTOVA",
+        "indirizzo": "Via Vittorino da Feltre, 46, 46100, MANTOVA, (MA)",
+        "telefono": "0376325737",
+        "email": "sosviolenza@centroaiutovitamantova.it",
+        "sito_web": "http://www.centroaiutovitamantova.it",
+        "orari": "Martedì, mercoledì, giovedì e venerdì dalle 9:30 alle 11:30; lunedì e mercoledì dalle 15:30 alle 17:30. SOS Antiviolenza 349 9011590 - sms 388 8989250",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.849096,
+          45.613679
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "E.VA ONLUS",
+        "indirizzo": "Via Alberto da Giussano, 12, 21052, BUSTO ARSIZIO, (VA)",
+        "telefono": "3345369630",
+        "email": "info@centroantiviolenzaeva.it",
+        "sito_web": "http://www.evaonlus.it",
+        "orari": "Dal lunedì al venerdì 9:00-12:00 - in altri orari si riceve su appuntamento",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.753511524453122,
+          45.614193850780545
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI FERNO",
+        "indirizzo": "via Roma, 51, FERNO, (VA)",
+        "telefono": "3345369630",
+        "email": "info@centroantiviolenzaeva.it",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 14:30 alle 17:30 e giovedì dalle 10:30 alle 13:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.78926,
+          45.656709
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI GALLARATE",
+        "indirizzo": "Via Ferraris, 9, 21013, GALLARATE, (VA)",
+        "telefono": "3345369630",
+        "email": "info@centroantiviolenzaeva.it",
+        "sito_web": "",
+        "orari": ": Martedì 14:30-17:30 - Mercoledì 9:00-12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.529383653309463,
+          45.686376762114726
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CAV ASCOLTA CHI PARLA",
+        "indirizzo": "Via Trento, 5, TERNO D`ISOLA, (BG)",
+        "telefono": "035/19910067",
+        "email": "centroascoltachiparla@aiutodonna.it",
+        "sito_web": "https://www.aiutodonna.it/terno-disola-centro-ascolta-chi-parla/",
+        "orari": "Dalle 9:00 alle 12:00 e dalle 14:00 alle 17:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.399011,
+          45.860351
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "TELEFONO DONNA - LECCO",
+        "indirizzo": "Via Solferino, 13A, 23900, LECCO, (LC)",
+        "telefono": "0341363484",
+        "email": "teldonnalecco@gmail.com",
+        "sito_web": "http://www.telefonodonnalecco.it",
+        "orari": "lunedì e venerdì dalle 09:00 alle 12:00; martedì dalle 17:00 alle 19:00; mercoledì e giovedì dalle 15:00 alle 18:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.883645,
+          45.466064
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "TELEFONO DONNA - MAGENTA",
+        "indirizzo": "Piazza Formenti, 1, 20013, MAGENTA, (MI)",
+        "telefono": "029735411",
+        "email": "centroantiviolenzatd@comune.magenta.mi.it",
+        "sito_web": "http://www.telefonodonna.it",
+        "orari": "lunedì, mercoledì e venerdì dalle 9:30 alle 12:30; martedì e giovedì dalle 14:30 alle 17:30. Reperibilità telefonica, 24 ore su 24, allo 029735411.",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.159359568180948,
+          45.567315323073686
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI PADERNO DUGNANO",
+        "indirizzo": "Piazza della Divina Commedia, 3, 25035, PADERNO DUGNANO, (MI)",
+        "telefono": "3664150907",
+        "email": "info@whitemathilda.org",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 14:30 alle 17:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.212839325853807,
+          45.64590078168516
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA WHITE MATHILDA - SEREGNO",
+        "indirizzo": "Via Oliveti, 17, 20832, SEREGNO, (MB)",
+        "telefono": "0362/263411",
+        "email": "info@whitemathilda.org",
+        "sito_web": "https://whitemathilda.altervista.org/",
+        "orari": "lunedì e venerdì dalle 9:30 alle 12:30; martedì, mercoledì, giovedì dalle 15.00 alle 18.00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.187116,
+          45.480174
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA SEGNAVIA",
+        "indirizzo": "Piazza XXV Aprile, 2, 20121, MILANO, (MI)",
+        "telefono": "3295870862",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "http://www.fondazionesomaschi.it",
+        "orari": "Dal lunedì al venerdi dalle 9:00 alle 16:00. Richieste di colloquio attivo 24 ore su 24 tutti i giorni dell’anno al 3295870862",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.42709206633436,
+          45.49670357201621
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI MELZO",
+        "indirizzo": "Via Mantova, 10, MELZO, (MI)",
+        "telefono": "3931660783",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 13:00 alle 16:00; giovedì dalle 9:00 alle 12:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.332390597013944,
+          45.52412088339921
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CERNUSCO SUL NAVIGLIO",
+        "indirizzo": "Via Tizzoni, 1, 24040, CERNUSCO SUL NAVIGLIO, (MI)",
+        "telefono": "3931660783",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": Venerdì dalle 13:00 alle 19:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.204564,
+          45.44901
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CASA DI ACCOGLIENZA DELLE DONNE MALTRATTATE - CADMI",
+        "indirizzo": "via Piacenza,14 Milano (MI), MILANO, (MI)",
+        "telefono": "02/55019609",
+        "email": "amministrazione@cadmi.org",
+        "sito_web": "http://www.cadmi.org",
+        "orari": "Dal lunedì al giovedì dalle 10:00 alle 18:00; venerdì dalle 10:00 alle 16:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.090517939356362,
+          45.81081049433715
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI COMO",
+        "indirizzo": "Via Ferrari, 9, COMO, (CO)",
+        "telefono": "031304585",
+        "email": "segreteria@telefonodonnacomo.it",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 9:00 alle 16:00; martedì e giovedì dalle 9:00 alle 14:00; mercoledì e venerdì dalle 13:00 alle 18:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.090587,
+          45.810542
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "TELEFONO DONNA - COMO",
+        "indirizzo": "Via Ferrari, 9, 22100, COMO, (CO)",
+        "telefono": "031 304585",
+        "email": "segreteria@telefonodonnacomo.it",
+        "sito_web": "http://www.telefonodonnacomo.it",
+        "orari": "lunedì dalle 9.00 alle 16.00, martedì e giovedì dalle 9.00 alle 14.00, mercoledì e venerdì dalle 13.00 alle 18.00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.32552082400435,
+          45.5060598542297
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI PIOLTELLO",
+        "indirizzo": "Via Aldo Moro, 19, PIOLTELLO, (MI)",
+        "telefono": "3931660783",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": Martedì dalle 9:00 alle 12:00; giovedì dalle 13:00 alle 16:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.488931425851218,
+          45.58335690903133
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI TREZZANO ROSA",
+        "indirizzo": "Piazza XXV Aprile, 1, TREZZANO ROSA, (MI)",
+        "telefono": "3931660783",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": Venerdì dalle 9:00 alle 13:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.520629,
+          45.52444
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA V.I.O.L.A.",
+        "indirizzo": "Via Verdi, 22, 20062, CASSANO D`ADDA, (MI)",
+        "telefono": "3931660783",
+        "email": "centroantiviolenza@fondazionesomaschi.it",
+        "sito_web": "http://www.fondazionesomaschi.it",
+        "orari": "Martedì dalle 14 alle 19:00; mercoledì dalle 9:00 alle 15:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.116292,
+          45.541014
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI BOLLATE",
+        "indirizzo": "Via Piave 20, 20021, BOLLATE, (MI)",
+        "telefono": "3351820629",
+        "email": "cavhara@fondazionesomaschi.it",
+        "sito_web": "",
+        "orari": ": Lunedì dalle 14:00 alle 18:00; martedì dalle 17:00 alle 20:00; venerdì dalle 10:00 alle 13:00",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.041474,
+          45.526619
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CENTRO ANTIVIOLENZA HARA",
+        "indirizzo": "Via Meda, 20, 20017, RHO, (MI)",
+        "telefono": "3351820629",
+        "email": "cavhara@fondazionesomaschi.it",
+        "sito_web": "https://centroantiviolenzahara.it/",
+        "orari": "Lunedì e mercoledì dalle 9:00 alle 13.00; martedì dalle 13:00 alle 17:00; giovedì dalle 15:00 alle 19:00; sabato dalle 14.30 alle 17.30",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.24211,
+          45.53233
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "BUTTERFLY - LA LIBERTÀ IN UN BATTITO D'ALI",
+        "indirizzo": "Via Ferdinando Bertoni, 6, BRESCIA, (BS)",
+        "telefono": "3385216112",
+        "email": "responsabilecav@butterflycs.it",
+        "sito_web": "https://butterflycs.it/",
+        "orari": "Dal lunedì al venerdì dalle 9:00 alle 17:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.906683,
+          45.58848
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "FILO ROSA AUSER",
+        "indirizzo": "Via Pasubio, 21, LEGNANO, (MI)",
+        "telefono": "3483212482",
+        "email": "auserfilorosa@libero.it",
+        "sito_web": "https://filorosaauser.co/",
+        "orari": "martedì, giovedì e sabato 10:00-13:00; mercoledì e venerdì 16:00-19:00. Il servizio di reperibilità telefonica è garantito 24 ore su 24.",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.778412,
+          45.551833
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI CASTANO PRIMO",
+        "indirizzo": "Via Moroni, 8, 20022, CASTANO PRIMO, (MI)",
+        "telefono": "3926784436",
+        "email": "auserfilorosa@libero.it",
+        "sito_web": "",
+        "orari": ": martedì 14:00-17:00 - giovedì 9:30-12:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.00796,
+          44.990489
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "ASSOCIAZIONE C.H.I.A.R.A. ONLUS",
+        "indirizzo": "Via Martinelli, 4, 27058, VOGHERA, (PV)",
+        "telefono": "0383 / 1915589",
+        "email": "centroantiviolenzachiara@gmail.com",
+        "sito_web": "http://www.associazionechiara.com",
+        "orari": "Dal lunedì al venerdì 16:00-19:00 - giovedì 15:30-19:00. Il servizio di reperibilità telefonica è garantito 24 ore su 24 al numero 328 9556295",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.371729,
+          45.531601
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI NUVOLERA",
+        "indirizzo": "Piazza Gen. Luigi Soldo, 25080, NUVOLERA, (BS)",
+        "telefono": "3806522730",
+        "email": "nonseisola.ambito3@gmail.com",
+        "sito_web": "",
+        "orari": ": Sabato dalle 9.30 alle 13.30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.073682,
+          45.556566
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI OSPITALETTO",
+        "indirizzo": "Via Monsignor Rizzi, 1/5, 25035, OSPITALETTO, (BS)",
+        "telefono": "3891053337",
+        "email": "nonseisola.ambito2@gmail.com",
+        "sito_web": "",
+        "orari": ": Giovedì dalle 14:30 alle 18:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.219614,
+          45.542162
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "CASA DELLE DONNE BRESCIA",
+        "indirizzo": "Via San Faustino, 38, 25122, BRESCIA, (BS)",
+        "telefono": "333 1258139",
+        "email": "vivianacassini13@gmail.com",
+        "sito_web": "http://www.casadelledonne-bs.it",
+        "orari": "Dal lunedì al venerdì dalle 9:30 alle 12:30 e dalle 15:00 alle 18:00",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.174214,
+          45.484655
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Sportello",
+        "nome": "SPORTELLO DI FLERO",
+        "indirizzo": "P.zza IV Novembre, 2, 25020, FLERO, (BS)",
+        "telefono": "3806522730",
+        "email": "nonseisola.ambito3@gmail.com",
+        "sito_web": "",
+        "orari": ": Lunedì 14:30 - 17:30",
+        "servizi": "I centri antiviolenza sono presenti capillarmente su tutto il territorio lombardo anche attraverso gli sportelli di ascolto e informativi.",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.15958,
+          45.182091
+        ]
+      },
+      "properties": {
+        "categoria": "CAV",
+        "tipo": "Centro",
+        "nome": "COOPERATIVA LIBERAMENTE ONLUS",
+        "indirizzo": "Corso Garibaldi, 69, 27100, PAVIA, (PV)",
+        "telefono": "0382/32136 - 800306850 - 3342606499",
+        "email": "liberamentepv@gmail.com",
+        "sito_web": "http://www.centroantiviolenzapavia.it",
+        "orari": "Dal lunedì al venerdì 9:00-18:00. Il servizio di reperibilità telefonica è garantito 24 ore su 24 al numero 334 2606499",
+        "servizi": "I CAV garantiscono, gratuitamente, i seguenti serviziascolto informazione orientamento sociale supporto psicologico supporto legale raccordo con le case rifugio anche ai fini dell'inserimento",
+        "gestisce_case_rifugio": "NO",
+        "gratuito": "Sì",
+        "colore_marker": "#FF1493",
+        "icona": "home"
+      }
+    }
+  ]
+}
