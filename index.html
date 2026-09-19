@@ -124,10 +124,6 @@
             transform: translateY(-2px);
         }
 
-        .geolocate-btn:active {
-            transform: translateY(0);
-        }
-
         /* LAYOUT MAIN */
         .main-layout {
             display: grid;
@@ -147,28 +143,75 @@
             padding: 8px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            min-height: 500px;
+            min-height: 550px;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        .map-iframe-container {
-            position: relative;
+        #map {
             width: 100%;
             height: 580px;
-            background-color: #e0e0e0;
             border-radius: 6px;
-            overflow: hidden;
+            background-color: #e5e5e5;
         }
 
-        .map-iframe-container iframe {
+        /* FILTRI MAPPA SOVRAPPOSTI (UI MODERNA) */
+        .filter-panel {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            width: 240px;
+            backdrop-filter: blur(4px);
         }
+
+        .filter-panel h3 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 4px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .filter-item input {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+        }
+
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-cav { background-color: #FF1493; }
+        .dot-ps { background-color: #FF0000; }
+        .dot-police { background-color: #0000FF; }
 
         /* SIDEBAR / NUMERI RAPIDI */
         .sidebar {
@@ -271,6 +314,85 @@
             color: var(--primary);
             text-decoration: none;
         }
+
+        /* POPUP STYLE (INFO WINDOW) */
+        .gm-style-iw {
+            border-radius: 8px !important;
+            padding: 0 !important;
+        }
+        
+        .popup-card {
+            font-family: var(--font-family);
+            padding: 8px;
+            max-width: 290px;
+            color: #333;
+        }
+        
+        .popup-title {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 4px;
+        }
+        
+        .popup-badge {
+            background-color: var(--success);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .popup-detail {
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        
+        .popup-btn {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .popup-btn-call {
+            background-color: var(--primary);
+            color: white !important;
+        }
+        
+        .popup-btn-email {
+            background-color: white;
+            color: var(--primary) !important;
+            border: 1px solid var(--primary);
+        }
+        
+        .popup-divider {
+            border-top: 1px solid #eee;
+            margin: 10px 0;
+        }
+        
+        .popup-services-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        
+        .popup-services-list {
+            font-size: 0.8rem;
+            color: #666;
+            padding-left: 14px;
+        }
     </style>
 </head>
 <body>
@@ -286,23 +408,35 @@
     <div class="container">
         <header>
             <h1>Mappa dei Servizi Antiviolenza & Pronto Intervento</h1>
-            <p>Visualizza sulla mappa i Centri Antiviolenza, i Pronto Soccorso con Codice Rosa e le Forze dell'Ordine in Lombardia.</p>
+            <p>Seleziona i filtri per individuare i Centri Antiviolenza della Lombardia, i Pronto Soccorso con Codice Rosa e le Forze dell'Ordine più vicine a te.</p>
             <button class="geolocate-btn" id="geolocate-btn" onclick="geolocalizeUser()">
                 📍 Trova Servizi Vicini a Me
             </button>
         </header>
 
         <div class="main-layout">
-            <!-- MAPPA INTERATTIVA -->
+            <!-- MAPPA GOOGLE MAPS -->
             <div class="map-wrapper">
-                <div class="map-iframe-container">
-                    <!-- Iframe uMap della Lombardia con controlli filtri aperti all'avvio -->
-                    <iframe src="https://umap.openstreetmap.fr/it/map/lombardia-antiviolenza_1461436?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=datalayers&captionBar=false&captionMenus=true" id="umap-iframe" title="Mappa uMap Lombardia"></iframe>
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #555; font-family: var(--font-family); padding: 20px; display: none;" id="map-placeholder">
-                        <h3 style="margin-bottom: 10px; color: var(--primary);">Inizializzazione Mappa</h3>
-                        <p style="font-size: 0.9rem; max-width: 400px; margin: 0 auto 15px auto;">La mappa interattiva uMap Lombardia è in fase di sincronizzazione con la repository GitHub.</p>
+                <!-- Pannello Filtri Sovrapposto alla Mappa -->
+                <div class="filter-panel">
+                    <h3>Filtra Servizi</h3>
+                    <div class="filter-group">
+                        <label class="filter-item">
+                            <input type="checkbox" id="filter-cav" checked onchange="toggleLayer('CAV')">
+                            <span class="color-dot dot-cav"></span> Centri Antiviolenza (CAV)
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" id="filter-ps" checked onchange="toggleLayer('SANITA')">
+                            <span class="color-dot dot-ps"></span> Pronto Soccorso (Codice Rosa)
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" id="filter-police" checked onchange="toggleLayer('FORZE_ORDINE')">
+                            <span class="color-dot dot-police"></span> Forze dell'Ordine
+                        </label>
                     </div>
                 </div>
+                
+                <div id="map"></div>
             </div>
 
             <!-- SIDEBAR -->
@@ -349,60 +483,241 @@
         </footer>
     </div>
 
+    <!-- CARICAMENTO DELLE API DI GOOGLE MAPS -->
+    <!-- Sostituisci "INSERISCI_QUI_LA_TUA_CHIAVE" con la tua API Key reale di Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=INSERISCI_QUI_LA_TUA_CHIAVE&callback=initMap" async defer></script>
+
     <script>
-        // FUNZIONE DI USCITA RAPIDA (QUICK EXIT)
+        // CONFIGURAZIONE GLOBALE MAPPA
+        let map;
+        let markers = [];
+        let infoWindow;
+        
+        // Categorie caricate
+        const layers = {
+            'CAV': { file: 'data/cav.geojson', active: true, color: '#FF1493' },
+            'SANITA': { file: 'data/pronto_soccorso.geojson', active: true, color: '#FF0000' },
+            'FORZE_ORDINE': { file: 'data/forze_ordine.geojson', active: true, color: '#0000FF' }
+        };
+
+        // FUNZIONE USCITA RAPIDA
         function triggerQuickExit() {
-            // Sostituisce il tab corrente nella cronologia del browser con una pagina neutra (Google)
-            // Impedisce al partner maltrattante di usare il pulsante "Indietro" per vedere questa pagina
             window.location.replace("https://www.google.it");
         }
 
-        // ASCOLTO DEL TASTO ESCAPE (ESC) PER USCITA RAPIDA DA TASTIERA
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' || e.keyCode === 27) {
                 triggerQuickExit();
             }
         });
 
-        // GEOLOCALIZZAZIONE UTENTE DINAMICA SULL'IFRAME UMAP
+        // INIZIALIZZAZIONE DELLA MAPPA
+        function initMap() {
+            const lombardiaCenter = { lat: 45.67, lng: 9.60 }; // Centrato sulla Lombardia
+            
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8.5,
+                center: lombardiaCenter,
+                mapId: "DEMO_MAP_ID", // Richiesto per marker avanzati
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false
+            });
+
+            infoWindow = new google.maps.InfoWindow();
+
+            // Chiudi InfoWindow se si clicca sulla mappa
+            map.addListener("click", () => {
+                infoWindow.close();
+            });
+
+            // Carica tutti i dati GeoJSON
+            loadAllLayers();
+        }
+
+        // CARICAMENTO DEI LAYER GEOJSON
+        async function loadAllLayers() {
+            for (const [key, config] of Object.entries(layers)) {
+                try {
+                    const response = await fetch(config.file);
+                    const geojson = await response.json();
+                    renderFeatures(geojson, key);
+                } catch (e) {
+                    console.error(`Error loading layer ${key}:`, e);
+                }
+            }
+        }
+
+        // RENDERING DELLE FEATURES SULLA MAPPA
+        function renderFeatures(geojson, category) {
+            geojson.features.forEach(feature => {
+                const coords = feature.geometry.coordinates;
+                const latLng = new google.maps.LatLng(coords[1], coords[0]);
+                const props = feature.properties;
+
+                // Colori ed icone dinamiche
+                let pinColor = layers[category].color;
+                if (props.colore_marker) {
+                    pinColor = props.colore_marker;
+                }
+
+                // Crea il marker personalizzato
+                const marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: props.name,
+                    icon: {
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                        fillColor: pinColor,
+                        fillOpacity: 0.9,
+                        strokeColor: "#FFFFFF",
+                        strokeWeight: 1.5,
+                        scale: 6
+                    }
+                });
+
+                // Associa metadati extra al marker per la gestione dei filtri
+                marker.category = category;
+
+                // Gestione click sul marker -> Apre l'InfoWindow HTML personalizzata
+                marker.addListener("click", () => {
+                    const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
+                    
+                    // Creazione del contenuto HTML ricco e interattivo per il popup
+                    let popupHtml = `
+                        <div class="popup-card">
+                            <h3 class="popup-title">${props.name}</h3>
+                    `;
+                    
+                    if (category === "CAV") {
+                        popupHtml += `<span class="popup-badge">🟢 Servizio Accreditato e Verificato</span>`;
+                        popupHtml += `<div class="popup-detail"><strong>Tipo:</strong> ${props.tipo}</div>`;
+                    } else if (category === "SANITA") {
+                        popupHtml += `<span class="popup-badge" style="background-color: var(--danger);">🚑 Presidio d'Emergenza</span>`;
+                        popupHtml += `<div class="popup-detail"><strong>Codice Rosa:</strong> Attivo H24</div>`;
+                    } else if (category === "FORZE_ORDINE") {
+                        popupHtml += `<span class="popup-badge" style="background-color: var(--secondary);">👮 Presidio Istituzionale</span>`;
+                        popupHtml += `<div class="popup-detail"><strong>Corpo:</strong> ${props.tipo}</div>`;
+                    }
+
+                    popupHtml += `<div class="popup-detail"><strong>📍 Indirizzo:</strong> ${props.indirizzo}</div>`;
+                    
+                    if (props.orari) {
+                        popupHtml += `<div class="popup-detail"><strong>⏰ Orari:</strong> ${props.orari}</div>`;
+                    }
+
+                    if (props.telefono && props.telefono !== "112 / 118") {
+                        popupHtml += `
+                            <a href="tel:${cleanPhone}" class="popup-btn popup-btn-call">
+                                📞 Chiama Ora (${props.telefono})
+                            </a>
+                        `;
+                    } else {
+                        const emergencyNumber = (category === "CAV") ? "1522" : "112";
+                        popupHtml += `
+                            <a href="tel:${emergencyNumber}" class="popup-btn popup-btn-call">
+                                📞 Chiama Emergenza (${emergencyNumber})
+                            </a>
+                        `;
+                    }
+
+                    if (props.email) {
+                        popupHtml += `
+                            <a href="mailto:${props.email}" class="popup-btn popup-btn-email">
+                                ✉️ Invia un'E-mail
+                            </a>
+                        `;
+                    }
+
+                    if (props.sito_web) {
+                        popupHtml += `
+                            <div class="popup-divider"></div>
+                            <a href="${props.sito_web}" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; font-size: 0.8rem; color: var(--secondary); text-decoration: underline; font-weight: bold;">
+                                🌐 Visita il Sito Web Ufficiale
+                            </a>
+                        `;
+                    }
+
+                    popupHtml += `</div>`;
+
+                    infoWindow.setContent(popupHtml);
+                    infoWindow.open(map, marker);
+                });
+
+                markers.push(marker);
+            });
+        }
+
+        // FILTRO DEI LIVELLI (MOSTRA/NASCONDI)
+        function toggleLayer(category) {
+            const isChecked = document.getElementById(`filter-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`).checked;
+            layers[category].active = isChecked;
+
+            // Chiudi InfoWindow aperta se appartiene al layer che si sta nascondendo
+            infoWindow.close();
+
+            // Aggiorna la visibilità dei marker associati sulla mappa
+            markers.forEach(marker => {
+                if (marker.category === category) {
+                    marker.setMap(isChecked ? map : null);
+                }
+            });
+        }
+
+        // GEOLOCALIZZAZIONE UTENTE DINAMICA
         function geolocalizeUser() {
             const btn = document.getElementById('geolocate-btn');
             const originalText = btn.innerHTML;
             btn.innerHTML = "⏳ Localizzazione in corso...";
             btn.disabled = true;
-            
+
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
                 btn.innerHTML = originalText;
                 btn.disabled = false;
                 return;
             }
-            
+
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    const iframe = document.getElementById('umap-iframe');
-                    const baseUrl = "https://umap.openstreetmap.fr/it/map/lombardia-antiviolenza_1461436";
-                    
-                    // Crea l'URL incorporando i filtri (datalayersControl) aperti all'avvio (onLoadPanel=datalayers)
-                    // e posiziona la mappa sulla posizione GPS esatta (#zoom/lat/lon)
-                    const embedUrl = `${baseUrl}?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=datalayers&captionBar=false&captionMenus=true#15/${lat}/${lon}`;
-                    
-                    iframe.src = embedUrl;
-                    
+                    const userLatLng = { lat: lat, lng: lon };
+
+                    // Crea o sposta il marker della posizione utente
+                    if (window.userMarker) {
+                        window.userMarker.setPosition(userLatLng);
+                    } else {
+                        window.userMarker = new google.maps.Marker({
+                            position: userLatLng,
+                            map: map,
+                            title: "Tu sei qui",
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                fillColor: "#4CAF50",
+                                fillOpacity: 0.9,
+                                scale: 8,
+                                strokeColor: "#FFFFFF",
+                                strokeWeight: 2
+                            }
+                        });
+                    }
+
+                    // Centra la mappa e applica lo zoom con animazione fluida
+                    map.panTo(userLatLng);
+                    map.setZoom(14.5);
+
                     btn.innerHTML = "📍 Centrato sui servizi vicini a te!";
                     btn.style.backgroundColor = "var(--primary)";
                     btn.disabled = false;
-                    
-                    // Ripristina il bottone dopo 5 secondi
+
                     setTimeout(() => {
                         btn.innerHTML = originalText;
                         btn.style.backgroundColor = "var(--success)";
                     }, 5000);
                 },
                 (error) => {
-                    alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS nel tuo browser.");
+                    alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS al tuo browser.");
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 },
