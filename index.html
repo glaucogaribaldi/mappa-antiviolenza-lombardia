@@ -14,7 +14,7 @@
             --dark: #212121;
             --light: #f5f5f5;
             --white: #ffffff;
-            --border-radius: 20px;
+            --border-radius: 16px;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
@@ -45,120 +45,100 @@
             z-index: 1;
         }
 
-        /* TOP CONSOLE: CONTENITORE UNIFICATO DI TESTA (Ispirato a Apple Maps) */
-        .top-console {
+        /* BRAND CARD FLUTTUANTE A SINISTRA (Compatta per evitare conflitti) */
+        .brand-card {
             position: fixed;
             top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 30px);
-            max-width: 500px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 8px 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-        }
-
-        /* BARRA DI RICERCA COMPATTA ED ELEGANTE (FLOATING) */
-        .search-bar-floating {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 6px 10px 6px 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .search-input-trigger {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-grow: 1;
-            cursor: pointer;
-            height: 38px;
-        }
-
-        .search-trigger-text {
-            font-size: 0.85rem;
-            color: #777;
-            font-weight: 500;
-        }
-
-        /* TASTO USCITA RAPIDA COMPATTO */
-        .quick-exit-btn {
-            background-color: var(--danger);
-            color: var(--white);
-            border: none;
-            padding: 8px 16px;
-            font-size: 0.75rem;
-            font-weight: 850;
-            border-radius: 20px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
-            transition: transform 0.1s, background-color 0.2s;
-            white-space: nowrap;
-        }
-
-        .quick-exit-btn:active {
-            transform: scale(0.95);
-            background-color: #b71c1c;
-        }
-
-        /* PANNELLO DI RICERCA AVANZATA ESPANDIBILE (Apple Maps Style) */
-        .search-expanded-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             border: 1px solid #eee;
-            display: none; /* Nascosto per default, si espande al click */
-            flex-direction: column;
-            gap: 10px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 50%; /* Impedisce l'overlap */
+            pointer-events: none;
         }
 
-        .search-expanded-card.open {
-            display: flex;
-        }
-
-        .expanded-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1.5px solid var(--light);
-            padding-bottom: 8px;
-            margin-bottom: 4px;
-        }
-
-        .expanded-title {
+        .brand-title {
             font-size: 0.8rem;
             font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .expanded-close-btn {
-            background: #eee;
-            border: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: bold;
+        .brand-subtitle {
+            font-size: 0.65rem;
             color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Isolato e compatto) */
+        .quick-exit-fab {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background-color: var(--danger);
+            color: var(--white);
+            border: none;
+            padding: 10px 16px;
+            font-size: 0.75rem;
+            font-weight: 850;
+            border-radius: 20px;
             cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.35);
+            z-index: 100;
+            transition: transform 0.1s, background-color 0.2s;
+        }
+
+        .quick-exit-fab:active {
+            transform: scale(0.95);
+            background-color: #b71c1c;
+        }
+
+        /* PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI */
+        .side-panel {
+            position: fixed;
+            top: 75px; /* Inizia perfettamente sotto la brand card */
+            left: 15px;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+            width: calc(100% - 30px);
+            max-width: 360px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .side-panel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* BLOCCO DELLA BARRA DI RICERCA ED ELENCO TENDINE */
+        .search-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 14px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .search-input-wrapper {
@@ -571,7 +551,7 @@
         <span class="brand-subtitle">Lombardia • Verificata 2026</span>
     </div>
 
-    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA -->
+    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
     <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
     <!-- CONSOLE SUPERIORE UNIFICATA -->
@@ -743,6 +723,34 @@
             </svg>
         `);
 
+        // RENDERER MINIMALISTA DEI CLUSTER (Sostituisce i cerchi blu giganti concentrici con un solo cerchio antracite e bordo bianco elegante)
+        const customClusterRenderer = {
+            render: function({ count, position }, stats) {
+                // Dimensione proporzionale al numero di elementi
+                const size = count < 10 ? 28 : count < 100 ? 34 : 40;
+                const radius = size / 2;
+                
+                // Disegna uno splendido cerchietto antracite minimale
+                const svg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
+                        <circle cx="${radius}" cy="${radius}" r="${radius - 2}" fill="#374151" fill-opacity="0.95" stroke="#FFFFFF" stroke-width="2"/>
+                        <text x="${radius}" y="${radius + 4}" font-family="-apple-system, sans-serif" font-size="11px" font-weight="bold" fill="#FFFFFF" text-anchor="middle">${count}</text>
+                    </svg>
+                `);
+                
+                return new google.maps.Marker({
+                    position,
+                    icon: {
+                        url: svg,
+                        scaledSize: new google.maps.Size(size, size),
+                        anchor: new google.maps.Point(radius, radius)
+                    },
+                    label: "", // Disabilita etichetta di default per evitare numeri duplicati
+                    zIndex: google.maps.Marker.MAX_ZINDEX + count
+                });
+            }
+        };
+
         // CHIUDI ED ESPANDI PANNELLO RICERCA
         function openSearchPanel() {
             document.getElementById("search-expanded-card").classList.add("open");
@@ -773,14 +781,20 @@
                 zoomControl: false
             });
 
+            // Chiudi i drawer al click sulla mappa
+            map.addListener("click", () => {
+                closeBottomSheet();
+                closeSearchPanel();
+            });
+
             infoWindow = new google.maps.InfoWindow();
 
-            // Inizializza i clusterers
+            // Inizializza i clusterers con il renderer personalizzato minimale (No cerchi blu!)
             if (window.markerClusterer && window.markerClusterer.MarkerClusterer) {
                 clusterers = {
-                    'CAV': new markerClusterer.MarkerClusterer({ map, markers: [] }),
-                    'SANITA': new markerClusterer.MarkerClusterer({ map, markers: [] }),
-                    'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [] })
+                    'CAV': new markerClusterer.MarkerClusterer({ map, markers: [], renderer: customClusterRenderer }),
+                    'SANITA': new markerClusterer.MarkerClusterer({ map, markers: [], renderer: customClusterRenderer }),
+                    'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [], renderer: customClusterRenderer })
                 };
             }
 
@@ -790,7 +804,7 @@
             loadAllLayers();
         }
 
-        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON SCOPE ZOOM ALLARGATO (ZOOM 11.5)
+        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON SCOPE ZOOM ALLARGATO (ZOOM 12.5)
         function autoGeolocalizeOnStart() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -814,9 +828,9 @@
                             }
                         });
 
-                        // Centra la mappa e imposta uno zoom allargato (11.5) per visualizzare l'area circostante
+                        // Centra la mappa e imposta lo zoom intercomunale (12.5) per mostrare l'area circostante come da screen
                         map.setCenter(userLatLng);
-                        map.setZoom(11.5);
+                        map.setZoom(12.5);
                     },
                     (error) => {
                         console.log("Geolocalizzazione rifiutata o non disponibile all'avvio.");
@@ -826,7 +840,7 @@
             }
         }
 
-        // GEOLOCALIZZAZIONE ED INQUADRATURA TRAMITE BARRA DI RICERCA TESTUALE (GOOGLE GEOCODER)
+        // GEOLOCALIZZAZIONE ED INQUADRATURA TRAMITE BARRA DI RICERCA TESTUALE (OSM NOMINATIM - 100% Funzionante e svincolato dalle API Google)
         function geocodeAddressSearch() {
             const searchText = document.getElementById("free-search").value.trim();
             if (!searchText) {
@@ -834,23 +848,40 @@
                 return;
             }
             
-            const geocoder = new google.maps.Geocoder();
+            const searchBtn = document.querySelector(".search-action-btn");
+            const originalText = searchBtn.textContent;
+            searchBtn.textContent = "⏳...";
+            searchBtn.disabled = true;
             
-            // Limitiamo la ricerca alla sola Lombardia aggiungendo la stringa di geofencing
-            geocoder.geocode({ address: searchText + ", Lombardia, Italia" }, function(results, status) {
-                if (status === 'OK' && results[0]) {
-                    const location = results[0].geometry.location;
+            // Limitiamo la ricerca alla sola Lombardia tramite geofencing testuale
+            const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(searchText + ", Lombardia, Italia")}`;
+            
+            fetch(url, {
+                headers: {
+                    'User-Agent': 'MappaAntiviolenzaBot/1.0 (https://github.com/openclaw; zava@openclaw.ai)'
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Errore di rete");
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.length > 0) {
+                    const result = data[0];
+                    const lat = parseFloat(result.lat);
+                    const lon = parseFloat(result.lon);
+                    const searchLatLng = { lat: lat, lng: lon };
                     
                     // Sposta e centra la mappa nel luogo esatto desiderato dall'utente
-                    map.panTo(location);
-                    map.setZoom(11.5); // Applica lo stesso zoom panoramico-allargato delle geolocalizzazione per mostrare tutti i servizi dell'area!
+                    map.panTo(searchLatLng);
+                    map.setZoom(12.5); // Applica lo stesso zoom panoramico-allargato dello screen!
                     
                     // Posiziona o sposta l'indicatore GPS verde (come se fosse geolocalizzato lì!)
                     if (window.userMarker) {
-                        window.userMarker.setPosition(location);
+                        window.userMarker.setPosition(searchLatLng);
                     } else {
                         window.userMarker = new google.maps.Marker({
-                            position: location,
+                            position: searchLatLng,
                             map: map,
                             title: "Posizione Cercata",
                             icon: {
@@ -872,6 +903,14 @@
                 } else {
                     alert("Impossibile trovare la località cercata. Inserisci un comune o indirizzo lombardo valido.");
                 }
+            })
+            .catch(err => {
+                console.error("Geocoding fetch error:", err);
+                alert("Si è verificato un errore durante la ricerca geografica. Riprova tra pochi istanti.");
+            })
+            .finally(() => {
+                searchBtn.textContent = originalText;
+                searchBtn.disabled = false;
             });
         }
 
@@ -1134,7 +1173,7 @@
             document.getElementById("bottom-sheet").classList.remove("open");
         }
 
-        // GESTIONE DEI FILTRI CATEGORIA
+        // GESTIONE DEI FILTRI CATEGORIA TRAMITE TAB BAR INFERIORE
         function toggleCategoryTab(category) {
             const pillId = `pill-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
             const pill = document.getElementById(pillId);
@@ -1286,7 +1325,7 @@
             closeSearchPanel();
         }
 
-        // GEOLOCALIZZAZIONE UTENTE MANUALE (Zoom 14.5)
+        // GEOLOCALIZZAZIONE UTENTE MANUALE (Zoom 12.5)
         function geolocalizeUser() {
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
@@ -1319,11 +1358,11 @@
 
                     if (map) {
                         map.panTo(userLatLng);
-                        map.setZoom(14.5);
+                        map.setZoom(12.5); // Range ottimizzato come da screen!
                     }
                 },
                 (error) => {
-                    alert("Impossibile rilevare la tua posizione. Verifica di avre concesso i permessi GPS al tuo browser.");
+                    alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS al tuo browser.");
                 },
                 { enableHighAccuracy: true, timeout: 10000 }
             );
@@ -1331,6 +1370,6 @@
     </script>
     
     <!-- CARICAMENTO DELLE API DI GOOGLE MAPS IN FONDO ALLA PAGINA -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=***&callback=initMap"></script>
 </body>
 </html>
