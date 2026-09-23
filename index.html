@@ -45,33 +45,24 @@
             z-index: 1;
         }
 
-        /* FLOAT HEADER (Barra di sicurezza superiore fluttuante) */
-        .floating-header {
+        /* BRAND CARD FLUTTUANTE A SINISTRA (Separato dal tasto d'uscita) */
+        .brand-card {
             position: fixed;
             top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 30px);
-            max-width: 600px;
+            left: 15px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 8px 10px 8px 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 20px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             z-index: 10;
-        }
-
-        .header-info {
             display: flex;
             flex-direction: column;
-            text-align: left;
+            border: 1px solid #eee;
         }
 
-        .header-title {
+        .brand-title {
             font-size: 0.85rem;
             font-weight: 800;
             color: var(--primary);
@@ -79,33 +70,38 @@
             letter-spacing: 0.5px;
         }
 
-        .header-subtitle {
-            font-size: 0.75rem;
+        .brand-subtitle {
+            font-size: 0.7rem;
             color: #666;
         }
 
-        .quick-exit-btn {
+        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Separato e sicuro) */
+        .quick-exit-fab {
+            position: fixed;
+            top: 15px;
+            right: 15px;
             background-color: var(--danger);
             color: var(--white);
             border: none;
-            padding: 10px 20px;
-            font-size: 0.85rem;
+            padding: 10px 18px;
+            font-size: 0.8rem;
             font-weight: 800;
             border-radius: 20px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.35);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.35);
+            z-index: 10;
             transition: transform 0.1s;
         }
 
-        .quick-exit-btn:active {
+        .quick-exit-fab:active {
             transform: scale(0.95);
         }
 
-        /* FILTRI MAPPA VERTICALI SUL LATO SINISTRO (RESPONSIVO) */
+        /* PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI */
         .side-panel {
             position: fixed;
-            top: 85px;
+            top: 85px; /* Inizia perfettamente sotto la brand card */
             left: 15px;
             display: flex;
             flex-direction: column;
@@ -262,7 +258,7 @@
         /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (FAB) */
         .geolocate-fab {
             position: fixed;
-            bottom: 30px; /* Spostato più in basso dato che non c'è più il banner */
+            bottom: 30px;
             right: 15px;
             width: 50px;
             height: 50px;
@@ -489,14 +485,14 @@
     <!-- MAPPA FULL VIEWPORT -->
     <div id="map"></div>
 
-    <!-- FLOAT HEADER -->
-    <div class="floating-header">
-        <div class="header-info">
-            <span class="header-title">Mappa Supporto Donna</span>
-            <span class="header-subtitle">Lombardia • Verificata 2026</span>
-        </div>
-        <button class="quick-exit-btn" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
+    <!-- BRAND CARD FLUTTUANTE A SINISTRA -->
+    <div class="brand-card">
+        <span class="brand-title">Mappa Supporto Donna</span>
+        <span class="brand-subtitle">Lombardia • Verificata 2026</span>
     </div>
+
+    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE SEPARATO) -->
+    <button class="quick-exit-fab" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
 
     <!-- PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI -->
     <div class="side-panel">
@@ -568,7 +564,7 @@
 
     <!-- LIBRERIE GOOGLE MAPS E MARKER CLUSTERER -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=***&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap" async defer></script>
 
     <script>
         // CONFIGURAZIONE GLOBALE MAPPA
