@@ -45,7 +45,7 @@
             z-index: 1;
         }
 
-        /* BRAND CARD FLUTTUANTE A SINISTRA (Separato dal tasto d'uscita) */
+        /* BRAND CARD FLUTTUANTE A SINISTRA (Compatta per evitare conflitti) */
         .brand-card {
             position: fixed;
             top: 15px;
@@ -54,29 +54,36 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 8px 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-            z-index: 100; /* Valore altissimo per stare sopra a tutto */
+            padding: 8px 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 100;
             display: flex;
             flex-direction: column;
             border: 1px solid #eee;
-            pointer-events: none; /* Non ostruisce i click sotto */
+            max-width: 50%; /* Impedisce l'overlap */
+            pointer-events: none;
         }
 
         .brand-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .brand-subtitle {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Completamente isolato) */
+        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Isolato e compatto) */
         .quick-exit-fab {
             position: fixed;
             top: 15px;
@@ -84,14 +91,14 @@
             background-color: var(--danger);
             color: var(--white);
             border: none;
-            padding: 12px 20px;
-            font-size: 0.85rem;
+            padding: 10px 16px;
+            font-size: 0.75rem;
             font-weight: 850;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
-            z-index: 100; /* Stesso piano elevato */
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.35);
+            z-index: 100;
             transition: transform 0.1s, background-color 0.2s;
         }
 
@@ -103,15 +110,15 @@
         /* PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI */
         .side-panel {
             position: fixed;
-            top: 85px; /* Inizia perfettamente sotto la brand card */
+            top: 75px; /* Inizia perfettamente sotto la brand card */
             left: 15px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 10;
             width: calc(100% - 30px);
             max-width: 360px;
-            max-height: calc(100vh - 110px);
+            max-height: calc(100vh - 100px);
             overflow-y: auto;
             scrollbar-width: none;
         }
@@ -125,13 +132,13 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 16px;
+            padding: 14px;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             border: 1px solid #eee;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .search-input-wrapper {
@@ -142,10 +149,10 @@
 
         .search-input {
             width: 100%;
-            padding: 12px 14px 12px 35px;
+            padding: 10px 12px 10px 32px;
             border-radius: 25px;
             border: 1.5px solid #ddd;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             outline: none;
             transition: border-color 0.2s;
         }
@@ -156,23 +163,23 @@
 
         .search-icon {
             position: absolute;
-            left: 14px;
-            width: 16px;
-            height: 16px;
+            left: 12px;
+            width: 14px;
+            height: 14px;
             fill: #777;
         }
 
         .select-group {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .custom-select {
             flex: 1;
-            padding: 10px 12px;
+            padding: 8px 10px;
             border-radius: 20px;
             border: 1.5px solid #ddd;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
             color: #444;
             outline: none;
@@ -189,9 +196,9 @@
             background-color: #f5f5f5;
             color: #555;
             border: 1.5px solid #ddd;
-            padding: 10px 12px;
+            padding: 8px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
@@ -214,9 +221,9 @@
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border: 1.5px solid #eee;
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-radius: 25px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
             color: #444;
             cursor: pointer;
@@ -247,8 +254,8 @@
         }
 
         .color-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             display: inline-block;
         }
@@ -291,7 +298,7 @@
             position: fixed;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%) translateY(100%); /* Nascosta per default */
+            transform: translateX(-50%) translateY(100%);
             width: 100%;
             max-width: 600px;
             background-color: var(--white);
@@ -471,11 +478,22 @@
                 left: 20px;
                 top: 20px;
                 width: 360px;
+                max-width: none;
+            }
+
+            .brand-title {
+                font-size: 0.85rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.75rem;
             }
 
             .quick-exit-fab {
                 top: 20px;
                 right: 20px;
+                padding: 12px 20px;
+                font-size: 0.85rem;
             }
 
             .side-panel {
@@ -486,7 +504,7 @@
         }
     </style>
     
-    <!-- DEFINE DI SICUREZZA ASSOLUTA PER USCITA RAPIDA (Slegata da crash successivi) -->
+    <!-- DEFINE DI SICUREZZA ASSOLUTA PER USCITA RAPIDA (Garantito anche in caso di qualsiasi crash delle mappe) -->
     <script>
         window.triggerQuickExit = function() {
             window.location.replace("https://www.google.it");
@@ -504,13 +522,13 @@
     <!-- MAPPA FULL VIEWPORT -->
     <div id="map"></div>
 
-    <!-- BRAND CARD FLUTTUANTE A SINISTRA -->
+    <!-- BRAND CARD FLUTTUANTE A SINISTRA (COMPATTA) -->
     <div class="brand-card">
         <span class="brand-title">Mappa Supporto Donna</span>
         <span class="brand-subtitle">Lombardia • Verificata 2026</span>
     </div>
 
-    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA -->
+    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
     <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
     <!-- PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI -->
@@ -581,10 +599,9 @@
         </div>
     </div>
 
-    <!-- LIBRERIE CARICATE IN MODO RIGIDAMENTE SINCRONO (Evita qualsiasi race condition su mobile) -->
+    <!-- LIBRERIE GOOGLE MAPS CARICATE IN FONDO (In questo modo initMap trova le definizioni delle funzioni già caricate!) -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap"></script>
-
+    
     <script>
         // CONFIGURAZIONE GLOBALE MAPPA
         let map;
@@ -660,24 +677,22 @@
 
             infoWindow = new google.maps.InfoWindow();
 
-            // Sincronizza ed inizializza i clusterers
+            // Inizializza i clusterers
             if (window.markerClusterer && window.markerClusterer.MarkerClusterer) {
                 clusterers = {
                     'CAV': new markerClusterer.MarkerClusterer({ map, markers: [] }),
                     'SANITA': new markerClusterer.MarkerClusterer({ map, markers: [] }),
                     'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [] })
                 };
-            } else {
-                console.error("Errore: Libreria MarkerClusterer non caricata correttamente.");
             }
 
-            // Geolocalizzazione automatica istantanea come primo passo assoluto
+            // Avvia la geolocalizzazione automatica come primo passo assoluto
             autoGeolocalizeOnStart();
 
             loadAllLayers();
         }
 
-        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO (Meno zoom -> 11.5)
+        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON SCOPE ZOOM ALLARGATO (ZOOM 11.5)
         function autoGeolocalizeOnStart() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -686,7 +701,7 @@
                         const lon = position.coords.longitude;
                         const userLatLng = { lat: lat, lng: lon };
 
-                        // Crea l'indicatore verde per la posizione utente
+                        // Crea l'indicatore GPS verde dell'utente
                         window.userMarker = new google.maps.Marker({
                             position: userLatLng,
                             map: map,
@@ -701,12 +716,13 @@
                             }
                         });
 
-                        // Centra la mappa e imposta uno zoom allargato (11.5) per visualizzare l'area circostante
+                        // Centra la mappa sulla posizione geolocalizzata dell'utente
+                        // Applica uno zoom meno accentuato (11.5) per inquadrare un'ampia area e tutti i servizi limitrofi
                         map.setCenter(userLatLng);
                         map.setZoom(11.5);
                     },
                     (error) => {
-                        console.log("Geolocalizzazione negata o non disponibile all'avvio.");
+                        console.log("Geolocalizzazione rifiutata o non disponibile all'avvio.");
                     },
                     { enableHighAccuracy: true, timeout: 8000 }
                 );
@@ -1168,5 +1184,8 @@
             );
         }
     </script>
+    
+    <!-- CARICAMENTO DELLE API DI GOOGLE MAPS IN FONDO ALLA PAGINA (Risolve al 100% l'errore di ordine di caricamento delle funzioni!) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap"></script>
 </body>
 </html>
