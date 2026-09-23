@@ -102,7 +102,7 @@
             transform: scale(0.95);
         }
 
-        /* FILTRI E PANNELLO DI RICERCA AVANZATA SUL LATO SINISTRO (RESPONSIVO) */
+        /* FILTRI MAPPA VERTICALI SUL LATO SINISTRO (RESPONSIVO) */
         .side-panel {
             position: fixed;
             top: 85px;
@@ -122,7 +122,7 @@
             display: none;
         }
 
-        /* BLOCCO DELLA BARRA DI RICERCA ED ELENCO TENDINE (Ispirato a NonSeiDaSola) */
+        /* BLOCCO DELLA BARRA DI RICERCA ED ELENCO TENDINE */
         .search-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -262,7 +262,7 @@
         /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (FAB) */
         .geolocate-fab {
             position: fixed;
-            bottom: 180px;
+            bottom: 30px; /* Spostato più in basso dato che non c'è più il banner */
             right: 15px;
             width: 50px;
             height: 50px;
@@ -449,47 +449,6 @@
             gap: 8px;
         }
 
-        /* BOTTOM BANNER INIZIALE */
-        .intro-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 30px);
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
-            z-index: 10;
-            text-align: center;
-        }
-
-        .intro-banner p {
-            font-size: 0.85rem;
-            color: #555;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .intro-numbers {
-            display: flex;
-            gap: 8px;
-        }
-
-        .intro-num-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
         /* STILI DESKTOP */
         @media (min-width: 900px) {
             .bottom-sheet {
@@ -503,13 +462,6 @@
 
             .bottom-sheet.open {
                 transform: translateX(0);
-            }
-
-            .intro-banner {
-                left: 20px;
-                bottom: 20px;
-                transform: translateX(0);
-                width: 360px;
             }
 
             .geolocate-fab {
@@ -548,7 +500,6 @@
 
     <!-- PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI -->
     <div class="side-panel">
-        <!-- SEZIONE DI RICERCA COMPLETA (Ispirato a NonSeiDaSola) -->
         <div class="search-card">
             <!-- Barra di ricerca a testo libero -->
             <div class="search-input-wrapper">
@@ -605,15 +556,6 @@
         </svg>
     </button>
 
-    <!-- INTRO BANNER (Mostrato all'avvio) -->
-    <div class="intro-banner" id="intro-banner">
-        <p>Cerca per comune, via o provincia sul pannello, seleziona un punto sulla mappa, o clicca sul tasto GPS verde a destra per trovare le strutture vicine.</p>
-        <div class="intro-numbers">
-            <a href="tel:1522" class="intro-num-btn" style="background-color: var(--primary);">📞 1522 CAV</a>
-            <a href="tel:112" class="intro-num-btn" style="background-color: var(--secondary);">🚓 112 Emergenza</a>
-        </div>
-    </div>
-
     <!-- BOTTOM SHEET (DRAWER DETTAGLI) -->
     <div class="bottom-sheet" id="bottom-sheet">
         <div class="sheet-handle"></div>
@@ -626,7 +568,7 @@
 
     <!-- LIBRERIE GOOGLE MAPS E MARKER CLUSTERER -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=***&callback=initMap" async defer></script>
 
     <script>
         // CONFIGURAZIONE GLOBALE MAPPA
@@ -710,7 +652,47 @@
                 'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [] })
             };
 
+            // Avvia la geolocalizzazione automatica come primo passo assoluto all'ingresso del sito
+            autoGeolocalizeOnStart();
+
             loadAllLayers();
+        }
+
+        // FUNZIONE DI AUTOGEOLOCALIZZAZIONE ALL'AVVIO CON MENU ZOOM APERTO (ZOOM 11.5)
+        function autoGeolocalizeOnStart() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const userLatLng = { lat: lat, lng: lon };
+
+                        // Crea l'indicatore GPS verde dell'utente
+                        window.userMarker = new google.maps.Marker({
+                            position: userLatLng,
+                            map: map,
+                            title: "Tu sei qui",
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                fillColor: "#4CAF50",
+                                fillOpacity: 1.0,
+                                scale: 9,
+                                strokeColor: "#FFFFFF",
+                                strokeWeight: 2.5
+                            }
+                        });
+
+                        // Centra la mappa sulla posizione geolocalizzata dell'utente
+                        // Applica uno zoom meno accentuato (11.5) per inquadrare un'ampia area e tutti i servizi limitrofi
+                        map.setCenter(userLatLng);
+                        map.setZoom(11.5);
+                    },
+                    (error) => {
+                        console.log("Geolocalizzazione rifiutata o non disponibile all'avvio. Mantengo centro Lombardia.");
+                    },
+                    { enableHighAccuracy: true, timeout: 8000 }
+                );
+            }
         }
 
         // CARICAMENTO DEI LAYER GEOJSON
@@ -865,9 +847,6 @@
             const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
             const sheetContent = document.getElementById("sheet-content");
             
-            // Nasconde il banner introduttivo per massimizzare lo spazio utile
-            document.getElementById("intro-banner").style.display = "none";
-            
             let badgeText = "🟢 Servizio Verificato";
             let badgeBg = "var(--success)";
             
@@ -969,7 +948,6 @@
         // CHIUDI IL BOTTOM SHEET
         function closeBottomSheet() {
             document.getElementById("bottom-sheet").classList.remove("open");
-            document.getElementById("intro-banner").style.display = "block";
         }
 
         // GESTIONE DEI FILTRI CATEGORIA
@@ -982,7 +960,7 @@
             filterAll();
         }
 
-        // ALGORITMO DI FILTRAGGIO ED INCROCIO DATI GENERALE (RICERCA + PROVINCIA + COMUNE + CATEGORIA)
+        // ALGORITMO DI FILTRAGGIO ED INCROCIO DATI GENERALE
         function filterAll() {
             closeBottomSheet();
             
@@ -1074,16 +1052,15 @@
             filterAll();
         }
 
-        // CAMBIO COMUNE (Centratura mappa sul comune prescelto)
+        // CAMBIO COMUNE
         function onComuneChange() {
             const selComune = document.getElementById("select-comune").value;
             
             if (selComune) {
-                // Trova il primo marker corrispondente a quel comune per estrarre le coordinate
                 const markerComune = markers.find(m => m.comune === selComune && m.getMap());
                 if (markerComune) {
                     map.panTo(markerComune.getPosition());
-                    map.setZoom(13.5); // Zoom ravvicinato sul comune
+                    map.setZoom(13.5);
                 }
             }
             
@@ -1100,21 +1077,19 @@
             selectComune.value = "";
             selectComune.disabled = true;
             
-            // Riattiva tutte le categorie
             for (const key of Object.keys(layers)) {
                 layers[key].active = true;
                 const pillId = `pill-${key === 'CAV' ? 'cav' : key === 'SANITA' ? 'ps' : 'police'}`;
                 document.getElementById(pillId).classList.add("active");
             }
             
-            // Ripristina l'inquadratura originale
             map.panTo({ lat: 45.67, lng: 9.60 });
             map.setZoom(8.5);
             
             filterAll();
         }
 
-        // GEOLOCALIZZAZIONE UTENTE CON ANIMAZIONE FLUIDA E PUNTO GPS VERDE
+        // GEOLOCALIZZAZIONE UTENTE MANUALE CON ANIMAZIONE FLUIDA (ZOOM ravvicinato 14.5 su richiesta)
         function geolocalizeUser() {
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
@@ -1127,7 +1102,6 @@
                     const lon = position.coords.longitude;
                     const userLatLng = { lat: lat, lng: lon };
 
-                    // Crea o muovi il marker GPS verde dell'utente
                     if (window.userMarker) {
                         window.userMarker.setPosition(userLatLng);
                     } else {
@@ -1146,7 +1120,6 @@
                         });
                     }
 
-                    // Centra la mappa con un panning perfetto e applica lo zoom di prossimità
                     map.panTo(userLatLng);
                     map.setZoom(14.5);
                 },
