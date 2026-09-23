@@ -55,11 +55,12 @@
             -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 8px 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            z-index: 100; /* Valore altissimo per stare sopra a tutto */
             display: flex;
             flex-direction: column;
             border: 1px solid #eee;
+            pointer-events: none; /* Non ostruisce i click sotto */
         }
 
         .brand-title {
@@ -75,7 +76,7 @@
             color: #666;
         }
 
-        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Separato e sicuro) */
+        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Completamente isolato) */
         .quick-exit-fab {
             position: fixed;
             top: 15px;
@@ -83,19 +84,20 @@
             background-color: var(--danger);
             color: var(--white);
             border: none;
-            padding: 10px 18px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            border-radius: 20px;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 850;
+            border-radius: 25px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.35);
-            z-index: 10;
-            transition: transform 0.1s;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            z-index: 100; /* Stesso piano elevato */
+            transition: transform 0.1s, background-color 0.2s;
         }
 
         .quick-exit-fab:active {
             transform: scale(0.95);
+            background-color: #b71c1c;
         }
 
         /* PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI */
@@ -187,7 +189,7 @@
             background-color: #f5f5f5;
             color: #555;
             border: 1.5px solid #ddd;
-            padding: 8px 12px;
+            padding: 10px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: bold;
@@ -465,11 +467,15 @@
                 right: 20px;
             }
 
-            .floating-header {
+            .brand-card {
                 left: 20px;
-                transform: translateX(0);
-                width: 360px;
                 top: 20px;
+                width: 360px;
+            }
+
+            .quick-exit-fab {
+                top: 20px;
+                right: 20px;
             }
 
             .side-panel {
@@ -479,6 +485,19 @@
             }
         }
     </style>
+    
+    <!-- DEFINE DI SICUREZZA ASSOLUTA PER USCITA RAPIDA (Slegata da crash successivi) -->
+    <script>
+        window.triggerQuickExit = function() {
+            window.location.replace("https://www.google.it");
+        };
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                window.triggerQuickExit();
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -491,8 +510,8 @@
         <span class="brand-subtitle">Lombardia • Verificata 2026</span>
     </div>
 
-    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE SEPARATO) -->
-    <button class="quick-exit-fab" onclick="triggerQuickExit()">Uscita Rapida (Esc)</button>
+    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA -->
+    <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
     <!-- PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI -->
     <div class="side-panel">
@@ -562,9 +581,9 @@
         </div>
     </div>
 
-    <!-- LIBRERIE GOOGLE MAPS E MARKER CLUSTERER -->
+    <!-- LIBRERIE CARICATE IN MODO RIGIDAMENTE SINCRONO (Evita qualsiasi race condition su mobile) -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDys4hDsRSaWecScdRV6aZSXtEmsAPA86I&callback=initMap"></script>
 
     <script>
         // CONFIGURAZIONE GLOBALE MAPPA
@@ -580,7 +599,7 @@
             'FORZE_ORDINE': { file: 'data/forze_ordine.geojson', active: true, color: '#0000FF' }
         };
 
-        // Coordinate dei centroidi delle province lombarde per centratura mappa
+        // Centroidi province
         const provinceCentroids = {
             "BG": { lat: 45.6983, lng: 9.6773, zoom: 10 },
             "BS": { lat: 45.5416, lng: 10.2118, zoom: 10 },
@@ -596,7 +615,7 @@
             "VA": { lat: 45.8196, lng: 8.8250, zoom: 10.5 }
         };
 
-        // PIN SVG PERSONALIZZATI AD ALTA DEFINIZIONE CON ICONA INTERNA
+        // ICONE SVG PERSONALIZZATE
         const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
@@ -618,7 +637,7 @@
             </svg>
         `);
 
-        // INIZIALIZZAZIONE DELLA MAPPA (STILE SILVER MINIMALIST SENZA POI COMMERCIALI)
+        // INIZIALIZZAZIONE DELLA MAPPA
         function initMap() {
             const lombardiaCenter = { lat: 45.67, lng: 9.60 };
             
@@ -641,20 +660,24 @@
 
             infoWindow = new google.maps.InfoWindow();
 
-            // Inizializza i clusterers per ciascun livello per garantire performance fulminee a 60 FPS
-            clusterers = {
-                'CAV': new markerClusterer.MarkerClusterer({ map, markers: [] }),
-                'SANITA': new markerClusterer.MarkerClusterer({ map, markers: [] }),
-                'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [] })
-            };
+            // Sincronizza ed inizializza i clusterers
+            if (window.markerClusterer && window.markerClusterer.MarkerClusterer) {
+                clusterers = {
+                    'CAV': new markerClusterer.MarkerClusterer({ map, markers: [] }),
+                    'SANITA': new markerClusterer.MarkerClusterer({ map, markers: [] }),
+                    'FORZE_ORDINE': new markerClusterer.MarkerClusterer({ map, markers: [] })
+                };
+            } else {
+                console.error("Errore: Libreria MarkerClusterer non caricata correttamente.");
+            }
 
-            // Avvia la geolocalizzazione automatica come primo passo assoluto all'ingresso del sito
+            // Geolocalizzazione automatica istantanea come primo passo assoluto
             autoGeolocalizeOnStart();
 
             loadAllLayers();
         }
 
-        // FUNZIONE DI AUTOGEOLOCALIZZAZIONE ALL'AVVIO CON MENU ZOOM APERTO (ZOOM 11.5)
+        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO (Meno zoom -> 11.5)
         function autoGeolocalizeOnStart() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -663,7 +686,7 @@
                         const lon = position.coords.longitude;
                         const userLatLng = { lat: lat, lng: lon };
 
-                        // Crea l'indicatore GPS verde dell'utente
+                        // Crea l'indicatore verde per la posizione utente
                         window.userMarker = new google.maps.Marker({
                             position: userLatLng,
                             map: map,
@@ -678,13 +701,12 @@
                             }
                         });
 
-                        // Centra la mappa sulla posizione geolocalizzata dell'utente
-                        // Applica uno zoom meno accentuato (11.5) per inquadrare un'ampia area e tutti i servizi limitrofi
+                        // Centra la mappa e imposta uno zoom allargato (11.5) per visualizzare l'area circostante
                         map.setCenter(userLatLng);
                         map.setZoom(11.5);
                     },
                     (error) => {
-                        console.log("Geolocalizzazione rifiutata o non disponibile all'avvio. Mantengo centro Lombardia.");
+                        console.log("Geolocalizzazione negata o non disponibile all'avvio.");
                     },
                     { enableHighAccuracy: true, timeout: 8000 }
                 );
@@ -704,44 +726,51 @@
             }
         }
 
-        // FUNZIONE INTELLIGENTE DI ESTRAZIONE INFORMAZIONI GEOGRAFICHE DAI DATI (ANCHE DA OSM)
+        // FUNZIONE DI PARSING GEOGRAFICO RESILIENTE CON TRY/CATCH
         function parseGeographicInfo(props, category) {
-            let comune = props.comune || "";
-            let provincia = props.provincia || "";
+            let comune = "";
+            let provincia = "";
+            
+            if (!props) return { comune: "", provincia: "" };
+            
+            comune = props.comune || "";
+            provincia = props.provincia || "";
             const indirizzo = props.indirizzo || "";
             
-            if (indirizzo && indirizzo !== "Indirizzo non disponibile") {
-                const parts = indirizzo.split(",").map(p => p.trim());
-                if (parts.length >= 1) {
-                    const last = parts[parts.length - 1];
-                    const provMatch = last.match(/\(([A-Z]{2})\)/);
-                    if (provMatch) {
-                        provincia = provMatch[1];
-                        if (parts.length >= 2) {
-                            comune = parts[parts.length - 2];
-                        }
-                    } else {
-                        comune = last;
-                        
-                        // Inferisci provincia da CAP
-                        const zipMatch = indirizzo.match(/\b(\d{5})\b/);
-                        if (zipMatch) {
-                            const zip = zipMatch[1];
-                            if (zip.startsWith("25")) provincia = "BS";
-                            else if (zip.startsWith("24")) provincia = "BG";
-                            else if (zip.startsWith("21")) provincia = "VA";
-                            else if (zip.startsWith("22")) provincia = "CO";
-                            else if (zip.startsWith("27")) provincia = "PV";
-                            else if (zip.startsWith("46")) provincia = "MN";
-                            else if (zip.startsWith("238") || zip.startsWith("239")) provincia = "LC";
-                            else if (zip.startsWith("230") || zip.startsWith("231")) provincia = "SO";
-                            else if (zip.startsWith("268") || zip.startsWith("269")) provincia = "LO";
-                            else if (zip.startsWith("260") || zip.startsWith("261")) provincia = "CR";
-                            else if (zip.startsWith("208") || zip.startsWith("209")) provincia = "MB";
-                            else if (zip.startsWith("200") || zip.startsWith("201")) provincia = "MI";
+            try {
+                if (indirizzo && indirizzo !== "Indirizzo non disponibile") {
+                    const parts = indirizzo.split(",").map(p => p.trim());
+                    if (parts.length >= 1) {
+                        const last = parts[parts.length - 1];
+                        const provMatch = last.match(/\(([A-Z]{2})\)/);
+                        if (provMatch) {
+                            provincia = provMatch[1];
+                            if (parts.length >= 2) {
+                                comune = parts[parts.length - 2];
+                            }
+                        } else {
+                            comune = last;
+                            const zipMatch = indirizzo.match(/\b(\d{5})\b/);
+                            if (zipMatch) {
+                                const zip = zipMatch[1];
+                                if (zip.startsWith("25")) provincia = "BS";
+                                else if (zip.startsWith("24")) provincia = "BG";
+                                else if (zip.startsWith("21")) provincia = "VA";
+                                else if (zip.startsWith("22")) provincia = "CO";
+                                else if (zip.startsWith("27")) provincia = "PV";
+                                else if (zip.startsWith("46")) provincia = "MN";
+                                else if (zip.startsWith("238") || zip.startsWith("239")) provincia = "LC";
+                                else if (zip.startsWith("230") || zip.startsWith("231")) provincia = "SO";
+                                else if (zip.startsWith("268") || zip.startsWith("269")) provincia = "LO";
+                                else if (zip.startsWith("260") || zip.startsWith("261")) provincia = "CR";
+                                else if (zip.startsWith("208") || zip.startsWith("209")) provincia = "MB";
+                                else if (zip.startsWith("200") || zip.startsWith("201")) provincia = "MI";
+                            }
                         }
                     }
                 }
+            } catch (err) {
+                console.error("Error parsing geographic info:", err);
             }
             
             // Fallback provincia da titolo
@@ -762,84 +791,95 @@
             }
             
             if (!comune) {
-                comune = (props.name || "").trim();
+                comune = (props.name || "");
             }
             
-            // Pulisci e normalizza comune
-            comune = comune.replace(/\d+/g, '').replace(/[\(\)]/g, '')
-                          .replace(/SPORTELLO DI/gi, "")
-                          .replace(/CENTRO ANTIVIOLENZA/gi, "")
-                          .replace(/STAZIONE CARABINIERI/gi, "")
-                          .replace(/PRONTO SOCCORSO/gi, "")
-                          .replace(/OSPEDALE/gi, "")
-                          .replace(/PRESIDIO OSPEDALIERO/gi, "")
-                          .replace(/COMANDO/gi, "")
-                          .trim();
-                          
-            if (comune.includes(",")) {
-                comune = comune.split(",")[0].trim();
+            try {
+                comune = comune.replace(/\d+/g, '').replace(/[\(\)]/g, '')
+                              .replace(/SPORTELLO DI/gi, "")
+                              .replace(/CENTRO ANTIVIOLENZA/gi, "")
+                              .replace(/STAZIONE CARABINIERI/gi, "")
+                              .replace(/PRONTO SOCCORSO/gi, "")
+                              .replace(/OSPEDALE/gi, "")
+                              .replace(/PRESIDIO OSPEDALIERO/gi, "")
+                              .replace(/COMANDO/gi, "")
+                              .trim();
+                              
+                if (comune.includes(",")) {
+                    comune = comune.split(",")[0].trim();
+                }
+            } catch (err) {
+                comune = "";
             }
             
-            return { comune: comune.toUpperCase(), provincia: provincia.toUpperCase() };
+            return { 
+                comune: (comune || "").toUpperCase(), 
+                provincia: (provincia || "").toUpperCase() 
+            };
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA (SEGNAPOSTI DIFFERENZIATI PER COLORE ED ICONA INTERNA)
+        // RENDERING DELLE FEATURES SULLA MAPPA (RESILIENTE)
         function renderFeatures(geojson, category) {
             const tempMarkers = [];
+            if (!geojson || !geojson.features) return;
             
             geojson.features.forEach(feature => {
-                const coords = feature.geometry.coordinates;
-                const latLng = new google.maps.LatLng(coords[1], coords[0]);
-                const props = feature.properties;
+                try {
+                    const coords = feature.geometry.coordinates;
+                    if (!coords || coords.length < 2) return;
+                    
+                    const latLng = new google.maps.LatLng(coords[1], coords[0]);
+                    const props = feature.properties || {};
 
-                let pinColor = layers[category].color;
-                if (props.colore_marker) {
-                    pinColor = props.colore_marker;
-                }
-
-                // Scegli l'icona SVG vettoriale differenziata in base alla categoria
-                let customIconUrl = "";
-                if (category === "CAV") {
-                    customIconUrl = svgCAV(pinColor);
-                } else if (category === "SANITA") {
-                    customIconUrl = svgProntoSoccorso(pinColor);
-                } else if (category === "FORZE_ORDINE") {
-                    customIconUrl = svgForzeOrdine(pinColor);
-                }
-
-                // Genera il marker personalizzato ad alta definizione
-                const marker = new google.maps.Marker({
-                    position: latLng,
-                    title: props.name,
-                    icon: {
-                        url: customIconUrl,
-                        scaledSize: new google.maps.Size(34, 42),
-                        anchor: new google.maps.Point(17, 42)
+                    let pinColor = layers[category].color;
+                    if (props.colore_marker) {
+                        pinColor = props.colore_marker;
                     }
-                });
 
-                // Associa i metadati per i filtri di ricerca georeferenziati
-                const geoInfo = parseGeographicInfo(props, category);
-                marker.category = category;
-                marker.provincia = geoInfo.provincia;
-                marker.comune = geoInfo.comune;
-                marker.props = props;
+                    let customIconUrl = "";
+                    if (category === "CAV") {
+                        customIconUrl = svgCAV(pinColor);
+                    } else if (category === "SANITA") {
+                        customIconUrl = svgProntoSoccorso(pinColor);
+                    } else if (category === "FORZE_ORDINE") {
+                        customIconUrl = svgForzeOrdine(pinColor);
+                    }
 
-                // CLICK SUL PIN -> APRE IL DRAWER MOBILE (BOTTOM SHEET)
-                marker.addListener("click", () => {
-                    displayFeatureDetails(props, category);
-                });
+                    const marker = new google.maps.Marker({
+                        position: latLng,
+                        title: props.name,
+                        icon: {
+                            url: customIconUrl,
+                            scaledSize: new google.maps.Size(34, 42),
+                            anchor: new google.maps.Point(17, 42)
+                        }
+                    });
 
-                markers.push(marker);
-                tempMarkers.push(marker);
+                    const geoInfo = parseGeographicInfo(props, category);
+                    marker.category = category;
+                    marker.provincia = geoInfo.provincia;
+                    marker.comune = geoInfo.comune;
+                    marker.props = props;
+
+                    marker.addListener("click", () => {
+                        displayFeatureDetails(props, category);
+                    });
+
+                    markers.push(marker);
+                    tempMarkers.push(marker);
+                } catch (err) {
+                    console.error("Error rendering single feature:", err);
+                }
             });
 
-            // Aggiunge i marker appena generati al rispettivo clusterer di livello (prestazioni fulminee)
-            clusterers[category].addMarkers(tempMarkers);
+            if (clusterers[category]) {
+                clusterers[category].addMarkers(tempMarkers);
+            }
         }
 
-        // MOSTRA I DETTAGLI NEL BOTTOM SHEET (DRAWER MOBILE-FIRST)
+        // MOSTRA I DETTAGLI NEL BOTTOM SHEET
         function displayFeatureDetails(props, category) {
+            if (!props) return;
             const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
             const sheetContent = document.getElementById("sheet-content");
             
@@ -854,7 +894,6 @@
                 badgeBg = "var(--secondary)";
             }
 
-            // Generazione dell'HTML del drawer
             let html = `
                 <span class="detail-badge" style="background-color: ${badgeBg};">${badgeText}</span>
                 <h3 class="detail-title">${props.name}</h3>
@@ -865,7 +904,6 @@
                 html += `<div class="detail-meta">⏰ <strong>Orari:</strong> ${props.orari}</div>`;
             }
 
-            // Pulsanti di contatto giganti e facili da toccare
             html += `<div class="action-group">`;
             
             if (props.telefono && props.telefono !== "112 / 118") {
@@ -901,7 +939,6 @@
             
             html += `</div>`;
 
-            // Parole chiave dei servizi strutturate per livello
             html += `
                 <div class="services-card">
                     <div class="services-title">Servizi & Note di Sicurezza:</div>
@@ -936,8 +973,6 @@
             `;
 
             sheetContent.innerHTML = html;
-            
-            // Slitta il bottom sheet verso l'alto
             document.getElementById("bottom-sheet").classList.add("open");
         }
 
@@ -956,51 +991,57 @@
             filterAll();
         }
 
-        // ALGORITMO DI FILTRAGGIO ED INCROCIO DATI GENERALE
+        // FILTRAGGIO ED INCROCIO DATI GENERALE (RESILIENTE)
         function filterAll() {
             closeBottomSheet();
             
-            const textSearch = document.getElementById("free-search").value.toUpperCase().trim();
-            const selProvincia = document.getElementById("select-provincia").value;
-            const selComune = document.getElementById("select-comune").value;
+            const freeSearchInput = document.getElementById("free-search");
+            const selectProvinciaInput = document.getElementById("select-provincia");
+            const selectComuneInput = document.getElementById("select-comune");
             
-            // Svuota temporaneamente i clusterers per ripopolarli (massime prestazioni)
+            const textSearch = freeSearchInput ? freeSearchInput.value.toUpperCase().trim() : "";
+            const selProvincia = selectProvinciaInput ? selectProvinciaInput.value : "";
+            const selComune = selectComuneInput ? selectComuneInput.value : "";
+            
+            // Svuota i clusterers
             for (const key of Object.keys(clusterers)) {
-                clusterers[key].clearMarkers();
+                if (clusterers[key]) clusterers[key].clearMarkers();
             }
             
             const activeMarkersByLayer = { 'CAV': [], 'SANITA': [], 'FORZE_ORDINE': [] };
             
             markers.forEach(marker => {
-                const categoryActive = layers[marker.category].active;
-                
-                // Filtro provincia
-                const matchesProvincia = !selProvincia || marker.provincia === selProvincia;
-                
-                // Filtro comune
-                const matchesComune = !selComune || marker.comune === selComune;
-                
-                // Filtro testo libero
-                let matchesText = true;
-                if (textSearch) {
-                    const name = (marker.props.name || "").toUpperCase();
-                    const addr = (marker.props.indirizzo || "").toUpperCase();
-                    const com = (marker.comune || "").toUpperCase();
-                    matchesText = name.includes(textSearch) || addr.includes(textSearch) || com.includes(textSearch);
-                }
-                
-                // Applica lo stato di visibilità sulla mappa
-                if (categoryActive && matchesProvincia && matchesComune && matchesText) {
-                    marker.setMap(map);
-                    activeMarkersByLayer[marker.category].push(marker);
-                } else {
-                    marker.setMap(null);
+                try {
+                    const categoryActive = layers[marker.category].active;
+                    const matchesProvincia = !selProvincia || marker.provincia === selProvincia;
+                    const matchesComune = !selComune || marker.comune === selComune;
+                    
+                    let matchesText = true;
+                    if (textSearch) {
+                        const name = (marker.props.name || "").toUpperCase();
+                        const addr = (marker.props.indirizzo || "").toUpperCase();
+                        const com = (marker.comune || "").toUpperCase();
+                        matchesText = name.includes(textSearch) || addr.includes(textSearch) || com.includes(textSearch);
+                    }
+                    
+                    if (categoryActive && matchesProvincia && matchesComune && matchesText) {
+                        marker.setMap(map);
+                        if (activeMarkersByLayer[marker.category]) {
+                            activeMarkersByLayer[marker.category].push(marker);
+                        }
+                    } else {
+                        marker.setMap(null);
+                    }
+                } catch (err) {
+                    console.error("Error filtering single marker:", err);
                 }
             });
             
-            // Ripopola i clusterers con gli elementi filtrati
+            // Ripopola i clusterers
             for (const key of Object.keys(clusterers)) {
-                clusterers[key].addMarkers(activeMarkersByLayer[key]);
+                if (clusterers[key] && activeMarkersByLayer[key]) {
+                    clusterers[key].addMarkers(activeMarkersByLayer[key]);
+                }
             }
         }
 
@@ -1009,14 +1050,12 @@
             const selProvincia = document.getElementById("select-provincia").value;
             const selectComune = document.getElementById("select-comune");
             
-            // Svuota e resetta comune
             selectComune.innerHTML = '<option value="">Comune (Tutti)</option>';
             selectComune.value = "";
             
             if (selProvincia) {
                 selectComune.disabled = false;
                 
-                // Trova tutti i comuni unici presenti nei nostri marker della provincia selezionata
                 const comuniUnici = new Set();
                 markers.forEach(marker => {
                     if (marker.provincia === selProvincia && marker.comune) {
@@ -1024,7 +1063,6 @@
                     }
                 });
                 
-                // Popola il menu ordinando alfabeticamente
                 const comuniOrdinati = Array.from(comuniUnici).sort();
                 comuniOrdinati.forEach(comune => {
                     if (comune && comune !== "INDIRIZZO NON DISPONIBILE") {
@@ -1035,9 +1073,8 @@
                     }
                 });
                 
-                // Sposta e centra la mappa sul centroide della provincia selezionata
                 const centroid = provinceCentroids[selProvincia];
-                if (centroid) {
+                if (centroid && map) {
                     map.panTo({ lat: centroid.lat, lng: centroid.lng });
                     map.setZoom(centroid.zoom);
                 }
@@ -1052,7 +1089,7 @@
         function onComuneChange() {
             const selComune = document.getElementById("select-comune").value;
             
-            if (selComune) {
+            if (selComune && map) {
                 const markerComune = markers.find(m => m.comune === selComune && m.getMap());
                 if (markerComune) {
                     map.panTo(markerComune.getPosition());
@@ -1063,7 +1100,7 @@
             filterAll();
         }
 
-        // RESET COMPLETO DEI FILTRI
+        // RESET FILTRI
         function resetFilters() {
             document.getElementById("free-search").value = "";
             document.getElementById("select-provincia").value = "";
@@ -1076,16 +1113,19 @@
             for (const key of Object.keys(layers)) {
                 layers[key].active = true;
                 const pillId = `pill-${key === 'CAV' ? 'cav' : key === 'SANITA' ? 'ps' : 'police'}`;
-                document.getElementById(pillId).classList.add("active");
+                const pillElement = document.getElementById(pillId);
+                if (pillElement) pillElement.classList.add("active");
             }
             
-            map.panTo({ lat: 45.67, lng: 9.60 });
-            map.setZoom(8.5);
+            if (map) {
+                map.panTo({ lat: 45.67, lng: 9.60 });
+                map.setZoom(8.5);
+            }
             
             filterAll();
         }
 
-        // GEOLOCALIZZAZIONE UTENTE MANUALE CON ANIMAZIONE FLUIDA (ZOOM ravvicinato 14.5 su richiesta)
+        // GEOLOCALIZZAZIONE UTENTE MANUALE (Zoom 14.5)
         function geolocalizeUser() {
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
@@ -1116,8 +1156,10 @@
                         });
                     }
 
-                    map.panTo(userLatLng);
-                    map.setZoom(14.5);
+                    if (map) {
+                        map.panTo(userLatLng);
+                        map.setZoom(14.5);
+                    }
                 },
                 (error) => {
                     alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS al tuo browser.");
