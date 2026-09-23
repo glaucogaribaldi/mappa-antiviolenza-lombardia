@@ -14,7 +14,7 @@
             --dark: #212121;
             --light: #f5f5f5;
             --white: #ffffff;
-            --border-radius: 16px;
+            --border-radius: 20px;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
@@ -28,7 +28,7 @@
 
         body, html {
             font-family: var(--font-family);
-            background: transparent;
+            background: #e5e5e5;
             color: var(--dark);
             height: 100%;
             width: 100%;
@@ -45,100 +45,120 @@
             z-index: 1;
         }
 
-        /* BRAND CARD FLUTTUANTE A SINISTRA (Compatta per evitare conflitti) */
-        .brand-card {
+        /* TOP CONSOLE: CONTENITORE UNIFICATO DI TESTA (Ispirato a Apple Maps) */
+        .top-console {
             position: fixed;
             top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 8px 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 500px;
             z-index: 100;
             display: flex;
             flex-direction: column;
-            border: 1px solid #eee;
-            max-width: 50%; /* Impedisce l'overlap */
-            pointer-events: none;
+            gap: 8px;
         }
 
-        .brand-title {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        /* BARRA DI RICERCA COMPATTA ED ELEGANTE (FLOATING) */
+        .search-bar-floating {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 6px 10px 6px 16px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
-        .brand-subtitle {
-            font-size: 0.65rem;
-            color: #666;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .search-input-trigger {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+            cursor: pointer;
+            height: 38px;
         }
 
-        /* TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (Isolato e compatto) */
-        .quick-exit-fab {
-            position: fixed;
-            top: 15px;
-            right: 15px;
+        .search-trigger-text {
+            font-size: 0.85rem;
+            color: #777;
+            font-weight: 500;
+        }
+
+        /* TASTO USCITA RAPIDA COMPATTO */
+        .quick-exit-btn {
             background-color: var(--danger);
             color: var(--white);
             border: none;
-            padding: 10px 16px;
+            padding: 8px 16px;
             font-size: 0.75rem;
             font-weight: 850;
             border-radius: 20px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.35);
-            z-index: 100;
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
             transition: transform 0.1s, background-color 0.2s;
+            white-space: nowrap;
         }
 
-        .quick-exit-fab:active {
+        .quick-exit-btn:active {
             transform: scale(0.95);
             background-color: #b71c1c;
         }
 
-        /* PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI */
-        .side-panel {
-            position: fixed;
-            top: 75px; /* Inizia perfettamente sotto la brand card */
-            left: 15px;
-            display: flex;
+        /* PANNELLO DI RICERCA AVANZATA ESPANDIBILE (Apple Maps Style) */
+        .search-expanded-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #eee;
+            display: none; /* Nascosto per default, si espande al click */
             flex-direction: column;
             gap: 10px;
-            z-index: 10;
-            width: calc(100% - 30px);
-            max-width: 360px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            scrollbar-width: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .side-panel::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* BLOCCO DELLA BARRA DI RICERCA ED ELENCO TENDINE */
-        .search-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 14px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            border: 1px solid #eee;
+        .search-expanded-card.open {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
+        }
+
+        .expanded-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid var(--light);
+            padding-bottom: 8px;
+            margin-bottom: 4px;
+        }
+
+        .expanded-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .expanded-close-btn {
+            background: #eee;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .search-input-wrapper {
@@ -149,10 +169,10 @@
 
         .search-input {
             width: 100%;
-            padding: 10px 12px 10px 32px;
+            padding: 11px 12px 11px 35px;
             border-radius: 25px;
             border: 1.5px solid #ddd;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             outline: none;
             transition: border-color 0.2s;
         }
@@ -163,9 +183,9 @@
 
         .search-icon {
             position: absolute;
-            left: 12px;
-            width: 14px;
-            height: 14px;
+            left: 14px;
+            width: 15px;
+            height: 15px;
             fill: #777;
         }
 
@@ -176,101 +196,123 @@
 
         .custom-select {
             flex: 1;
-            padding: 8px 10px;
+            padding: 10px;
             border-radius: 20px;
             border: 1.5px solid #ddd;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: bold;
             color: #444;
             outline: none;
             background-color: var(--white);
             cursor: pointer;
-            transition: border-color 0.2s;
-        }
-
-        .custom-select:focus {
-            border-color: var(--primary);
         }
 
         .reset-btn {
             background-color: #f5f5f5;
             color: #555;
             border: 1.5px solid #ddd;
-            padding: 8px 12px;
+            padding: 10px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
             text-align: center;
         }
 
-        .reset-btn:hover {
-            background-color: #eee;
+        /* BARRA DI NAVIGAZIONE E AZIONE INFERIORE (BOTTOM TAB BAR - STYLE APP) */
+        .bottom-nav-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 35px;
+            padding: 8px 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
         }
 
-        /* PILLOLE DI LIVELLO (Categorie) */
-        .filter-group-vertical {
+        .nav-item {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-        }
-
-        .filter-pill-vertical {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1.5px solid #eee;
-            padding: 8px 14px;
-            border-radius: 25px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: #444;
-            cursor: pointer;
-            white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            display: flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            justify-content: center;
+            flex: 1;
+            cursor: pointer;
+            padding: 6px 0;
+            border-radius: 20px;
+            transition: all 0.2s;
         }
 
-        .filter-pill-vertical.active.cav {
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 3px;
+            fill: #555;
+            transition: fill 0.2s;
+        }
+
+        .nav-label {
+            font-size: 0.65rem;
+            font-weight: bold;
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        /* Stati attivi per Tab Bar */
+        .nav-item.active.cav .nav-icon { fill: var(--primary); }
+        .nav-item.active.cav .nav-label { color: var(--primary); }
+        
+        .nav-item.active.ps .nav-icon { fill: var(--danger); }
+        .nav-item.active.ps .nav-label { color: var(--danger); }
+        
+        .nav-item.active.police .nav-icon { fill: var(--secondary); }
+        .nav-item.active.police .nav-label { color: var(--secondary); }
+
+        /* PULSANTE EMERGENZA RAPIDA GIGANTE (SOS 1522) - PULSANTE */
+        .sos-btn-nav {
             background-color: var(--primary);
             color: var(--white);
-            border-color: var(--primary);
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-weight: 850;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+            animation: pulse-glow 2s infinite;
         }
 
-        .filter-pill-vertical.active.ps {
-            background-color: var(--danger);
-            color: var(--white);
-            border-color: var(--danger);
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(194, 24, 91, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(194, 24, 91, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(194, 24, 91, 0);
+            }
         }
 
-        .filter-pill-vertical.active.police {
-            background-color: var(--secondary);
-            color: var(--white);
-            border-color: var(--secondary);
-        }
-
-        .color-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .dot-cav { background-color: #FF1493; }
-        .dot-ps { background-color: #FF0000; }
-        .dot-police { background-color: #0000FF; }
-
-        /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (FAB) */
+        /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (Spostato sopra la tab bar) */
         .geolocate-fab {
             position: fixed;
-            bottom: 30px;
-            right: 15px;
-            width: 50px;
-            height: 50px;
+            bottom: 100px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background-color: var(--white);
             border: none;
@@ -279,7 +321,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10;
+            z-index: 90;
             transition: transform 0.1s;
         }
 
@@ -288,12 +330,12 @@
         }
 
         .geolocate-fab svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: var(--success);
         }
 
-        /* BOTTOM SHEET RESPONSIVA (Drawer di dettagli) */
+        /* BOTTOM SHEET (Drawer di dettagli) */
         .bottom-sheet {
             position: fixed;
             bottom: 0;
@@ -304,8 +346,8 @@
             background-color: var(--white);
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
-            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
-            z-index: 20;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.18);
+            z-index: 110; /* Stretto sopra la tab bar */
             padding: 20px 20px calc(20px + var(--safe-bottom)) 20px;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             max-height: 80vh;
@@ -316,7 +358,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Maniglia del Bottom Sheet */
         .sheet-handle {
             width: 40px;
             height: 5px;
@@ -401,10 +442,6 @@
             transition: opacity 0.2s;
         }
 
-        .action-btn:active {
-            opacity: 0.85;
-        }
-
         .action-btn-call {
             background-color: var(--primary);
             color: var(--white);
@@ -470,41 +507,28 @@
             }
 
             .geolocate-fab {
+                bottom: 100px;
+                left: 330px;
+                right: auto;
+            }
+
+            .top-console {
+                left: 20px;
+                transform: translateX(0);
+                width: 360px;
+                top: 20px;
+            }
+
+            .bottom-nav-bar {
+                left: 20px;
+                transform: translateX(0);
+                width: 360px;
                 bottom: 20px;
-                right: 20px;
-            }
-
-            .brand-card {
-                left: 20px;
-                top: 20px;
-                width: 360px;
-                max-width: none;
-            }
-
-            .brand-title {
-                font-size: 0.85rem;
-            }
-
-            .brand-subtitle {
-                font-size: 0.75rem;
-            }
-
-            .quick-exit-fab {
-                top: 20px;
-                right: 20px;
-                padding: 12px 20px;
-                font-size: 0.85rem;
-            }
-
-            .side-panel {
-                left: 20px;
-                top: 85px;
-                width: 360px;
             }
         }
     </style>
     
-    <!-- DEFINE DI SICUREZZA ASSOLUTA PER USCITA RAPIDA (Garantito anche in caso di qualsiasi crash delle mappe) -->
+    <!-- DEFINE DI SICUREZZA ASSOLUTA PER USCITA RAPIDA -->
     <script>
         window.triggerQuickExit = function() {
             window.location.replace("https://www.google.it");
@@ -522,18 +546,26 @@
     <!-- MAPPA FULL VIEWPORT -->
     <div id="map"></div>
 
-    <!-- BRAND CARD FLUTTUANTE A SINISTRA (COMPATTA) -->
-    <div class="brand-card">
-        <span class="brand-title">Mappa Supporto Donna</span>
-        <span class="brand-subtitle">Lombardia • Verificata 2026</span>
-    </div>
+    <!-- CONSOLE SUPERIORE UNIFICATA (Barra di ricerca fluttuante + Pannello avanzato) -->
+    <div class="top-console">
+        <!-- Barra di attivazione / Lente d'ingrandimento -->
+        <div class="search-bar-floating">
+            <div class="search-input-trigger" onclick="openSearchPanel()">
+                <svg style="width:16px; height:16px; fill:#777;" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <span class="search-trigger-text" id="search-trigger-text">Cerca per via, comune...</span>
+            </div>
+            <button class="quick-exit-btn" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
+        </div>
 
-    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
-    <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
-
-    <!-- PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI -->
-    <div class="side-panel">
-        <div class="search-card">
+        <!-- Pannello di Ricerca Avanzata Scomparsa (Apple Maps style) -->
+        <div class="search-expanded-card" id="search-expanded-card">
+            <div class="expanded-card-header">
+                <span class="expanded-title">Filtri di Ricerca</span>
+                <button class="expanded-close-btn" onclick="closeSearchPanel()">✕</button>
+            </div>
+            
             <!-- Barra di ricerca a testo libero -->
             <div class="search-input-wrapper">
                 <svg class="search-icon" viewBox="0 0 24 24">
@@ -552,7 +584,7 @@
                     <option value="CR">Cremona (CR)</option>
                     <option value="LC">Lecco (LC)</option>
                     <option value="LO">Lodi (LO)</option>
-                    <option value="MB">Monza e Brianza (MB)</option>
+                    <option value="MB">Monza (MB)</option>
                     <option value="MI">Milano (MI)</option>
                     <option value="MN">Mantova (MN)</option>
                     <option value="PV">Pavia (PV)</option>
@@ -567,19 +599,38 @@
             
             <button class="reset-btn" onclick="resetFilters()">Resetta Ricerca</button>
         </div>
+    </div>
 
-        <!-- PILLOLE INTERRUTTORI CATEGORIA -->
-        <div class="filter-group-vertical">
-            <div class="filter-pill-vertical active cav" id="pill-cav" onclick="toggleCategory('CAV')">
-                <span class="color-dot dot-cav"></span> 💗 Centri Antiviolenza
-            </div>
-            <div class="filter-pill-vertical active ps" id="pill-ps" onclick="toggleCategory('SANITA')">
-                <span class="color-dot dot-ps"></span> 🚑 Pronto Soccorso
-            </div>
-            <div class="filter-pill-vertical active police" id="pill-police" onclick="toggleCategory('FORZE_ORDINE')">
-                <span class="color-dot dot-police"></span> 🚓 Forze dell'Ordine
-            </div>
+    <!-- BARRA DI NAVIGAZIONE E AZIONE INFERIORE (BOTTOM TAB BAR) -->
+    <div class="bottom-nav-bar">
+        <!-- Tab Centri Antiviolenza -->
+        <div class="nav-item active cav" id="pill-cav" onclick="toggleCategoryTab('CAV')">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.4 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.6 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span class="nav-label">Centri CAV</span>
         </div>
+        
+        <!-- Tab Pronto Soccorso -->
+        <div class="nav-item active ps" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
+            </svg>
+            <span class="nav-label">P. Soccorso</span>
+        </div>
+        
+        <!-- Tab Forze dell'Ordine -->
+        <div class="nav-item active police" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 13.17l5.59-5.59L17 9l-7 7z"/>
+            </svg>
+            <span class="nav-label">Sicurezza</span>
+        </div>
+        
+        <!-- Pulsante di Emergenza SOS 1522 Gigante -->
+        <button class="sos-btn-nav" onclick="window.location.href='tel:1522'">
+            📞 SOS 1522
+        </button>
     </div>
 
     <!-- FLOAT ACTION BUTTON GEOLOCATE (FAB) -->
@@ -632,29 +683,47 @@
             "VA": { lat: 45.8196, lng: 8.8250, zoom: 10.5 }
         };
 
-        // ICONE SVG PERSONALIZZATE
+        // ICONE SVG PERSONALIZZATE (DIFFERENZIATE PER SIMBOLO INTERNO E COLORE CON ALONE GLOW)
         const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                </filter>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
                 <path d="M12 5.5l-5 4.5v6.5h3.5v-4h3v4h3.5V10z" fill="#FFFFFF"/>
             </svg>
         `);
 
         const svgProntoSoccorso = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                </filter>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
                 <path d="M10.5 6.5h3v4H17.5v3H13.5v4h-3v-4H6.5v-3h4z" fill="#FFFFFF"/>
             </svg>
         `);
 
         const svgForzeOrdine = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="34" height="42">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                </filter>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
                 <path d="M12 5.5l5 2v4.5c0 3.11-2.14 6.01-5 6.75-2.86-.74-5-3.64-5-6.75V7.5z" fill="#FFFFFF"/>
             </svg>
         `);
 
-        // INIZIALIZZAZIONE DELLA MAPPA
+        // CHIUDI ED ESPANDI PANNELLO RICERCA
+        function openSearchPanel() {
+            document.getElementById("search-expanded-card").classList.add("open");
+        }
+
+        function closeSearchPanel() {
+            document.getElementById("search-expanded-card").classList.remove("open");
+        }
+
+        // INIZIALIZZAZIONE DELLA MAPPA (STILE SOTTILE E MINIMALISTA)
         function initMap() {
             const lombardiaCenter = { lat: 45.67, lng: 9.60 };
             
@@ -675,6 +744,12 @@
                 zoomControl: false
             });
 
+            // Chiudi i drawer al click sulla mappa
+            map.addListener("click", () => {
+                closeBottomSheet();
+                closeSearchPanel();
+            });
+
             infoWindow = new google.maps.InfoWindow();
 
             // Inizializza i clusterers
@@ -686,7 +761,7 @@
                 };
             }
 
-            // Avvia la geolocalizzazione automatica come primo passo assoluto
+            // Avvia la geolocalizzazione automatica all'avvio
             autoGeolocalizeOnStart();
 
             loadAllLayers();
@@ -701,7 +776,6 @@
                         const lon = position.coords.longitude;
                         const userLatLng = { lat: lat, lng: lon };
 
-                        // Crea l'indicatore GPS verde dell'utente
                         window.userMarker = new google.maps.Marker({
                             position: userLatLng,
                             map: map,
@@ -716,8 +790,6 @@
                             }
                         });
 
-                        // Centra la mappa sulla posizione geolocalizzata dell'utente
-                        // Applica uno zoom meno accentuato (11.5) per inquadrare un'ampia area e tutti i servizi limitrofi
                         map.setCenter(userLatLng);
                         map.setZoom(11.5);
                     },
@@ -742,54 +814,44 @@
             }
         }
 
-        // FUNZIONE DI PARSING GEOGRAFICO RESILIENTE CON TRY/CATCH
+        // ESTRAZIONE GEOGRAFICA DEI DATI
         function parseGeographicInfo(props, category) {
-            let comune = "";
-            let provincia = "";
-            
-            if (!props) return { comune: "", provincia: "" };
-            
-            comune = props.comune || "";
-            provincia = props.provincia || "";
+            let comune = props.comune || "";
+            let provincia = props.provincia || "";
             const indirizzo = props.indirizzo || "";
             
-            try {
-                if (indirizzo && indirizzo !== "Indirizzo non disponibile") {
-                    const parts = indirizzo.split(",").map(p => p.trim());
-                    if (parts.length >= 1) {
-                        const last = parts[parts.length - 1];
-                        const provMatch = last.match(/\(([A-Z]{2})\)/);
-                        if (provMatch) {
-                            provincia = provMatch[1];
-                            if (parts.length >= 2) {
-                                comune = parts[parts.length - 2];
-                            }
-                        } else {
-                            comune = last;
-                            const zipMatch = indirizzo.match(/\b(\d{5})\b/);
-                            if (zipMatch) {
-                                const zip = zipMatch[1];
-                                if (zip.startsWith("25")) provincia = "BS";
-                                else if (zip.startsWith("24")) provincia = "BG";
-                                else if (zip.startsWith("21")) provincia = "VA";
-                                else if (zip.startsWith("22")) provincia = "CO";
-                                else if (zip.startsWith("27")) provincia = "PV";
-                                else if (zip.startsWith("46")) provincia = "MN";
-                                else if (zip.startsWith("238") || zip.startsWith("239")) provincia = "LC";
-                                else if (zip.startsWith("230") || zip.startsWith("231")) provincia = "SO";
-                                else if (zip.startsWith("268") || zip.startsWith("269")) provincia = "LO";
-                                else if (zip.startsWith("260") || zip.startsWith("261")) provincia = "CR";
-                                else if (zip.startsWith("208") || zip.startsWith("209")) provincia = "MB";
-                                else if (zip.startsWith("200") || zip.startsWith("201")) provincia = "MI";
-                            }
+            if (indirizzo && indirizzo !== "Indirizzo non disponibile") {
+                const parts = indirizzo.split(",").map(p => p.trim());
+                if (parts.length >= 1) {
+                    const last = parts[parts.length - 1];
+                    const provMatch = last.match(/\(([A-Z]{2})\)/);
+                    if (provMatch) {
+                        provincia = provMatch[1];
+                        if (parts.length >= 2) {
+                            comune = parts[parts.length - 2];
+                        }
+                    } else {
+                        comune = last;
+                        const zipMatch = indirizzo.match(/\b(\d{5})\b/);
+                        if (zipMatch) {
+                            const zip = zipMatch[1];
+                            if (zip.startsWith("25")) provincia = "BS";
+                            else if (zip.startsWith("24")) provincia = "BG";
+                            else if (zip.startsWith("21")) provincia = "VA";
+                            else if (zip.startsWith("22")) provincia = "CO";
+                            else if (zip.startsWith("27")) provincia = "PV";
+                            else if (zip.startsWith("46")) provincia = "MN";
+                            else if (zip.startsWith("238") || zip.startsWith("239")) provincia = "LC";
+                            else if (zip.startsWith("230") || zip.startsWith("231")) provincia = "SO";
+                            else if (zip.startsWith("268") || zip.startsWith("269")) provincia = "LO";
+                            else if (zip.startsWith("260") || zip.startsWith("261")) provincia = "CR";
+                            else if (zip.startsWith("208") || zip.startsWith("209")) provincia = "MB";
+                            else if (zip.startsWith("200") || zip.startsWith("201")) provincia = "MI";
                         }
                     }
                 }
-            } catch (err) {
-                console.error("Error parsing geographic info:", err);
             }
             
-            // Fallback provincia da titolo
             if (!provincia) {
                 const title = (props.name || "").toUpperCase();
                 if (title.includes("MILANO")) provincia = "MI";
@@ -834,7 +896,7 @@
             };
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA (RESILIENTE)
+        // RENDERING DELLE FEATURES SULLA MAPPA
         function renderFeatures(geojson, category) {
             const tempMarkers = [];
             if (!geojson || !geojson.features) return;
@@ -997,8 +1059,8 @@
             document.getElementById("bottom-sheet").classList.remove("open");
         }
 
-        // GESTIONE DEI FILTRI CATEGORIA
-        function toggleCategory(category) {
+        // GESTIONE DEI FILTRI CATEGORIA TRAMITE TAB BAR INFERIORE
+        function toggleCategoryTab(category) {
             const pillId = `pill-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
             const pill = document.getElementById(pillId);
             const isActive = pill.classList.toggle("active");
@@ -1007,7 +1069,7 @@
             filterAll();
         }
 
-        // FILTRAGGIO ED INCROCIO DATI GENERALE (RESILIENTE)
+        // FILTRAGGIO ED INCROCIO DATI GENERALE
         function filterAll() {
             closeBottomSheet();
             
@@ -1019,7 +1081,15 @@
             const selProvincia = selectProvinciaInput ? selectProvinciaInput.value : "";
             const selComune = selectComuneInput ? selectComuneInput.value : "";
             
-            // Svuota i clusterers
+            // Aggiorna l'anteprima di testo sulla barra di ricerca floating
+            const searchTriggerText = document.getElementById("search-trigger-text");
+            if (searchTriggerText) {
+                if (textSearch) searchTriggerText.textContent = `Filtro: "${textSearch}"`;
+                else if (selComune) searchTriggerText.textContent = `Filtro: ${selComune}`;
+                else if (selProvincia) searchTriggerText.textContent = `Filtro: Prov. ${selProvincia}`;
+                else searchTriggerText.textContent = "Cerca per via, comune...";
+            }
+
             for (const key of Object.keys(clusterers)) {
                 if (clusterers[key]) clusterers[key].clearMarkers();
             }
@@ -1053,7 +1123,6 @@
                 }
             });
             
-            // Ripopola i clusterers
             for (const key of Object.keys(clusterers)) {
                 if (clusterers[key] && activeMarkersByLayer[key]) {
                     clusterers[key].addMarkers(activeMarkersByLayer[key]);
@@ -1139,6 +1208,7 @@
             }
             
             filterAll();
+            closeSearchPanel();
         }
 
         // GEOLOCALIZZAZIONE UTENTE MANUALE (Zoom 14.5)
