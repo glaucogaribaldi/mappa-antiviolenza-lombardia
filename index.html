@@ -219,15 +219,15 @@
 
         .select-group {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
 
         .custom-select {
             flex: 1;
-            padding: 8px 10px;
+            padding: 10px;
             border-radius: 20px;
             border: 1.5px solid #ddd;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: bold;
             color: #444;
             outline: none;
@@ -287,7 +287,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -459,7 +459,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Maniglia del Bottom Sheet */
         .sheet-handle {
             width: 40px;
             height: 5px;
@@ -664,7 +663,7 @@
     <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
     <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
-    <!-- CONSOLE SUPERIORE UNIFICATA CON INPUT DI RICERCA COMPRESO E SEMPRE VISIBILE -->
+    <!-- CONSOLE SUPERIORE UNIFICATA -->
     <div class="top-console">
         <!-- Barra di ricerca permanente -->
         <div class="search-bar-floating">
@@ -929,7 +928,7 @@
 
             infoWindow = new google.maps.InfoWindow();
 
-            // Inizializza i clusterers
+            // Inizializza i clusterers con il renderer personalizzato minimale (No cerchi blu!)
             if (window.markerClusterer && window.markerClusterer.MarkerClusterer) {
                 clusterers = {
                     'CAV': new markerClusterer.MarkerClusterer({ map, markers: [], renderer: customClusterRenderer }),
@@ -938,7 +937,7 @@
                 };
             }
 
-            // Geolocalizzazione automatica istantanea
+            // Avvia la geolocalizzazione automatica come primo passo assoluto
             autoGeolocalizeOnStart();
 
             loadAllLayers();
@@ -953,6 +952,7 @@
                         const lon = position.coords.longitude;
                         const userLatLng = { lat: lat, lng: lon };
 
+                        // Crea l'indicatore GPS verde dell'utente
                         window.userMarker = new google.maps.Marker({
                             position: userLatLng,
                             map: map,
@@ -967,8 +967,9 @@
                             }
                         });
 
+                        // Centra la mappa e imposta uno zoom allargato (11.5) per visualizzare l'area circostante
                         map.setCenter(userLatLng);
-                        map.setZoom(12.5);
+                        map.setZoom(11.5);
                     },
                     (error) => {
                         console.log("Geolocalizzazione rifiutata o non disponibile all'avvio.");
@@ -993,11 +994,7 @@
             
             const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(searchText + ", Lombardia, Italia")}`;
             
-            fetch(url, {
-                headers: {
-                    'User-Agent': 'MappaAntiviolenzaBot/1.0 (https://github.com/openclaw; zava@openclaw.ai)'
-                }
-            })
+            fetch(url)
             .then(response => {
                 if (!response.ok) throw new Error("Errore di rete");
                 return response.json();
@@ -1458,7 +1455,7 @@
             closeSearchPanel();
         }
 
-        // GEOLOCALIZZAZIONE UTENTE MANUALE (Zoom 12.5)
+        // GEOLOCALIZZAZIONE UTENTE MANUALE (Zoom 14.5)
         function geolocalizeUser() {
             if (!navigator.geolocation) {
                 alert("La geolocalizzazione non è supportata dal tuo browser.");
@@ -1491,7 +1488,7 @@
 
                     if (map) {
                         map.panTo(userLatLng);
-                        map.setZoom(12.5); // Range ottimizzato come da screen!
+                        map.setZoom(14.5);
                     }
                 },
                 (error) => {
