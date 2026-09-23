@@ -107,98 +107,127 @@
             background-color: #b71c1c;
         }
 
-        /* PANNELLO LATERALE COMPATTO CON BARRA DI RICERCA ED INTERRUTTORI */
-        .side-panel {
+        /* CONSOLE SUPERIORE UNIFICATA (Barra di ricerca permanente + filtri a scomparsa) */
+        .top-console {
             position: fixed;
             top: 75px; /* Inizia perfettamente sotto la brand card */
-            left: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 10;
+            left: 50%;
+            transform: translateX(-50%);
             width: calc(100% - 30px);
-            max-width: 360px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            scrollbar-width: none;
-        }
-
-        .side-panel::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* BLOCCO DELLA BARRA DI RICERCA ED ELENCO TENDINE */
-        .search-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 14px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border: 1px solid #eee;
+            max-width: 500px;
+            z-index: 90;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .search-input-wrapper {
+        /* BARRA DI RICERCA COMPATTA E PERMANENTE (Sempre attiva per digitare al volo!) */
+        .search-bar-floating {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 6px 10px 6px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .search-input-wrapper-floating {
             position: relative;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 11px 12px 11px 35px;
+            flex-grow: 1;
+            background: #f0f0f0;
             border-radius: 25px;
-            border: 1.5px solid #ddd;
+            padding: 2px 6px 2px 2px;
+        }
+
+        .search-input-field {
+            border: none;
+            background: transparent;
+            padding: 8px 8px 8px 32px;
             font-size: 0.85rem;
+            font-weight: 500;
             outline: none;
-            transition: border-color 0.2s;
+            width: 100%;
+            color: var(--dark);
         }
 
-        .search-input:focus {
-            border-color: var(--primary);
-        }
-
-        .search-icon {
+        .search-icon-floating {
             position: absolute;
-            left: 14px;
-            width: 15px;
-            height: 15px;
-            fill: #777;
+            left: 12px;
+            width: 14px;
+            height: 14px;
+            fill: #666;
         }
 
-        /* BOTTONE CERCA AZIONE SULLA MAPPA */
-        .search-action-btn {
+        .search-action-btn-mini {
             background-color: var(--primary);
             color: var(--white);
             border: none;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(194, 24, 91, 0.2);
+            box-shadow: 0 2px 5px rgba(194, 24, 91, 0.15);
             transition: background-color 0.2s;
         }
 
-        .search-action-btn:hover {
+        .search-action-btn-mini:hover {
             background-color: var(--primary-dark);
+        }
+
+        /* Pulsante ingranaggio per mostrare/nascondere i filtri Provincia/Comune */
+        .expand-filters-btn {
+            background: none;
+            border: none;
+            font-size: 1.15rem;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .expand-filters-btn.active {
+            transform: rotate(45deg);
+        }
+
+        /* Pannello dei filtri avanzati a scomparsa (Provincia, Comune e Reset) */
+        .advanced-filters-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border: 1px solid #eee;
+            display: none; /* Si apre solo cliccando sull'ingranaggio */
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .advanced-filters-card.open {
+            display: flex;
         }
 
         .select-group {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .custom-select {
             flex: 1;
-            padding: 10px;
+            padding: 8px 10px;
             border-radius: 20px;
             border: 1.5px solid #ddd;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
             color: #444;
             outline: none;
@@ -210,12 +239,114 @@
             background-color: #f5f5f5;
             color: #555;
             border: 1.5px solid #ddd;
-            padding: 10px;
+            padding: 8px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
             cursor: pointer;
             text-align: center;
+            width: 100%;
+        }
+
+        .reset-btn:hover {
+            background-color: #eee;
+        }
+
+        /* PILLOLE DI LIVELLO (Categorie in basso sopra la tab bar per pulizia assoluta) */
+        .bottom-filters-panel {
+            position: fixed;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 500px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 2px;
+            z-index: 90;
+            scrollbar-width: none;
+        }
+
+        .bottom-filters-panel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-pill-vertical {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1.5px solid #eee;
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #444;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .filter-pill-vertical.active.cav {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .filter-pill-vertical.active.ps {
+            background-color: var(--danger);
+            color: var(--white);
+            border-color: var(--danger);
+        }
+
+        .filter-pill-vertical.active.police {
+            background-color: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-cav { background-color: #FF1493; }
+        .dot-ps { background-color: #FF0000; }
+        .dot-police { background-color: #0000FF; }
+
+        /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (Spostato sopra i filtri) */
+        .geolocate-fab {
+            position: fixed;
+            bottom: 135px;
+            right: 15px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 90;
+            transition: transform 0.1s;
+        }
+
+        .geolocate-fab:active {
+            transform: scale(0.92);
+        }
+
+        .geolocate-fab svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--success);
         }
 
         /* BARRA DI NAVIGAZIONE E AZIONE INFERIORE (BOTTOM TAB BAR - STYLE APP) */
@@ -276,7 +407,7 @@
         .nav-item.active.police .nav-icon { fill: var(--secondary); }
         .nav-item.active.police .nav-label { color: var(--secondary); }
 
-        /* PULSANTE EMERGENZA RAPIDA GIGANTE (SOS 1522) - PULSANTE */
+        /* PULSANTE EMERGENZA RAPIDA GIGANTE (SOS 1522) */
         .sos-btn-nav {
             background-color: var(--primary);
             color: var(--white);
@@ -305,35 +436,6 @@
             }
         }
 
-        /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (Spostato sopra la tab bar) */
-        .geolocate-fab {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: var(--white);
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 90;
-            transition: transform 0.1s;
-        }
-
-        .geolocate-fab:active {
-            transform: scale(0.92);
-        }
-
-        .geolocate-fab svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--success);
-        }
-
         /* BOTTOM SHEET (Drawer di dettagli) */
         .bottom-sheet {
             position: fixed;
@@ -345,7 +447,7 @@
             background-color: var(--white);
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
-            box-shadow: 0 -5px 30px rgba(0,0,0,0.18);
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
             z-index: 110; /* Stretto sopra la tab bar */
             padding: 20px 20px calc(20px + var(--safe-bottom)) 20px;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -357,6 +459,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* Maniglia del Bottom Sheet */
         .sheet-handle {
             width: 40px;
             height: 5px;
@@ -518,6 +621,13 @@
                 top: 20px;
             }
 
+            .bottom-filters-panel {
+                left: 20px;
+                transform: translateX(0);
+                width: 360px;
+                bottom: 85px;
+            }
+
             .bottom-nav-bar {
                 left: 20px;
                 transform: translateX(0);
@@ -554,36 +664,27 @@
     <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
     <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
-    <!-- CONSOLE SUPERIORE UNIFICATA -->
+    <!-- CONSOLE SUPERIORE UNIFICATA CON INPUT DI RICERCA COMPRESO E SEMPRE VISIBILE -->
     <div class="top-console">
-        <!-- Barra di attivazione / Lente d'ingrandimento -->
+        <!-- Barra di ricerca permanente -->
         <div class="search-bar-floating">
-            <div class="search-input-trigger" onclick="openSearchPanel()">
-                <svg style="width:16px; height:16px; fill:#777;" viewBox="0 0 24 24">
+            <div class="search-input-wrapper-floating">
+                <svg class="search-icon-floating" viewBox="0 0 24 24">
                     <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                 </svg>
-                <span class="search-trigger-text" id="search-trigger-text">Cerca per via, comune...</span>
+                <!-- Real Input Field: Sempre attivo e digitabile all'avvio! -->
+                <input type="text" id="free-search" class="search-input-field" placeholder="Cerca per via, comune..." oninput="filterAll()" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()">
+                
+                <!-- Tasto Cerca integrato direttamente nella barra -->
+                <button class="search-action-btn-mini" onclick="geocodeAddressSearch()">Cerca</button>
+                
+                <!-- Tasto Ingranaggio per mostrare/nascondere i filtri avanzati Provincia/Comune -->
+                <button class="expand-filters-btn" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtri avanzati">⚙️</button>
             </div>
-            <button class="quick-exit-btn" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
         </div>
 
-        <!-- Pannello di Ricerca Avanzata Scomparsa -->
-        <div class="search-expanded-card" id="search-expanded-card">
-            <div class="expanded-card-header">
-                <span class="expanded-title">Filtri di Ricerca</span>
-                <button class="expanded-close-btn" onclick="closeSearchPanel()">✕</button>
-            </div>
-            
-            <!-- Barra di ricerca a testo libero con Tasto Cerca integrato -->
-            <div class="search-input-wrapper">
-                <svg class="search-icon" viewBox="0 0 24 24">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                </svg>
-                <input type="text" id="free-search" class="search-input" placeholder="Cerca per via, comune, provincia..." onkeydown="if(event.key === 'Enter') geocodeAddressSearch()">
-                <button class="search-action-btn" onclick="geocodeAddressSearch()">Cerca</button>
-            </div>
-            
-            <!-- Dropdown di selezione Provincia e Comune -->
+        <!-- Pannello di Ricerca Avanzata Scomparsa (Provincia/Comune/Reset) -->
+        <div class="advanced-filters-card" id="advanced-filters-card">
             <div class="select-group">
                 <select id="select-provincia" class="custom-select" onchange="onProvinciaChange()">
                     <option value="">Provincia (Tutte)</option>
@@ -610,30 +711,43 @@
         </div>
     </div>
 
+    <!-- FILTRI LIVELLO CATEGORIE (Posizionati in basso per pulizia e ordine) -->
+    <div class="bottom-filters-panel">
+        <div class="filter-pill-vertical active cav" id="pill-cav" onclick="toggleCategoryTab('CAV')">
+            <span class="color-dot dot-cav"></span> 💗 Centri CAV
+        </div>
+        <div class="filter-pill-vertical active ps" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
+            <span class="color-dot dot-ps"></span> 🚑 P. Soccorso
+        </div>
+        <div class="filter-pill-vertical active police" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
+            <span class="color-dot dot-police"></span> 🚓 Sicurezza
+        </div>
+    </div>
+
     <!-- BARRA DI NAVIGAZIONE E AZIONE INFERIORE (BOTTOM TAB BAR) -->
     <div class="bottom-nav-bar">
         <!-- Tab Centri Antiviolenza -->
-        <div class="nav-item active cav" id="pill-cav" onclick="toggleCategoryTab('CAV')">
-            <svg class="nav-icon" viewBox="0 0 24 24">
+        <div class="nav-item active" onclick="focusCategoryTab('CAV')">
+            <svg class="nav-icon" viewBox="0 0 24 24" style="fill: var(--primary);">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.4 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.6 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
-            <span class="nav-label">Centri CAV</span>
+            <span class="nav-label" style="color: var(--primary);">Centri CAV</span>
         </div>
         
         <!-- Tab Pronto Soccorso -->
-        <div class="nav-item active ps" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
-            <svg class="nav-icon" viewBox="0 0 24 24">
+        <div class="nav-item" onclick="focusCategoryTab('SANITA')">
+            <svg class="nav-icon" viewBox="0 0 24 24" style="fill: var(--danger);">
                 <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
             </svg>
-            <span class="nav-label">P. Soccorso</span>
+            <span class="nav-label" style="color: var(--danger);">P. Soccorso</span>
         </div>
         
         <!-- Tab Forze dell'Ordine -->
-        <div class="nav-item active police" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
-            <svg class="nav-icon" viewBox="0 0 24 24">
+        <div class="nav-item" onclick="focusCategoryTab('FORZE_ORDINE')">
+            <svg class="nav-icon" viewBox="0 0 24 24" style="fill: var(--secondary);">
                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 13.17l5.59-5.59L17 9l-7 7z"/>
             </svg>
-            <span class="nav-label">Sicurezza</span>
+            <span class="nav-label" style="color: var(--secondary);">Sicurezza</span>
         </div>
         
         <!-- Pulsante di Emergenza SOS 1522 Gigante -->
@@ -726,11 +840,9 @@
         // RENDERER MINIMALISTA DEI CLUSTER (Sostituisce i cerchi blu giganti concentrici con un solo cerchio antracite e bordo bianco elegante)
         const customClusterRenderer = {
             render: function({ count, position }, stats) {
-                // Dimensione proporzionale al numero di elementi
                 const size = count < 10 ? 28 : count < 100 ? 34 : 40;
                 const radius = size / 2;
                 
-                // Disegna uno splendido cerchietto antracite minimale
                 const svg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
                         <circle cx="${radius}" cy="${radius}" r="${radius - 2}" fill="#374151" fill-opacity="0.95" stroke="#FFFFFF" stroke-width="2"/>
@@ -745,19 +857,47 @@
                         scaledSize: new google.maps.Size(size, size),
                         anchor: new google.maps.Point(radius, radius)
                     },
-                    label: "", // Disabilita etichetta di default per evitare numeri duplicati
+                    label: "", // Disabilita etichetta di default
                     zIndex: google.maps.Marker.MAX_ZINDEX + count
                 });
             }
         };
 
-        // CHIUDI ED ESPANDI PANNELLO RICERCA
-        function openSearchPanel() {
-            document.getElementById("search-expanded-card").classList.add("open");
+        // MOSTRA/NASCONDI FILTRI PROVINCIA/COMUNE (Tasto Ingranaggio)
+        function toggleAdvancedFilters() {
+            const btn = document.getElementById("expand-filters-btn");
+            const card = document.getElementById("advanced-filters-card");
+            
+            const isOpen = card.classList.toggle("open");
+            btn.classList.toggle("active", isOpen);
         }
 
-        function closeSearchPanel() {
-            document.getElementById("search-expanded-card").classList.remove("open");
+        // COSA SUCCEDE SE CLICCHI I MODULI IN BASSO DELLA NAV BAR
+        function focusCategoryTab(category) {
+            closeBottomSheet();
+            closeSearchPanel();
+            
+            // Accendi solo la categoria selezionata
+            for (const key of Object.keys(layers)) {
+                const isTarget = key === category;
+                layers[key].active = isTarget;
+                
+                const pillId = `pill-${key === 'CAV' ? 'cav' : key === 'SANITA' ? 'ps' : 'police'}`;
+                const pill = document.getElementById(pillId);
+                if (pill) {
+                    if (isTarget) pill.classList.add("active");
+                    else pill.classList.remove("active");
+                }
+            }
+            
+            // Trova il primo marker di quella categoria visibile e centrati sopra per immediatezza d'uso!
+            const nearest = markers.find(m => m.category === category);
+            if (nearest && map) {
+                map.panTo(nearest.getPosition());
+                map.setZoom(12);
+            }
+            
+            filterAll();
         }
 
         // INIZIALIZZAZIONE DELLA MAPPA
@@ -789,7 +929,7 @@
 
             infoWindow = new google.maps.InfoWindow();
 
-            // Inizializza i clusterers con il renderer personalizzato minimale (No cerchi blu!)
+            // Inizializza i clusterers
             if (window.markerClusterer && window.markerClusterer.MarkerClusterer) {
                 clusterers = {
                     'CAV': new markerClusterer.MarkerClusterer({ map, markers: [], renderer: customClusterRenderer }),
@@ -798,13 +938,13 @@
                 };
             }
 
-            // Avvia la geolocalizzazione automatica come primo passo assoluto
+            // Geolocalizzazione automatica istantanea
             autoGeolocalizeOnStart();
 
             loadAllLayers();
         }
 
-        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON SCOPE ZOOM ALLARGATO (ZOOM 12.5)
+        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON RANGE INTERCOMUNALE (ZOOM 12.5)
         function autoGeolocalizeOnStart() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -813,7 +953,6 @@
                         const lon = position.coords.longitude;
                         const userLatLng = { lat: lat, lng: lon };
 
-                        // Crea l'indicatore GPS verde dell'utente
                         window.userMarker = new google.maps.Marker({
                             position: userLatLng,
                             map: map,
@@ -828,7 +967,6 @@
                             }
                         });
 
-                        // Centra la mappa e imposta lo zoom intercomunale (12.5) per mostrare l'area circostante come da screen
                         map.setCenter(userLatLng);
                         map.setZoom(12.5);
                     },
@@ -840,7 +978,7 @@
             }
         }
 
-        // GEOLOCALIZZAZIONE ED INQUADRATURA TRAMITE BARRA DI RICERCA TESTUALE (OSM NOMINATIM - 100% Funzionante e svincolato dalle API Google)
+        // GEOLOCALIZZAZIONE ED INQUADRATURA TRAMITE BARRA DI RICERCA TESTUALE (OSM NOMINATIM - 100% Funzionante e slegata dalle chiavi di Google)
         function geocodeAddressSearch() {
             const searchText = document.getElementById("free-search").value.trim();
             if (!searchText) {
@@ -848,12 +986,11 @@
                 return;
             }
             
-            const searchBtn = document.querySelector(".search-action-btn");
+            const searchBtn = document.querySelector(".search-action-btn-mini");
             const originalText = searchBtn.textContent;
-            searchBtn.textContent = "⏳...";
+            searchBtn.textContent = "⏳";
             searchBtn.disabled = true;
             
-            // Limitiamo la ricerca alla sola Lombardia tramite geofencing testuale
             const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(searchText + ", Lombardia, Italia")}`;
             
             fetch(url, {
@@ -874,9 +1011,8 @@
                     
                     // Sposta e centra la mappa nel luogo esatto desiderato dall'utente
                     map.panTo(searchLatLng);
-                    map.setZoom(12.5); // Applica lo stesso zoom panoramico-allargato dello screen!
+                    map.setZoom(12.5); // Range intercomunale perfetto dello screen!
                     
-                    // Posiziona o sposta l'indicatore GPS verde (come se fosse geolocalizzato lì!)
                     if (window.userMarker) {
                         window.userMarker.setPosition(searchLatLng);
                     } else {
@@ -895,10 +1031,7 @@
                         });
                     }
                     
-                    // Chiudi il pannello di ricerca per mostrare la mappa pulita
                     closeSearchPanel();
-                    
-                    // Avvia il filtro all'istante
                     filterAll();
                 } else {
                     alert("Impossibile trovare la località cercata. Inserisci un comune o indirizzo lombardo valido.");
@@ -1009,7 +1142,7 @@
             };
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA (CON PIN COMPATTI DA 22X28 PER MOBILE)
+        // RENDERING DELLE FEATURES SULLA MAPPA
         function renderFeatures(geojson, category) {
             const tempMarkers = [];
             if (!geojson || !geojson.features) return;
@@ -1036,7 +1169,6 @@
                         customIconUrl = svgForzeOrdine(pinColor);
                     }
 
-                    // Ridimensionato a 22x28 pixel per eliminare il caos grafico su mobile!
                     const marker = new google.maps.Marker({
                         position: latLng,
                         title: props.name,
@@ -1177,10 +1309,11 @@
         function toggleCategoryTab(category) {
             const pillId = `pill-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
             const pill = document.getElementById(pillId);
-            const isActive = pill.classList.toggle("active");
-            
-            layers[category].active = isActive;
-            filterAll();
+            if (pill) {
+                const isActive = pill.classList.toggle("active");
+                layers[category].active = isActive;
+                filterAll();
+            }
         }
 
         // FILTRAGGIO ED INCROCIO DATI GENERALE
@@ -1362,7 +1495,7 @@
                     }
                 },
                 (error) => {
-                    alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS al tuo browser.");
+                    alert("Impossibile rilevare la tua posizione. Verifica di avre concesso i permessi GPS al tuo browser.");
                 },
                 { enableHighAccuracy: true, timeout: 10000 }
             );
