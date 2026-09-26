@@ -287,7 +287,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -660,7 +660,7 @@
         <span class="brand-subtitle">Lombardia • Verificata 2026</span>
     </div>
 
-    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
+    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA -->
     <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
     <!-- CONSOLE SUPERIORE UNIFICATA -->
@@ -805,38 +805,56 @@
             "VA": { lat: 45.8196, lng: 8.8250, zoom: 10.5 }
         };
 
-        // ICONE SVG PERSONALIZZATE RIDOTTE DI 2/3 (DIMENSIONI FINALI 22x28 - ANCHOR 11,28) CON GLOW 3D
+        // NUOVI SEGNAPOSTI SVG PERSONALIZZATI RICHIESTI DA GIACOMO (DIMEZZATI A 22X28 PER MOBILE)
+        // 1. Centri Antiviolenza (Pink): Unione tra Casetta e Mani che si stringono/prestano aiuto
         const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
                 <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
                     <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
                 </filter>
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
-                <path d="M12 5.5l-5 4.5v6.5h3.5v-4h3v4h3.5V10z" fill="#FFFFFF"/>
+                <!-- Casetta bianca di base -->
+                <path d="M12 5l-5 4.5V16h10V9.5L12 5z" fill="#FFFFFF"/>
+                <!-- Mani che si incontrano/stringono nel prestare aiuto in colore Rosa al centro della casetta -->
+                <path d="M10.2 9.5c-.5 0-.9.4-.9.9s.4.9.9.9h3.6c.5 0 .9-.4.9-.9s-.4-.9-.9-.9h-3.6z" fill="${color}"/>
+                <path d="M9.3 11.2c-.4 0-.7.3-.7.7s.3.7.7.7h5.4c.4 0 .7-.3.7-.7s-.3-.7-.7-.7H9.3z" fill="${color}"/>
+                <path d="M10.2 12.9c-.5 0-.9.4-.9.9s.4.9.9.9h3.6c.5 0 .9-.4.9-.9s-.4-.9-.9-.9h-3.6z" fill="${color}"/>
             </svg>
         `);
 
+        // 2. Pronto Soccorso (Red): Edificio Ospedale con Croce Rossa ben visibile
         const svgProntoSoccorso = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
                 <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
                     <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
                 </filter>
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
-                <path d="M10.5 6.5h3v4H17.5v3H13.5v4h-3v-4H6.5v-3h4z" fill="#FFFFFF"/>
+                <!-- Edificio ospedale bianco di base -->
+                <path d="M6 7h12v10H6V7z" fill="#FFFFFF"/>
+                <path d="M8 12h2v5H8v-5z M14 12h2v5h-2v-5z" fill="#E0E0E0"/> <!-- Finestre / colonne dell'edificio -->
+                <!-- Croce Rossa ben visibile al centro su un distintivo circolare bianco -->
+                <circle cx="12" cy="10" r="3.2" fill="#FFFFFF" stroke="#FF0000" stroke-width="0.8"/>
+                <path d="M11 8.5h2v3h-2v-3z M10.5 9.5h3v1h-3v-1z" fill="#FF0000"/> <!-- Croce rossa interna -->
             </svg>
         `);
 
+        // 3. Forze dell'Ordine (Frazioni cromatiche diverse): Profilo del Poliziotto con berretto con visiera
         const svgForzeOrdine = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
                 <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
                     <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
                 </filter>
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
-                <path d="M12 5.5l5 2v4.5c0 3.11-2.14 6.01-5 6.75-2.86-.74-5-3.64-5-6.75V7.5z" fill="#FFFFFF"/>
+                <!-- Silhouette del Poliziotto bianca con berretto rigido visibile -->
+                <circle cx="12" cy="14" r="3.5" fill="#FFFFFF"/> <!-- Viso -->
+                <path d="M7 17.5c0-1.5 2-2.5 5-2.5s5 1 5 2.5v1H7v-1z" fill="#FFFFFF"/> <!-- Spalle -->
+                <path d="M7.5 11c0-1.5 1.5-2.5 4.5-2.5s4.5 1 4.5 2.5v1h-9v-1z" fill="#FFFFFF"/> <!-- Berretto corona -->
+                <path d="M7 11.5h10v1H7v-1z" fill="#FFFFFF"/> <!-- Berretto fascia -->
+                <path d="M8 12.5h8l1.5 1h-11z" fill="#FFFFFF"/> <!-- Visiera sporgente -->
             </svg>
         `);
 
-        // RENDERER MINIMALISTA DEI CLUSTER (Sostituisce i cerchi blu giganti concentrici con un solo cerchio antracite e bordo bianco elegante)
+        // RENDERER MINIMALISTA DEI CLUSTER (Cerchio antracite e bordo bianco elegante)
         const customClusterRenderer = {
             render: function({ count, position }, stats) {
                 const size = count < 10 ? 28 : count < 100 ? 34 : 40;
@@ -920,12 +938,6 @@
                 zoomControl: false
             });
 
-            // Chiudi i drawer al click sulla mappa
-            map.addListener("click", () => {
-                closeBottomSheet();
-                closeSearchPanel();
-            });
-
             infoWindow = new google.maps.InfoWindow();
 
             // Inizializza i clusterers con il renderer personalizzato minimale (No cerchi blu!)
@@ -967,7 +979,7 @@
                             }
                         });
 
-                        // Centra la mappa e imposta uno zoom allargato (11.5) per visualizzare l'area circostante
+                        // Centra la mappa e imposta lo zoom allargato (11.5) per visualizzare l'area circostante
                         map.setCenter(userLatLng);
                         map.setZoom(11.5);
                     },
@@ -1313,7 +1325,7 @@
             }
         }
 
-        // FILTRAGGIO ED INCROCIO DATI GENERALE
+        // FILTRAGGIO ED INCROCIO DATI GENERALE (RESILIENTE)
         function filterAll() {
             closeBottomSheet();
             
