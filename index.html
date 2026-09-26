@@ -677,7 +677,7 @@
                 <!-- Tasto Cerca integrato direttamente nella barra -->
                 <button class="search-action-btn-mini" onclick="geocodeAddressSearch()">Cerca</button>
                 
-                <!-- Tasto Ingranaggio per mostrare/nascondere i filtri avanzati Provincia/Comune -->
+                <!-- Tasto Ingranaggio per moststere/nascondere i filtri avanzati Provincia/Comune -->
                 <button class="expand-filters-btn" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtri avanzati">⚙️</button>
             </div>
         </div>
@@ -805,41 +805,7 @@
             "VA": { lat: 45.8196, lng: 8.8250, zoom: 10.5 }
         };
 
-        // NUOVI SEGNAPOSTI ICONICI FLAT CIRCLES (Proposta 2) - 100% VISIBILI E LEGGERI
-        // 1. Centri Antiviolenza (Pink): Cerchio rosa neon con icona Cuore bianco
-        const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
-                    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
-                </filter>
-                <circle cx="12" cy="12" r="10" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#glow)"/>
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.4 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.6 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#FFFFFF" transform="scale(0.5) translate(8, 8)"/>
-            </svg>
-        `);
-
-        // 2. Pronto Soccorso (Red): Cerchio rosso d'emergenza con Croce Medica bianca
-        const svgProntoSoccorso = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
-                    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
-                </filter>
-                <circle cx="12" cy="12" r="10" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#glow)"/>
-                <path d="M10 6h4v4h4v4h-4v4h-4v-4H6v-4h4z" fill="#FFFFFF"/>
-            </svg>
-        `);
-
-        // 3. Forze dell'Ordine (Blue): Cerchio blu con icona Stella d'autorità bianca
-        const svgForzeOrdine = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
-                    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
-                </filter>
-                <circle cx="12" cy="12" r="10" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#glow)"/>
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#FFFFFF" transform="scale(0.52) translate(11, 11)"/>
-            </svg>
-        `);
-
-        // RENDERER MINIMALISTA DEI CLUSTER
+        // RENDERER MINIMALISTA DEI CLUSTER (Cerchio antracite e bordo bianco elegante)
         const customClusterRenderer = {
             render: function({ count, position }, stats) {
                 const size = count < 10 ? 28 : count < 100 ? 34 : 40;
@@ -923,6 +889,12 @@
                 zoomControl: false
             });
 
+            // Chiudi i drawer al click sulla mappa
+            map.addListener("click", () => {
+                closeBottomSheet();
+                closeSearchPanel();
+            });
+
             infoWindow = new google.maps.InfoWindow();
 
             // Inizializza i clusterers con il renderer personalizzato minimale (No cerchi blu!)
@@ -940,7 +912,7 @@
             loadAllLayers();
         }
 
-        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON SCOPE ZOOM ALLARGATO (ZOOM 12.5)
+        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON RANGE INTERCOMUNALE (ZOOM 12.5)
         function autoGeolocalizeOnStart() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -1136,7 +1108,7 @@
             };
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA (CON FOCUS ANCORAGGIO CENTRALE 12,12)
+        // RENDERING DELLE FEATURES SULLA MAPPA (CON SEGNAPOSTI ICONICI PERSONALIZZATI DA IMMAGINE UNIFICATI E TRASPARENTI)
         function renderFeatures(geojson, category) {
             const tempMarkers = [];
             if (!geojson || !geojson.features) return;
@@ -1149,18 +1121,23 @@
                     const latLng = new google.maps.LatLng(coords[1], coords[0]);
                     const props = feature.properties || {};
 
-                    let pinColor = layers[category].color;
-                    if (props.colore_marker) {
-                        pinColor = props.colore_marker;
-                    }
-
-                    let customIconUrl = "";
+                    // Seleziona l'immagine unificata e trasparente adatta alla categoria
+                    let iconUrl = "";
                     if (category === "CAV") {
-                        customIconUrl = svgCAV(pinColor);
+                        iconUrl = "data/marker_cav.png";
                     } else if (category === "SANITA") {
-                        customIconUrl = svgProntoSoccorso(pinColor);
+                        iconUrl = "data/marker_hospital.png";
                     } else if (category === "FORZE_ORDINE") {
-                        customIconUrl = svgForzeOrdine(pinColor);
+                        // Differenziazione cromatica per tipologia di forza di polizia
+                        if (props.tipo === "Arma dei Carabinieri") {
+                            iconUrl = "data/marker_police_carabinieri.png";
+                        } else if (props.tipo === "Polizia di Stato") {
+                            iconUrl = "data/marker_police_stato.png";
+                        } else if (props.tipo === "Polizia Locale") {
+                            iconUrl = "data/marker_police_locale.png";
+                        } else {
+                            iconUrl = "data/marker_police_generico.png";
+                        }
                     }
 
                     // Ancoraggio impostato a 12,12 (al centro perfetto) per far fluttuare correttamente i cerchi sulla mappa!
@@ -1168,7 +1145,7 @@
                         position: latLng,
                         title: props.name,
                         icon: {
-                            url: customIconUrl,
+                            url: iconUrl,
                             scaledSize: new google.maps.Size(24, 24),
                             anchor: new google.maps.Point(12, 12)
                         }
