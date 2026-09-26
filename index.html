@@ -121,7 +121,7 @@
             gap: 8px;
         }
 
-        /* BARRA DI RICERCA COMPATTA E PERMANENTE */
+        /* BARRA DI RICERCA COMPATTA E PERMANENTE (Sempre attiva per digitare al volo!) */
         .search-bar-floating {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -252,41 +252,37 @@
             background-color: #eee;
         }
 
-        /* FILTRI LIVELLO CATEGORIE (Posizionati a lato della barra dei dropdown) */
+        /* FILTRI LIVELLO CATEGORIE (Unificati e distribuiti equamente - No scroll!) */
         .bottom-filters-panel {
             position: fixed;
-            bottom: 95px; /* Alzato leggermente per fare spazio ai tasti giganti */
+            bottom: 85px; /* Alzato leggermente per fare spazio ai tasti d'emergenza giganti */
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 30px);
             max-width: 500px;
             display: flex;
             gap: 6px;
-            overflow-x: auto;
-            padding: 2px;
             z-index: 90;
-            scrollbar-width: none;
-        }
-
-        .bottom-filters-panel::-webkit-scrollbar {
-            display: none;
+            justify-content: space-between; /* Distribuisce lo spazio equamente */
         }
 
         .filter-pill-vertical {
+            flex: 1; /* Ciascun bottone prende esattamente il 33.3% dello schermo! No scroll! */
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border: 1.5px solid #eee;
-            padding: 8px 14px;
+            padding: 10px 4px;
             border-radius: 25px;
             font-size: 0.75rem;
-            font-weight: bold;
+            font-weight: 800;
             color: #444;
             cursor: pointer;
             white-space: nowrap;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
+            justify-content: center; /* Centra il testo internamente */
             gap: 6px;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -295,23 +291,26 @@
             background-color: var(--primary);
             color: var(--white);
             border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.25);
         }
 
         .filter-pill-vertical.active.ps {
             background-color: var(--danger);
             color: var(--white);
             border-color: var(--danger);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.25);
         }
 
         .filter-pill-vertical.active.police {
             background-color: var(--secondary);
             color: var(--white);
             border-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
         }
 
         .color-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             display: inline-block;
         }
@@ -349,7 +348,7 @@
             fill: var(--success);
         }
 
-        /* BARRA DI EMERGENZA INFERIORE CON BOTTONI ISTANTANEI GIGANTI ED ALLINEATI CON I MARCHI REALI (NUE 112 e 1522) */
+        /* BARRA DI EMERGENZA INFERIORE (BOTTOM TAB BAR CON FORME ED COLORI BRANDIZZATI NUE 112 E 1522) */
         .bottom-nav-bar {
             position: fixed;
             bottom: 20px;
@@ -375,63 +374,62 @@
             border-radius: 20px;
             text-decoration: none;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             color: var(--white);
             font-family: var(--font-family);
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             position: relative;
             overflow: hidden;
             transition: transform 0.1s;
+            gap: 8px;
         }
 
         .emergency-nav-btn:active {
             transform: scale(0.96);
         }
 
-        /* 🚓 STILE UFFICIALE NUE 112 (Italiano/Europeo: Spaccatura Diagonale Blu/Rosso con Tricolore) */
+        /* 🚑 NUE 112: Sfondo Rosso e Scritta Bianca Italic (Come da immagine ufficiale!) */
         .btn-112 {
-            background: linear-gradient(135deg, #0d47a1 50%, #d32f2f 50%); /* Sinistra Blu, Destra Rosso */
+            background-color: #e60000; /* Rosso d'emergenza solido */
         }
 
-        .btn-112-logo {
-            text-align: center;
-            line-height: 1.1;
-        }
-
-        .btn-112-text {
-            font-size: 1.25rem;
+        /* Cerchietto bianco sul lato sinistro contenente il telefono rosso e "112" */
+        .btn-112-badge {
+            background-color: white;
+            color: #e60000;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
             font-weight: 900;
-            letter-spacing: 0.5px;
-            display: block;
-            color: white;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            padding-left: 2px;
+        }
+        
+        .btn-112-badge-phone {
+            color: #e60000;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 1px;
         }
 
-        .btn-112-subtext {
-            font-size: 0.65rem;
-            font-weight: 800;
+        .btn-112-text-white {
             color: white;
+            font-size: 1rem;
+            font-weight: 900;
+            font-style: italic; /* Scritta corsivo corsivo corsivo come nel logo! */
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
-        /* Bandierina Tricolore in fondo al tasto 112 */
-        .tricolor-stripe {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #4caf50 33%, #ffffff 33%, #ffffff 66%, #f44336 66%);
-        }
-
-        /* 💗 STILE UFFICIALE 1522 (Branding Magenta/Pink del Dipartimento Pari Opportunità) */
+        /* 💗 1522: Branding Magenta/Pink Originale Pari Opportunità */
         .btn-1522 {
             background-color: #ec008c; /* Magenta ufficiale 1522! */
-            animation: pulse-grow 2s infinite;
+            animation: pulse-glow 2s infinite;
         }
 
         .btn-1522-text {
@@ -739,7 +737,7 @@
         </div>
     </div>
 
-    <!-- FILTRI LIVELLO CATEGORIE (Posizionati in basso per pulizia e ordine) -->
+    <!-- FILTRI LIVELLO CATEGORIE (Unificati e distribuiti equamente a lato per non scorrere!) -->
     <div class="bottom-filters-panel">
         <div class="filter-pill-vertical active cav" id="pill-cav" onclick="toggleCategoryTab('CAV')">
             <span class="color-dot dot-cav"></span> 💗 Centri CAV
@@ -754,14 +752,13 @@
 
     <!-- BARRA DI NAVIGAZIONE E EMERGENZA INFERIORE (STYLE APP CON DUE TASTI GIGANTI D'EMERGENZA REAL-BRAND) -->
     <div class="bottom-nav-bar">
-        <!-- Bottone d'Emergenza Istituzionale NUE 112 (Metà Blu Polizia, Metà Rosso Sanità con Tricolore) -->
+        <!-- Bottone d'Emergenza Istituzionale NUE 112 (Sfondo Rosso, Scritta Bianca Italic con Cerchietto Icona come da immagine reale) -->
         <a href="tel:112" class="emergency-nav-btn btn-112">
-            <div class="btn-112-logo">
-                <span class="btn-112-text">112</span>
-                <span class="btn-112-subtext">EMERGENZA</span>
+            <!-- Cerchietto bianco con cornetta rossa e scritta 112 -->
+            <div class="btn-112-badge">
+                <span class="btn-112-badge-phone">📞</span>112
             </div>
-            <!-- Flag stripe tricolore italiano -->
-            <div class="tricolor-stripe"></div>
+            <span class="btn-112-text-white">Emergenza</span>
         </a>
         
         <!-- Bottone d'Emergenza Nazionale 1522 (Branding Rosa/Magenta Originale Pari Opportunità) -->
