@@ -121,7 +121,7 @@
             gap: 8px;
         }
 
-        /* BARRA DI RICERCA COMPATTA E PERMANENTE (Sempre attiva per digitare al volo!) */
+        /* BARRA DI RICERCA COMPATTA E PERMANENTE */
         .search-bar-floating {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -252,10 +252,10 @@
             background-color: #eee;
         }
 
-        /* PILLOLE DI LIVELLO (Categorie in basso sopra la tab bar per pulizia assoluta) */
+        /* FILTRI LIVELLO CATEGORIE (Posizionati a lato della barra dei dropdown) */
         .bottom-filters-panel {
             position: fixed;
-            bottom: 85px;
+            bottom: 95px; /* Alzato leggermente per fare spazio ai tasti giganti */
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 30px);
@@ -323,7 +323,7 @@
         /* BOTTONE GEOLOCALIZZAZIONE FLUTTUANTE (Spostato sopra i filtri) */
         .geolocate-fab {
             position: fixed;
-            bottom: 135px;
+            bottom: 145px;
             right: 15px;
             width: 48px;
             height: 48px;
@@ -349,7 +349,7 @@
             fill: var(--success);
         }
 
-        /* BARRA DI NAVIGAZIONE E AZIONE INFERIORE (BOTTOM TAB BAR - STYLE APP) */
+        /* BARRA DI EMERGENZA INFERIORE CON BOTTONI ISTANTANEI GIGANTI ED ALLINEATI CON I MARCHI REALI (NUE 112 e 1522) */
         .bottom-nav-bar {
             position: fixed;
             bottom: 20px;
@@ -360,79 +360,108 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-radius: 35px;
-            padding: 8px 12px;
+            border-radius: 30px;
+            padding: 10px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.18);
             border: 1px solid rgba(255, 255, 255, 0.25);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 10px; /* Spazio tra i due bottoni giganti */
             z-index: 100;
         }
 
-        .nav-item {
+        .emergency-nav-btn {
+            flex: 1;
+            height: 52px;
+            border-radius: 20px;
+            text-decoration: none;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            flex: 1;
-            cursor: pointer;
-            padding: 6px 0;
-            border-radius: 20px;
-            transition: all 0.2s;
-        }
-
-        .nav-icon {
-            width: 20px;
-            height: 20px;
-            margin-bottom: 3px;
-            fill: #555;
-            transition: fill 0.2s;
-        }
-
-        .nav-label {
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: #666;
-            transition: color 0.2s;
-        }
-
-        /* Stati attivi per Tab Bar */
-        .nav-item.active.cav .nav-icon { fill: var(--primary); }
-        .nav-item.active.cav .nav-label { color: var(--primary); }
-        
-        .nav-item.active.ps .nav-icon { fill: var(--danger); }
-        .nav-item.active.ps .nav-label { color: var(--danger); }
-        
-        .nav-item.active.police .nav-icon { fill: var(--secondary); }
-        .nav-item.active.police .nav-label { color: var(--secondary); }
-
-        /* PULSANTE EMERGENZA RAPIDA GIGANTE (SOS 1522) */
-        .sos-btn-nav {
-            background-color: var(--primary);
-            color: var(--white);
-            border-radius: 25px;
-            padding: 10px 18px;
-            font-weight: 850;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.4);
-            display: flex;
             align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            border: none;
-            animation: pulse-glow 2s infinite;
+            color: var(--white);
+            font-family: var(--font-family);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.1s;
+        }
+
+        .emergency-nav-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* 🚓 STILE UFFICIALE NUE 112 (Italiano/Europeo: Spaccatura Diagonale Blu/Rosso con Tricolore) */
+        .btn-112 {
+            background: linear-gradient(135deg, #0d47a1 50%, #d32f2f 50%); /* Sinistra Blu, Destra Rosso */
+        }
+
+        .btn-112-logo {
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .btn-112-text {
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            display: block;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .btn-112-subtext {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Bandierina Tricolore in fondo al tasto 112 */
+        .tricolor-stripe {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #4caf50 33%, #ffffff 33%, #ffffff 66%, #f44336 66%);
+        }
+
+        /* 💗 STILE UFFICIALE 1522 (Branding Magenta/Pink del Dipartimento Pari Opportunità) */
+        .btn-1522 {
+            background-color: #ec008c; /* Magenta ufficiale 1522! */
+            animation: pulse-grow 2s infinite;
+        }
+
+        .btn-1522-text {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            color: white;
+            display: block;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .btn-1522-subtext {
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            opacity: 0.95;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.15);
         }
 
         @keyframes pulse-glow {
             0% {
-                box-shadow: 0 0 0 0 rgba(194, 24, 91, 0.5);
+                box-shadow: 0 0 0 0 rgba(236, 0, 140, 0.5);
             }
             70% {
-                box-shadow: 0 0 0 10px rgba(194, 24, 91, 0);
+                box-shadow: 0 0 0 10px rgba(236, 0, 140, 0);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(194, 24, 91, 0);
+                box-shadow: 0 0 0 0 rgba(236, 0, 140, 0);
             }
         }
 
@@ -447,7 +476,7 @@
             background-color: var(--white);
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
-            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.18);
             z-index: 110; /* Stretto sopra la tab bar */
             padding: 20px 20px calc(20px + var(--safe-bottom)) 20px;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -624,7 +653,7 @@
                 left: 20px;
                 transform: translateX(0);
                 width: 360px;
-                bottom: 85px;
+                bottom: 95px;
             }
 
             .bottom-nav-bar {
@@ -677,7 +706,7 @@
                 <!-- Tasto Cerca integrato direttamente nella barra -->
                 <button class="search-action-btn-mini" onclick="geocodeAddressSearch()">Cerca</button>
                 
-                <!-- Tasto Ingranaggio per moststere/nascondere i filtri avanzati Provincia/Comune -->
+                <!-- Tasto Ingranaggio per mostrare/nascondere i filtri avanzati Provincia/Comune -->
                 <button class="expand-filters-btn" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtri avanzati">⚙️</button>
             </div>
         </div>
@@ -723,36 +752,23 @@
         </div>
     </div>
 
-    <!-- BARRA DI NAVIGAZIONE E AZIONE INFERIORE (BOTTOM TAB BAR) -->
+    <!-- BARRA DI NAVIGAZIONE E EMERGENZA INFERIORE (STYLE APP CON DUE TASTI GIGANTI D'EMERGENZA REAL-BRAND) -->
     <div class="bottom-nav-bar">
-        <!-- Tab Centri Antiviolenza -->
-        <div class="nav-item active" onclick="focusCategoryTab('CAV')">
-            <svg class="nav-icon" viewBox="0 0 24 24" style="fill: var(--primary);">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.4 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.6 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-            <span class="nav-label" style="color: var(--primary);">Centri CAV</span>
-        </div>
+        <!-- Bottone d'Emergenza Istituzionale NUE 112 (Metà Blu Polizia, Metà Rosso Sanità con Tricolore) -->
+        <a href="tel:112" class="emergency-nav-btn btn-112">
+            <div class="btn-112-logo">
+                <span class="btn-112-text">112</span>
+                <span class="btn-112-subtext">EMERGENZA</span>
+            </div>
+            <!-- Flag stripe tricolore italiano -->
+            <div class="tricolor-stripe"></div>
+        </a>
         
-        <!-- Tab Pronto Soccorso -->
-        <div class="nav-item" onclick="focusCategoryTab('SANITA')">
-            <svg class="nav-icon" viewBox="0 0 24 24" style="fill: var(--danger);">
-                <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
-            </svg>
-            <span class="nav-label" style="color: var(--danger);">P. Soccorso</span>
-        </div>
-        
-        <!-- Tab Forze dell'Ordine -->
-        <div class="nav-item" onclick="focusCategoryTab('FORZE_ORDINE')">
-            <svg class="nav-icon" viewBox="0 0 24 24" style="fill: var(--secondary);">
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 13.17l5.59-5.59L17 9l-7 7z"/>
-            </svg>
-            <span class="nav-label" style="color: var(--secondary);">Sicurezza</span>
-        </div>
-        
-        <!-- Pulsante di Emergenza SOS 1522 Gigante -->
-        <button class="sos-btn-nav" onclick="window.location.href='tel:1522'">
-            📞 SOS 1522
-        </button>
+        <!-- Bottone d'Emergenza Nazionale 1522 (Branding Rosa/Magenta Originale Pari Opportunità) -->
+        <a href="tel:1522" class="emergency-nav-btn btn-1522">
+            <span class="btn-1522-text">1522</span>
+            <span class="btn-1522-subtext">ANTIVIOLENZA</span>
+        </a>
     </div>
 
     <!-- FLOAT ACTION BUTTON GEOLOCATE (FAB) -->
@@ -805,7 +821,38 @@
             "VA": { lat: 45.8196, lng: 8.8250, zoom: 10.5 }
         };
 
-        // RENDERER MINIMALISTA DEI CLUSTER (Cerchio antracite e bordo bianco elegante)
+        // ICONE SVG PERSONALIZZATE RIDOTTE DI 2/3 (DIMENSIONI FINALI 22x28 - ANCHOR 11,28) CON GLOW 3D
+        const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
+                </filter>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
+                <path d="M12 5.5l-5 4.5v6.5h3.5v-4h3v4h3.5V10z" fill="#FFFFFF"/>
+            </svg>
+        `);
+
+        const svgProntoSoccorso = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
+                </filter>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
+                <path d="M10.5 6.5h3v4H17.5v3H13.5v4h-3v-4H6.5v-3h4z" fill="#FFFFFF"/>
+            </svg>
+        `);
+
+        const svgForzeOrdine = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
+                </filter>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
+                <path d="M12 5.5l5 2v4.5c0 3.11-2.14 6.01-5 6.75-2.86-.74-5-3.64-5-6.75V7.5z" fill="#FFFFFF"/>
+            </svg>
+        `);
+
+        // RENDERER MINIMALISTA DEI CLUSTER
         const customClusterRenderer = {
             render: function({ count, position }, stats) {
                 const size = count < 10 ? 28 : count < 100 ? 34 : 40;
