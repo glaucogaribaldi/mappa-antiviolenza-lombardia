@@ -14,7 +14,7 @@
             --dark: #212121;
             --light: #f5f5f5;
             --white: #ffffff;
-            --border-radius: 16px;
+            --border-radius: 20px;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
@@ -660,7 +660,7 @@
         <span class="brand-subtitle">Lombardia • Verificata 2026</span>
     </div>
 
-    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA -->
+    <!-- TASTO USCITA RAPIDA FLUTTUANTE A DESTRA (COMPLETAMENTE ISOLATO) -->
     <button class="quick-exit-fab" onclick="window.triggerQuickExit()">Uscita Rapida (Esc)</button>
 
     <!-- CONSOLE SUPERIORE UNIFICATA -->
@@ -805,56 +805,41 @@
             "VA": { lat: 45.8196, lng: 8.8250, zoom: 10.5 }
         };
 
-        // NUOVI SEGNAPOSTI SVG PERSONALIZZATI RICHIESTI DA GIACOMO (DIMEZZATI A 22X28 PER MOBILE)
-        // 1. Centri Antiviolenza (Pink): Unione tra Casetta e Mani che si stringono/prestano aiuto
+        // NUOVI SEGNAPOSTI ICONICI FLAT CIRCLES (Proposta 2) - 100% VISIBILI E LEGGERI
+        // 1. Centri Antiviolenza (Pink): Cerchio rosa neon con icona Cuore bianco
         const svgCAV = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
-                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
                     <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
                 </filter>
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
-                <!-- Casetta bianca di base -->
-                <path d="M12 5l-5 4.5V16h10V9.5L12 5z" fill="#FFFFFF"/>
-                <!-- Mani che si incontrano/stringono nel prestare aiuto in colore Rosa al centro della casetta -->
-                <path d="M10.2 9.5c-.5 0-.9.4-.9.9s.4.9.9.9h3.6c.5 0 .9-.4.9-.9s-.4-.9-.9-.9h-3.6z" fill="${color}"/>
-                <path d="M9.3 11.2c-.4 0-.7.3-.7.7s.3.7.7.7h5.4c.4 0 .7-.3.7-.7s-.3-.7-.7-.7H9.3z" fill="${color}"/>
-                <path d="M10.2 12.9c-.5 0-.9.4-.9.9s.4.9.9.9h3.6c.5 0 .9-.4.9-.9s-.4-.9-.9-.9h-3.6z" fill="${color}"/>
+                <circle cx="12" cy="12" r="10" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#glow)"/>
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.4 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.6 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#FFFFFF" transform="scale(0.5) translate(8, 8)"/>
             </svg>
         `);
 
-        // 2. Pronto Soccorso (Red): Edificio Ospedale con Croce Rossa ben visibile
+        // 2. Pronto Soccorso (Red): Cerchio rosso d'emergenza con Croce Medica bianca
         const svgProntoSoccorso = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
-                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
                     <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
                 </filter>
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
-                <!-- Edificio ospedale bianco di base -->
-                <path d="M6 7h12v10H6V7z" fill="#FFFFFF"/>
-                <path d="M8 12h2v5H8v-5z M14 12h2v5h-2v-5z" fill="#E0E0E0"/> <!-- Finestre / colonne dell'edificio -->
-                <!-- Croce Rossa ben visibile al centro su un distintivo circolare bianco -->
-                <circle cx="12" cy="10" r="3.2" fill="#FFFFFF" stroke="#FF0000" stroke-width="0.8"/>
-                <path d="M11 8.5h2v3h-2v-3z M10.5 9.5h3v1h-3v-1z" fill="#FF0000"/> <!-- Croce rossa interna -->
+                <circle cx="12" cy="12" r="10" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#glow)"/>
+                <path d="M10 6h4v4h4v4h-4v4h-4v-4H6v-4h4z" fill="#FFFFFF"/>
             </svg>
         `);
 
-        // 3. Forze dell'Ordine (Frazioni cromatiche diverse): Profilo del Poliziotto con berretto con visiera
+        // 3. Forze dell'Ordine (Blue): Cerchio blu con icona Stella d'autorità bianca
         const svgForzeOrdine = (color) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="22" height="28">
-                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
                     <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
                 </filter>
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 9.3 12 18 12 18s12-8.7 12-18c0-6.63-5.37-12-12-12z" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#shadow)"/>
-                <!-- Silhouette del Poliziotto bianca con berretto rigido visibile -->
-                <circle cx="12" cy="14" r="3.5" fill="#FFFFFF"/> <!-- Viso -->
-                <path d="M7 17.5c0-1.5 2-2.5 5-2.5s5 1 5 2.5v1H7v-1z" fill="#FFFFFF"/> <!-- Spalle -->
-                <path d="M7.5 11c0-1.5 1.5-2.5 4.5-2.5s4.5 1 4.5 2.5v1h-9v-1z" fill="#FFFFFF"/> <!-- Berretto corona -->
-                <path d="M7 11.5h10v1H7v-1z" fill="#FFFFFF"/> <!-- Berretto fascia -->
-                <path d="M8 12.5h8l1.5 1h-11z" fill="#FFFFFF"/> <!-- Visiera sporgente -->
+                <circle cx="12" cy="12" r="10" fill="${color}" stroke="#FFFFFF" stroke-width="1.8" filter="url(#glow)"/>
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#FFFFFF" transform="scale(0.52) translate(11, 11)"/>
             </svg>
         `);
 
-        // RENDERER MINIMALISTA DEI CLUSTER (Cerchio antracite e bordo bianco elegante)
+        // RENDERER MINIMALISTA DEI CLUSTER
         const customClusterRenderer = {
             render: function({ count, position }, stats) {
                 const size = count < 10 ? 28 : count < 100 ? 34 : 40;
@@ -955,7 +940,7 @@
             loadAllLayers();
         }
 
-        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON RANGE INTERCOMUNALE (ZOOM 12.5)
+        // GEOLOCALIZZAZIONE AUTOMATICA ALL'AVVIO CON SCOPE ZOOM ALLARGATO (ZOOM 12.5)
         function autoGeolocalizeOnStart() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -1151,7 +1136,7 @@
             };
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA
+        // RENDERING DELLE FEATURES SULLA MAPPA (CON FOCUS ANCORAGGIO CENTRALE 12,12)
         function renderFeatures(geojson, category) {
             const tempMarkers = [];
             if (!geojson || !geojson.features) return;
@@ -1178,13 +1163,14 @@
                         customIconUrl = svgForzeOrdine(pinColor);
                     }
 
+                    // Ancoraggio impostato a 12,12 (al centro perfetto) per far fluttuare correttamente i cerchi sulla mappa!
                     const marker = new google.maps.Marker({
                         position: latLng,
                         title: props.name,
                         icon: {
                             url: customIconUrl,
-                            scaledSize: new google.maps.Size(22, 28),
-                            anchor: new google.maps.Point(11, 28)
+                            scaledSize: new google.maps.Size(24, 24),
+                            anchor: new google.maps.Point(12, 12)
                         }
                     });
 
