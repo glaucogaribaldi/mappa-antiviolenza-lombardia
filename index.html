@@ -795,11 +795,36 @@
         let infoWindow;
         let clusterers = {};
         
+        // =========================================================================
+        // CONFIGURAZIONE DATABASE LIVE (GOOGLE SHEETS)
+        // Se desideri usare Google Sheets editabile live ed eliminabile:
+        // 1. Inserisci qui sotto l'ID del tuo Google Sheet (es: "1A2B3C4D...")
+        // 2. Pubblica il foglio sul Web come CSV (File -> Condividi -> Pubblica sul Web)
+        // 3. Inserisci i GID dei singoli fogli (tabs) corrispondenti
+        // Se lasciato vuoto "", il sistema caricherà automaticamente i CSV di riserva locali!
+        // =========================================================================
+        const GOOGLE_SHEET_ID = ""; 
+
         // Categorie caricate
         const layers = {
-            'CAV': { file: 'data/cav.geojson', active: true, color: '#FF1493' },
-            'SANITA': { file: 'data/pronto_soccorso.geojson', active: true, color: '#FF0000' },
-            'FORZE_ORDINE': { file: 'data/forze_ordine.geojson', active: true, color: '#0000FF' }
+            'CAV': { 
+                file: 'data/centri_cav.csv', 
+                gid: '0', // Tipicamente 0 per il primo foglio "Centri CAV"
+                active: true, 
+                color: '#FF1493' 
+            },
+            'SANITA': { 
+                file: 'data/ospedali.csv', 
+                gid: '', // Inserisci il GID del foglio "Ospedali"
+                active: true, 
+                color: '#FF0000' 
+            },
+            'FORZE_ORDINE': { 
+                file: 'data/forze_ordine.csv', 
+                gid: '', // Inserisci il GID del foglio "Forze dell'Ordine"
+                active: true, 
+                color: '#0000FF' 
+            }
         };
 
         // Centroidi province
@@ -1057,13 +1082,69 @@
             });
         }
 
-        // CARICAMENTO DEI LAYER GEOJSON
+        // PARSER CSV INTEGRATO COMPATIBILE CON LO STANDARD RFC-4180
+        function parseCSV(text) {
+            const lines = [];
+            let row = [""];
+            let inQuotes = false;
+
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                const next = text[i+1];
+
+                if (c === '"') {
+                    if (inQuotes && next === '"') {
+                        row[row.length - 1] += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (c === ',' && !inQuotes) {
+                    row.push("");
+                } else if ((c === '\r' || c === '\n') && !inQuotes) {
+                    if (c === '\r' && next === '\n') {
+                        i++;
+                    }
+                    lines.push(row);
+                    row = [""];
+                } else {
+                    row[row.length - 1] += c;
+                }
+            }
+            if (row.length > 1 || row[0] !== "") {
+                lines.push(row);
+            }
+            
+            if (lines.length === 0) return [];
+            
+            const headers = lines[0].map(h => h.trim().toLowerCase());
+            const result = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i];
+                if (values.length < headers.length) continue;
+                
+                const obj = {};
+                headers.forEach((header, index) => {
+                    obj[header] = values[index] ? values[index].trim() : "";
+                });
+                result.push(obj);
+            }
+            return result;
+        }
+
+        // CARICAMENTO DEI LAYER CSV (LOCALI O GOOGLE SHEET DYNAMIC)
         async function loadAllLayers() {
             for (const [key, config] of Object.entries(layers)) {
                 try {
-                    const response = await fetch(config.file);
-                    const geojson = await response.json();
-                    renderFeatures(geojson, key);
+                    let url = config.file;
+                    if (GOOGLE_SHEET_ID) {
+                        url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/pub?gid=${config.gid}&output=csv`;
+                    }
+                    const response = await fetch(url);
+                    const csvText = await response.text();
+                    const rows = parseCSV(csvText);
+                    renderFeaturesFromCSV(rows, key);
                 } catch (e) {
                     console.error(`Error loading layer ${key}:`, e);
                 }
@@ -1152,18 +1233,32 @@
             };
         }
 
-        // RENDERING DELLE FEATURES SULLA MAPPA (CON SEGNAPOSTI ICONICI PERSONALIZZATI DA IMMAGINE UNIFICATI E TRASPARENTI)
-        function renderFeatures(geojson, category) {
+        // RENDERING DELLE FEATURES SULLA MAPPA DA DATI CSV (LOCALI O GOOGLE SHEETS)
+        function renderFeaturesFromCSV(rows, category) {
             const tempMarkers = [];
-            if (!geojson || !geojson.features) return;
+            if (!rows) return;
             
-            geojson.features.forEach(feature => {
+            rows.forEach(row => {
                 try {
-                    const coords = feature.geometry.coordinates;
-                    if (!coords || coords.length < 2) return;
+                    const lat = parseFloat(row.latitudine || row.lat);
+                    const lng = parseFloat(row.longitudine || row.lng || row.lon);
+                    if (isNaN(lat) || isNaN(lng)) return;
                     
-                    const latLng = new google.maps.LatLng(coords[1], coords[0]);
-                    const props = feature.properties || {};
+                    const latLng = new google.maps.LatLng(lat, lng);
+                    
+                    // Creazione struttura proprietà compatibile con il Bottom Sheet ed i filtri
+                    const props = {
+                        name: row.nome || row.name || "",
+                        tipo: row.tipo || "",
+                        indirizzo: row.indirizzo || row.address || "",
+                        telefono: row.telefono || row.phone || "",
+                        email: row.email || "",
+                        sito_web: row.sito_web || row.website || row.sito_web_url || "",
+                        orari: row.orari || row.hours || "",
+                        codice_rosa: row.codice_rosa || "",
+                        bollino_rosa: row.bollino_rosa || "",
+                        servizi: row.servizi || ""
+                    };
 
                     // Seleziona l'immagine unificata e trasparente adatta alla categoria
                     let iconUrl = "";
@@ -1184,7 +1279,7 @@
                         }
                     }
 
-                    // Ancoraggio impostato a 12,12 (al centro perfetto) per far fluttuare correttamente i cerchi sulla mappa!
+                    // Ancoraggio impostato a 12,12 (al centro perfetto)
                     const marker = new google.maps.Marker({
                         position: latLng,
                         title: props.name,
@@ -1208,7 +1303,7 @@
                     markers.push(marker);
                     tempMarkers.push(marker);
                 } catch (err) {
-                    console.error("Error rendering single feature:", err);
+                    console.error("Error rendering single CSV row:", err);
                 }
             });
 
