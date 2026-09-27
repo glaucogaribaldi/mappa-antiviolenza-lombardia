@@ -798,30 +798,30 @@
         // =========================================================================
         // CONFIGURAZIONE DATABASE LIVE (GOOGLE SHEETS)
         // Se desideri usare Google Sheets editabile live ed eliminabile:
-        // 1. Inserisci qui sotto l'ID del tuo Google Sheet (es: "1A2B3C4D...")
+        // 1. Inserisci qui sotto l'URL pubblico del tuo Google Sheet (es: "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub")
         // 2. Pubblica il foglio sul Web come CSV (File -> Condividi -> Pubblica sul Web)
         // 3. Inserisci i GID dei singoli fogli (tabs) corrispondenti
         // Se lasciato vuoto "", il sistema caricherà automaticamente i CSV di riserva locali!
         // =========================================================================
-        const GOOGLE_SHEET_ID = ""; 
+        const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9nFRRLHUeibPUL_EcuSCWMA0u_3J9A_WuI_Id_HVmHPZW6VAI4IIsRfs5lMovtdiBVPMy2TxB49-0/pub"; 
 
         // Categorie caricate
         const layers = {
             'CAV': { 
                 file: 'data/centri_cav.csv', 
-                gid: '0', // Tipicamente 0 per il primo foglio "Centri CAV"
+                gid: '720747558', // GID del foglio "centri_cav"
                 active: true, 
                 color: '#FF1493' 
             },
             'SANITA': { 
                 file: 'data/ospedali.csv', 
-                gid: '', // Inserisci il GID del foglio "Ospedali"
+                gid: '961852400', // GID del foglio "ospedali"
                 active: true, 
                 color: '#FF0000' 
             },
             'FORZE_ORDINE': { 
                 file: 'data/forze_ordine.csv', 
-                gid: '', // Inserisci il GID del foglio "Forze dell'Ordine"
+                gid: '723516425', // GID del foglio "forze_ordine"
                 active: true, 
                 color: '#0000FF' 
             }
@@ -1138,8 +1138,8 @@
             for (const [key, config] of Object.entries(layers)) {
                 try {
                     let url = config.file;
-                    if (GOOGLE_SHEET_ID) {
-                        url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/pub?gid=${config.gid}&output=csv`;
+                    if (GOOGLE_SHEET_URL) {
+                        url = `${GOOGLE_SHEET_URL}?gid=${config.gid}&output=csv`;
                     }
                     const response = await fetch(url);
                     const csvText = await response.text();
