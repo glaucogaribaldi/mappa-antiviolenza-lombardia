@@ -149,12 +149,12 @@
                         <span class="w-2 h-2 rounded-full bg-pink-300"></span>
                         <span class="text-[0.7rem] font-extrabold whitespace-nowrap">Centri CAV</span>
                     </button>
-                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-white text-gray-700 transition-all" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
-                        <span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-tertiary text-white transition-all shadow-sm" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
+                        <span class="w-2 h-2 rounded-full bg-pink-200"></span>
                         <span class="text-[0.7rem] font-extrabold whitespace-nowrap">P. Soccorso</span>
                     </button>
-                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-white text-gray-700 transition-all" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
-                        <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-secondary text-white transition-all shadow-sm" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
+                        <span class="w-2 h-2 rounded-full bg-blue-300"></span>
                         <span class="text-[0.7rem] font-extrabold whitespace-nowrap">Sicurezza</span>
                     </button>
                 </div>
@@ -378,6 +378,26 @@
         let clusterers = {};
         let allFacilities = []; // Dynamic store for all GSheet parsed records
 
+        // UTILITY DI SICUREZZA PER SANIFICAZIONE XSS & URI SCHEMES (STORED XSS PREVENTION)
+        function escapeHTML(str) {
+            if (!str) return "";
+            return str.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function sanitizeURL(url) {
+            if (!url) return "";
+            const trimmed = url.trim().toLowerCase();
+            if (trimmed.startsWith("javascript:") || trimmed.startsWith("data:")) {
+                return "#";
+            }
+            return url;
+        }
+
         // TAB NAVIGATION LOGIC
         function switchTab(tabId) {
             closeBottomSheet();
@@ -552,9 +572,9 @@
             return result;
         }
 
-        // CARICAMENTO DEI LAYER CSV (LOCALI O GOOGLE SHEET DYNAMIC)
+        // CARICAMENTO DEI LAYER CSV (IN PARALLELO PER MASSIME PRESTAZIONI DI AVVIO)
         async function loadAllLayers() {
-            for (const [key, config] of Object.entries(layers)) {
+            const promises = Object.entries(layers).map(async ([key, config]) => {
                 try {
                     let url = config.file;
                     if (GOOGLE_SHEET_URL) {
@@ -567,7 +587,8 @@
                 } catch (e) {
                     console.error(`Error loading layer ${key}:`, e);
                 }
-            }
+            });
+            await Promise.all(promises);
         }
 
         // RENDERING DELLE FEATURES SULLA MAPPA DA DATI CSV (LOCALI O GOOGLE SHEETS)
@@ -903,16 +924,16 @@
                     <div class="flex items-center gap-2">
                         <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full ${badgeBg} font-bold text-[0.7rem]">
                             <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                            ${badgeText}
+                            ${escapeHTML(badgeText)}
                         </span>
                     </div>
                     
-                    <h3 class="text-xl font-black text-gray-900 leading-snug">${props.name}</h3>
+                    <h3 class="text-xl font-black text-gray-900 leading-snug">${escapeHTML(props.name)}</h3>
                     
                     <div class="space-y-2.5 text-xs text-gray-700">
                         <div class="flex items-start gap-2">
                             <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">location_on</span>
-                            <p><strong>Indirizzo:</strong> ${props.indirizzo}</p>
+                            <p><strong>Indirizzo:</strong> ${escapeHTML(props.indirizzo)}</p>
                         </div>
             `;
 
@@ -920,7 +941,7 @@
                 html += `
                         <div class="flex items-start gap-2">
                             <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">schedule</span>
-                            <p><strong>Orari d'apertura:</strong> ${props.orari}</p>
+                            <p><strong>Orari d'apertura:</strong> ${escapeHTML(props.orari)}</p>
                         </div>
                 `;
             }
@@ -948,7 +969,7 @@
 
             if (props.email) {
                 html += `
-                    <a href="mailto:${props.email}" class="h-11 rounded-full border-2 border-primary text-primary hover:bg-pink-50 font-bold text-xs flex items-center justify-center gap-2">
+                    <a href="mailto:${escapeHTML(props.email)}" class="h-11 rounded-full border-2 border-primary text-primary hover:bg-pink-50 font-bold text-xs flex items-center justify-center gap-2">
                         ✉️ INVIA UN'E-MAIL
                     </a>
                 `;
@@ -956,7 +977,7 @@
 
             if (props.sito_web) {
                 html += `
-                    <a href="${props.sito_web}" target="_blank" rel="noopener noreferrer" class="h-11 rounded-full border-2 border-secondary text-secondary hover:bg-blue-50 font-bold text-xs flex items-center justify-center gap-2">
+                    <a href="${sanitizeURL(props.sito_web)}" target="_blank" rel="noopener noreferrer" class="h-11 rounded-full border-2 border-secondary text-secondary hover:bg-blue-50 font-bold text-xs flex items-center justify-center gap-2">
                         🌐 VISITA IL SITO WEB
                     </a>
                 `;
@@ -1079,7 +1100,7 @@
                                 <div class="flex items-center gap-1.5 flex-wrap mb-1">
                                     <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full ${badgeBg} font-bold text-[0.65rem]">
                                         <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                                        ${badgeText}
+                                        ${escapeHTML(badgeText)}
                                     </span>
                                     ${facility.category === 'CAV' ? `
                                         <span class="px-2 py-0.5 rounded-full bg-pink-50 text-primary font-black text-[0.6rem] uppercase tracking-wider">
@@ -1088,11 +1109,11 @@
                                     ` : ''}
                                 </div>
                                 <h2 class="text-sm text-gray-900 font-bold leading-snug">
-                                    ${facility.props.name}
+                                    ${escapeHTML(facility.props.name)}
                                 </h2>
                                 <div class="flex items-center gap-1 text-gray-500 mt-1">
                                     <span class="material-symbols-outlined text-[16px]">location_on</span>
-                                    <span class="text-xs truncate">${facility.props.indirizzo}</span>
+                                    <span class="text-xs truncate">${escapeHTML(facility.props.indirizzo)}</span>
                                 </div>
                             </div>
                         </div>
