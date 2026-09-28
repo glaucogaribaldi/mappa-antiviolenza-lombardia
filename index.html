@@ -108,12 +108,16 @@
 
             <!-- Floating Top Tactical Search & Filter Console -->
             <div class="absolute top-4 inset-x-0 px-4 z-20 flex flex-col gap-2 max-w-lg mx-auto pointer-events-none">
-                <div class="bg-surface-glass backdrop-blur-xl shadow-md rounded-full flex items-center p-1.5 h-12 border border-gray-100 pointer-events-auto">
+                <div class="bg-surface-glass backdrop-blur-xl shadow-md rounded-full flex items-center p-1.5 h-12 border border-gray-100 pointer-events-auto relative">
                     <span class="material-symbols-outlined text-primary ml-2.5 mr-2 text-[22px]">search</span>
-                    <input class="bg-transparent font-medium text-xs text-gray-800 placeholder:text-gray-400 outline-none flex-1 min-w-0 pr-2" id="free-search" placeholder="Cerca comune, via o centro..." type="text" oninput="filterAll()" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()"/>
+                    <input class="bg-transparent font-medium text-xs text-gray-800 placeholder:text-gray-400 outline-none flex-1 min-w-0 pr-2" id="free-search" placeholder="Cerca comune, via o centro..." type="text" oninput="onSearchInput(this.value)" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()"/>
                     
                     <button class="h-9 px-4 rounded-full bg-primary text-white text-[0.7rem] font-bold shadow-sm active:scale-90 transition-transform mr-1" onclick="geocodeAddressSearch()">Cerca</button>
                     <button class="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors mr-1" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtri avanzati">⚙️</button>
+                </div>
+
+                <!-- Floating Autocomplete Suggestions Dropdown (Stitch Google Maps style!) -->
+                <div id="search-suggestions" class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-100 hidden flex-col max-h-60 overflow-y-auto z-50 pointer-events-auto p-1.5 gap-1">
                 </div>
 
                 <!-- Advanced Filters Panel (Province & Comune) -->
@@ -787,6 +791,14 @@
                     map.panTo(searchLatLng);
                     map.setZoom(12.5);
                     
+                    // Clear search input and suggestions so all surrounding markers are fully restored!
+                    document.getElementById("free-search").value = "";
+                    const suggestionsDiv = document.getElementById("search-suggestions");
+                    if (suggestionsDiv) {
+                        suggestionsDiv.classList.add("hidden");
+                        suggestionsDiv.innerHTML = "";
+                    }
+                    
                     if (window.userMarker) {
                         window.userMarker.setPosition(searchLatLng);
                     } else {
@@ -818,6 +830,95 @@
                 searchBtn.textContent = originalText;
                 searchBtn.disabled = false;
             });
+        }
+
+        // MOTORE DI RICERCA IBRIDO CON COINCIDENZE COMPATTE AUTOCOMPLETE (STILE GOOGLE MAPS!)
+        function onSearchInput(value) {
+            const suggestionsDiv = document.getElementById("search-suggestions");
+            if (!suggestionsDiv) return;
+
+            const query = value.toUpperCase().trim();
+            
+            // Applica comunque il filtraggio testi sulla mappa ed elenco di default
+            filterAll();
+
+            if (!query) {
+                suggestionsDiv.classList.add("hidden");
+                suggestionsDiv.innerHTML = "";
+                return;
+            }
+
+            // Cerca coincidenze tra i marker caricati dal Google Sheet
+            const matches = [];
+            for (let i = 0; i < markers.length; i++) {
+                const marker = markers[i];
+                const name = (marker.props.name || "").toUpperCase();
+                const addr = (marker.props.indirizzo || "").toUpperCase();
+                const com = (marker.comune || "").toUpperCase();
+
+                if (name.includes(query) || addr.includes(query) || com.includes(query)) {
+                    matches.push(marker);
+                    if (matches.length >= 5) break; // Mostra massimo 5 risultati
+                }
+            }
+
+            if (matches.length === 0) {
+                suggestionsDiv.classList.add("hidden");
+                suggestionsDiv.innerHTML = "";
+                return;
+            }
+
+            let html = "";
+            matches.forEach(m => {
+                let icon = "support";
+                let colorClass = "text-primary";
+                let typeLabel = "Centro CAV";
+
+                if (m.category === "SANITA") {
+                    icon = "emergency";
+                    colorClass = "text-tertiary";
+                    typeLabel = "Pronto Soccorso";
+                } else if (m.category === "FORZE_ORDINE") {
+                    icon = "local_police";
+                    colorClass = "text-secondary";
+                    typeLabel = m.props.tipo || "Forza dell'Ordine";
+                }
+
+                html += `
+                    <div class="flex items-center gap-2.5 p-2.5 hover:bg-gray-50 rounded-xl cursor-pointer transition-colors" onclick="selectSuggestion('${m.props.name.replace(/'/g, "\\'")}')">
+                        <span class="material-symbols-outlined ${colorClass} text-[20px] shrink-0">${icon}</span>
+                        <div class="flex flex-col min-w-0">
+                            <span class="text-xs font-bold text-gray-800 truncate">${escapeHTML(m.props.name)}</span>
+                            <span class="text-[0.65rem] text-gray-400 truncate">${escapeHTML(m.props.indirizzo || m.comune)} • ${escapeHTML(typeLabel)}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            suggestionsDiv.innerHTML = html;
+            suggestionsDiv.classList.remove("hidden");
+        }
+
+        // SELEZIONE SUGGERIMENTO (PAN, ZOOM ED APERTURA DETTAGLIO)
+        function selectSuggestion(name) {
+            const input = document.getElementById("free-search");
+            const suggestionsDiv = document.getElementById("search-suggestions");
+            
+            if (input) input.value = name;
+            if (suggestionsDiv) {
+                suggestionsDiv.classList.add("hidden");
+                suggestionsDiv.innerHTML = "";
+            }
+
+            const marker = markers.find(m => m.props.name === name);
+            if (marker && map) {
+                switchTab('map');
+                map.panTo(marker.getPosition());
+                map.setZoom(14.5);
+                displayFeatureDetails(marker.props, marker.category);
+            }
+
+            filterAll();
         }
 
         // FUNZIONE DI PARSING GEOGRAFICO
