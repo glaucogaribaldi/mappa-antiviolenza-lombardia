@@ -104,7 +104,7 @@
 </head>
 <body class="bg-surface-subtle font-sans text-gray-900 flex flex-col min-h-screen antialiased overflow-hidden select-none">
 
-    <!-- FLOATING MAIN HEADER (2026 Spatial Glassmorphism Edition) -->
+    <!-- FLOATING MAIN HEADER (Sobrio, Istituzionale e Rassicurante) -->
     <header class="fixed top-0 inset-x-0 z-50 apple-glass pt-safe border-b border-slate-200/80">
         <div class="h-20 px-4 max-w-2xl mx-auto flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 min-w-0">
@@ -112,20 +112,15 @@
                     <span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
                 </div>
                 <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-black text-sm text-gray-900 truncate tracking-tight">Rete Antiviolenza</span>
-                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[0.55rem] font-extrabold uppercase tracking-wider border border-emerald-200/60">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Live
-                        </span>
-                    </div>
-                    <span class="font-extrabold text-[0.65rem] text-primary uppercase tracking-wider">Regione Lombardia • Pro Max</span>
+                    <span class="font-black text-sm text-gray-900 truncate tracking-tight">Rete Antiviolenza Lombardia</span>
+                    <span class="font-bold text-[0.65rem] text-primary tracking-wide truncate">Aiuto gratuito, riservato e anonimo H24</span>
                 </div>
             </div>
             
             <div class="flex items-center gap-2 flex-shrink-0">
                 <button aria-label="Uscita Rapida Immediata" class="h-10 px-4 rounded-full bg-tertiary hover:bg-red-700 text-white flex items-center gap-1.5 shadow-[0_4px_14px_rgba(230,0,0,0.35)] active:scale-95 transition-all focus:outline-none ring-2 ring-red-100" onclick="window.triggerQuickExit()">
                     <span class="material-symbols-outlined text-[17px]">logout</span>
-                    <span class="text-[0.7rem] font-black tracking-wide uppercase">ESCI SUBITO (Esc)</span>
+                    <span class="text-[0.7rem] font-black tracking-wide uppercase">ESCI SUBITO</span>
                 </button>
             </div>
         </div>
@@ -138,85 +133,37 @@
         <div id="tab-map-content" class="w-full h-full relative">
             <div id="map"></div>
 
-            <!-- Floating Top Tactical Search & Filter Console (2026 Spatial Command Bar) -->
-            <div class="absolute top-3.5 inset-x-0 px-3.5 z-20 flex flex-col gap-2 max-w-lg mx-auto pointer-events-none">
-                <div class="bg-white/92 backdrop-blur-2xl shadow-[0_8px_30px_rgba(15,23,42,0.10)] rounded-full flex items-center p-1.5 h-12 border border-white/80 ring-1 ring-gray-900/5 pointer-events-auto relative">
+            <!-- Floating Top Search & 3-Filter Console (Mobile-First: Solo 2 righe essenziali e pulite!) -->
+            <div class="absolute top-3 inset-x-0 px-3.5 z-20 flex flex-col gap-2 max-w-lg mx-auto pointer-events-none">
+                <div class="bg-white/95 backdrop-blur-2xl shadow-[0_8px_30px_rgba(15,23,42,0.10)] rounded-full flex items-center p-1.5 h-12 border border-white/80 ring-1 ring-gray-900/5 pointer-events-auto relative">
                     <span class="material-symbols-outlined text-primary ml-2.5 mr-1.5 text-[21px]">search</span>
-                    <input class="bg-transparent font-semibold text-xs text-gray-900 placeholder:text-gray-400 outline-none flex-1 min-w-0 pr-1" id="free-search" placeholder="Cerca comune, via o centro (es. Milano, CADMI)..." type="text" oninput="onSearchInput(this.value)" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()"/>
+                    <input class="bg-transparent font-semibold text-xs text-gray-900 placeholder:text-gray-400 outline-none flex-1 min-w-0 pr-1" id="free-search" placeholder="Cerca il tuo Comune, via o centro..." type="text" oninput="onSearchInput(this.value)" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()"/>
                     
                     <button class="hidden h-7 w-7 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 items-center justify-center transition-colors mr-1" id="clear-search-btn" onclick="clearSearchInput()" title="Cancella testo" type="button">✕</button>
-                    <button class="h-9 px-3.5 rounded-full bg-gray-900 hover:bg-primary text-white text-[0.7rem] font-extrabold shadow-sm active:scale-95 transition-all mr-1" onclick="geocodeAddressSearch()">Cerca</button>
-                    <button class="h-9 w-9 rounded-full bg-gray-100/90 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtra per Provincia e Comune">
-                        <span class="material-symbols-outlined text-[18px]">tune</span>
-                    </button>
+                    <button class="h-9 px-4 rounded-full bg-primary hover:bg-magenta-dark text-white text-[0.72rem] font-extrabold shadow-sm active:scale-95 transition-all" onclick="geocodeAddressSearch()">Cerca</button>
                 </div>
 
-                <!-- Floating Autocomplete Suggestions Dropdown (Stitch Google Maps style!) -->
+                <!-- Floating Autocomplete Suggestions Dropdown -->
                 <div id="search-suggestions" class="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 hidden flex-col max-h-64 overflow-y-auto z-50 pointer-events-auto p-1.5 gap-1">
                 </div>
 
-                <!-- Advanced Filters Panel (Province & Comune) -->
-                <div class="bg-white/95 backdrop-blur-2xl shadow-xl rounded-2xl p-3.5 border border-gray-100 hidden flex-col gap-2.5 pointer-events-auto" id="advanced-filters-card">
-                    <div class="flex items-center justify-between px-1">
-                        <span class="text-[0.65rem] font-extrabold uppercase tracking-wider text-gray-400">Filtro Territoriale ISTAT</span>
-                        <button class="text-[0.65rem] font-extrabold text-primary hover:underline" onclick="resetFilters()" type="button">Mostra tutta la Lombardia</button>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <select id="select-provincia" class="h-10 px-3 rounded-xl border border-gray-200 text-xs font-bold text-gray-800 outline-none bg-gray-50/70 focus:bg-white focus:border-primary cursor-pointer" onchange="onProvinciaChange()">
-                            <option value="">Provincia (Tutte)</option>
-                            <option value="BG">Bergamo (BG)</option>
-                            <option value="BS">Brescia (BS)</option>
-                            <option value="CO">Como (CO)</option>
-                            <option value="CR">Cremona (CR)</option>
-                            <option value="LC">Lecco (LC)</option>
-                            <option value="LO">Lodi (LO)</option>
-                            <option value="MB">Monza e Brianza (MB)</option>
-                            <option value="MI">Milano (MI)</option>
-                            <option value="MN">Mantova (MN)</option>
-                            <option value="PV">Pavia (PV)</option>
-                            <option value="SO">Sondrio (SO)</option>
-                            <option value="VA">Varese (VA)</option>
-                        </select>
-                        
-                        <select id="select-comune" class="h-10 px-3 rounded-xl border border-gray-200 text-xs font-bold text-gray-800 outline-none bg-gray-50/70 focus:bg-white focus:border-primary cursor-pointer" disabled onchange="onComuneChange()">
-                            <option value="">Comune (Tutti)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Segmented Tri-Filter (3-Column Locked Grid, Zero Overflow + Live Counters!) -->
-                <div class="grid grid-cols-3 gap-1.5 w-full bg-white/90 backdrop-blur-2xl p-1 rounded-full shadow-[0_4px_20px_rgba(15,23,42,0.08)] border border-white/80 ring-1 ring-gray-900/5 pointer-events-auto">
-                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-primary text-white transition-all shadow-sm" id="pill-cav" onclick="toggleCategoryTab('CAV')">
+                <!-- Segmented Tri-Filter (CAV + Ospedali accesi di default; Sicurezza attivabile con 1 tocco!) -->
+                <div class="grid grid-cols-3 gap-1.5 w-full bg-white/92 backdrop-blur-2xl p-1 rounded-full shadow-[0_4px_20px_rgba(15,23,42,0.08)] border border-white/80 ring-1 ring-gray-900/5 pointer-events-auto">
+                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-primary text-white transition-all shadow-sm cursor-pointer" id="pill-cav" onclick="toggleCategoryTab('CAV')">
                         <span class="w-2 h-2 rounded-full bg-pink-200 shrink-0"></span>
-                        <span class="text-[0.68rem] font-extrabold whitespace-nowrap">CAV</span>
+                        <span class="text-[0.68rem] font-extrabold whitespace-nowrap">Centri CAV</span>
                         <span id="count-cav" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">94</span>
                     </button>
-                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-tertiary text-white transition-all shadow-sm" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
+                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-tertiary text-white transition-all shadow-sm cursor-pointer" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
                         <span class="w-2 h-2 rounded-full bg-red-200 shrink-0"></span>
                         <span class="text-[0.68rem] font-extrabold whitespace-nowrap">Ospedali</span>
                         <span id="count-ps" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">66</span>
                     </button>
-                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-secondary text-white transition-all shadow-sm" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
-                        <span class="w-2 h-2 rounded-full bg-blue-200 shrink-0"></span>
+                    <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-white text-gray-600 transition-all cursor-pointer" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
+                        <span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
                         <span class="text-[0.68rem] font-extrabold whitespace-nowrap">Sicurezza</span>
-                        <span id="count-police" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">716</span>
+                        <span id="count-police" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-gray-100 text-gray-600">716</span>
                     </button>
-                </div>
-
-                <!-- UI/UX Pro Max: Quick-City & Geolocation Chips for 1-Tap Zero-Friction Discovery -->
-                <div class="flex items-center gap-1.5 overflow-x-auto py-0.5 pointer-events-auto">
-                    <button type="button" onclick="geolocalizeUser()" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-pink-200/80 text-primary font-extrabold text-[0.65rem] flex items-center gap-1 shadow-sm active:scale-95 transition-transform cursor-pointer">
-                        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">near_me</span>
-                        <span>Vicino a me</span>
-                    </button>
-                    <button type="button" onclick="quickSelectProvince('MI')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Milano</button>
-                    <button type="button" onclick="quickSelectProvince('BS')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Brescia</button>
-                    <button type="button" onclick="quickSelectProvince('BG')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Bergamo</button>
-                    <button type="button" onclick="quickSelectProvince('MB')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Monza</button>
-                    <button type="button" onclick="quickSelectProvince('VA')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Varese</button>
-                    <button type="button" onclick="quickSelectProvince('CO')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Como</button>
-                    <button type="button" onclick="quickSelectProvince('PV')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Pavia</button>
-                    <button type="button" onclick="quickSelectProvince('MN')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Mantova</button>
                 </div>
             </div>
 
@@ -234,10 +181,16 @@
 
         <!-- ==================== TAB 2: DYNAMIC LIST OF CENTERS ==================== -->
         <div id="tab-list-content" class="w-full h-full overflow-y-auto px-4 pt-3 hidden">
-            <!-- Header Block -->
-            <div class="mb-2.5">
-                <span class="text-[0.65rem] text-primary uppercase font-extrabold tracking-wider">Elenco Servizi Verificati ISTAT</span>
-                <h1 class="text-lg font-extrabold tracking-tight text-gray-900 leading-tight">Centri e Presidi in Lombardia</h1>
+            <!-- Header Block + 1-Tap GPS Sort Button -->
+            <div class="mb-2.5 flex items-center justify-between gap-2">
+                <div>
+                    <span class="text-[0.65rem] text-primary uppercase font-extrabold tracking-wider">Elenco Presidi Attivi</span>
+                    <h1 class="text-lg font-extrabold tracking-tight text-gray-900 leading-tight">Centri CAV, Ospedali e Sicurezza</h1>
+                </div>
+                <button id="list-gps-sort-btn" onclick="geolocalizeUser()" type="button" class="shrink-0 h-9 px-3 rounded-full bg-pink-50 hover:bg-pink-100 text-primary font-extrabold text-[0.68rem] flex items-center gap-1 border border-pink-200/70 shadow-sm active:scale-95 transition-all cursor-pointer">
+                    <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">near_me</span>
+                    <span id="list-gps-sort-label">Più vicini a me</span>
+                </button>
             </div>
 
             <!-- Sticky Search + Category Filter Bar inside Tab 2 -->
@@ -492,7 +445,7 @@
             'FORZE_ORDINE': { 
                 file: 'data/forze_ordine.csv', 
                 gid: '723516425', // GID del foglio "forze_ordine"
-                active: true, 
+                active: false, // Spento di default per non sommergere i 94 Centri CAV; attivabile con 1 tocco!
                 color: '#0000FF' 
             }
         };
@@ -1246,7 +1199,7 @@
                 badgeBg = "bg-blue-50 text-secondary";
             }
 
-            const distKm = (props.lat && props.lng)
+            const distKm = (referencePoint.isUserLocated && props.lat && props.lng)
                 ? computeDistanceKm(referencePoint.lat, referencePoint.lng, props.lat, props.lng)
                 : null;
             const distLabel = formatDistanceBadge(distKm);
@@ -1341,6 +1294,14 @@
                     </a>
                 `;
             }
+
+            // Contatto Silenzioso Chat 1522 per chi non può parlare a voce
+            html += `
+                <a href="https://www.1522.eu/" target="_blank" rel="noopener noreferrer" class="h-10 rounded-2xl bg-pink-50/90 hover:bg-pink-100 border border-pink-200/70 text-primary font-extrabold text-[0.7rem] flex items-center justify-center gap-1.5 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">chat</span>
+                    <span>Non puoi parlare? Apri la Chat Silenziosa H24 (1522.eu)</span>
+                </a>
+            `;
             
             html += `
                     </div>
@@ -1456,32 +1417,31 @@
             });
         })();
 
-        // FILTRI CATEGORIA IN CIMA
+        // FILTRI CATEGORIA IN CIMA (TOGGLE FLUIDO E CHIARO)
         function toggleCategoryTab(category) {
             const pillId = `pill-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
+            const countId = `count-${category === 'CAV' ? 'cav' : category === 'SANITA' ? 'ps' : 'police'}`;
             const pill = document.getElementById(pillId);
-            if (pill) {
-                const isActive = pill.classList.toggle("bg-white");
-                pill.classList.toggle("text-gray-700");
-                
-                // Toggle active style
-                if (!isActive) {
-                    // It is active
-                    if (category === 'CAV') {
-                        pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-primary text-white transition-all shadow-sm";
-                    } else if (category === 'SANITA') {
-                        pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-tertiary text-white transition-all shadow-sm";
-                    } else if (category === 'FORZE_ORDINE') {
-                        pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-secondary text-white transition-all shadow-sm";
-                    }
-                    layers[category].active = true;
-                } else {
-                    // It is inactive
-                    pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-white text-gray-700 transition-all";
-                    layers[category].active = false;
+            const countEl = document.getElementById(countId);
+            if (!pill) return;
+
+            layers[category].active = !layers[category].active;
+            const nowActive = layers[category].active;
+
+            if (nowActive) {
+                if (category === 'CAV') {
+                    pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-primary text-white transition-all shadow-sm cursor-pointer";
+                } else if (category === 'SANITA') {
+                    pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-tertiary text-white transition-all shadow-sm cursor-pointer";
+                } else if (category === 'FORZE_ORDINE') {
+                    pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-secondary text-white transition-all shadow-sm cursor-pointer";
                 }
-                filterAll();
+                if (countEl) countEl.className = "text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15 text-white";
+            } else {
+                pill.className = "flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-white text-gray-600 transition-all cursor-pointer";
+                if (countEl) countEl.className = "text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-gray-100 text-gray-600";
             }
+            filterAll();
         }
 
         // SELETTORE CATEGORIA NEL TAB 2 (ELENCO)
@@ -1509,40 +1469,55 @@
             rebuildListView(lastFilteredFacilities);
         }
 
-        // REBUILD THE LIST VIEW DYNAMICALLY (STITCH HIGH FIDELITY LAYOUT + HAVERSINE SORT + PAGINATION!)
+        // REBUILD THE LIST VIEW DYNAMICALLY (MOBILE-FIRST + ORARI VISIBILI + DISTANZE REALI ONESTE)
         function rebuildListView(filteredFacilities) {
             lastFilteredFacilities = filteredFacilities || [];
             const listContainer = document.getElementById("list-container");
             if (!listContainer) return;
 
-            // Filtra per la pillola attiva nel Tab 2 (se non siamo su 'ALL')
-            const listItems = (listCategoryFilter === 'ALL')
-                ? lastFilteredFacilities.slice()
-                : lastFilteredFacilities.filter(f => f.category === listCategoryFilter);
+            // Aggiorna lo stato del pulsante GPS in cima al Tab 2
+            const gpsBtnLabel = document.getElementById("list-gps-sort-label");
+            if (gpsBtnLabel) {
+                gpsBtnLabel.textContent = referencePoint.isUserLocated ? "Ordinati per distanza" : "Più vicini a me";
+            }
 
-            // Calcola la distanza dal punto di riferimento e ordina dal più vicino al più lontano
-            listItems.forEach(f => {
+            // Nel Tab 2 permetti sempre di consultare anche la categoria selezionata (es. Sicurezza) anche se sulla mappa parte spenta
+            const sourceItems = (listCategoryFilter === 'ALL')
+                ? lastFilteredFacilities.slice()
+                : markers.filter(f => {
+                    if (f.category !== listCategoryFilter) return false;
+                    const freeSearchInput = document.getElementById("free-search");
+                    const textSearch = freeSearchInput ? freeSearchInput.value.toUpperCase().trim() : "";
+                    if (!textSearch) return true;
+                    const name = (f.props.name || "").toUpperCase();
+                    const addr = (f.props.indirizzo || "").toUpperCase();
+                    const com = (f.comune || "").toUpperCase();
+                    return name.includes(textSearch) || addr.includes(textSearch) || com.includes(textSearch);
+                });
+
+            // Calcola la distanza e ordina dal più vicino al più lontano
+            sourceItems.forEach(f => {
                 f._distKm = (f.props.lat && f.props.lng)
                     ? computeDistanceKm(referencePoint.lat, referencePoint.lng, f.props.lat, f.props.lng)
                     : 9999;
             });
-            listItems.sort((a, b) => a._distKm - b._distKm);
+            sourceItems.sort((a, b) => a._distKm - b._distKm);
             
-            if (listItems.length === 0) {
+            if (sourceItems.length === 0) {
                 listContainer.innerHTML = `
                     <div class="flex flex-col items-center justify-center py-16 px-4 text-center">
                         <span class="material-symbols-outlined text-[48px] text-gray-400 mb-2">search_off</span>
                         <p class="font-bold text-sm text-gray-700">Nessun risultato in questa categoria</p>
-                        <p class="text-xs text-gray-400 mt-1">Prova a selezionare "Tutti" qui sopra o a modificare la ricerca.</p>
+                        <p class="text-xs text-gray-400 mt-1">Prova a selezionare "Tutti" qui sopra o a cancellare il testo cercato.</p>
                     </div>
                 `;
                 return;
             }
             
-            const slice = listItems.slice(0, listRenderLimit);
+            const slice = sourceItems.slice(0, listRenderLimit);
             let html = "";
             slice.forEach(facility => {
-                let badgeText = "Centro CAV Verificato";
+                let badgeText = facility.props.tipo === "Sportello" ? "Sportello CAV" : "Centro CAV";
                 let badgeBg = "bg-status-success-subtle text-status-success";
                 
                 if (facility.category === "SANITA") {
@@ -1557,11 +1532,12 @@
                 const primaryPhone = phones[0];
                 const phoneLabel = primaryPhone.isEmergency ? primaryPhone.label : `Chiama ${primaryPhone.label}`;
                 const callHref = primaryPhone.href;
-                const distLabel = formatDistanceBadge(facility._distKm);
+                const distLabel = referencePoint.isUserLocated ? formatDistanceBadge(facility._distKm) : "";
+                const encodedProps = encodeURIComponent(JSON.stringify(facility.props));
                 
                 html += `
-                    <article class="pro-card p-4 flex flex-col gap-3">
-                        <div class="flex items-start justify-between gap-2">
+                    <article class="pro-card p-4 flex flex-col gap-2.5">
+                        <div class="flex items-start justify-between gap-2 cursor-pointer" onclick="displayFeatureDetails(JSON.parse(decodeURIComponent('${encodedProps}')), '${facility.category}')">
                             <div class="flex flex-col min-w-0 w-full">
                                 <div class="flex items-center justify-between gap-1.5 flex-wrap mb-1">
                                     <div class="flex items-center gap-1.5 flex-wrap">
@@ -1571,37 +1547,43 @@
                                         </span>
                                         ${facility.category === 'CAV' ? `
                                             <span class="px-2 py-0.5 rounded-full bg-pink-50 text-primary font-black text-[0.6rem] uppercase tracking-wider">
-                                                Accreditato
+                                                Gratuito & Anonimo
                                             </span>
                                         ` : ''}
                                     </div>
                                     ${distLabel ? `
-                                        <span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 font-extrabold text-[0.62rem]">
-                                            <span class="material-symbols-outlined text-[12px] text-primary align-middle">near_me</span> ${escapeHTML(distLabel)}
+                                        <span class="px-2 py-0.5 rounded-full bg-pink-50 text-primary font-extrabold text-[0.65rem]">
+                                            <span class="material-symbols-outlined text-[12px] text-primary align-middle">near_me</span> a ${escapeHTML(distLabel)}
                                         </span>
                                     ` : ''}
                                 </div>
-                                <h2 class="text-sm text-gray-900 font-bold leading-snug">
+                                <h2 class="text-sm text-gray-900 font-extrabold leading-snug">
                                     ${escapeHTML(facility.props.name)}
                                 </h2>
-                                <div class="flex items-center gap-1 text-gray-500 mt-1">
-                                    <span class="material-symbols-outlined text-[16px]">location_on</span>
+                                <div class="flex items-center gap-1.5 text-gray-600 mt-1">
+                                    <span class="material-symbols-outlined text-[15px] text-primary shrink-0">location_on</span>
                                     <span class="text-xs truncate">${escapeHTML(facility.props.indirizzo)}</span>
                                 </div>
+                                ${facility.props.orari ? `
+                                    <div class="flex items-center gap-1.5 text-gray-500 mt-1">
+                                        <span class="material-symbols-outlined text-[15px] text-emerald-600 shrink-0">schedule</span>
+                                        <span class="text-[0.7rem] font-medium truncate">${escapeHTML(facility.props.orari)}</span>
+                                    </div>
+                                ` : ''}
                             </div>
                         </div>
                         
-                        <!-- Action row (2026 Bento 3-Action Bar: Call + Map Focus + Details) -->
+                        <!-- Action row (Call + Map Focus + Details) -->
                         <div class="grid grid-cols-12 gap-2 pt-1">
-                            <a aria-label="${escapeHTML(phoneLabel)}" class="col-span-6 h-11 rounded-2xl bg-primary hover:bg-magenta-dark active:scale-[0.98] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform px-2.5 truncate" href="${escapeHTML(callHref)}">
+                            <a aria-label="${escapeHTML(phoneLabel)}" class="col-span-6 h-11 rounded-2xl bg-primary hover:bg-magenta-dark active:scale-[0.98] text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform px-2.5 truncate" href="${escapeHTML(callHref)}">
                                 <span class="material-symbols-outlined text-[17px] shrink-0" style="font-variation-settings: 'FILL' 1;">call</span>
                                 <span class="truncate">${escapeHTML(phoneLabel)}</span>
                             </a>
-                            <button class="col-span-3 h-11 rounded-2xl bg-blue-50 hover:bg-blue-100 active:scale-[0.98] text-secondary font-extrabold text-xs flex items-center justify-center gap-1 transition-all" onclick="focusOnMap(${facility.props.lat}, ${facility.props.lng}, '${encodeURIComponent(JSON.stringify(facility.props))}', '${facility.category}')" type="button" title="Inquadra sulla mappa">
+                            <button class="col-span-3 h-11 rounded-2xl bg-blue-50 hover:bg-blue-100 active:scale-[0.98] text-secondary font-extrabold text-xs flex items-center justify-center gap-1 transition-all cursor-pointer" onclick="focusOnMap(${facility.props.lat}, ${facility.props.lng}, '${encodedProps}', '${facility.category}')" type="button" title="Inquadra sulla mappa">
                                 <span class="material-symbols-outlined text-[16px]">my_location</span>
                                 <span>Mappa</span>
                             </button>
-                            <button class="col-span-3 h-11 rounded-2xl bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-extrabold text-xs flex items-center justify-center gap-0.5 transition-all" onclick="displayFeatureDetails(JSON.parse(decodeURIComponent('${encodeURIComponent(JSON.stringify(facility.props))}')), '${facility.category}')" type="button">
+                            <button class="col-span-3 h-11 rounded-2xl bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-extrabold text-xs flex items-center justify-center gap-0.5 transition-all cursor-pointer" onclick="displayFeatureDetails(JSON.parse(decodeURIComponent('${encodedProps}')), '${facility.category}')" type="button">
                                 <span>Info</span>
                                 <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
                             </button>
@@ -1610,10 +1592,10 @@
                 `;
             });
 
-            if (listItems.length > listRenderLimit) {
-                const remaining = listItems.length - listRenderLimit;
+            if (sourceItems.length > listRenderLimit) {
+                const remaining = sourceItems.length - listRenderLimit;
                 html += `
-                    <button onclick="loadMoreListItems()" class="w-full h-11 mt-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-extrabold text-xs shadow-sm transition-all">
+                    <button onclick="loadMoreListItems()" class="w-full h-11 mt-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-extrabold text-xs shadow-sm transition-all cursor-pointer">
                         Mostra altri presidi (${remaining} rimanenti)
                     </button>
                 `;
@@ -1675,13 +1657,28 @@
                 }
             }
 
-            // Aggiorna i contatori live sulle 3 pillole filtro
+            // Aggiorna i contatori live sulle 3 pillole filtro (mostrando sempre i totali matching per provincia/ricerca anche se un layer è spento!)
+            const countByCat = { 'CAV': 0, 'SANITA': 0, 'FORZE_ORDINE': 0 };
+            markers.forEach(m => {
+                const matchesProvincia = !selProvincia || m.provincia === selProvincia;
+                const matchesComune = !selComune || m.comune === selComune;
+                let matchesText = true;
+                if (textSearch) {
+                    const name = (m.props.name || "").toUpperCase();
+                    const addr = (m.props.indirizzo || "").toUpperCase();
+                    const com = (m.comune || "").toUpperCase();
+                    matchesText = name.includes(textSearch) || addr.includes(textSearch) || com.includes(textSearch);
+                }
+                if (matchesProvincia && matchesComune && matchesText && countByCat[m.category] !== undefined) {
+                    countByCat[m.category]++;
+                }
+            });
             const countCavEl = document.getElementById("count-cav");
             const countPsEl = document.getElementById("count-ps");
             const countPolEl = document.getElementById("count-police");
-            if (countCavEl) countCavEl.textContent = activeMarkersByLayer['CAV'].length;
-            if (countPsEl) countPsEl.textContent = activeMarkersByLayer['SANITA'].length;
-            if (countPolEl) countPolEl.textContent = activeMarkersByLayer['FORZE_ORDINE'].length;
+            if (countCavEl) countCavEl.textContent = countByCat['CAV'];
+            if (countPsEl) countPsEl.textContent = countByCat['SANITA'];
+            if (countPolEl) countPolEl.textContent = countByCat['FORZE_ORDINE'];
 
             // Sync with dynamic list view!
             rebuildListView(visibleFacilities);
