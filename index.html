@@ -54,6 +54,31 @@
             overscroll-behavior: none;
         }
 
+
+        /* UI/UX Pro Max + Apple HIG + M3 Pastel Glass 2026 Enhancements */
+        .apple-glass {
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(22px) saturate(185%);
+            -webkit-backdrop-filter: blur(22px) saturate(185%);
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        .pro-card {
+            background: #ffffff;
+            border-radius: 22px;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
+        .pro-card:active {
+            transform: scale(0.99);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         #map {
             width: 100%;
             height: 100%;
@@ -80,7 +105,7 @@
 <body class="bg-surface-subtle font-sans text-gray-900 flex flex-col min-h-screen antialiased overflow-hidden select-none">
 
     <!-- FLOATING MAIN HEADER (2026 Spatial Glassmorphism Edition) -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur-2xl pt-safe shadow-[0_2px_24px_rgba(15,23,42,0.06)] border-b border-gray-200/70">
+    <header class="fixed top-0 inset-x-0 z-50 apple-glass pt-safe border-b border-slate-200/80">
         <div class="h-20 px-4 max-w-2xl mx-auto flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 min-w-0">
                 <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-pink-50 to-white border border-pink-100 flex items-center justify-center shadow-sm flex-shrink-0">
@@ -93,7 +118,7 @@
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Live
                         </span>
                     </div>
-                    <span class="font-extrabold text-[0.65rem] text-primary uppercase tracking-wider">Regione Lombardia • 2026</span>
+                    <span class="font-extrabold text-[0.65rem] text-primary uppercase tracking-wider">Regione Lombardia • Pro Max</span>
                 </div>
             </div>
             
@@ -176,6 +201,22 @@
                         <span class="text-[0.68rem] font-extrabold whitespace-nowrap">Sicurezza</span>
                         <span id="count-police" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">716</span>
                     </button>
+                </div>
+
+                <!-- UI/UX Pro Max: Quick-City & Geolocation Chips for 1-Tap Zero-Friction Discovery -->
+                <div class="flex items-center gap-1.5 overflow-x-auto py-0.5 pointer-events-auto">
+                    <button type="button" onclick="geolocalizeUser()" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-pink-200/80 text-primary font-extrabold text-[0.65rem] flex items-center gap-1 shadow-sm active:scale-95 transition-transform cursor-pointer">
+                        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">near_me</span>
+                        <span>Vicino a me</span>
+                    </button>
+                    <button type="button" onclick="quickSelectProvince('MI')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Milano</button>
+                    <button type="button" onclick="quickSelectProvince('BS')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Brescia</button>
+                    <button type="button" onclick="quickSelectProvince('BG')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Bergamo</button>
+                    <button type="button" onclick="quickSelectProvince('MB')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Monza</button>
+                    <button type="button" onclick="quickSelectProvince('VA')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Varese</button>
+                    <button type="button" onclick="quickSelectProvince('CO')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Como</button>
+                    <button type="button" onclick="quickSelectProvince('PV')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Pavia</button>
+                    <button type="button" onclick="quickSelectProvince('MN')" class="shrink-0 h-7 px-2.5 rounded-full apple-glass border border-slate-200/80 text-slate-700 hover:text-primary font-bold text-[0.65rem] shadow-sm active:scale-95 transition-transform cursor-pointer">Mantova</button>
                 </div>
             </div>
 
@@ -886,21 +927,155 @@
             }
         }
 
-        // GEOLOCALIZZAZIONE ED INQUADRATURA TRAMITE BARRA DI RICERCA TESTUALE
+        // DIZIONARIO NOMI PROVINCE -> SIGLA ISTAT
+        const provinceNamesMap = {
+            "BERGAMO": "BG", "BRESCIA": "BS", "COMO": "CO", "CREMONA": "CR",
+            "LECCO": "LC", "LODI": "LO", "MONZA": "MB", "MONZA E BRIANZA": "MB",
+            "MONZA BRIANZA": "MB", "MILANO": "MI", "MANTOVA": "MN",
+            "PAVIA": "PV", "SONDRIO": "SO", "VARESE": "VA"
+        };
+
+        // CENTRATURA COMUNE CERTIFICATA (CALCOLA IL BARICENTRO REALE DEI PRESIDI DEL COMUNE!)
+        function selectComuneSuggestion(comuneUpper, provCode) {
+            const suggestionsDiv = document.getElementById("search-suggestions");
+            if (suggestionsDiv) {
+                suggestionsDiv.classList.add("hidden");
+                suggestionsDiv.innerHTML = "";
+            }
+            const input = document.getElementById("free-search");
+            const listInput = document.getElementById("list-search-input");
+            const clearBtn = document.getElementById("clear-search-btn");
+            if (input) input.value = "";
+            if (listInput) listInput.value = "";
+            if (clearBtn) {
+                clearBtn.classList.add("hidden");
+                clearBtn.classList.remove("flex");
+            }
+
+            // Se è un capoluogo di provincia, usa le coordinate del centro cittadino (non della provincia!)
+            let targetLat = null, targetLng = null, targetZoom = 13.5;
+            const cityMarkers = markers.filter(m => m.comune === comuneUpper);
+
+            if (provinceNamesMap[comuneUpper] && provinceCentroids[provinceNamesMap[comuneUpper]]) {
+                const c = provinceCentroids[provinceNamesMap[comuneUpper]];
+                targetLat = c.lat;
+                targetLng = c.lng;
+                targetZoom = 13.2;
+            } else if (cityMarkers.length > 0) {
+                let sumLat = 0, sumLng = 0;
+                cityMarkers.forEach(m => {
+                    sumLat += m.props.lat;
+                    sumLng += m.props.lng;
+                });
+                targetLat = sumLat / cityMarkers.length;
+                targetLng = sumLng / cityMarkers.length;
+                targetZoom = 13.8;
+            }
+
+            // Sincronizza anche i menu a tendina Provincia e Comune così l'utente vede tutti i presidi della zona!
+            const selProv = document.getElementById("select-provincia");
+            const selCom = document.getElementById("select-comune");
+            if (selProv) selProv.value = "";
+            if (selCom) {
+                selCom.innerHTML = '<option value="">Comune (Tutti)</option>';
+                selCom.value = "";
+                selCom.disabled = true;
+            }
+
+            if (targetLat && targetLng && map) {
+                const pos = { lat: targetLat, lng: targetLng };
+                referencePoint = { lat: targetLat, lng: targetLng, isUserLocated: true };
+                switchTab('map');
+                map.panTo(pos);
+                map.setZoom(targetZoom);
+
+                if (window.userMarker) {
+                    window.userMarker.setPosition(pos);
+                } else {
+                    window.userMarker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: `Comune di ${comuneUpper}`,
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            fillColor: "#4CAF50",
+                            fillOpacity: 1.0,
+                            scale: 9,
+                            strokeColor: "#FFFFFF",
+                            strokeWeight: 2.5
+                        }
+                    });
+                }
+            }
+            filterAll();
+        }
+
+        // GEOLOCALIZZAZIONE ED INQUADRATURA TRAMITE BARRA DI RICERCA TESTUALE (MOTORE GERARCHICO ISTAT + GOOGLE GEOCODER)
         function geocodeAddressSearch() {
             const searchText = document.getElementById("free-search").value.trim();
             if (!searchText) {
-                alert("Digita una città o un indirizzo prima di cliccare su Cerca.");
+                alert("Digita un comune, un indirizzo o il nome di un centro prima di cliccare su Cerca.");
                 return;
             }
-            
-            const searchBtn = document.querySelector(".search-bar-floating button") || document.querySelector("button[onclick='geocodeAddressSearch()']");
-            const originalText = searchBtn.textContent;
-            searchBtn.textContent = "⏳";
-            searchBtn.disabled = true;
-            
-            const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(searchText + ", Lombardia, Italia")}`;
-            
+            const qUp = searchText.toUpperCase().replace(/\s+/g, " ");
+
+            // LIVELLO 1: È il nome esatto di un Comune presente nel database o di un Capoluogo Lombardo?
+            if (provinceNamesMap[qUp]) {
+                selectComuneSuggestion(qUp, provinceNamesMap[qUp]);
+                return;
+            }
+            const exactComuneMarker = markers.find(m => m.comune === qUp);
+            if (exactComuneMarker) {
+                selectComuneSuggestion(qUp, exactComuneMarker.provincia);
+                return;
+            }
+
+            // LIVELLO 2: È il nome di un Centro CAV o Ospedale?
+            const exactFacility = markers.find(m => (m.props.name || "").toUpperCase() === qUp)
+                               || markers.find(m => m.category === 'CAV' && (m.props.name || "").toUpperCase().includes(qUp));
+            if (exactFacility && qUp.length >= 4 && !qUp.startsWith("VIA ") && !qUp.startsWith("PIAZZA ") && !qUp.startsWith("CORSO ") && !qUp.startsWith("VIALE ")) {
+                selectSuggestion(exactFacility.props.name);
+                return;
+            }
+
+            // LIVELLO 3: Geocodifica Indirizzo / Via / Località (Google Maps Geocoder nativo -> fallback Nominatim City-First)
+            const searchBtn = document.querySelector("button[onclick='geocodeAddressSearch()']");
+            const originalText = searchBtn ? searchBtn.textContent : "Cerca";
+            if (searchBtn) {
+                searchBtn.textContent = "⏳";
+                searchBtn.disabled = true;
+            }
+
+            function applyGeocodedPoint(lat, lon) {
+                const searchLatLng = { lat: lat, lng: lon };
+                referencePoint = { lat: lat, lng: lon, isUserLocated: true };
+                switchTab('map');
+                map.panTo(searchLatLng);
+                map.setZoom(14.0);
+
+                clearSearchInput();
+
+                if (window.userMarker) {
+                    window.userMarker.setPosition(searchLatLng);
+                } else {
+                    window.userMarker = new google.maps.Marker({
+                        position: searchLatLng,
+                        map: map,
+                        title: "Posizione Cercata",
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            fillColor: "#4CAF50",
+                            fillOpacity: 1.0,
+                            scale: 9,
+                            strokeColor: "#FFFFFF",
+                            strokeWeight: 2.5
+                        }
+                    });
+                }
+                filterAll();
+            }
+
+            const url = `https://nominatim.openstreetmap.org/search?format=json&limit=6&q=${encodeURIComponent(searchText + ", Lombardia, Italia")}`;
             fetch(url)
             .then(response => {
                 if (!response.ok) throw new Error("Errore di rete");
@@ -908,44 +1083,24 @@
             })
             .then(data => {
                 if (data && data.length > 0) {
-                    const result = data[0];
-                    const lat = parseFloat(result.lat);
-                    const lon = parseFloat(result.lon);
-                    const searchLatLng = { lat: lat, lng: lon };
-                    referencePoint = { lat: lat, lng: lon, isUserLocated: true };
-                    
-                    map.panTo(searchLatLng);
-                    map.setZoom(12.5);
-                    
-                    // Clear search input and suggestions so all surrounding markers are fully restored!
-                    document.getElementById("free-search").value = "";
-                    const suggestionsDiv = document.getElementById("search-suggestions");
-                    if (suggestionsDiv) {
-                        suggestionsDiv.classList.add("hidden");
-                        suggestionsDiv.innerHTML = "";
-                    }
-                    
-                    if (window.userMarker) {
-                        window.userMarker.setPosition(searchLatLng);
-                    } else {
-                        window.userMarker = new google.maps.Marker({
-                            position: searchLatLng,
-                            map: map,
-                            title: "Posizione Cercata",
-                            icon: {
-                                path: google.maps.SymbolPath.CIRCLE,
-                                fillColor: "#4CAF50",
-                                fillOpacity: 1.0,
-                                scale: 9,
-                                strokeColor: "#FFFFFF",
-                                strokeWeight: 2.5
-                            }
-                        });
-                    }
-                    
-                    filterAll();
+                    // BUGFIX VARESE->COMERIO: Scarta sempre i centroidi provinciali ('county'/'state') se esiste il Comune/Città/Via reale!
+                    const best = data.find(r => r.addresstype !== "county" && r.addresstype !== "state" && r.addresstype !== "region") || data[0];
+                    applyGeocodedPoint(parseFloat(best.lat), parseFloat(best.lon));
+                } else if (window.google && google.maps && google.maps.Geocoder) {
+                    const geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({
+                        address: searchText + ", Lombardia, Italia",
+                        bounds: new google.maps.LatLngBounds({ lat: 44.6, lng: 8.4 }, { lat: 46.7, lng: 11.5 })
+                    }, (results, status) => {
+                        if (status === "OK" && results && results[0]) {
+                            const loc = results[0].geometry.location;
+                            applyGeocodedPoint(loc.lat(), loc.lng());
+                        } else {
+                            alert("Impossibile trovare la località cercata. Inserisci un comune, via o centro lombardo valido.");
+                        }
+                    });
                 } else {
-                    alert("Impossibile trovare la località cercata. Inserisci un comune o indirizzo lombardo valido.");
+                    alert("Impossibile trovare la località cercata. Inserisci un comune, via o centro lombardo valido.");
                 }
             })
             .catch(err => {
@@ -953,8 +1108,10 @@
                 alert("Si è verificato un errore durante la ricerca geografica. Riprova tra pochi istanti.");
             })
             .finally(() => {
-                searchBtn.textContent = originalText;
-                searchBtn.disabled = false;
+                if (searchBtn) {
+                    searchBtn.textContent = originalText;
+                    searchBtn.disabled = false;
+                }
             });
         }
 
@@ -1056,8 +1213,29 @@
                 return;
             }
 
-            // Cerca coincidenze tra i marker caricati dal Google Sheet
-            const matches = [];
+            // 1. Cerca Comuni ISTAT corrispondenti (es. "Varese", "Busto Arsizio", "Gallarate")
+            const comuniMap = new Map();
+            for (let i = 0; i < markers.length; i++) {
+                const m = markers[i];
+                const com = (m.comune || "").toUpperCase();
+                if (com && com.includes(query)) {
+                    if (!comuniMap.has(com)) {
+                        comuniMap.set(com, { comune: com, provincia: m.provincia, count: 0, cavCount: 0 });
+                    }
+                    const entry = comuniMap.get(com);
+                    entry.count++;
+                    if (m.category === 'CAV') entry.cavCount++;
+                }
+            }
+            const comuniMatches = Array.from(comuniMap.values()).sort((a, b) => {
+                const aExact = a.comune === query ? 0 : (a.comune.startsWith(query) ? 1 : 2);
+                const bExact = b.comune === query ? 0 : (b.comune.startsWith(query) ? 1 : 2);
+                if (aExact !== bExact) return aExact - bExact;
+                return b.count - a.count;
+            }).slice(0, 2);
+
+            // 2. Cerca Presidi con Ranking Intelligente (Priorità a Centri CAV e Ospedali + Match sul Nome!)
+            const scoredMatches = [];
             for (let i = 0; i < markers.length; i++) {
                 const marker = markers[i];
                 const name = (marker.props.name || "").toUpperCase();
@@ -1065,18 +1243,46 @@
                 const com = (marker.comune || "").toUpperCase();
 
                 if (name.includes(query) || addr.includes(query) || com.includes(query)) {
-                    matches.push(marker);
-                    if (matches.length >= 5) break; // Mostra massimo 5 risultati
+                    let score = 0;
+                    if (name.startsWith(query)) score += 100;
+                    else if (name.includes(query)) score += 60;
+                    if (com === query) score += 50;
+                    else if (com.startsWith(query)) score += 30;
+                    if (addr.includes(query)) score += 20;
+                    if (marker.category === "CAV") score += 40;
+                    else if (marker.category === "SANITA") score += 25;
+                    scoredMatches.push({ marker, score });
                 }
             }
+            scoredMatches.sort((a, b) => b.score - a.score);
+            const matches = scoredMatches.slice(0, 5).map(x => x.marker);
 
-            if (matches.length === 0) {
+            if (comuniMatches.length === 0 && matches.length === 0) {
                 suggestionsDiv.classList.add("hidden");
                 suggestionsDiv.innerHTML = "";
                 return;
             }
 
             let html = "";
+
+            // Renderizza prima i suggerimenti geografici di Comune ("Vai al Comune di Varese (VA)")
+            comuniMatches.forEach(c => {
+                const cityTitle = c.comune.charAt(0) + c.comune.slice(1).toLowerCase();
+                html += `
+                    <div class="flex items-center justify-between gap-2.5 p-2.5 bg-pink-50/60 hover:bg-pink-100/70 rounded-xl cursor-pointer transition-colors border border-pink-100/80" onclick="selectComuneSuggestion('${c.comune.replace(/'/g, "\\'")}', '${c.provincia}')">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <span class="material-symbols-outlined text-primary text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">location_city</span>
+                            <div class="flex flex-col min-w-0">
+                                <span class="text-xs font-extrabold text-gray-900 truncate">Comune di ${escapeHTML(cityTitle)} (${escapeHTML(c.provincia)})</span>
+                                <span class="text-[0.65rem] text-primary font-bold truncate">Centra la mappa su ${escapeHTML(cityTitle)} • ${c.count} presidi attivi</span>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-primary text-[16px] shrink-0">arrow_forward</span>
+                    </div>
+                `;
+            });
+
+            // Renderizza i singoli Presidi ordinati per rilevanza
             matches.forEach(m => {
                 let icon = "support";
                 let colorClass = "text-primary";
@@ -1107,12 +1313,20 @@
             suggestionsDiv.classList.remove("hidden");
         }
 
-        // SELEZIONE SUGGERIMENTO (PAN, ZOOM ED APERTURA DETTAGLIO)
+        // SELEZIONE SUGGERIMENTO SINGOLO PRESIDIO (RIPRISTINA TUTTI I MARKER CIRCOSTANTI E APRE IL DETTAGLIO!)
         function selectSuggestion(name) {
             const input = document.getElementById("free-search");
+            const listInput = document.getElementById("list-search-input");
+            const clearBtn = document.getElementById("clear-search-btn");
             const suggestionsDiv = document.getElementById("search-suggestions");
             
-            if (input) input.value = name;
+            // Svuota il filtro testuale così sulla mappa restano visibili anche i presidi vicini!
+            if (input) input.value = "";
+            if (listInput) listInput.value = "";
+            if (clearBtn) {
+                clearBtn.classList.add("hidden");
+                clearBtn.classList.remove("flex");
+            }
             if (suggestionsDiv) {
                 suggestionsDiv.classList.add("hidden");
                 suggestionsDiv.innerHTML = "";
@@ -1120,13 +1334,15 @@
 
             const marker = markers.find(m => m.props.name === name);
             if (marker && map) {
+                referencePoint = { lat: marker.props.lat, lng: marker.props.lng, isUserLocated: true };
+                filterAll();
                 switchTab('map');
                 map.panTo(marker.getPosition());
-                map.setZoom(14.5);
+                map.setZoom(15.5);
                 displayFeatureDetails(marker.props, marker.category);
+            } else {
+                filterAll();
             }
-
-            filterAll();
         }
 
         // FUNZIONE DI PARSING GEOGRAFICO CERTIFICATA (PRIORITÀ ALLE COLONNE DEDICATE 'COMUNE' E 'PROVINCIA')
@@ -1163,14 +1379,14 @@
             const phones = parsePhoneNumbers(props.telefono, category);
             const sheetContent = document.getElementById("sheet-content");
             
-            let badgeText = "🟢 Servizio Verificato";
+            let badgeText = "Servizio Accreditato Regione";
             let badgeBg = "bg-status-success-subtle text-status-success";
             
             if (category === "SANITA") {
-                badgeText = "🚑 Soccorso Sanitario d'Emergenza";
+                badgeText = "Pronto Soccorso Codice Rosa H24";
                 badgeBg = "bg-red-50 text-tertiary";
             } else if (category === "FORZE_ORDINE") {
-                badgeText = `🚓 ${props.tipo || "Forza dell'Ordine Istituzionale"}`;
+                badgeText = `${props.tipo || "Presidio Forze dell'Ordine"}`;
                 badgeBg = "bg-blue-50 text-secondary";
             }
 
@@ -1188,7 +1404,7 @@
                         </span>
                         ${distLabel ? `
                             <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700 font-extrabold text-[0.7rem]">
-                                📍 a ${escapeHTML(distLabel)}
+                                <span class="material-symbols-outlined text-[13px] text-primary">near_me</span> a ${escapeHTML(distLabel)}
                             </span>
                         ` : ''}
                     </div>
@@ -1234,11 +1450,12 @@
             
             phones.forEach((ph, idx) => {
                 const btnText = ph.isEmergency
-                    ? `📞 CHIAMA ${ph.label.toUpperCase()}`
-                    : (phones.length > 1 ? `📞 CHIAMA RECAPITO ${idx + 1} (${ph.label})` : `📞 CHIAMA SUBITO (${ph.label})`);
+                    ? `${ph.label.toUpperCase()}`
+                    : (phones.length > 1 ? `CHIAMA RECAPITO ${idx + 1} (${ph.label})` : `CHIAMA SUBITO (${ph.label})`);
                 html += `
-                    <a href="${escapeHTML(ph.href)}" class="h-12 rounded-full bg-primary hover:bg-magenta-dark text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
-                        ${escapeHTML(btnText)}
+                    <a href="${escapeHTML(ph.href)}" class="h-12 rounded-2xl bg-primary hover:bg-magenta-dark active:scale-[0.98] transition-all text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(236,0,140,0.28)] cursor-pointer">
+                        <span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">call</span>
+                        <span>${escapeHTML(btnText)}</span>
                     </a>
                 `;
             });
@@ -1256,7 +1473,7 @@
             if (props.email) {
                 html += `
                     <a href="mailto:${escapeHTML(props.email)}" class="h-11 rounded-full border-2 border-primary text-primary hover:bg-pink-50 font-bold text-xs flex items-center justify-center gap-2">
-                        ✉️ INVIA UN'E-MAIL (${escapeHTML(props.email)})
+                        <span class="material-symbols-outlined text-[17px]">mail</span><span>INVIA E-MAIL (${escapeHTML(props.email)})</span>
                     </a>
                 `;
             }
@@ -1264,7 +1481,7 @@
             if (props.sito_web) {
                 html += `
                     <a href="${sanitizeURL(props.sito_web)}" target="_blank" rel="noopener noreferrer" class="h-11 rounded-full border-2 border-secondary text-secondary hover:bg-blue-50 font-bold text-xs flex items-center justify-center gap-2">
-                        🌐 VISITA IL SITO WEB
+                        <span class="material-symbols-outlined text-[17px]">language</span><span>VISITA IL SITO WEB UFFICIALE</span>
                     </a>
                 `;
             }
@@ -1279,21 +1496,21 @@
 
             if (category === "CAV") {
                 html += `
-                    <li class="flex items-center gap-2">🧠 Supporto Psicologico e Psicoterapeutico</li>
-                    <li class="flex items-center gap-2">⚖️ Assistenza Legale e Gratuito Patrocinio</li>
-                    <li class="flex items-center gap-2">🏠 Raccordo e inserimento protetto in Case Rifugio</li>
-                    <li class="flex items-center gap-2">🛡️ Riservatezza assoluta e Anonimato garantito</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary shrink-0">psychology</span><span>Supporto Psicologico e Psicoterapeutico</span></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary shrink-0">gavel</span><span>Assistenza Legale e Gratuito Patrocinio</span></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary shrink-0">home_health</span><span>Raccordo protetto con Case Rifugio</span></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-emerald-600 shrink-0">verified_user</span><span>Riservatezza assoluta e Anonimato garantito</span></li>
                 `;
             } else if (category === "SANITA") {
                 html += `
-                    <li class="flex items-center gap-2">🌸 Percorso assistenziale protetto "Codice Rosa"</li>
-                    <li class="flex items-center gap-2">🩺 Assistenza medica specialistica H24</li>
-                    <li class="flex items-center gap-2">💰 Esente da ticket sanitario per violenza</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-tertiary shrink-0">favorite</span><span>Percorso assistenziale protetto "Codice Rosa"</span></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-tertiary shrink-0">medical_services</span><span>Assistenza medica e psicologica H24</span></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-emerald-600 shrink-0">verified</span><span>Esenzione totale dal ticket sanitario</span></li>
                 `;
             } else if (category === "FORZE_ORDINE") {
                 html += `
-                    <li class="flex items-center gap-2">🛡️ Denunce e attivazione immediata "Codice Rosso"</li>
-                    <li class="flex items-center gap-2">🚨 Pronto intervento in flagranza</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">shield</span><span>Denunce e attivazione immediata "Codice Rosso"</span></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-tertiary shrink-0">emergency_home</span><span>Pronto intervento H24 e tutela immediata</span></li>
                 `;
             }
 
@@ -1487,7 +1704,7 @@
                 const distLabel = formatDistanceBadge(facility._distKm);
                 
                 html += `
-                    <article class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+                    <article class="pro-card p-4 flex flex-col gap-3">
                         <div class="flex items-start justify-between gap-2">
                             <div class="flex flex-col min-w-0 w-full">
                                 <div class="flex items-center justify-between gap-1.5 flex-wrap mb-1">
@@ -1504,7 +1721,7 @@
                                     </div>
                                     ${distLabel ? `
                                         <span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 font-extrabold text-[0.62rem]">
-                                            📍 ${escapeHTML(distLabel)}
+                                            <span class="material-symbols-outlined text-[12px] text-primary align-middle">near_me</span> ${escapeHTML(distLabel)}
                                         </span>
                                     ` : ''}
                                 </div>
@@ -1612,6 +1829,18 @@
 
             // Sync with dynamic list view!
             rebuildListView(visibleFacilities);
+        }
+
+        // SELEZIONE RAPIDA PROVINCIA DAI CHIP IN CIMA ALLA MAPPA (UI/UX PRO MAX)
+        function quickSelectProvince(provCode) {
+            const selProv = document.getElementById("select-provincia");
+            if (!selProv) return;
+            if (selProv.value === provCode) {
+                resetFilters();
+            } else {
+                selProv.value = provCode;
+                onProvinciaChange();
+            }
         }
 
         // CAMBIO PROVINCIA
