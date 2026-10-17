@@ -1249,8 +1249,8 @@
                     if (com === query) score += 50;
                     else if (com.startsWith(query)) score += 30;
                     if (addr.includes(query)) score += 20;
-                    if (marker.category === "CAV") score += 40;
-                    else if (marker.category === "SANITA") score += 25;
+                    if (marker.category === "CAV") score += 90;
+                    else if (marker.category === "SANITA") score += 45;
                     scoredMatches.push({ marker, score });
                 }
             }
