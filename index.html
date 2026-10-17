@@ -173,19 +173,35 @@
         </div>
 
         <!-- ==================== TAB 2: DYNAMIC LIST OF CENTERS ==================== -->
-        <div id="tab-list-content" class="w-full h-full overflow-y-auto px-4 hidden">
+        <div id="tab-list-content" class="w-full h-full overflow-y-auto px-4 pt-3 hidden">
             <!-- Header Block -->
-            <div class="mb-4">
+            <div class="mb-3">
                 <span class="text-[0.65rem] text-primary uppercase font-extrabold tracking-wider">Elenco Servizi Verificati</span>
                 <h1 class="text-xl font-extrabold tracking-tight text-gray-900">Centri e Presidi attivi in Lombardia</h1>
                 <p class="text-xs text-gray-500 mt-1 leading-snug">
-                    Consulta la lista dei servizi attivi filtrati in base alla ricerca effettuata. Clicca su "Dettagli" per vedere gli orari e i servizi offerti.
+                    Consulta i presidi ordinati per vicinanza o categoria. Clicca su "Dettagli" per orari, indicazioni stradali e recapiti completi.
                 </p>
             </div>
 
+            <!-- Quick Sub-Filter Pills inside List Tab -->
+            <div class="grid grid-cols-4 gap-1.5 mb-3 bg-gray-100 p-1 rounded-full">
+                <button id="list-filter-CAV" onclick="setListCategoryFilter('CAV')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all bg-primary text-white shadow-sm">
+                    Centri CAV
+                </button>
+                <button id="list-filter-SANITA" onclick="setListCategoryFilter('SANITA')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900">
+                    P. Soccorso
+                </button>
+                <button id="list-filter-FORZE_ORDINE" onclick="setListCategoryFilter('FORZE_ORDINE')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900">
+                    Sicurezza
+                </button>
+                <button id="list-filter-ALL" onclick="setListCategoryFilter('ALL')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900">
+                    Tutti
+                </button>
+            </div>
+
             <!-- Dynamic List Container -->
-            <div id="list-container" class="pb-12">
-                <!-- Popolated dynamically by JavaScript -->
+            <div id="list-container" class="pb-16">
+                <!-- Populated dynamically by JavaScript -->
             </div>
         </div>
 
@@ -382,6 +398,75 @@
         let infoWindow;
         let clusterers = {};
         let allFacilities = []; // Dynamic store for all GSheet parsed records
+        let referencePoint = { lat: 45.4642, lng: 9.1900, isUserLocated: false }; // Default Milano, updated on GPS/Search
+        let listCategoryFilter = 'CAV'; // Default filter in Tab 2 ("Centri CAV")
+        let listRenderLimit = 30; // Virtual pagination limit for 0ms UI lag
+        let lastFilteredFacilities = [];
+
+        // CALCOLO DISTANZA HAVERSINE IN KM ("PIÙ VICINI A TE")
+        function computeDistanceKm(lat1, lon1, lat2, lon2) {
+            const R = 6371.0;
+            const dLat = (lat2 - lat1) * Math.PI / 180.0;
+            const dLon = (lon2 - lon1) * Math.PI / 180.0;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180.0) * Math.cos(lat2 * Math.PI / 180.0) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        function formatDistanceBadge(distKm) {
+            if (distKm === null || distKm === undefined || isNaN(distKm)) return "";
+            if (distKm < 1.0) {
+                return `${Math.max(50, Math.round(distKm * 1000 / 50) * 50)} m`;
+            }
+            return `${distKm.toFixed(1).replace('.', ',')} km`;
+        }
+
+        // MOTORE TELEFONICO INTELLIGENTE (MULTI-NUMERO, PULIZIA INTERNI E FALLBACK SICURI 112/1522)
+        function parsePhoneNumbers(rawTel, category) {
+            const defaultNum = (category === "CAV") ? "1522" : "112";
+            const defaultLabel = (category === "CAV") ? "Antiviolenza 1522" : "Emergenza 112";
+            if (!rawTel) {
+                return [{ href: `tel:${defaultNum}`, label: defaultLabel, note: "", isEmergency: true }];
+            }
+            const s = rawTel.toString().trim();
+            if (!s || s === "112" || s === "112 / 118" || s === "112 / 113" || s === "1522") {
+                const num = (s === "1522") ? "1522" : defaultNum;
+                const lbl = (num === "1522") ? "Antiviolenza 1522" : "Emergenza 112";
+                return [{ href: `tel:${num}`, label: lbl, note: "", isEmergency: true }];
+            }
+
+            // Estrae eventuali note tra parentesi es. "(int.3)" o "(numero attivo in orari di apertura)"
+            const notes = s.match(/\([^)]+\)/g) || [];
+            const noteStr = notes.join(" ");
+            const sNoNotes = s.replace(/\([^)]+\)/g, "");
+
+            // Normalizza lo slash del prefisso (es. "02/55019609" o "0383 / 1915589" -> "02 55019609")
+            let sNorm = sNoNotes.replace(/\b(0\d{1,3})\s*\/\s*(\d)/g, "$1 $2");
+            sNorm = sNorm.replace(/\b(3\d{2})\s*\/\s*(\d)/g, "$1 $2");
+
+            // Separa numeri multipli divisi da " - ", ";" o " / "
+            const parts = sNorm.split(/\s*[-;/]\s*/);
+            const results = [];
+            parts.forEach(p => {
+                const cleanLabel = p.trim().replace(/\s+/g, " ");
+                if (!cleanLabel) return;
+                const digits = cleanLabel.replace(/[^0-9+]/g, "");
+                if (digits.length >= 3) {
+                    results.push({
+                        href: `tel:${digits}`,
+                        label: cleanLabel,
+                        note: noteStr,
+                        isEmergency: (digits === "112" || digits === "1522" || digits === "118")
+                    });
+                }
+            });
+
+            if (results.length === 0) {
+                return [{ href: `tel:${defaultNum}`, label: defaultLabel, note: "", isEmergency: true }];
+            }
+            return results;
+        }
 
         // UTILITY DI SICUREZZA PER SANIFICAZIONE XSS & URI SCHEMES (STORED XSS PREVENTION)
         function escapeHTML(str) {
@@ -613,13 +698,17 @@
                         name: row.nome || row.name || "",
                         tipo: row.tipo || "",
                         indirizzo: row.indirizzo || row.address || "",
+                        comune: row.comune || "",
+                        provincia: row.provincia || "",
                         telefono: row.telefono || row.phone || "",
                         email: row.email || "",
                         sito_web: row.sito_web || row.website || row.sito_web_url || "",
                         orari: row.orari || row.hours || "",
                         codice_rosa: row.codice_rosa || "",
                         bollino_rosa: row.bollino_rosa || "",
-                        servizi: row.servizi || ""
+                        servizi: row.servizi || "",
+                        lat: lat,
+                        lng: lng
                     };
 
                     let iconUrl = "";
@@ -733,26 +822,28 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
-                        const lat = position.coords.latitude;
-                        const lon = position.coords.longitude;
-                        const userLatLng = { lat: lat, lng: lon };
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const userLatLng = { lat: lat, lng: lon };
+                    referencePoint = { lat: lat, lng: lon, isUserLocated: true };
 
-                        window.userMarker = new google.maps.Marker({
-                            position: userLatLng,
-                            map: map,
-                            title: "Tu sei qui",
-                            icon: {
-                                path: google.maps.SymbolPath.CIRCLE,
-                                fillColor: "#4CAF50",
-                                fillOpacity: 1.0,
-                                scale: 9,
-                                strokeColor: "#FFFFFF",
-                                strokeWeight: 2.5
-                            }
-                        });
+                    window.userMarker = new google.maps.Marker({
+                        position: userLatLng,
+                        map: map,
+                        title: "Tu sei qui",
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            fillColor: "#4CAF50",
+                            fillOpacity: 1.0,
+                            scale: 9,
+                            strokeColor: "#FFFFFF",
+                            strokeWeight: 2.5
+                        }
+                    });
 
-                        map.setCenter(userLatLng);
-                        map.setZoom(11.5);
+                    map.setCenter(userLatLng);
+                    map.setZoom(11.5);
+                    filterAll();
                     },
                     (error) => {
                         console.log("Geolocalizzazione rifiutata o non disponibile all'avvio.");
@@ -788,6 +879,7 @@
                     const lat = parseFloat(result.lat);
                     const lon = parseFloat(result.lon);
                     const searchLatLng = { lat: lat, lng: lon };
+                    referencePoint = { lat: lat, lng: lon, isUserLocated: true };
                     
                     map.panTo(searchLatLng);
                     map.setZoom(12.5);
@@ -922,92 +1014,38 @@
             filterAll();
         }
 
-        // FUNZIONE DI PARSING GEOGRAFICO
+        // FUNZIONE DI PARSING GEOGRAFICO CERTIFICATA (PRIORITÀ ALLE COLONNE DEDICATE 'COMUNE' E 'PROVINCIA')
         function parseGeographicInfo(props, category) {
-            let comune = props.comune || "";
-            let provincia = props.provincia || "";
+            let comune = (props.comune || "").trim();
+            let provincia = (props.provincia || "").trim().toUpperCase();
+            if (provincia === "MA") provincia = "MN"; // Fix codifica Mantova
+
+            if (comune && provincia) {
+                return { comune: comune.toUpperCase(), provincia: provincia };
+            }
+
             const indirizzo = props.indirizzo || "";
-            
             if (indirizzo && indirizzo !== "Indirizzo non disponibile") {
-                const parts = indirizzo.split(",").map(p => p.trim());
-                if (parts.length >= 1) {
-                    const last = parts[parts.length - 1];
-                    const provMatch = last.match(/\(([A-Z]{2})\)/);
-                    if (provMatch) {
-                        provincia = provMatch[1];
-                        if (parts.length >= 2) {
-                            comune = parts[parts.length - 2];
-                        }
-                    } else {
-                        comune = last;
-                        const zipMatch = indirizzo.match(/\b(\d{5})\b/);
-                        if (zipMatch) {
-                            const zip = zipMatch[1];
-                            if (zip.startsWith("25")) provincia = "BS";
-                            else if (zip.startsWith("24")) provincia = "BG";
-                            else if (zip.startsWith("21")) provincia = "VA";
-                            else if (zip.startsWith("22")) provincia = "CO";
-                            else if (zip.startsWith("27")) provincia = "PV";
-                            else if (zip.startsWith("46")) provincia = "MN";
-                            else if (zip.startsWith("238") || zip.startsWith("239")) provincia = "LC";
-                            else if (zip.startsWith("230") || zip.startsWith("231")) provincia = "SO";
-                            else if (zip.startsWith("268") || zip.startsWith("269")) provincia = "LO";
-                            else if (zip.startsWith("260") || zip.startsWith("261")) provincia = "CR";
-                            else if (zip.startsWith("208") || zip.startsWith("209")) provincia = "MB";
-                            else if (zip.startsWith("200") || zip.startsWith("201")) provincia = "MI";
-                        }
-                    }
+                const provMatch = indirizzo.match(/\(([A-Z]{2})\)/);
+                if (provMatch && !provincia) {
+                    provincia = provMatch[1] === "MA" ? "MN" : provMatch[1];
+                }
+                const capCityMatch = indirizzo.match(/\b(\d{5})\s*,?\s*([A-Za-zÀ-ÿ'’\-\s]+?)\s*\([A-Z]{2}\)/);
+                if (capCityMatch && !comune) {
+                    comune = capCityMatch[2].trim();
                 }
             }
-            
-            if (!provincia) {
-                const title = (props.name || "").toUpperCase();
-                if (title.includes("MILANO")) provincia = "MI";
-                else if (title.includes("BRESCIA")) provincia = "BS";
-                else if (title.includes("BERGAMO")) provincia = "BG";
-                else if (title.includes("VARESE")) provincia = "VA";
-                else if (title.includes("COMO")) provincia = "CO";
-                else if (title.includes("PAVIA")) provincia = "PV";
-                else if (title.includes("MONZA")) provincia = "MB";
-                else if (title.includes("LECCO")) provincia = "LC";
-                else if (title.includes("LODI")) provincia = "LO";
-                else if (title.includes("CREMONA")) provincia = "CR";
-                else if (title.includes("MANTOVA")) provincia = "MN";
-                else if (title.includes("SONDRIO")) provincia = "SO";
-            }
-            
-            if (!comune) {
-                comune = (props.name || "");
-            }
-            
-            try {
-                comune = comune.replace(/\d+/g, '').replace(/[\(\)]/g, '')
-                              .replace(/SPORTELLO DI/gi, "")
-                              .replace(/CENTRO ANTIVIOLENZA/gi, "")
-                              .replace(/STAZIONE CARABINIERI/gi, "")
-                              .replace(/PRONTO SOCCORSO/gi, "")
-                              .replace(/OSPEDALE/gi, "")
-                              .replace(/PRESIDIO OSPEDALIERO/gi, "")
-                              .replace(/COMANDO/gi, "")
-                              .trim();
-                              
-                if (comune.includes(",")) {
-                    comune = comune.split(",")[0].trim();
-                }
-            } catch (err) {
-                comune = "";
-            }
-            
+
             return { 
                 comune: (comune || "").toUpperCase(), 
                 provincia: (provincia || "").toUpperCase() 
             };
         }
 
-        // MOSTRA I DETTAGLI NEL BOTTOM SHEET DRAWER
+        // MOSTRA I DETTAGLI NEL BOTTOM SHEET DRAWER (MULTI-NUMERO + INDICAZIONI STRADALI GOOGLE MAPS)
         function displayFeatureDetails(props, category) {
             if (!props) return;
-            const cleanPhone = (props.telefono || "").replace(/[^0-9+]/g, "");
+            const phones = parsePhoneNumbers(props.telefono, category);
             const sheetContent = document.getElementById("sheet-content");
             
             let badgeText = "🟢 Servizio Verificato";
@@ -1017,17 +1055,27 @@
                 badgeText = "🚑 Soccorso Sanitario d'Emergenza";
                 badgeBg = "bg-red-50 text-tertiary";
             } else if (category === "FORZE_ORDINE") {
-                badgeText = "🚓 Forza dell'Ordine Istituzionale";
+                badgeText = `🚓 ${props.tipo || "Forza dell'Ordine Istituzionale"}`;
                 badgeBg = "bg-blue-50 text-secondary";
             }
 
+            const distKm = (props.lat && props.lng)
+                ? computeDistanceKm(referencePoint.lat, referencePoint.lng, props.lat, props.lng)
+                : null;
+            const distLabel = formatDistanceBadge(distKm);
+
             let html = `
                 <div class="flex flex-col gap-4">
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
                         <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full ${badgeBg} font-bold text-[0.7rem]">
                             <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
                             ${escapeHTML(badgeText)}
                         </span>
+                        ${distLabel ? `
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700 font-extrabold text-[0.7rem]">
+                                📍 a ${escapeHTML(distLabel)}
+                            </span>
+                        ` : ''}
                     </div>
                     
                     <h3 class="text-xl font-black text-gray-900 leading-snug">${escapeHTML(props.name)}</h3>
@@ -1048,23 +1096,38 @@
                 `;
             }
 
+            if (phones[0] && phones[0].note) {
+                html += `
+                        <div class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">info</span>
+                            <p><strong>Nota recapito:</strong> ${escapeHTML(phones[0].note)}</p>
+                        </div>
+                `;
+            }
+
             html += `
                     </div>
                     
                     <div class="flex flex-col gap-2 mt-2">
             `;
             
-            if (props.telefono && props.telefono !== "112 / 118") {
+            phones.forEach((ph, idx) => {
+                const btnText = ph.isEmergency
+                    ? `📞 CHIAMA ${ph.label.toUpperCase()}`
+                    : (phones.length > 1 ? `📞 CHIAMA RECAPITO ${idx + 1} (${ph.label})` : `📞 CHIAMA SUBITO (${ph.label})`);
                 html += `
-                    <a href="tel:${cleanPhone}" class="h-12 rounded-full bg-primary hover:bg-magenta-dark text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
-                        📞 CHIAMA SUBITO (${props.telefono})
+                    <a href="${escapeHTML(ph.href)}" class="h-12 rounded-full bg-primary hover:bg-magenta-dark text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
+                        ${escapeHTML(btnText)}
                     </a>
                 `;
-            } else {
-                const numEmergency = (category === "CAV") ? "1522" : "112";
+            });
+
+            if (props.lat && props.lng) {
+                const navUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(props.lat + ',' + props.lng)}`;
                 html += `
-                    <a href="tel:${numEmergency}" class="h-12 rounded-full bg-primary hover:bg-magenta-dark text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
-                        📞 CHIAMA EMERGENZA (${numEmergency})
+                    <a href="${navUrl}" target="_blank" rel="noopener noreferrer" class="h-11 rounded-full bg-secondary hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm">
+                        <span class="material-symbols-outlined text-[18px]">directions</span>
+                        <span>INDICAZIONI STRADALI (PORTAMI QUI)</span>
                     </a>
                 `;
             }
@@ -1072,7 +1135,7 @@
             if (props.email) {
                 html += `
                     <a href="mailto:${escapeHTML(props.email)}" class="h-11 rounded-full border-2 border-primary text-primary hover:bg-pink-50 font-bold text-xs flex items-center justify-center gap-2">
-                        ✉️ INVIA UN'E-MAIL
+                        ✉️ INVIA UN'E-MAIL (${escapeHTML(props.email)})
                     </a>
                 `;
             }
@@ -1156,57 +1219,100 @@
             }
         }
 
-        // REBUILD THE LIST VIEW DYNAMICALLY (STITCH HIGH FIDELITY LAYOUT!)
+        // SELETTORE CATEGORIA NEL TAB 2 (ELENCO)
+        function setListCategoryFilter(cat) {
+            listCategoryFilter = cat;
+            listRenderLimit = 30;
+            ['CAV', 'SANITA', 'FORZE_ORDINE', 'ALL'].forEach(k => {
+                const btn = document.getElementById(`list-filter-${k}`);
+                if (!btn) return;
+                if (k === cat) {
+                    const activeColor = (k === 'CAV') ? 'bg-primary text-white shadow-sm'
+                                      : (k === 'SANITA') ? 'bg-tertiary text-white shadow-sm'
+                                      : (k === 'FORZE_ORDINE') ? 'bg-secondary text-white shadow-sm'
+                                      : 'bg-gray-900 text-white shadow-sm';
+                    btn.className = `py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all ${activeColor}`;
+                } else {
+                    btn.className = "py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900";
+                }
+            });
+            rebuildListView(lastFilteredFacilities);
+        }
+
+        function loadMoreListItems() {
+            listRenderLimit += 40;
+            rebuildListView(lastFilteredFacilities);
+        }
+
+        // REBUILD THE LIST VIEW DYNAMICALLY (STITCH HIGH FIDELITY LAYOUT + HAVERSINE SORT + PAGINATION!)
         function rebuildListView(filteredFacilities) {
+            lastFilteredFacilities = filteredFacilities || [];
             const listContainer = document.getElementById("list-container");
             if (!listContainer) return;
+
+            // Filtra per la pillola attiva nel Tab 2 (se non siamo su 'ALL')
+            const listItems = (listCategoryFilter === 'ALL')
+                ? lastFilteredFacilities.slice()
+                : lastFilteredFacilities.filter(f => f.category === listCategoryFilter);
+
+            // Calcola la distanza dal punto di riferimento e ordina dal più vicino al più lontano
+            listItems.forEach(f => {
+                f._distKm = (f.props.lat && f.props.lng)
+                    ? computeDistanceKm(referencePoint.lat, referencePoint.lng, f.props.lat, f.props.lng)
+                    : 9999;
+            });
+            listItems.sort((a, b) => a._distKm - b._distKm);
             
-            if (filteredFacilities.length === 0) {
+            if (listItems.length === 0) {
                 listContainer.innerHTML = `
                     <div class="flex flex-col items-center justify-center py-16 px-4 text-center">
                         <span class="material-symbols-outlined text-[48px] text-gray-400 mb-2">search_off</span>
-                        <p class="font-bold text-sm text-gray-700">Nessun risultato trovato</p>
-                        <p class="text-xs text-gray-400 mt-1">Prova a cambiare i filtri o la ricerca.</p>
+                        <p class="font-bold text-sm text-gray-700">Nessun risultato in questa categoria</p>
+                        <p class="text-xs text-gray-400 mt-1">Prova a selezionare "Tutti" qui sopra o a modificare la ricerca.</p>
                     </div>
                 `;
                 return;
             }
             
+            const slice = listItems.slice(0, listRenderLimit);
             let html = "";
-            filteredFacilities.forEach(facility => {
-                let badgeText = "Servizio Verificato";
+            slice.forEach(facility => {
+                let badgeText = "Centro CAV Verificato";
                 let badgeBg = "bg-status-success-subtle text-status-success";
-                let icon = "support";
-                let colorClass = "text-primary";
                 
                 if (facility.category === "SANITA") {
-                    badgeText = "Pronto Soccorso";
+                    badgeText = "Pronto Soccorso H24";
                     badgeBg = "bg-red-50 text-tertiary";
-                    icon = "emergency";
-                    colorClass = "text-tertiary";
                 } else if (facility.category === "FORZE_ORDINE") {
                     badgeText = facility.props.tipo || "Forza dell'Ordine";
                     badgeBg = "bg-blue-50 text-secondary";
-                    icon = "local_police";
-                    colorClass = "text-secondary";
                 }
                 
-                const cleanPhone = (facility.props.telefono || "").replace(/[^0-9+]/g, "");
-                const phoneLabel = facility.props.telefono ? `Chiama ${facility.props.telefono}` : "NUE 112";
-                const callHref = facility.props.telefono ? `tel:${cleanPhone}` : "tel:112";
+                const phones = parsePhoneNumbers(facility.props.telefono, facility.category);
+                const primaryPhone = phones[0];
+                const phoneLabel = primaryPhone.isEmergency ? primaryPhone.label : `Chiama ${primaryPhone.label}`;
+                const callHref = primaryPhone.href;
+                const distLabel = formatDistanceBadge(facility._distKm);
                 
                 html += `
                     <article class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
                         <div class="flex items-start justify-between gap-2">
-                            <div class="flex flex-col min-w-0">
-                                <div class="flex items-center gap-1.5 flex-wrap mb-1">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full ${badgeBg} font-bold text-[0.65rem]">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                                        ${escapeHTML(badgeText)}
-                                    </span>
-                                    ${facility.category === 'CAV' ? `
-                                        <span class="px-2 py-0.5 rounded-full bg-pink-50 text-primary font-black text-[0.6rem] uppercase tracking-wider">
-                                            Accreditato
+                            <div class="flex flex-col min-w-0 w-full">
+                                <div class="flex items-center justify-between gap-1.5 flex-wrap mb-1">
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full ${badgeBg} font-bold text-[0.65rem]">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                                            ${escapeHTML(badgeText)}
+                                        </span>
+                                        ${facility.category === 'CAV' ? `
+                                            <span class="px-2 py-0.5 rounded-full bg-pink-50 text-primary font-black text-[0.6rem] uppercase tracking-wider">
+                                                Accreditato
+                                            </span>
+                                        ` : ''}
+                                    </div>
+                                    ${distLabel ? `
+                                        <span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 font-extrabold text-[0.62rem]">
+                                            📍 ${escapeHTML(distLabel)}
                                         </span>
                                     ` : ''}
                                 </div>
@@ -1222,9 +1328,9 @@
                         
                         <!-- Action row -->
                         <div class="grid grid-cols-5 gap-2 pt-1">
-                            <a aria-label="${phoneLabel}" class="col-span-3 h-11 rounded-full bg-primary hover:bg-magenta-dark active:scale-[0.98] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform" href="${callHref}">
-                                <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">call</span>
-                                <span>${phoneLabel}</span>
+                            <a aria-label="${escapeHTML(phoneLabel)}" class="col-span-3 h-11 rounded-full bg-primary hover:bg-magenta-dark active:scale-[0.98] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform px-2 truncate" href="${escapeHTML(callHref)}">
+                                <span class="material-symbols-outlined text-[18px] shrink-0" style="font-variation-settings: 'FILL' 1;">call</span>
+                                <span class="truncate">${escapeHTML(phoneLabel)}</span>
                             </a>
                             <button class="col-span-2 h-11 rounded-full bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-bold text-xs flex items-center justify-center gap-0.5 transition-all" onclick="displayFeatureDetails(JSON.parse(decodeURIComponent('${encodeURIComponent(JSON.stringify(facility.props))}')), '${facility.category}')" type="button">
                                 <span>Dettagli</span>
@@ -1234,6 +1340,16 @@
                     </article>
                 `;
             });
+
+            if (listItems.length > listRenderLimit) {
+                const remaining = listItems.length - listRenderLimit;
+                html += `
+                    <button onclick="loadMoreListItems()" class="w-full h-11 mt-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-extrabold text-xs shadow-sm transition-all">
+                        Mostra altri presidi (${remaining} rimanenti)
+                    </button>
+                `;
+            }
+
             listContainer.innerHTML = `<div class="flex flex-col gap-3 py-2">${html}</div>`;
         }
 
@@ -1324,6 +1440,7 @@
                 
                 const centroid = provinceCentroids[selProvincia];
                 if (centroid && map) {
+                    referencePoint = { lat: centroid.lat, lng: centroid.lng, isUserLocated: true };
                     map.panTo({ lat: centroid.lat, lng: centroid.lng });
                     map.setZoom(centroid.zoom);
                 }
@@ -1339,8 +1456,9 @@
             const selComune = document.getElementById("select-comune").value;
             
             if (selComune && map) {
-                const markerComune = markers.find(m => m.comune === selComune && m.getMap());
+                const markerComune = markers.find(m => m.comune === selComune);
                 if (markerComune) {
+                    referencePoint = { lat: markerComune.props.lat, lng: markerComune.props.lng, isUserLocated: true };
                     map.panTo(markerComune.getPosition());
                     map.setZoom(13.5);
                 }
@@ -1398,6 +1516,7 @@
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
                     const userLatLng = { lat: lat, lng: lon };
+                    referencePoint = { lat: lat, lng: lon, isUserLocated: true };
 
                     if (window.userMarker) {
                         window.userMarker.setPosition(userLatLng);
@@ -1421,6 +1540,7 @@
                         map.panTo(userLatLng);
                         map.setZoom(14.5);
                     }
+                    filterAll();
                 },
                 (error) => {
                     alert("Impossibile rilevare la tua posizione. Verifica di aver concesso i permessi GPS al tuo browser.");

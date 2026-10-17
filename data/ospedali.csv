@@ -1,78 +1,67 @@
-nome,tipo,indirizzo,telefono,email,sito_web,orari,codice_rosa,bollino_rosa,latitudine,longitudine
-Spedali Civili Brescia Montichiari,Pronto Soccorso,"Via Ciotti 154, 25123, Montichiari",+39 030 39951,protocollo.spedalicivilibrescia@legalmail.it,https://asst-spedalicivili.it/strutture/ospedale-montichiari,"Mo-Sa 13:00-14:00, 18:45-20:00; Su 14:30-16:30",Disponibile,no,45.4104244,10.4087873
-Pronto Soccorso Ospedale Moriggia Pelascini,Pronto Soccorso,"Via Moriggia Pelascini, 22015, Gravedona",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,46.1420975,9.2994208
-Pronto Soccorso Presidio Ospedaliero Buzzi,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4861586,9.1676563
-Pronto Soccorso,Pronto Soccorso,"Via San Barnaba, 20122, Milano",112 / 118,,https://www.policlinico.mi.it/reparti/58/pronto-soccorso-1,24/7,Disponibile,no,45.4592388,9.1961176
-Pronto Soccorso Ospedale San Paolo,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4335515,9.1611166
-Pronto Soccorso Ospedale Civile Vigevano,Pronto Soccorso,"27029, Vigevano",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.3199258,8.8648978
-Pronto Soccorso Ospedale  Morbegno,Pronto Soccorso,"23017, Morbegno",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,46.1337274,9.5736467
-Pronto soccorso ospedale di Chiavenna,Pronto Soccorso,"23022, Chiavenna",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,46.3217151,9.3992887
-Pronto Soccorso,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.5539996,10.2274266
-Pronto Soccorso Ostetrico,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.5115592,9.187671
-Pronto Soccorso Istituto Gaetano Pini,Pronto Soccorso,"Via Quadronno 25, 20122, Milano",+39 02 5829 6564,,,24/7,Disponibile,no,45.4541872,9.1941394
-Pronto Soccorso Oculistico,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4795613,9.1915073
-Pronto Soccorso Medico Chirurgico e Pediatrico,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.478834,9.1905419
-Pronto Soccorso Ospedale San Carlo Borromeo,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4694247,9.1140871
-Pronto Soccorso Centro Cardiologico Monzino,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4438394,9.2606454
-Ospedale di Circolo - Fondazione Macchi,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,http://www.ospedalivarese.net/,H24 (Pronto Soccorso),Disponibile,no,45.8089209,8.8400256
-ASST Grande Ospedale Metropolitano Niguarda,Pronto Soccorso,Indirizzo non disponibile,+39 02 64441,,https://www.ospedaleniguarda.it/,H24 (Pronto Soccorso),Disponibile,no,45.5098828,9.1862442
-Ospedale San Carlo Borromeo,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,https://www.asst-santipaolocarlo.it/,H24 (Pronto Soccorso),Disponibile,no,45.4681075,9.114177
-Ospedale MultiMedica Castellanza,Pronto Soccorso,"Viale Piemonte 70, 21053",+3902 8687 8889;+390299961999,,https://multimedica.it/strutture/ospedale-multimedica-castellanza/,H24 (Pronto Soccorso),Disponibile,no,45.6004222,8.8723269
-Pronto Soccorso,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.5585504,10.2305874
-Ospedale Sant'Antonio Abate,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.7393431,9.1420265
-Istituti Ospedalieri Carlo Poma,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.1455753,10.7726659
-Azienda Ospedaliera Sant'Antonio Abate,Pronto Soccorso,"Via Eusebio Pastori 4, 21013, Gallarate",+39 033 175 1111,,https://www.asst-valleolona.it/,24/7,Disponibile,no,45.6566506,8.7919891
-Ospedale Sacra Famiglia Fatebenefratelli,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.8165571,9.2264991
-Ospedale Pesenti Fenaroli,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.7315767,9.72573
-Casa della Sanità,Pronto Soccorso,"Via Freita 1521, 23030, Livigno",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,46.5176969,10.1244373
-Ospedale Civico di Codogno,Pronto Soccorso,"Viale Guglielmo Marconi 1, Codogno",+39 0377 4651,,https://www.asst-lodi.it/dove-siamo-ospedale-di-codogno,H24 (Pronto Soccorso),Disponibile,no,45.1589802,9.7127782
-Ospedale San Leopoldo Mandic,Pronto Soccorso,"Largo Beato Leopoldo Mandic 1, 23807, Merate",+39 039 5916431,,,H24 (Pronto Soccorso),Disponibile,no,45.6980994,9.4273927
-Ospedale Bassini,Pronto Soccorso,"Via Gorki 50, 20092, Cinisello Balsamo",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.5464656,9.2155297
-ASST Brianza - Ospedale di Vimercate,Pronto Soccorso,"Via Santi Cosma e Damiano 10, 20871, Vimercate",+39 039 66541,,https://www.asst-brianza.it,24/7,Disponibile,no,45.6082562,9.3563764
-Ospedale Civile di Voghera,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,44.9949661,9.0159591
-Ospedale di Saronno,Pronto Soccorso,"Piazza don Giuseppe Borella 1, 21047, Saronno",+39 02 96131,,https://www.asst-valleolona.it/ospedali/ospedale-di-saronno/,H24 (Pronto Soccorso),Disponibile,no,45.6301062,9.0397535
-Ospedale Civile di Vigevano,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.3203891,8.8660127
-Humanitas Mater Domini,Pronto Soccorso,"Via Gerenzano 2, 21053, Castellanza",+39 0331 476111,,https://www.materdomini.it/,H24 (Pronto Soccorso),Disponibile,no,45.609131,8.9066919
-Azienda Ospedaliera di Desenzano del Garda,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4714893,10.5206793
-Ospedale di Bollate,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.5402824,9.1165146
-Ospedale di Gardone Val Trompia,Pronto Soccorso,"Via Papa Giovanni Ventitreesimo 4, 25063, Gardone Val Trompia",+39 030 8933273,sitr.gardone@asst-spedalicivili.it,https://gardone.asst-spedalicivili.it/servizi/notizie/notizie_homepage.aspx,H24 (Pronto Soccorso),Disponibile,no,45.6764284,10.1838194
-Azienda Ospedaliera Treviglio Caravaggio,Pronto Soccorso,"Piazzale Ospedale 1, 24047, Treviglio",+39 0363 4241,,http://www.ospedale.treviglio.bg.it,24/7,Disponibile,no,45.5100233,9.6115303
-Istituto di Ricovero e Cura a Carattere Scientifico San Raffaele,Pronto Soccorso,Indirizzo non disponibile,+39 02 26431,info@hsr.it,,H24 (Pronto Soccorso),Disponibile,no,45.5061844,9.2654334
-Azienda Ospedaliera Ospedale di Circolo di Busto Arsizio,Pronto Soccorso,Indirizzo non disponibile,+39 0331 699111,,https://www.asst-valleolona.it/presidi/?nP=ospedale-di-busto-arsizio,H24 (Pronto Soccorso),Disponibile,no,45.6225255,8.845622
-ASST Brianza - Ospedale Pio XI,Pronto Soccorso,"Via Mazzini 1, 20832, Desio",+39 0362 3851,,https://www.asst-brianza.it,H24 (Pronto Soccorso),Disponibile,no,45.6263347,9.1960779
-Ospedale San Gerardo,Pronto Soccorso,"Via Giovanni Battista Pergolesi 33, 20900, Monza",+39 039 2331,,https://www.asst-monza.it/ospedale-san-gerardo,H24 (Pronto Soccorso),Disponibile,no,45.602285,9.2601687
-Ospedale Filippo Del Ponte,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.8155782,8.8344288
-Ospedale nuovo di Legnano,Pronto Soccorso,"Via Papa Giovanni Paolo Secondo 3, 20025, Legnano",+39 0331 449111,,https://www.asst-ovestmi.it/,H24 (Pronto Soccorso),Disponibile,no,45.5803294,8.8879341
-Ospedale di Circolo - Rho,Pronto Soccorso,"Corso Europa 250, 20017, Rho",112 / 118,,http://www.aogarbagnate.lombardia.it/salviniweb/hrho.html,H24 (Pronto Soccorso),Disponibile,no,45.5345193,9.0347442
-Ospedale Valduce,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.8104854,9.0881862
-Ospedale Sant'Anna di Como,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.7932135,9.045615
-Soccorso degli Alpini,Pronto Soccorso,"Via degli Alpini 3, 23826, Mandello del Lario",112 / 118,,https://www.soccorsodeglialpini.it/,H24 (Pronto Soccorso),Disponibile,no,45.9181046,9.3228785
-Ospedale di Chiavenna,Pronto Soccorso,"Via della Cereria 4, 23022, Chiavenna",+39034367111,direzionemedica.ch@asst-val.it,https://www.asst-val.it/chiavenna,H24 (Pronto Soccorso),Disponibile,no,46.3217759,9.399787
-Ospedale Alessandro Manzoni,Pronto Soccorso,"Via dell'Eremo 9;11, 23900, Lecco",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.852056,9.415021
-A.S.S.T. - Franciacorta,Pronto Soccorso,"Viale Giuseppe Mazzini 4, 25032, Chiari",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.5380785,9.9344506
-"Ospedale di Calcinate ""F.M. Passi""",Pronto Soccorso,"Piazza Ospedale 3, 24050, Calcinate",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.6203072,9.7976798
-ASST Brianza - Ospedale di Carate Brianza,Pronto Soccorso,"Viale Mosè Bianchi 9, 20841, Carate Brianza",+39 0362 9841,,https://www.asst-brianza.it,H24 (Pronto Soccorso),Disponibile,no,45.6706491,9.2463629
-Ospedale Costantino Cantù,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.3941714,8.912882
-Policlinico San Marco,Pronto Soccorso,Corso Europa 7,+39 035 886111,info.psm@grupposandonato.it,https://www.grupposandonato.it/strutture/policlinico-san-marco,H24 (Pronto Soccorso),Disponibile,no,45.6042366,9.5909715
-Ospedale Santissima Trinità,Pronto Soccorso,Indirizzo non disponibile,+39 0363 9901,info@ospedale.treviglio.bg.it,http://www.ospedale.treviglio.bg.it/85.asp,H24 (Pronto Soccorso),Disponibile,no,45.5195862,9.7503993
-Ospedale di Asola,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.2234991,10.4111058
-Ospedale Carlo Ondoli,Pronto Soccorso,"Via Bordini 9, 21021, Angera",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.7756028,8.5789299
-Presidio Ospedaliero di Vizzolo Predabissi,Pronto Soccorso,"Via Pandina 1, 20070, Vizzolo Predabissi",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.3584424,9.3410013
-Ospedale San Giuseppe,Pronto Soccorso,Indirizzo non disponibile,+39 02 85991,,https://www.multimedica.it/it/hospital/ospedale-san-giuseppe/030367,H24 (Pronto Soccorso),Disponibile,no,45.4635012,9.1719085
-Presidio Ospedaliero Gaetano Pini - ASST Pini-CTO,Pronto Soccorso,"Piazza Cardinale Andrea Ferrari 1, 20122, Milano",+39 02 582961,,https://www.asst-pini-cto.it,H24 (Pronto Soccorso),Disponibile,no,45.4548738,9.1937126
-Ospedale Macedonio Melloni,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4663415,9.2190851
-Ospedale Giuseppe Fornaroli,Pronto Soccorso,"Via al donatore di sangue 50, 20013, Magenta",+39 02 979631,,https://www.asst-ovestmi.it/,H24 (Pronto Soccorso),Disponibile,no,45.4709187,8.8936127
-Pronto Soccorso Pediatrico Cavaliere del Lavoro Francesco Folonari,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.555981,10.2308212
-Ospedale di Suzzara,Pronto Soccorso,"Via Generale Cantore 14b, 46029, Suzzara",+39 03 76 51 74 17,urp@ospedaledisuzzara.it,https://ospedaledisuzzara.it/,H24 (Pronto Soccorso),Disponibile,no,44.9871019,10.7546543
-Policlinico San Pietro,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.6989952,9.5753796
-Ospedale Civile di San Giovanni Bianco,Pronto Soccorso,"Via Castelli 5, 24015, San Giovanni Bianco",112 / 118,,http://www.asst-pg23.it/2017/02/_ospedale_s_g_bianco/#,H24 (Pronto Soccorso),Disponibile,no,45.871144,9.6546571
-I.R.C.C.S. Policlinico San Donato,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,https://www.grupposandonato.it/strutture/policlinico-san-donato,H24 (Pronto Soccorso),Disponibile,no,45.4104114,9.2771243
-Ospedale Guido Salvini,Pronto Soccorso,"Viale Carlo Forlanini 95, 20024, Garbagnate Milanese",+3902994301,,https://www.asst-rhodense.it/inew/nuovo-sito/home/ospedali/garbagnate-milanese.html,H24 (Pronto Soccorso),Disponibile,no,45.5831611,9.0946521
-ASST Lariana,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,46.0185516,9.2280077
-Ospedale Galeazzi Sant'Ambrogio,Pronto Soccorso,"Via Cristina Belgioioso 173, 20157, Milano",+39 02 8350 0010,,https://www.grupposandonato.it/strutture/ospedale-galeazzi-sant-ambrogio,H24 (Pronto Soccorso),Disponibile,no,45.5223366,9.0963815
-Struttura Sanitaria di Bormio,Pronto Soccorso,"Via Agoi 8, 23032, Bormio",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,46.4615201,10.3595803
-Ospedale di Cuasso al Monte,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.9105553,8.8591064
-Ospedale San Paolo,Pronto Soccorso,Via Antonio di Rudinì 8,+39 02 81 841,,https://www.asst-santipaolocarlo.it,H24 (Pronto Soccorso),Disponibile,no,45.4343037,9.1598838
-Centro Cardiologico Monzino,Pronto Soccorso,Indirizzo non disponibile,+39 02 580021,,http://www.cardiologicomonzino.it/,H24 (Pronto Soccorso),Disponibile,no,45.4438508,9.2617366
-Istituto Clinico Città Studi,Pronto Soccorso,Indirizzo non disponibile,112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4852492,9.2250623
-Istituto Scientifico Ospedale San Luca,Pronto Soccorso,"Piazzale Brescia 20, 20149, Milano",112 / 118,,,H24 (Pronto Soccorso),Disponibile,no,45.4721197,9.1451981
+nome,tipo,indirizzo,comune,provincia,telefono,email,sito_web,orari,codice_rosa,bollino_rosa,latitudine,longitudine
+Ospedale di Montichiari (ASST Spedali Civili),Pronto Soccorso,"Via Ciotti 154, 25018 Montichiari (BS)",Montichiari,BS,030 9963111,protocollo.spedalicivilibrescia@legalmail.it,https://asst-spedalicivili.it/strutture/ospedale-montichiari,H24 (Pronto Soccorso),Disponibile,no,45.410424,10.408787
+Ospedale Moriggia Pelascini,Pronto Soccorso,"Via Moriggia Pelascini 3, 22015 Gravedona ed Uniti (CO)",Gravedona ed Uniti,CO,0344 92111,,,H24 (Pronto Soccorso),Disponibile,no,46.142097,9.299421
+Ospedale dei Bambini Vittore Buzzi - Pronto Soccorso,Pronto Soccorso,"Via Lodovico Castelvetro 32, 20154 Milano (MI)",Milano,MI,02 63631,,,H24 (Pronto Soccorso),Disponibile,no,45.486159,9.167656
+Clinica Mangiagalli - Policlinico di Milano (Pronto Soccorso Ostetrico-Ginecologico),Pronto Soccorso,"Via della Commenda 12, 20122 Milano (MI)",Milano,MI,02 55031,,https://www.policlinico.mi.it/reparti/58/pronto-soccorso-1,H24 (Pronto Soccorso),Disponibile,no,45.459239,9.196118
+Ospedale di Morbegno (ASST Valtellina e Alto Lario),Pronto Soccorso,"Via Morelli 1, 23017 Morbegno (SO)",Morbegno,SO,0342 607111,,,H24 (Pronto Soccorso),Disponibile,no,46.133727,9.573647
+ASST Spedali Civili di Brescia - Pronto Soccorso Generale,Pronto Soccorso,"Piazzale Spedali Civili 1, 25123 Brescia (BS)",Brescia,BS,030 39951,,,H24 (Pronto Soccorso),Disponibile,no,45.554,10.227427
+Ospedale Niguarda - Pronto Soccorso Ostetrico-Ginecologico,Pronto Soccorso,"Piazza Ospedale Maggiore 3, 20162 Milano (MI)",Milano,MI,02 64441,,,H24 (Pronto Soccorso),Disponibile,no,45.511559,9.187671
+Policlinico di Milano - Pronto Soccorso Generale,Pronto Soccorso,"Via Francesco Sforza 35, 20122 Milano (MI)",Milano,MI,02 55031,,,H24 (Pronto Soccorso),Disponibile,no,45.478834,9.190542
+Ospedale di Circolo e Fondazione Macchi - Pronto Soccorso,Pronto Soccorso,"Viale Luigi Borri 57, 21100 Varese (VA)",Varese,VA,0332 278111,,http://www.ospedalivarese.net/,H24 (Pronto Soccorso),Disponibile,no,45.808921,8.840026
+ASST Grande Ospedale Metropolitano Niguarda - Pronto Soccorso,Pronto Soccorso,"Piazza Ospedale Maggiore 3, 20162 Milano (MI)",Milano,MI,02 64441,,https://www.ospedaleniguarda.it/,H24 (Pronto Soccorso),Disponibile,no,45.509883,9.186244
+Ospedale San Carlo Borromeo - Pronto Soccorso,Pronto Soccorso,"Via Pio II 3, 20153 Milano (MI)",Milano,MI,02 40221,,https://www.asst-santipaolocarlo.it/,H24 (Pronto Soccorso),Disponibile,no,45.468108,9.114177
+Ospedale MultiMedica Castellanza,Pronto Soccorso,"Viale Piemonte 70, 21053 Castellanza (VA)",Castellanza,VA,0331 393111,,https://multimedica.it/strutture/ospedale-multimedica-castellanza/,H24 (Pronto Soccorso),Disponibile,no,45.600422,8.872327
+Ospedale Sant'Antonio Abate di Cantù,Pronto Soccorso,"Via Domea 4, 22063 Cantù (CO)",Cantù,CO,031 799111,,,H24 (Pronto Soccorso),Disponibile,no,45.739343,9.142027
+Ospedale Carlo Poma di Mantova - Pronto Soccorso,Pronto Soccorso,"Strada Lago Paiolo 10, 46100 Mantova (MN)",Mantova,MN,0376 2011,,,H24 (Pronto Soccorso),Disponibile,no,45.145575,10.772666
+Ospedale Sant'Antonio Abate di Gallarate,Pronto Soccorso,"Via Eusebio Pastori 4, 21013 Gallarate (VA)",Gallarate,VA,0331 751111,,https://www.asst-valleolona.it/,H24 (Pronto Soccorso),Disponibile,no,45.656651,8.791989
+Ospedale Sacra Famiglia Fatebenefratelli,Pronto Soccorso,"Viale Fatebenefratelli 20, 22036 Erba (CO)",Erba,CO,031 638111,,,H24 (Pronto Soccorso),Disponibile,no,45.816557,9.226499
+Ospedale Pesenti Fenaroli di Alzano Lombardo,Pronto Soccorso,"Via Giuseppe Mazzini 88, 24022 Alzano Lombardo (BG)",Alzano Lombardo,BG,035 3063111,,,H24 (Pronto Soccorso),Disponibile,no,45.731577,9.72573
+Casa della Sanità di Livigno - Punto di Primo Intervento,Pronto Soccorso,"Via Freita 1521, 23041 Livigno (SO)",Livigno,SO,0342 991411,,,H24 (Pronto Soccorso),Disponibile,no,46.517697,10.124437
+Ospedale Civico di Codogno,Pronto Soccorso,"Viale Guglielmo Marconi 1, 26845 Codogno (LO)",Codogno,LO,0377 4651,,https://www.asst-lodi.it/dove-siamo-ospedale-di-codogno,H24 (Pronto Soccorso),Disponibile,no,45.15898,9.712778
+Ospedale San Leopoldo Mandic di Merate,Pronto Soccorso,"Largo Leopoldo Mandic 1, 23807 Merate (LC)",Merate,LC,039 59161,,,H24 (Pronto Soccorso),Disponibile,no,45.698099,9.427393
+Ospedale Bassini di Cinisello Balsamo,Pronto Soccorso,"Via Massimo Gorki 50, 20092 Cinisello Balsamo (MI)",Cinisello Balsamo,MI,02 57991,,,H24 (Pronto Soccorso),Disponibile,no,45.546466,9.21553
+Ospedale di Vimercate (ASST Brianza),Pronto Soccorso,"Via Santi Cosma e Damiano 10, 20871 Vimercate (MB)",Vimercate,MB,039 66541,,https://www.asst-brianza.it,H24 (Pronto Soccorso),Disponibile,no,45.608256,9.356376
+Ospedale Civile di Voghera,Pronto Soccorso,"Via Volturno 14, 27058 Voghera (PV)",Voghera,PV,0383 6951,,,H24 (Pronto Soccorso),Disponibile,no,44.994966,9.015959
+Ospedale di Saronno,Pronto Soccorso,"Piazza Borella 1, 21047 Saronno (VA)",Saronno,VA,02 96131,,https://www.asst-valleolona.it/ospedali/ospedale-di-saronno/,H24 (Pronto Soccorso),Disponibile,no,45.630106,9.039753
+Ospedale Civile di Vigevano,Pronto Soccorso,"Corso Milano 19, 27029 Vigevano (PV)",Vigevano,PV,0381 3331,,,H24 (Pronto Soccorso),Disponibile,no,45.320389,8.866013
+Humanitas Mater Domini,Pronto Soccorso,"Via Gerenzano 2, 21053 Castellanza (VA)",Castellanza,VA,0331 476111,,https://www.materdomini.it/,H24 (Pronto Soccorso),Disponibile,no,45.609131,8.906692
+Ospedale di Desenzano del Garda,Pronto Soccorso,"Località Montecroce, 25015 Desenzano del Garda (BS)",Desenzano del Garda,BS,030 91451,,,H24 (Pronto Soccorso),Disponibile,no,45.471489,10.520679
+Ospedale Caduti Bollatesi di Bollate,Pronto Soccorso,"Via Piave 20, 20021 Bollate (MI)",Bollate,MI,02 994301,,,H24 (Pronto Soccorso),Disponibile,no,45.540282,9.116515
+Ospedale di Gardone Val Trompia,Pronto Soccorso,"Via Giovanni XXIII 4, 25063 Gardone Val Trompia (BS)",Gardone Val Trompia,BS,030 89331,sitr.gardone@asst-spedalicivili.it,https://gardone.asst-spedalicivili.it/servizi/notizie/notizie_homepage.aspx,H24 (Pronto Soccorso),Disponibile,no,45.676428,10.183819
+Ospedale di Treviglio-Caravaggio,Pronto Soccorso,"Piazzale Ospedale 1, 24047 Treviglio (BG)",Treviglio,BG,0363 4241,,http://www.ospedale.treviglio.bg.it,H24 (Pronto Soccorso),Disponibile,no,45.510023,9.61153
+IRCCS Ospedale San Raffaele - Pronto Soccorso,Pronto Soccorso,"Via Olgettina 60, 20132 Milano (MI)",Milano,MI,02 26431,info@hsr.it,,H24 (Pronto Soccorso),Disponibile,no,45.506184,9.265433
+Ospedale di Circolo di Busto Arsizio,Pronto Soccorso,"Via Arnaldo da Brescia 1, 21052 Busto Arsizio (VA)",Busto Arsizio,VA,0331 699111,,https://www.asst-valleolona.it/presidi/?nP=ospedale-di-busto-arsizio,H24 (Pronto Soccorso),Disponibile,no,45.622526,8.845622
+Ospedale Pio XI di Desio (ASST Brianza),Pronto Soccorso,"Via Giuseppe Mazzini 1, 20832 Desio (MB)",Desio,MB,0362 3831,,https://www.asst-brianza.it,H24 (Pronto Soccorso),Disponibile,no,45.626335,9.196078
+IRCCS San Gerardo dei Tintori di Monza,Pronto Soccorso,"Via G. B. Pergolesi 33, 20900 Monza (MB)",Monza,MB,039 2331,,https://www.asst-monza.it/ospedale-san-gerardo,H24 (Pronto Soccorso),Disponibile,no,45.602285,9.260169
+Ospedale Filippo Del Ponte (Donna e Bambino),Pronto Soccorso,"Piazza Biroldi 1, 21100 Varese (VA)",Varese,VA,0332 299111,,,H24 (Pronto Soccorso),Disponibile,no,45.815578,8.834429
+Ospedale Nuovo di Legnano,Pronto Soccorso,"Via Papa Giovanni Paolo II, 20025 Legnano (MI)",Legnano,MI,0331 449111,,https://www.asst-ovestmi.it/,H24 (Pronto Soccorso),Disponibile,no,45.580329,8.887934
+Ospedale di Circolo Monumento ai Caduti di Rho,Pronto Soccorso,"Corso Europa 250, 20017 Rho (MI)",Rho,MI,02 994301,,http://www.aogarbagnate.lombardia.it/salviniweb/hrho.html,H24 (Pronto Soccorso),Disponibile,no,45.534519,9.034744
+Ospedale Valduce di Como,Pronto Soccorso,"Via Dante Alighieri 11, 22100 Como (CO)",Como,CO,031 324111,,,H24 (Pronto Soccorso),Disponibile,no,45.810485,9.088186
+Ospedale Sant'Anna di Como (ASST Lariana),Pronto Soccorso,"Via Ravona 20, 22042 San Fermo della Battaglia (CO)",San Fermo della Battaglia,CO,031 5851,,,H24 (Pronto Soccorso),Disponibile,no,45.793214,9.045615
+Ospedale di Chiavenna,Pronto Soccorso,"Via della Cereria 4, 23022 Chiavenna (SO)",Chiavenna,SO,0343 67111,direzionemedica.ch@asst-val.it,https://www.asst-val.it/chiavenna,H24 (Pronto Soccorso),Disponibile,no,46.321776,9.399787
+Ospedale Alessandro Manzoni di Lecco,Pronto Soccorso,"Via dell'Eremo 9/11, 23900 Lecco (LC)",Lecco,LC,0341 489111,,,H24 (Pronto Soccorso),Disponibile,no,45.852056,9.415021
+Ospedale Mellino Mellini di Chiari (ASST Franciacorta),Pronto Soccorso,"Viale Giuseppe Mazzini 4, 25032 Chiari (BS)",Chiari,BS,030 71021,,,H24 (Pronto Soccorso),Disponibile,no,45.538078,9.934451
+Ospedale F.M. Passi di Calcinate,Pronto Soccorso,"Piazza Ospedale 3, 24050 Calcinate (BG)",Calcinate,BG,035 3063111,,,H24 (Pronto Soccorso),Disponibile,no,45.620307,9.79768
+Ospedale Vittorio Emanuele III di Carate Brianza,Pronto Soccorso,"Via Mosè Bianchi 9, 20841 Carate Brianza (MB)",Carate Brianza,MB,0362 9841,,https://www.asst-brianza.it,H24 (Pronto Soccorso),Disponibile,no,45.670649,9.246363
+Ospedale Costantino Cantù di Abbiategrasso,Pronto Soccorso,"Piazza Mussi 1, 20081 Abbiategrasso (MI)",Abbiategrasso,MI,02 94861,,,H24 (Pronto Soccorso),Disponibile,no,45.394171,8.912882
+Policlinico San Marco di Zingonia,Pronto Soccorso,"Corso Europa 7, 24046 Osio Sotto (BG)",Osio Sotto,BG,035 886111,info.psm@grupposandonato.it,https://www.grupposandonato.it/strutture/policlinico-san-marco,H24 (Pronto Soccorso),Disponibile,no,45.604237,9.590972
+Ospedale Santissima Trinità di Romano di Lombardia,Pronto Soccorso,"Via San Francesco d'Assisi 12, 24058 Romano di Lombardia (BG)",Romano di Lombardia,BG,0363 9901,info@ospedale.treviglio.bg.it,http://www.ospedale.treviglio.bg.it/85.asp,H24 (Pronto Soccorso),Disponibile,no,45.519586,9.750399
+Ospedale di Asola (ASST Mantova),Pronto Soccorso,"Piazza 80° Fanteria 1, 46041 Asola (MN)",Asola,MN,0376 7211,,,H24 (Pronto Soccorso),Disponibile,no,45.223499,10.411106
+Ospedale Carlo Ondoli di Angera,Pronto Soccorso,"Via Cristoforo Colombo 54, 21021 Angera (VA)",Angera,VA,0331 939111,,,H24 (Pronto Soccorso),Disponibile,no,45.775603,8.57893
+Ospedale Predabissi di Vizzolo Predabissi,Pronto Soccorso,"Via Pandina 1, 20070 Vizzolo Predabissi (MI)",Vizzolo Predabissi,MI,02 98051,,,H24 (Pronto Soccorso),Disponibile,no,45.358442,9.341001
+Ospedale San Giuseppe (MultiMedica),Pronto Soccorso,"Via San Vittore 12, 20123 Milano (MI)",Milano,MI,02 85991,,https://www.multimedica.it/it/hospital/ospedale-san-giuseppe/030367,H24 (Pronto Soccorso),Disponibile,no,45.463501,9.171909
+ASST Gaetano Pini - CTO,Pronto Soccorso,"Piazza Cardinale Andrea Ferrari 1, 20122 Milano (MI)",Milano,MI,02 582961,,https://www.asst-pini-cto.it,H24 (Pronto Soccorso),Disponibile,no,45.454874,9.193713
+Ospedale Macedonio Melloni (ASST Fatebenefratelli Sacco),Pronto Soccorso,"Via Macedonio Melloni 52, 20129 Milano (MI)",Milano,MI,02 63631,,,H24 (Pronto Soccorso),Disponibile,no,45.466341,9.219085
+Ospedale Giuseppe Fornaroli di Magenta,Pronto Soccorso,"Via al Donatore di Sangue 50, 20013 Magenta (MI)",Magenta,MI,02 979631,,https://www.asst-ovestmi.it/,H24 (Pronto Soccorso),Disponibile,no,45.470919,8.893613
+Ospedale di Suzzara,Pronto Soccorso,"Via Generale Cantore 14/B, 46029 Suzzara (MN)",Suzzara,MN,0376 5171,urp@ospedaledisuzzara.it,https://ospedaledisuzzara.it/,H24 (Pronto Soccorso),Disponibile,no,44.987102,10.754654
+Policlinico San Pietro,Pronto Soccorso,"Via Forlanini 15, 24036 Ponte San Pietro (BG)",Ponte San Pietro,BG,035 604111,,,H24 (Pronto Soccorso),Disponibile,no,45.698995,9.57538
+Ospedale Civile di San Giovanni Bianco,Pronto Soccorso,"Via Castelli 5, 24015 San Giovanni Bianco (BG)",San Giovanni Bianco,BG,0345 27111,,http://www.asst-pg23.it/2017/02/_ospedale_s_g_bianco/#,H24 (Pronto Soccorso),Disponibile,no,45.871144,9.654657
+IRCCS Policlinico San Donato,Pronto Soccorso,"Piazza Edmondo Malan 2, 20097 San Donato Milanese (MI)",San Donato Milanese,MI,02 527741,,https://www.grupposandonato.it/strutture/policlinico-san-donato,H24 (Pronto Soccorso),Disponibile,no,45.410411,9.277124
+Ospedale Guido Salvini di Garbagnate Milanese,Pronto Soccorso,"Viale Carlo Forlanini 95, 20024 Garbagnate Milanese (MI)",Garbagnate Milanese,MI,02 994301,,https://www.asst-rhodense.it/inew/nuovo-sito/home/ospedali/garbagnate-milanese.html,H24 (Pronto Soccorso),Disponibile,no,45.583161,9.094652
+Ospedale Erba-Rinaldi di Menaggio (ASST Lariana),Pronto Soccorso,"Via Casartelli 7, 22017 Menaggio (CO)",Menaggio,CO,0344 33111,,,H24 (Pronto Soccorso),Disponibile,no,46.018552,9.228008
+IRCCS Ospedale Galeazzi - Sant'Ambrogio,Pronto Soccorso,"Via Cristina Belgioioso 173, 20157 Milano (MI)",Milano,MI,02 83500010,,https://www.grupposandonato.it/strutture/ospedale-galeazzi-sant-ambrogio,H24 (Pronto Soccorso),Disponibile,no,45.522337,9.096381
+Presidio Ospedaliero di Bormio,Pronto Soccorso,"Via Agoi 8, 23032 Bormio (SO)",Bormio,SO,0342 909111,,,H24 (Pronto Soccorso),Disponibile,no,46.46152,10.35958
+Ospedale di Cuasso al Monte,Pronto Soccorso,"Via Roma 58, 21050 Cuasso al Monte (VA)",Cuasso al Monte,VA,0332 939511,,,H24 (Pronto Soccorso),Disponibile,no,45.910555,8.859106
+Ospedale San Paolo (ASST Santi Paolo e Carlo),Pronto Soccorso,"Via Antonio di Rudinì 8, 20142 Milano (MI)",Milano,MI,02 81841,,https://www.asst-santipaolocarlo.it,H24 (Pronto Soccorso),Disponibile,no,45.434304,9.159884
+Istituto Clinico Città Studi (ICCS),Pronto Soccorso,"Via Nicolò Jommelli 17, 20131 Milano (MI)",Milano,MI,02 23931,,,H24 (Pronto Soccorso),Disponibile,no,45.485249,9.225062
+Ospedale San Luca (Auxologico),Pronto Soccorso,"Piazzale Brescia 20, 20149 Milano (MI)",Milano,MI,02 619112,,,H24 (Pronto Soccorso),Disponibile,no,45.47212,9.145198
