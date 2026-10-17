@@ -79,20 +79,27 @@
 </head>
 <body class="bg-surface-subtle font-sans text-gray-900 flex flex-col min-h-screen antialiased overflow-hidden select-none">
 
-    <!-- FLOATING MAIN HEADER (Premium Glassmorphism Style) -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-surface-glass backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-b border-gray-100">
-        <div class="h-20 px-4 flex items-center justify-between gap-3">
+    <!-- FLOATING MAIN HEADER (2026 Spatial Glassmorphism Edition) -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur-2xl pt-safe shadow-[0_2px_24px_rgba(15,23,42,0.06)] border-b border-gray-200/70">
+        <div class="h-20 px-4 max-w-2xl mx-auto flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 min-w-0">
-                <img alt="Stemma Regione Lombardia" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHyXToPNkF9pCqwRfExvj3W7wtIO6trpUn1NTB67gncFOEzN6IdZSFhqUaGmAGz2FS1fmrDAYTmywGolW9wIHBHA7dwtAR-lXsxA5jGuScBk6MLuqYgDinP6ru5JzsKaEXIFBdJN7Nl8G--DyMLl1qR3uU2vouqhAJmXxTXXwova1_U2dhpaPM_H8JbyT0vmflONdkq7fQNI4ZsYLasEig3oqDdsf9paTaYUSS8YSGegCSiMYe4eAZ"/>
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-pink-50 to-white border border-pink-100 flex items-center justify-center shadow-sm flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+                </div>
                 <div class="flex flex-col min-w-0">
-                    <span class="font-extrabold text-sm text-gray-900 truncate tracking-tight">Rete Antiviolenza</span>
-                    <span class="font-black text-[0.65rem] text-primary uppercase tracking-wider">Regione Lombardia</span>
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-black text-sm text-gray-900 truncate tracking-tight">Rete Antiviolenza</span>
+                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[0.55rem] font-extrabold uppercase tracking-wider border border-emerald-200/60">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Live
+                        </span>
+                    </div>
+                    <span class="font-extrabold text-[0.65rem] text-primary uppercase tracking-wider">Regione Lombardia • 2026</span>
                 </div>
             </div>
             
             <div class="flex items-center gap-2 flex-shrink-0">
-                <button aria-label="Uscita Rapida Immediata" class="h-10 px-4 rounded-full bg-tertiary hover:bg-magenta-dark text-white flex items-center gap-1 shadow-[0_2px_12px_rgba(230,0,0,0.35)] active:scale-95 transition-all focus:outline-none" onclick="window.triggerQuickExit()">
-                    <span class="material-symbols-outlined text-[18px]">logout</span>
+                <button aria-label="Uscita Rapida Immediata" class="h-10 px-4 rounded-full bg-tertiary hover:bg-red-700 text-white flex items-center gap-1.5 shadow-[0_4px_14px_rgba(230,0,0,0.35)] active:scale-95 transition-all focus:outline-none ring-2 ring-red-100" onclick="window.triggerQuickExit()">
+                    <span class="material-symbols-outlined text-[17px]">logout</span>
                     <span class="text-[0.7rem] font-black tracking-wide uppercase">ESCI SUBITO (Esc)</span>
                 </button>
             </div>
@@ -106,24 +113,31 @@
         <div id="tab-map-content" class="w-full h-full relative">
             <div id="map"></div>
 
-            <!-- Floating Top Tactical Search & Filter Console -->
-            <div class="absolute top-4 inset-x-0 px-4 z-20 flex flex-col gap-2 max-w-lg mx-auto pointer-events-none">
-                <div class="bg-surface-glass backdrop-blur-xl shadow-md rounded-full flex items-center p-1.5 h-12 border border-gray-100 pointer-events-auto relative">
-                    <span class="material-symbols-outlined text-primary ml-2.5 mr-2 text-[22px]">search</span>
-                    <input class="bg-transparent font-medium text-xs text-gray-800 placeholder:text-gray-400 outline-none flex-1 min-w-0 pr-2" id="free-search" placeholder="Cerca comune, via o centro..." type="text" oninput="onSearchInput(this.value)" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()"/>
+            <!-- Floating Top Tactical Search & Filter Console (2026 Spatial Command Bar) -->
+            <div class="absolute top-3.5 inset-x-0 px-3.5 z-20 flex flex-col gap-2 max-w-lg mx-auto pointer-events-none">
+                <div class="bg-white/92 backdrop-blur-2xl shadow-[0_8px_30px_rgba(15,23,42,0.10)] rounded-full flex items-center p-1.5 h-12 border border-white/80 ring-1 ring-gray-900/5 pointer-events-auto relative">
+                    <span class="material-symbols-outlined text-primary ml-2.5 mr-1.5 text-[21px]">search</span>
+                    <input class="bg-transparent font-semibold text-xs text-gray-900 placeholder:text-gray-400 outline-none flex-1 min-w-0 pr-1" id="free-search" placeholder="Cerca comune, via o centro (es. Milano, CADMI)..." type="text" oninput="onSearchInput(this.value)" onkeydown="if(event.key === 'Enter') geocodeAddressSearch()"/>
                     
-                    <button class="h-9 px-4 rounded-full bg-primary text-white text-[0.7rem] font-bold shadow-sm active:scale-90 transition-transform mr-1" onclick="geocodeAddressSearch()">Cerca</button>
-                    <button class="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors mr-1" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtri avanzati">⚙️</button>
+                    <button class="hidden h-7 w-7 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 items-center justify-center transition-colors mr-1" id="clear-search-btn" onclick="clearSearchInput()" title="Cancella testo" type="button">✕</button>
+                    <button class="h-9 px-3.5 rounded-full bg-gray-900 hover:bg-primary text-white text-[0.7rem] font-extrabold shadow-sm active:scale-95 transition-all mr-1" onclick="geocodeAddressSearch()">Cerca</button>
+                    <button class="h-9 w-9 rounded-full bg-gray-100/90 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors" id="expand-filters-btn" onclick="toggleAdvancedFilters()" title="Filtra per Provincia e Comune">
+                        <span class="material-symbols-outlined text-[18px]">tune</span>
+                    </button>
                 </div>
 
                 <!-- Floating Autocomplete Suggestions Dropdown (Stitch Google Maps style!) -->
-                <div id="search-suggestions" class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-100 hidden flex-col max-h-60 overflow-y-auto z-50 pointer-events-auto p-1.5 gap-1">
+                <div id="search-suggestions" class="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 hidden flex-col max-h-64 overflow-y-auto z-50 pointer-events-auto p-1.5 gap-1">
                 </div>
 
                 <!-- Advanced Filters Panel (Province & Comune) -->
-                <div class="bg-white/95 backdrop-blur-xl shadow-lg rounded-2xl p-4 border border-gray-100 hidden flex-col gap-2.5 pointer-events-auto" id="advanced-filters-card">
+                <div class="bg-white/95 backdrop-blur-2xl shadow-xl rounded-2xl p-3.5 border border-gray-100 hidden flex-col gap-2.5 pointer-events-auto" id="advanced-filters-card">
+                    <div class="flex items-center justify-between px-1">
+                        <span class="text-[0.65rem] font-extrabold uppercase tracking-wider text-gray-400">Filtro Territoriale ISTAT</span>
+                        <button class="text-[0.65rem] font-extrabold text-primary hover:underline" onclick="resetFilters()" type="button">Mostra tutta la Lombardia</button>
+                    </div>
                     <div class="grid grid-cols-2 gap-2">
-                        <select id="select-provincia" class="h-10 px-3 rounded-full border border-gray-200 text-xs font-semibold text-gray-700 outline-none bg-white cursor-pointer" onchange="onProvinciaChange()">
+                        <select id="select-provincia" class="h-10 px-3 rounded-xl border border-gray-200 text-xs font-bold text-gray-800 outline-none bg-gray-50/70 focus:bg-white focus:border-primary cursor-pointer" onchange="onProvinciaChange()">
                             <option value="">Provincia (Tutte)</option>
                             <option value="BG">Bergamo (BG)</option>
                             <option value="BS">Brescia (BS)</option>
@@ -131,7 +145,7 @@
                             <option value="CR">Cremona (CR)</option>
                             <option value="LC">Lecco (LC)</option>
                             <option value="LO">Lodi (LO)</option>
-                            <option value="MB">Monza (MB)</option>
+                            <option value="MB">Monza e Brianza (MB)</option>
                             <option value="MI">Milano (MI)</option>
                             <option value="MN">Mantova (MN)</option>
                             <option value="PV">Pavia (PV)</option>
@@ -139,74 +153,85 @@
                             <option value="VA">Varese (VA)</option>
                         </select>
                         
-                        <select id="select-comune" class="h-10 px-3 rounded-full border border-gray-200 text-xs font-semibold text-gray-700 outline-none bg-white cursor-pointer" disabled onchange="onComuneChange()">
+                        <select id="select-comune" class="h-10 px-3 rounded-xl border border-gray-200 text-xs font-bold text-gray-800 outline-none bg-gray-50/70 focus:bg-white focus:border-primary cursor-pointer" disabled onchange="onComuneChange()">
                             <option value="">Comune (Tutti)</option>
                         </select>
                     </div>
-                    
-                    <button class="h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-bold transition-colors w-full" onclick="resetFilters()">Resetta Ricerca</button>
                 </div>
 
-                <!-- Segmented Tri-Filter (3-Column Locked Grid, Zero Overflow!) -->
-                <div class="grid grid-cols-3 gap-1.5 w-full bg-surface-glass backdrop-blur-xl p-1 rounded-full shadow-md border border-gray-100 pointer-events-auto">
+                <!-- Segmented Tri-Filter (3-Column Locked Grid, Zero Overflow + Live Counters!) -->
+                <div class="grid grid-cols-3 gap-1.5 w-full bg-white/90 backdrop-blur-2xl p-1 rounded-full shadow-[0_4px_20px_rgba(15,23,42,0.08)] border border-white/80 ring-1 ring-gray-900/5 pointer-events-auto">
                     <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-primary text-white transition-all shadow-sm" id="pill-cav" onclick="toggleCategoryTab('CAV')">
-                        <span class="w-2 h-2 rounded-full bg-pink-300"></span>
-                        <span class="text-[0.7rem] font-extrabold whitespace-nowrap">Centri CAV</span>
+                        <span class="w-2 h-2 rounded-full bg-pink-200 shrink-0"></span>
+                        <span class="text-[0.68rem] font-extrabold whitespace-nowrap">CAV</span>
+                        <span id="count-cav" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">94</span>
                     </button>
                     <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-tertiary text-white transition-all shadow-sm" id="pill-ps" onclick="toggleCategoryTab('SANITA')">
-                        <span class="w-2 h-2 rounded-full bg-pink-200"></span>
-                        <span class="text-[0.7rem] font-extrabold whitespace-nowrap">P. Soccorso</span>
+                        <span class="w-2 h-2 rounded-full bg-red-200 shrink-0"></span>
+                        <span class="text-[0.68rem] font-extrabold whitespace-nowrap">Ospedali</span>
+                        <span id="count-ps" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">66</span>
                     </button>
                     <button class="flex items-center justify-center gap-1 py-1.5 px-1 rounded-full bg-secondary text-white transition-all shadow-sm" id="pill-police" onclick="toggleCategoryTab('FORZE_ORDINE')">
-                        <span class="w-2 h-2 rounded-full bg-blue-300"></span>
-                        <span class="text-[0.7rem] font-extrabold whitespace-nowrap">Sicurezza</span>
+                        <span class="w-2 h-2 rounded-full bg-blue-200 shrink-0"></span>
+                        <span class="text-[0.68rem] font-extrabold whitespace-nowrap">Sicurezza</span>
+                        <span id="count-police" class="text-[0.6rem] font-black px-1.5 py-0.2 rounded-full bg-black/15">716</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Manual Geolocalize FAB -->
-            <button class="absolute bottom-4 right-4 z-20 w-11 h-11 rounded-full bg-white text-primary shadow-md flex items-center justify-center active:scale-90 transition-transform border border-gray-100" id="geolocate-btn" onclick="geolocalizeUser()" title="Trova la mia posizione">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
-                </svg>
-            </button>
+            <!-- Floating Map Controls (Zoom + GPS — Positioned above the 112/1522 Emergency Dock!) -->
+            <div class="absolute bottom-20 right-3.5 z-20 flex flex-col gap-2">
+                <div class="hidden sm:flex flex-col bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                    <button onclick="if(map) map.setZoom(map.getZoom() + 1)" class="w-10 h-10 flex items-center justify-center text-gray-700 hover:bg-gray-50 font-black text-base border-b border-gray-100" title="Ingrandisci">+</button>
+                    <button onclick="if(map) map.setZoom(map.getZoom() - 1)" class="w-10 h-10 flex items-center justify-center text-gray-700 hover:bg-gray-50 font-black text-base" title="Riduci">−</button>
+                </div>
+                <button class="w-12 h-12 rounded-2xl bg-white/95 backdrop-blur-xl text-primary shadow-[0_6px_20px_rgba(15,23,42,0.14)] flex items-center justify-center active:scale-90 transition-transform border border-gray-100 ring-1 ring-gray-900/5" id="geolocate-btn" onclick="geolocalizeUser()" title="Trova i presidi più vicini a me">
+                    <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">my_location</span>
+                </button>
+            </div>
         </div>
 
         <!-- ==================== TAB 2: DYNAMIC LIST OF CENTERS ==================== -->
         <div id="tab-list-content" class="w-full h-full overflow-y-auto px-4 pt-3 hidden">
             <!-- Header Block -->
-            <div class="mb-3">
-                <span class="text-[0.65rem] text-primary uppercase font-extrabold tracking-wider">Elenco Servizi Verificati</span>
-                <h1 class="text-xl font-extrabold tracking-tight text-gray-900">Centri e Presidi attivi in Lombardia</h1>
-                <p class="text-xs text-gray-500 mt-1 leading-snug">
-                    Consulta i presidi ordinati per vicinanza o categoria. Clicca su "Dettagli" per orari, indicazioni stradali e recapiti completi.
-                </p>
+            <div class="mb-2.5">
+                <span class="text-[0.65rem] text-primary uppercase font-extrabold tracking-wider">Elenco Servizi Verificati ISTAT</span>
+                <h1 class="text-lg font-extrabold tracking-tight text-gray-900 leading-tight">Centri e Presidi in Lombardia</h1>
             </div>
 
-            <!-- Quick Sub-Filter Pills inside List Tab -->
-            <div class="grid grid-cols-4 gap-1.5 mb-3 bg-gray-100 p-1 rounded-full">
-                <button id="list-filter-CAV" onclick="setListCategoryFilter('CAV')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all bg-primary text-white shadow-sm">
-                    Centri CAV
-                </button>
-                <button id="list-filter-SANITA" onclick="setListCategoryFilter('SANITA')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900">
-                    P. Soccorso
-                </button>
-                <button id="list-filter-FORZE_ORDINE" onclick="setListCategoryFilter('FORZE_ORDINE')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900">
-                    Sicurezza
-                </button>
-                <button id="list-filter-ALL" onclick="setListCategoryFilter('ALL')" class="py-1.5 px-2 rounded-full text-[0.68rem] font-extrabold transition-all text-gray-600 hover:text-gray-900">
-                    Tutti
-                </button>
+            <!-- Sticky Search + Category Filter Bar inside Tab 2 -->
+            <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-xl pt-1 pb-2.5 -mx-4 px-4 border-b border-gray-100 mb-2">
+                <div class="bg-gray-100/90 rounded-full flex items-center px-3 h-10 mb-2 border border-gray-200/60 focus-within:bg-white focus-within:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary mr-2 text-[19px]">search</span>
+                    <input id="list-search-input" type="text" placeholder="Filtra per nome, comune o indirizzo..." class="bg-transparent font-semibold text-xs text-gray-900 placeholder:text-gray-400 outline-none flex-1 min-w-0" oninput="syncSearchFromList(this.value)"/>
+                    <button id="clear-list-search-btn" onclick="clearSearchInput()" type="button" class="hidden h-6 w-6 rounded-full hover:bg-gray-200 text-gray-500 items-center justify-center text-xs">✕</button>
+                </div>
+
+                <!-- Quick Sub-Filter Pills inside List Tab -->
+                <div class="grid grid-cols-4 gap-1 bg-gray-100 p-1 rounded-full">
+                    <button id="list-filter-CAV" onclick="setListCategoryFilter('CAV')" class="py-1.5 px-1.5 rounded-full text-[0.66rem] font-extrabold transition-all bg-primary text-white shadow-sm truncate">
+                        CAV
+                    </button>
+                    <button id="list-filter-SANITA" onclick="setListCategoryFilter('SANITA')" class="py-1.5 px-1.5 rounded-full text-[0.66rem] font-extrabold transition-all text-gray-600 hover:text-gray-900 truncate">
+                        Ospedali
+                    </button>
+                    <button id="list-filter-FORZE_ORDINE" onclick="setListCategoryFilter('FORZE_ORDINE')" class="py-1.5 px-1.5 rounded-full text-[0.66rem] font-extrabold transition-all text-gray-600 hover:text-gray-900 truncate">
+                        Sicurezza
+                    </button>
+                    <button id="list-filter-ALL" onclick="setListCategoryFilter('ALL')" class="py-1.5 px-1.5 rounded-full text-[0.66rem] font-extrabold transition-all text-gray-600 hover:text-gray-900 truncate">
+                        Tutti
+                    </button>
+                </div>
             </div>
 
-            <!-- Dynamic List Container -->
-            <div id="list-container" class="pb-16">
+            <!-- Dynamic List Container (pb-28 so last card clears the 112/1522 Emergency Dock!) -->
+            <div id="list-container" class="pb-28">
                 <!-- Populated dynamically by JavaScript -->
             </div>
         </div>
 
         <!-- ==================== TAB 3: SAFETY GUIDE & RIGHTS ==================== -->
-        <div id="tab-guide-content" class="w-full h-full overflow-y-auto px-4 hidden">
+        <div id="tab-guide-content" class="w-full h-full overflow-y-auto px-4 pt-3 hidden">
             <!-- Comfort Protocol Banner -->
             <section class="rounded-2xl bg-white p-5 shadow-sm relative overflow-hidden border border-gray-100">
                 <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-pink-100 pointer-events-none blur-2xl"></div>
@@ -235,8 +260,8 @@
                 </div>
             </section>
 
-            <!-- Accordion Steps -->
-            <div class="mt-4 flex flex-col gap-3 pb-12">
+            <!-- Accordion Steps (pb-28 to clear the 112/1522 Emergency Dock!) -->
+            <div class="mt-4 flex flex-col gap-3 pb-28">
                 <!-- Step 1 -->
                 <article class="rounded-xl bg-white overflow-hidden shadow-sm border border-gray-100 transition-all duration-200">
                     <button class="w-full p-4 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('step-1', this)">
@@ -378,12 +403,18 @@
         </div>
     </nav>
 
-    <!-- SLIDE-UP DETAIL SHEET (Drawer Details) -->
-    <div class="fixed bottom-0 left-50 transform translate-y-full w-full max-w-xl mx-auto bg-white rounded-t-[24px] shadow-2xl z-50 px-5 py-6 pb-safe border-t border-gray-100 transition-transform duration-300 ease-out" id="bottom-sheet" style="left: 0; right: 0;">
-        <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto -mt-3 mb-4 cursor-pointer" onclick="closeBottomSheet()"></div>
-        <button class="absolute top-4 right-4 w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-sm font-bold text-gray-500 hover:bg-gray-200 focus:outline-none" onclick="closeBottomSheet()">✕</button>
+    <!-- BACKDROP SCRIM FOR BOTTOM SHEET (Tap outside to dismiss) -->
+    <div id="sheet-backdrop" class="fixed inset-0 bg-slate-900/25 backdrop-blur-[1px] z-[55] opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeBottomSheet()"></div>
+
+    <!-- SLIDE-UP DETAIL SHEET (Native Thumb Swipe-to-Dismiss — NO X BUTTON!) -->
+    <div class="fixed bottom-0 inset-x-0 transform translate-y-full w-full max-w-xl mx-auto bg-white rounded-t-[28px] shadow-[0_-12px_40px_rgba(15,23,42,0.18)] z-[60] px-5 pt-2 pb-8 border-t border-gray-100 transition-transform duration-300 ease-out" id="bottom-sheet" style="touch-action: none;">
+        <!-- Large Ergonomic Thumb Drag Zone -->
+        <div id="sheet-drag-handle" class="w-full pt-2 pb-4 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing select-none" onclick="closeBottomSheet()">
+            <div class="w-12 h-1.5 bg-gray-300 rounded-full mb-1"></div>
+            <span class="text-[0.6rem] font-bold text-gray-400 tracking-wide uppercase">Trascina giù per chiudere</span>
+        </div>
         
-        <div id="sheet-content" class="max-h-[65vh] overflow-y-auto">
+        <div id="sheet-content" class="max-h-[68vh] overflow-y-auto pr-0.5" style="touch-action: pan-y;">
             <!-- Populated dynamically by JavaScript -->
         </div>
     </div>
@@ -793,6 +824,8 @@
                 zoom: 8.5,
                 center: lombardiaCenter,
                 styles: customMapStyle,
+                gestureHandling: "greedy", // 2026 UX: Pan & Drag immediato con 1 solo dito senza blocco "Usa due dita"!
+                clickableIcons: false,
                 mapTypeControl: false,
                 streetViewControl: false,
                 fullscreenControl: false,
@@ -925,9 +958,91 @@
             });
         }
 
+        // PULISCI BARRA DI RICERCA RAPIDA
+        function clearSearchInput() {
+            const input = document.getElementById("free-search");
+            const listInput = document.getElementById("list-search-input");
+            const clearBtn = document.getElementById("clear-search-btn");
+            const clearListBtn = document.getElementById("clear-list-search-btn");
+            const suggestionsDiv = document.getElementById("search-suggestions");
+            if (input) input.value = "";
+            if (listInput) listInput.value = "";
+            if (clearBtn) {
+                clearBtn.classList.add("hidden");
+                clearBtn.classList.remove("flex");
+            }
+            if (clearListBtn) {
+                clearListBtn.classList.add("hidden");
+                clearListBtn.classList.remove("flex");
+            }
+            if (suggestionsDiv) {
+                suggestionsDiv.classList.add("hidden");
+                suggestionsDiv.innerHTML = "";
+            }
+            filterAll();
+        }
+
+        // SINCRONIZZA RICERCA DAL TAB 2 (ELENCO)
+        function syncSearchFromList(val) {
+            const mapInput = document.getElementById("free-search");
+            const clearListBtn = document.getElementById("clear-list-search-btn");
+            if (mapInput) mapInput.value = val;
+            if (clearListBtn) {
+                if (val && val.trim().length > 0) {
+                    clearListBtn.classList.remove("hidden");
+                    clearListBtn.classList.add("flex");
+                } else {
+                    clearListBtn.classList.add("hidden");
+                    clearListBtn.classList.remove("flex");
+                }
+            }
+            listRenderLimit = 30;
+            filterAll();
+        }
+
+        // COPIA INDIRIZZO NEGLI APPUNTI CON FEEDBACK VISIVO
+        function copyAddressToClipboard(addr, btnEl) {
+            if (!navigator.clipboard) return;
+            navigator.clipboard.writeText(addr).then(() => {
+                if (btnEl) {
+                    const orig = btnEl.innerHTML;
+                    btnEl.innerHTML = `<span class="material-symbols-outlined text-[14px] text-emerald-600">check</span><span class="text-emerald-700">Copiato!</span>`;
+                    setTimeout(() => { btnEl.innerHTML = orig; }, 1800);
+                }
+            });
+        }
+
+        // INQUADRA UN LUOGO SULLA MAPPA DALLA LISTA O DAL DETTAGLIO
+        function focusOnMap(lat, lng, encodedProps, category) {
+            switchTab('map');
+            if (map && lat && lng) {
+                const pos = { lat: parseFloat(lat), lng: parseFloat(lng) };
+                map.panTo(pos);
+                map.setZoom(15.5);
+            }
+            if (encodedProps) {
+                try {
+                    const props = JSON.parse(decodeURIComponent(encodedProps));
+                    displayFeatureDetails(props, category);
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }
+
         // MOTORE DI RICERCA IBRIDO CON COINCIDENZE COMPATTE AUTOCOMPLETE (STILE GOOGLE MAPS!)
         function onSearchInput(value) {
             const suggestionsDiv = document.getElementById("search-suggestions");
+            const clearBtn = document.getElementById("clear-search-btn");
+            if (clearBtn) {
+                if (value && value.trim().length > 0) {
+                    clearBtn.classList.remove("hidden");
+                    clearBtn.classList.add("flex");
+                } else {
+                    clearBtn.classList.add("hidden");
+                    clearBtn.classList.remove("flex");
+                }
+            }
             if (!suggestionsDiv) return;
 
             const query = value.toUpperCase().trim();
@@ -1081,9 +1196,15 @@
                     <h3 class="text-xl font-black text-gray-900 leading-snug">${escapeHTML(props.name)}</h3>
                     
                     <div class="space-y-2.5 text-xs text-gray-700">
-                        <div class="flex items-start gap-2">
-                            <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">location_on</span>
-                            <p><strong>Indirizzo:</strong> ${escapeHTML(props.indirizzo)}</p>
+                        <div class="flex items-start justify-between gap-2 bg-gray-50/80 p-2.5 rounded-xl border border-gray-100">
+                            <div class="flex items-start gap-2 min-w-0">
+                                <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">location_on</span>
+                                <p class="leading-snug"><strong>Indirizzo:</strong> ${escapeHTML(props.indirizzo)}</p>
+                            </div>
+                            <button type="button" onclick="copyAddressToClipboard('${props.indirizzo.replace(/'/g, "\\'")}', this)" class="shrink-0 px-2 py-1 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 text-[0.65rem] font-extrabold text-gray-600 flex items-center gap-1 shadow-sm active:scale-95 transition-all">
+                                <span class="material-symbols-outlined text-[14px]">content_copy</span>
+                                <span>Copia</span>
+                            </button>
                         </div>
             `;
 
@@ -1183,13 +1304,84 @@
             `;
 
             sheetContent.innerHTML = html;
-            document.getElementById("bottom-sheet").classList.remove("translate-y-full");
+            const sheetEl = document.getElementById("bottom-sheet");
+            const backdropEl = document.getElementById("sheet-backdrop");
+            if (sheetEl) {
+                sheetEl.style.transform = "";
+                sheetEl.classList.remove("translate-y-full");
+            }
+            if (backdropEl) {
+                backdropEl.classList.remove("opacity-0", "pointer-events-none");
+                backdropEl.classList.add("opacity-100", "pointer-events-auto");
+            }
         }
 
-        // CHIUDI IL BOTTOM SHEET
+        // CHIUDI IL BOTTOM SHEET (TRAMITE SWIPE COL POLLICE O TAP SULLO SFONDO)
         function closeBottomSheet() {
-            document.getElementById("bottom-sheet").classList.add("translate-y-full");
+            const sheetEl = document.getElementById("bottom-sheet");
+            const backdropEl = document.getElementById("sheet-backdrop");
+            if (sheetEl) {
+                sheetEl.style.transform = "";
+                sheetEl.classList.add("translate-y-full");
+            }
+            if (backdropEl) {
+                backdropEl.classList.add("opacity-0", "pointer-events-none");
+                backdropEl.classList.remove("opacity-100", "pointer-events-auto");
+            }
         }
+
+        // MOTORE FISICO TOUCH SWIPE-TO-DISMISS COL POLLICE PER IL BOTTOM SHEET
+        (function initBottomSheetSwipe() {
+            document.addEventListener("DOMContentLoaded", () => {
+                const sheet = document.getElementById("bottom-sheet");
+                const handle = document.getElementById("sheet-drag-handle");
+                const content = document.getElementById("sheet-content");
+                if (!sheet || !handle) return;
+
+                let startY = 0;
+                let currentDeltaY = 0;
+                let isDragging = false;
+
+                function onTouchStart(e) {
+                    if (!e.touches || e.touches.length !== 1) return;
+                    // Se il tocco parte dal contenuto interno, attiva lo swipe solo se siamo in cima allo scroll
+                    if (content && content.contains(e.target) && content.scrollTop > 2) return;
+                    startY = e.touches[0].clientY;
+                    currentDeltaY = 0;
+                    isDragging = true;
+                    sheet.style.transition = "none";
+                }
+
+                function onTouchMove(e) {
+                    if (!isDragging || !e.touches || e.touches.length !== 1) return;
+                    const deltaY = e.touches[0].clientY - startY;
+                    if (deltaY > 0) {
+                        currentDeltaY = deltaY;
+                        sheet.style.transform = `translateY(${deltaY}px)`;
+                        if (e.cancelable) e.preventDefault();
+                    } else {
+                        currentDeltaY = 0;
+                        sheet.style.transform = "translateY(0px)";
+                    }
+                }
+
+                function onTouchEnd() {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    sheet.style.transition = "transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1)";
+                    if (currentDeltaY > 55) {
+                        closeBottomSheet();
+                    } else {
+                        sheet.style.transform = "";
+                    }
+                    currentDeltaY = 0;
+                }
+
+                sheet.addEventListener("touchstart", onTouchStart, { passive: true });
+                sheet.addEventListener("touchmove", onTouchMove, { passive: false });
+                sheet.addEventListener("touchend", onTouchEnd, { passive: true });
+            });
+        })();
 
         // FILTRI CATEGORIA IN CIMA
         function toggleCategoryTab(category) {
@@ -1326,15 +1518,19 @@
                             </div>
                         </div>
                         
-                        <!-- Action row -->
-                        <div class="grid grid-cols-5 gap-2 pt-1">
-                            <a aria-label="${escapeHTML(phoneLabel)}" class="col-span-3 h-11 rounded-full bg-primary hover:bg-magenta-dark active:scale-[0.98] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform px-2 truncate" href="${escapeHTML(callHref)}">
-                                <span class="material-symbols-outlined text-[18px] shrink-0" style="font-variation-settings: 'FILL' 1;">call</span>
+                        <!-- Action row (2026 Bento 3-Action Bar: Call + Map Focus + Details) -->
+                        <div class="grid grid-cols-12 gap-2 pt-1">
+                            <a aria-label="${escapeHTML(phoneLabel)}" class="col-span-6 h-11 rounded-2xl bg-primary hover:bg-magenta-dark active:scale-[0.98] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform px-2.5 truncate" href="${escapeHTML(callHref)}">
+                                <span class="material-symbols-outlined text-[17px] shrink-0" style="font-variation-settings: 'FILL' 1;">call</span>
                                 <span class="truncate">${escapeHTML(phoneLabel)}</span>
                             </a>
-                            <button class="col-span-2 h-11 rounded-full bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-bold text-xs flex items-center justify-center gap-0.5 transition-all" onclick="displayFeatureDetails(JSON.parse(decodeURIComponent('${encodeURIComponent(JSON.stringify(facility.props))}')), '${facility.category}')" type="button">
-                                <span>Dettagli</span>
-                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            <button class="col-span-3 h-11 rounded-2xl bg-blue-50 hover:bg-blue-100 active:scale-[0.98] text-secondary font-extrabold text-xs flex items-center justify-center gap-1 transition-all" onclick="focusOnMap(${facility.props.lat}, ${facility.props.lng}, '${encodeURIComponent(JSON.stringify(facility.props))}', '${facility.category}')" type="button" title="Inquadra sulla mappa">
+                                <span class="material-symbols-outlined text-[16px]">my_location</span>
+                                <span>Mappa</span>
+                            </button>
+                            <button class="col-span-3 h-11 rounded-2xl bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-extrabold text-xs flex items-center justify-center gap-0.5 transition-all" onclick="displayFeatureDetails(JSON.parse(decodeURIComponent('${encodeURIComponent(JSON.stringify(facility.props))}')), '${facility.category}')" type="button">
+                                <span>Info</span>
+                                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
                             </button>
                         </div>
                     </article>
@@ -1405,6 +1601,14 @@
                     clusterers[key].addMarkers(activeMarkersByLayer[key]);
                 }
             }
+
+            // Aggiorna i contatori live sulle 3 pillole filtro
+            const countCavEl = document.getElementById("count-cav");
+            const countPsEl = document.getElementById("count-ps");
+            const countPolEl = document.getElementById("count-police");
+            if (countCavEl) countCavEl.textContent = activeMarkersByLayer['CAV'].length;
+            if (countPsEl) countPsEl.textContent = activeMarkersByLayer['SANITA'].length;
+            if (countPolEl) countPolEl.textContent = activeMarkersByLayer['FORZE_ORDINE'].length;
 
             // Sync with dynamic list view!
             rebuildListView(visibleFacilities);
