@@ -65,3 +65,25 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def test_live_google_sheet():
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    sheet_base = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9nFRRLHUeibPUL_EcuSCWMA0u_3J9A_WuI_Id_HVmHPZW6VAI4IIsRfs5lMovtdiBVPMy2TxB49-0/pub"
+    all_errs = []
+    for name, gid in [("centri_cav", "720747558"), ("ospedali", "961852400"), ("forze_ordine", "723516425")]:
+        url = f"{sheet_base}?gid={gid}&output=csv"
+        txt = urllib.request.urlopen(url, context=ctx, timeout=15).read().decode("utf-8")
+        rows = list(csv.DictReader(txt.splitlines()))
+        errs = check_rows(rows, f"LIVE_GSHEET:{name}")
+        print(f"✔ Checked LIVE_GSHEET {name}: {len(rows)} rows | sample coords: ({rows[0]['latitudine']}, {rows[0]['longitudine']}) -> {len(errs)} errors")
+        all_errs.extend(errs)
+    if all_errs:
+        for e in all_errs[:15]:
+            print("  -", e)
+        sys.exit(1)
+    print("✅ LIVE GOOGLE SHEET CSV STREAM 100% VALIDATED (0 ERRORS)!")
+
+if __name__ == "__main__":
+    test_live_google_sheet()
